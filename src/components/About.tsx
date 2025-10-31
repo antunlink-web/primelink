@@ -12,8 +12,9 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-secondary/30 to-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,hsl(var(--accent)/0.08)_0%,transparent_50%)]"></div>
+    <section id="about" className="py-24 bg-gradient-to-b from-secondary/50 via-background to-secondary/50 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[var(--gradient-mesh)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,hsl(var(--accent)/0.15)_0%,transparent_50%)]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-2 gap-16 items-center">

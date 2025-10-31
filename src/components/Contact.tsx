@@ -3,8 +3,9 @@ import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-background to-secondary/30">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-20 bg-gradient-to-b from-background to-secondary/50 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[var(--gradient-mesh)]"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Ready to Transform Your Business?
@@ -15,7 +16,7 @@ const Contact = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          <div className="text-center p-6 rounded-lg bg-card border border-border hover:shadow-[var(--shadow-card)] transition-shadow animate-scale-in">
+          <div className="text-center p-6 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] hover:shadow-[var(--shadow-glow)] transition-all hover:-translate-y-1 animate-scale-in">
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
               <Mail className="h-6 w-6 text-primary" />
             </div>
@@ -23,7 +24,7 @@ const Contact = () => {
             <p className="text-muted-foreground">contact@techsolutions.com</p>
           </div>
 
-          <div className="text-center p-6 rounded-lg bg-card border border-border hover:shadow-[var(--shadow-card)] transition-shadow animate-scale-in" style={{ animationDelay: "100ms" }}>
+          <div className="text-center p-6 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] hover:shadow-[var(--shadow-glow)] transition-all hover:-translate-y-1 animate-scale-in" style={{ animationDelay: "100ms" }}>
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
               <Phone className="h-6 w-6 text-primary" />
             </div>
@@ -31,7 +32,7 @@ const Contact = () => {
             <p className="text-muted-foreground">+1 (555) 123-4567</p>
           </div>
 
-          <div className="text-center p-6 rounded-lg bg-card border border-border hover:shadow-[var(--shadow-card)] transition-shadow animate-scale-in" style={{ animationDelay: "200ms" }}>
+          <div className="text-center p-6 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] hover:shadow-[var(--shadow-glow)] transition-all hover:-translate-y-1 animate-scale-in" style={{ animationDelay: "200ms" }}>
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
               <MapPin className="h-6 w-6 text-primary" />
             </div>
@@ -41,7 +42,10 @@ const Contact = () => {
         </div>
 
         <div className="text-center animate-fade-in-up">
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
+          <Button 
+            size="lg" 
+            className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white text-lg px-8 py-6 shadow-[var(--shadow-glow)] hover:shadow-[var(--shadow-xl)] transition-all hover:scale-105"
+          >
             Schedule a Consultation
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
