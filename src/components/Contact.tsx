@@ -174,7 +174,7 @@ const Contact = () => {
               <Mail className="h-6 w-6 text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
             </div>
             <h3 className="font-semibold text-foreground mb-2">{t('contact.email')}</h3>
-            <p className="text-muted-foreground">contact@primelink.com</p>
+            <p className="text-muted-foreground">primelink@primelink.hr</p>
           </div>
 
           <div className="text-center p-6 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] hover:shadow-[var(--shadow-glow)] hover:glow-border transition-all hover:-translate-y-1 animate-scale-in" style={{ animationDelay: "100ms" }}>
@@ -182,7 +182,7 @@ const Contact = () => {
               <Phone className="h-6 w-6 text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
             </div>
             <h3 className="font-semibold text-foreground mb-2">{t('contact.call')}</h3>
-            <p className="text-muted-foreground">+1 (555) 123-4567</p>
+            <p className="text-muted-foreground">+385993261222</p>
           </div>
 
           <div className="text-center p-6 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] hover:shadow-[var(--shadow-glow)] hover:glow-border transition-all hover:-translate-y-1 animate-scale-in" style={{ animationDelay: "200ms" }}>
@@ -190,7 +190,7 @@ const Contact = () => {
               <MapPin className="h-6 w-6 text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
             </div>
             <h3 className="font-semibold text-foreground mb-2">{t('contact.visit')}</h3>
-            <p className="text-muted-foreground">123 Tech Street, San Francisco</p>
+            <p className="text-muted-foreground">Tarska 26a, 10040 Zagreb, Croatia</p>
           </div>
         </div>
       </div>
