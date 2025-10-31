@@ -23,7 +23,7 @@ const contactFormSchema = z.object({
 });
 
 // Replace with your Web3Forms access key from https://web3forms.com
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+const WEB3FORMS_ACCESS_KEY = "7a6fbce5-f71b-4f52-a58e-12bcbbd3a492";
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
