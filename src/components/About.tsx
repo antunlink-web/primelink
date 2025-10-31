@@ -12,9 +12,11 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-secondary/30 to-background">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+    <section id="about" className="py-24 bg-gradient-to-b from-secondary/30 to-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,hsl(var(--accent)/0.08)_0%,transparent_50%)]"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Why Choose Us?
@@ -34,22 +36,26 @@ const About = () => {
               ))}
             </div>
 
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-hover)] transition-all hover:scale-105"
+            >
               Learn More About Us
             </Button>
           </div>
 
-          <div className="relative animate-scale-in">
-            <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary to-accent p-1">
-              <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center">
+          <div className="relative animate-scale-in group">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+            <div className="relative aspect-square rounded-3xl bg-gradient-to-br from-primary to-accent p-1 shadow-[var(--shadow-xl)]">
+              <div className="w-full h-full rounded-3xl bg-background flex items-center justify-center group-hover:scale-[0.98] transition-transform duration-300">
                 <div className="text-center p-8">
-                  <div className="text-6xl font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent mb-4">
+                  <div className="text-7xl font-bold bg-gradient-to-br from-primary via-primary to-accent bg-clip-text text-transparent mb-6 group-hover:scale-110 transition-transform">
                     15+
                   </div>
-                  <div className="text-xl font-semibold text-foreground mb-2">
+                  <div className="text-2xl font-semibold text-foreground mb-3">
                     Years of Excellence
                   </div>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     Delivering innovative IT solutions globally
                   </p>
                 </div>

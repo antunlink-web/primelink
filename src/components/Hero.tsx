@@ -10,13 +10,16 @@ const Hero = () => {
         <img 
           src={heroBg} 
           alt="Tech background" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover animate-float"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-accent/80"></div>
+        <div className="absolute inset-0 bg-[var(--gradient-dark)]"></div>
+        {/* Additional decorative elements */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }}></div>
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 text-center">
+      <div className="container mx-auto px-4 z-10 text-center relative">
         <div className="max-w-4xl mx-auto animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             Transform Your Business with
@@ -30,11 +33,18 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6">
+            <Button 
+              size="lg" 
+              className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 shadow-[var(--shadow-xl)] hover:shadow-[var(--shadow-hover)] transition-all hover:scale-105"
+            >
               Get Started
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-2 border-white text-white hover:bg-white/10 backdrop-blur-sm text-lg px-8 py-6 hover:scale-105 transition-all"
+            >
               View Solutions
             </Button>
           </div>
