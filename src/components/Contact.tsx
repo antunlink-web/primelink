@@ -22,6 +22,9 @@ const contactFormSchema = z.object({
   message: z.string().trim().min(1, { message: "Message is required" }).max(1000, { message: "Message must be less than 1000 characters" }),
 });
 
+// Replace with your Web3Forms access key from https://web3forms.com
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const Contact = () => {
@@ -38,20 +41,34 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormValues) => {
     try {
-      const subject = encodeURIComponent(`Contact from ${data.name}`);
-      const body = encodeURIComponent(
-        `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
-      );
-      
-      window.location.href = `mailto:contact@primelink.com?subject=${subject}&body=${body}`;
-      
-      toast.success("Opening your email client...", {
-        duration: 3000,
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          subject: `New Contact Form Submission from ${data.name}`,
+          from_name: "PrimeLink Contact Form",
+        }),
       });
-      
-      form.reset();
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success("Message sent successfully! We'll get back to you soon.", {
+          duration: 5000,
+        });
+        form.reset();
+      } else {
+        throw new Error(result.message || "Failed to send message");
+      }
     } catch (error) {
-      toast.error("Failed to open email client. Please try again.", {
+      console.error("Form submission error:", error);
+      toast.error("Failed to send message. Please try again or contact us directly.", {
         duration: 5000,
       });
     }
