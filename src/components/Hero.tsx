@@ -40,6 +40,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button 
               size="lg" 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="relative bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white text-lg px-8 py-6 shadow-[var(--shadow-glow-strong)] hover:shadow-[var(--shadow-xl)] transition-all hover:scale-105 glow-border animate-pulse-glow"
             >
               {t('hero.getStarted')}
