@@ -46,6 +46,8 @@ All colors MUST be HSL.
     --shadow-hover: 0 20px 40px -8px hsl(217 91% 60% / 0.4), 0 8px 16px -4px hsl(180 100% 50% / 0.2);
     --shadow-xl: 0 30px 60px -12px hsl(217 91% 60% / 0.5), 0 12px 24px -6px hsl(0 0% 0% / 0.4);
     --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.4), 0 0 80px hsl(180 100% 50% / 0.2);
+    --shadow-glow-strong: 0 0 60px hsl(217 91% 60% / 0.6), 0 0 100px hsl(180 100% 50% / 0.3), 0 0 140px hsl(217 91% 60% / 0.2);
+    --shadow-inner-glow: inset 0 0 30px hsl(217 91% 60% / 0.2), inset 0 0 60px hsl(180 100% 50% / 0.1);
     
     --glass-bg: hsl(222 47% 8% / 0.7);
     --glass-border: hsl(210 40% 98% / 0.1);
@@ -116,5 +118,35 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Glowing text utility */
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5),
+                 0 0 40px hsl(var(--primary) / 0.3),
+                 0 0 60px hsl(var(--accent) / 0.2);
+  }
+  
+  /* Glowing border utility */
+  .glow-border {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4),
+                0 0 40px hsl(var(--accent) / 0.2),
+                inset 0 0 20px hsl(var(--primary) / 0.1);
+  }
+  
+  /* Pulse glow animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.4),
+                  0 0 40px hsl(var(--accent) / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.6),
+                  0 0 80px hsl(var(--accent) / 0.4);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
   }
 }

@@ -25,7 +25,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
             Transform Your Business with
-            <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
+            <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient bg-300% glow-text">
               Advanced IT Solutions
             </span>
           </h1>
@@ -37,7 +37,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white text-lg px-8 py-6 shadow-[var(--shadow-glow)] hover:shadow-[var(--shadow-xl)] transition-all hover:scale-105"
+              className="relative bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white text-lg px-8 py-6 shadow-[var(--shadow-glow-strong)] hover:shadow-[var(--shadow-xl)] transition-all hover:scale-105 glow-border animate-pulse-glow"
             >
               Get Started
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -45,7 +45,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-2 border-white/30 bg-white/5 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-md text-lg px-8 py-6 hover:scale-105 transition-all"
+              className="relative border-2 border-white/30 bg-white/5 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-md text-lg px-8 py-6 hover:scale-105 transition-all hover:glow-border"
             >
               View Solutions
             </Button>

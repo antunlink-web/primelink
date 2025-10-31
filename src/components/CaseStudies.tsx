@@ -49,6 +49,10 @@ const CaseStudies = () => {
       <div className="absolute inset-0 bg-[var(--gradient-mesh)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(var(--primary)/0.15)_0%,transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,hsl(var(--accent)/0.1)_0%,transparent_50%)]"></div>
+      
+      {/* Multiple glowing orbs */}
+      <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-pulse-glow"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: "2s" }}></div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
@@ -77,12 +81,12 @@ const CaseStudies = () => {
               
               <CardHeader className="relative z-10">
                 <div className="flex items-start justify-between mb-3">
-                  <Badge variant="secondary" className="text-xs">
+                  <Badge variant="secondary" className="text-xs glow-border">
                     {study.industry}
                   </Badge>
-                  <TrendingUp className="h-5 w-5 text-accent group-hover:scale-110 transition-transform" />
+                  <TrendingUp className="h-5 w-5 text-accent group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_hsl(var(--accent)/0.5)]" />
                 </div>
-                <CardTitle className="text-2xl mb-2 group-hover:text-primary transition-colors">
+                <CardTitle className="text-2xl mb-2 group-hover:text-primary transition-colors group-hover:glow-text">
                   {study.client}
                 </CardTitle>
                 <CardDescription className="text-base font-semibold text-foreground/80">
@@ -98,8 +102,8 @@ const CaseStudies = () => {
                 {/* Results Grid */}
                 <div className="grid grid-cols-3 gap-4 mb-6 p-4 rounded-lg bg-secondary/50 border border-[var(--glass-border)] backdrop-blur-sm">
                   {study.results.map((result, idx) => (
-                    <div key={idx} className="text-center">
-                      <div className="text-xl md:text-2xl font-bold text-primary mb-1">
+                    <div key={idx} className="text-center group/stat">
+                      <div className="text-xl md:text-2xl font-bold text-primary mb-1 group-hover/stat:glow-text transition-all">
                         {result.metric}
                       </div>
                       <div className="text-xs text-muted-foreground">
@@ -138,7 +142,7 @@ const CaseStudies = () => {
           <p className="text-muted-foreground mb-6 text-lg">
             Want to see how we can help your business achieve similar results?
           </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 px-8">
+          <Button size="lg" className="bg-primary hover:bg-primary/90 px-8 shadow-[var(--shadow-glow)] hover:shadow-[var(--shadow-glow-strong)] glow-border">
             Discuss Your Project
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
