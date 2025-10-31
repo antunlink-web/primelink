@@ -38,16 +38,20 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormValues) => {
     try {
-      // Here you would typically send the data to your backend
-      console.log("Form submitted:", data);
+      const subject = encodeURIComponent(`Contact from ${data.name}`);
+      const body = encodeURIComponent(
+        `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
+      );
       
-      toast.success("Message sent successfully! We'll get back to you soon.", {
-        duration: 5000,
+      window.location.href = `mailto:contact@primelink.com?subject=${subject}&body=${body}`;
+      
+      toast.success("Opening your email client...", {
+        duration: 3000,
       });
       
       form.reset();
     } catch (error) {
-      toast.error("Failed to send message. Please try again.", {
+      toast.error("Failed to open email client. Please try again.", {
         duration: 5000,
       });
     }
