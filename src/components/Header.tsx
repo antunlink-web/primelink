@@ -36,7 +36,12 @@ const Header = () => {
 
         <div className="flex items-center space-x-2">
           <LanguageSwitcher />
-          <Button className="hidden md:inline-flex">{t('hero.getStarted')}</Button>
+          <Button 
+            className="hidden md:inline-flex"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            {t('hero.getStarted')}
+          </Button>
           <Button variant="ghost" size="icon" className="md:hidden">
             <Menu className="h-6 w-6" />
           </Button>
