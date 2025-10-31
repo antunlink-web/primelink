@@ -24,7 +24,7 @@ const Contact = () => {
               <Mail className="h-6 w-6 text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
             </div>
             <h3 className="font-semibold text-foreground mb-2">Email Us</h3>
-            <p className="text-muted-foreground">contact@techsolutions.com</p>
+            <p className="text-muted-foreground">contact@primelink.com</p>
           </div>
 
           <div className="text-center p-6 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] hover:shadow-[var(--shadow-glow)] hover:glow-border transition-all hover:-translate-y-1 animate-scale-in" style={{ animationDelay: "100ms" }}>

@@ -7,9 +7,9 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-[var(--shadow-glow)]">
-            <span className="text-white font-bold text-xl">IT</span>
+            <span className="text-white font-bold text-xl">PL</span>
           </div>
-          <span className="text-2xl font-bold bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">TechSolutions</span>
+          <span className="text-2xl font-bold bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">PrimeLink</span>
         </div>
 
         <nav className="hidden md:flex items-center space-x-8">

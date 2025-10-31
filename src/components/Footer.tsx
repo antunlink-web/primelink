@@ -9,9 +9,9 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-[var(--shadow-glow)]">
-                <span className="text-white font-bold text-xl">IT</span>
+                <span className="text-white font-bold text-xl">PL</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">TechSolutions</span>
+              <span className="text-xl font-bold bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">PrimeLink</span>
             </div>
             <p className="text-muted-foreground">
               Leading IT solutions provider for modern enterprises.
@@ -58,7 +58,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-[var(--glass-border)] pt-8 text-center text-muted-foreground">
-          <p>&copy; 2025 TechSolutions. All rights reserved.</p>
+          <p>&copy; 2025 PrimeLink. All rights reserved.</p>
         </div>
       </div>
     </footer>
