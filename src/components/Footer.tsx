@@ -1,5 +1,6 @@
 import { Linkedin, Twitter, Facebook, Github } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import logo from "@/assets/primelink-logo.png";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -11,10 +12,12 @@ const Footer = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-[var(--shadow-glow)]">
-                <span className="text-white font-bold text-xl">PL</span>
-              </div>
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src={logo} 
+                alt="PrimeLink Logo" 
+                className="h-10 w-10 drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]"
+              />
               <span className="text-xl font-bold bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">PrimeLink</span>
             </div>
             <p className="text-muted-foreground">
