@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "services": "Services",
+    "about": "About",
+    "solutions": "Solutions",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Transform Your Business with",
+    "titleHighlight": "Advanced IT Solutions",
+    "description": "Empowering enterprises with cutting-edge technology, security, and innovation for the digital age.",
+    "getStarted": "Get Started",
+    "viewSolutions": "View Solutions",
+    "support247": "24/7 Support",
+    "enterpriseSecurity": "Enterprise Security",
+    "cloudInfrastructure": "Cloud Infrastructure"
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Comprehensive IT solutions tailored to your business needs",
+    "cloud": {
+      "title": "Cloud Solutions",
+      "description": "Scalable cloud infrastructure and migration services to modernize your operations."
+    },
+    "security": {
+      "title": "Cybersecurity",
+      "description": "Comprehensive security solutions to protect your data and infrastructure."
+    },
+    "infrastructure": {
+      "title": "IT Infrastructure",
+      "description": "Enterprise-grade hardware and network solutions for optimal performance."
+    },
+    "ai": {
+      "title": "AI & Automation",
+      "description": "Intelligent automation and AI-powered solutions to streamline workflows."
+    },
+    "data": {
+      "title": "Data Management",
+      "description": "Advanced data analytics, storage, and management solutions."
+    },
+    "digital": {
+      "title": "Digital Transformation",
+      "description": "End-to-end digital transformation to modernize your business."
+    }
+  },
+  "stats": {
+    "clients": "Happy Clients",
+    "uptime": "Uptime",
+    "support": "Support",
+    "experience": "Years Experience"
+  },
+  "about": {
+    "title": "Why Choose Us?",
+    "description": "We deliver enterprise-grade IT solutions that drive innovation and business growth. Our team of experts is committed to your success with cutting-edge technology and unparalleled support.",
+    "benefit1": "Industry-leading expertise with certified professionals",
+    "benefit2": "Custom solutions tailored to your business needs",
+    "benefit3": "Proven track record with Fortune 500 companies",
+    "benefit4": "24/7 dedicated support and monitoring",
+    "benefit5": "Cutting-edge technology and innovation",
+    "benefit6": "Scalable solutions that grow with your business",
+    "learnMore": "Learn More About Us",
+    "years": "Years",
+    "clients": "Clients"
+  },
+  "caseStudies": {
+    "badge": "Success Stories",
+    "title": "Proven Results for Industry Leaders",
+    "description": "Discover how we've helped organizations transform their IT infrastructure and achieve measurable business outcomes",
+    "readMore": "Read Full Case Study",
+    "callToAction": "Want to see how we can help your business achieve similar results?",
+    "discussProject": "Discuss Your Project",
+    "finance": {
+      "client": "Global Finance Corp",
+      "industry": "Finance",
+      "title": "Cloud Migration & Security Overhaul",
+      "description": "Successfully migrated 500+ servers to cloud infrastructure while implementing zero-trust security architecture.",
+      "metric1": "99.99%",
+      "label1": "Uptime Achieved",
+      "metric2": "60%",
+      "label2": "Cost Reduction",
+      "metric3": "3x",
+      "label3": "Performance Boost"
+    },
+    "health": {
+      "client": "HealthTech Solutions",
+      "industry": "Healthcare",
+      "title": "AI-Powered Patient Management System",
+      "description": "Developed an intelligent patient management platform with predictive analytics and automated workflows.",
+      "metric1": "85%",
+      "label1": "Efficiency Gain",
+      "metric2": "2M+",
+      "label2": "Patients Served",
+      "metric3": "40%",
+      "label3": "Cost Savings"
+    },
+    "retail": {
+      "client": "RetailPro International",
+      "industry": "Retail",
+      "title": "Omnichannel E-commerce Platform",
+      "description": "Built a scalable e-commerce solution integrating online and offline channels with real-time inventory sync.",
+      "metric1": "250%",
+      "label1": "Sales Increase",
+      "metric2": "50K",
+      "label2": "Daily Orders",
+      "metric3": "4.8/5",
+      "label3": "Customer Rating"
+    }
+  },
+  "contact": {
+    "title": "Ready to Transform Your Business?",
+    "description": "Let's discuss how we can help you achieve your IT goals",
+    "email": "Email Us",
+    "call": "Call Us",
+    "visit": "Visit Us",
+    "schedule": "Schedule a Consultation"
+  },
+  "footer": {
+    "description": "Leading IT solutions provider for modern enterprises.",
+    "services": "Services",
+    "cloudSolutions": "Cloud Solutions",
+    "cybersecurity": "Cybersecurity",
+    "infrastructure": "IT Infrastructure",
+    "aiAutomation": "AI & Automation",
+    "company": "Company",
+    "about": "About Us",
+    "careers": "Careers",
+    "blog": "Blog",
+    "contact": "Contact",
+    "follow": "Follow Us",
+    "rights": "All rights reserved."
+  }
+}

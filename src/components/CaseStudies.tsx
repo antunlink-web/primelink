@@ -2,47 +2,50 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-
-const caseStudies = [
-  {
-    client: "Global Finance Corp",
-    industry: "Finance",
-    title: "Cloud Migration & Security Overhaul",
-    description: "Successfully migrated 500+ servers to cloud infrastructure while implementing zero-trust security architecture.",
-    results: [
-      { metric: "99.99%", label: "Uptime Achieved" },
-      { metric: "60%", label: "Cost Reduction" },
-      { metric: "3x", label: "Performance Boost" },
-    ],
-    tags: ["Cloud", "Security", "Migration"],
-  },
-  {
-    client: "HealthTech Solutions",
-    industry: "Healthcare",
-    title: "AI-Powered Patient Management System",
-    description: "Developed an intelligent patient management platform with predictive analytics and automated workflows.",
-    results: [
-      { metric: "85%", label: "Efficiency Gain" },
-      { metric: "2M+", label: "Patients Served" },
-      { metric: "40%", label: "Cost Savings" },
-    ],
-    tags: ["AI", "Healthcare", "Automation"],
-  },
-  {
-    client: "RetailPro International",
-    industry: "Retail",
-    title: "Omnichannel E-commerce Platform",
-    description: "Built a scalable e-commerce solution integrating online and offline channels with real-time inventory sync.",
-    results: [
-      { metric: "250%", label: "Sales Increase" },
-      { metric: "50K", label: "Daily Orders" },
-      { metric: "4.8/5", label: "Customer Rating" },
-    ],
-    tags: ["E-commerce", "Integration", "Scale"],
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const CaseStudies = () => {
+  const { t } = useTranslation();
+  
+  const caseStudies = [
+    {
+      clientKey: "caseStudies.finance.client",
+      industryKey: "caseStudies.finance.industry",
+      titleKey: "caseStudies.finance.title",
+      descriptionKey: "caseStudies.finance.description",
+      results: [
+        { metricKey: "caseStudies.finance.metric1", labelKey: "caseStudies.finance.label1" },
+        { metricKey: "caseStudies.finance.metric2", labelKey: "caseStudies.finance.label2" },
+        { metricKey: "caseStudies.finance.metric3", labelKey: "caseStudies.finance.label3" },
+      ],
+      tags: ["Cloud", "Security", "Migration"],
+    },
+    {
+      clientKey: "caseStudies.health.client",
+      industryKey: "caseStudies.health.industry",
+      titleKey: "caseStudies.health.title",
+      descriptionKey: "caseStudies.health.description",
+      results: [
+        { metricKey: "caseStudies.health.metric1", labelKey: "caseStudies.health.label1" },
+        { metricKey: "caseStudies.health.metric2", labelKey: "caseStudies.health.label2" },
+        { metricKey: "caseStudies.health.metric3", labelKey: "caseStudies.health.label3" },
+      ],
+      tags: ["AI", "Healthcare", "Automation"],
+    },
+    {
+      clientKey: "caseStudies.retail.client",
+      industryKey: "caseStudies.retail.industry",
+      titleKey: "caseStudies.retail.title",
+      descriptionKey: "caseStudies.retail.description",
+      results: [
+        { metricKey: "caseStudies.retail.metric1", labelKey: "caseStudies.retail.label1" },
+        { metricKey: "caseStudies.retail.metric2", labelKey: "caseStudies.retail.label2" },
+        { metricKey: "caseStudies.retail.metric3", labelKey: "caseStudies.retail.label3" },
+      ],
+      tags: ["E-commerce", "Integration", "Scale"],
+    },
+  ];
+
   return (
     <section id="case-studies" className="py-24 bg-gradient-to-b from-background via-secondary/50 to-background relative overflow-hidden">
       {/* Background decoration */}
@@ -56,15 +59,14 @@ const CaseStudies = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <Badge className="mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
-            Success Stories
+          <Badge className="mb-4 px-4 py-1.5 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 glow-border">
+            {t('caseStudies.badge')}
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Proven Results for Industry Leaders
+            {t('caseStudies.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Discover how we've helped organizations transform their IT infrastructure 
-            and achieve measurable business outcomes
+            {t('caseStudies.description')}
           </p>
         </div>
 
@@ -82,21 +84,21 @@ const CaseStudies = () => {
               <CardHeader className="relative z-10">
                 <div className="flex items-start justify-between mb-3">
                   <Badge variant="secondary" className="text-xs glow-border">
-                    {study.industry}
+                    {t(study.industryKey)}
                   </Badge>
                   <TrendingUp className="h-5 w-5 text-accent group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_hsl(var(--accent)/0.5)]" />
                 </div>
                 <CardTitle className="text-2xl mb-2 group-hover:text-primary transition-colors group-hover:glow-text">
-                  {study.client}
+                  {t(study.clientKey)}
                 </CardTitle>
                 <CardDescription className="text-base font-semibold text-foreground/80">
-                  {study.title}
+                  {t(study.titleKey)}
                 </CardDescription>
               </CardHeader>
 
               <CardContent className="relative z-10">
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {study.description}
+                  {t(study.descriptionKey)}
                 </p>
 
                 {/* Results Grid */}
@@ -104,10 +106,10 @@ const CaseStudies = () => {
                   {study.results.map((result, idx) => (
                     <div key={idx} className="text-center group/stat">
                       <div className="text-xl md:text-2xl font-bold text-primary mb-1 group-hover/stat:glow-text transition-all">
-                        {result.metric}
+                        {t(result.metricKey)}
                       </div>
                       <div className="text-xs text-muted-foreground">
-                        {result.label}
+                        {t(result.labelKey)}
                       </div>
                     </div>
                   ))}
@@ -130,7 +132,7 @@ const CaseStudies = () => {
                   variant="ghost" 
                   className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-colors"
                 >
-                  Read Full Case Study
+                  {t('caseStudies.readMore')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
@@ -140,10 +142,10 @@ const CaseStudies = () => {
 
         <div className="text-center animate-fade-in-up">
           <p className="text-muted-foreground mb-6 text-lg">
-            Want to see how we can help your business achieve similar results?
+            {t('caseStudies.callToAction')}
           </p>
           <Button size="lg" className="bg-primary hover:bg-primary/90 px-8 shadow-[var(--shadow-glow)] hover:shadow-[var(--shadow-glow-strong)] glow-border">
-            Discuss Your Project
+            {t('caseStudies.discussProject')}
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>

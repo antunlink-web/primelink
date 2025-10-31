@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
+  const { t } = useTranslation();
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-background">
       {/* Background with overlay */}
@@ -24,14 +27,14 @@ const Hero = () => {
       <div className="container mx-auto px-4 z-10 text-center relative">
         <div className="max-w-4xl mx-auto animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
-            Transform Your Business with
+            {t('hero.title')}
             <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient bg-300% glow-text">
-              Advanced IT Solutions
+              {t('hero.titleHighlight')}
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Empowering enterprises with cutting-edge technology, security, and innovation for the digital age.
+            {t('hero.description')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -39,7 +42,7 @@ const Hero = () => {
               size="lg" 
               className="relative bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white text-lg px-8 py-6 shadow-[var(--shadow-glow-strong)] hover:shadow-[var(--shadow-xl)] transition-all hover:scale-105 glow-border animate-pulse-glow"
             >
-              Get Started
+              {t('hero.getStarted')}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button 
@@ -47,22 +50,22 @@ const Hero = () => {
               variant="outline" 
               className="relative border-2 border-white/30 bg-white/5 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-md text-lg px-8 py-6 hover:scale-105 transition-all hover:glow-border"
             >
-              View Solutions
+              {t('hero.viewSolutions')}
             </Button>
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 text-white/90">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-accent" />
-              <span>24/7 Support</span>
+              <span>{t('hero.support247')}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-accent" />
-              <span>Enterprise Security</span>
+              <span>{t('hero.enterpriseSecurity')}</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-accent" />
-              <span>Cloud Infrastructure</span>
+              <span>{t('hero.cloudInfrastructure')}</span>
             </div>
           </div>
         </div>

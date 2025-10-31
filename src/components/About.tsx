@@ -1,15 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import workspaceImg from "@/assets/workspace.jpg";
 
 const About = () => {
-  const benefits = [
-    "Industry-leading expertise with certified professionals",
-    "Custom solutions tailored to your business needs",
-    "Proven track record with Fortune 500 companies",
-    "24/7 dedicated support and monitoring",
-    "Cutting-edge technology and innovation",
-    "Scalable solutions that grow with your business",
+  const { t } = useTranslation();
+  
+  const benefitKeys = [
+    "about.benefit1",
+    "about.benefit2",
+    "about.benefit3",
+    "about.benefit4",
+    "about.benefit5",
+    "about.benefit6",
   ];
 
   return (
@@ -24,19 +27,17 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 glow-text">
-              Why Choose Us?
+              {t('about.title')}
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We deliver enterprise-grade IT solutions that drive innovation and business growth. 
-              Our team of experts is committed to your success with cutting-edge technology and 
-              unparalleled support.
+              {t('about.description')}
             </p>
             
             <div className="space-y-4 mb-8">
-              {benefits.map((benefit, index) => (
+              {benefitKeys.map((key, index) => (
                 <div key={index} className="flex items-start gap-3 group">
                   <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5 group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.8)] transition-all" />
-                  <span className="text-foreground group-hover:text-primary transition-colors">{benefit}</span>
+                  <span className="text-foreground group-hover:text-primary transition-colors">{t(key)}</span>
                 </div>
               ))}
             </div>
@@ -45,7 +46,7 @@ const About = () => {
               size="lg" 
               className="bg-primary hover:bg-primary/90 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-glow)] transition-all hover:scale-105 glow-border"
             >
-              Learn More About Us
+              {t('about.learnMore')}
             </Button>
           </div>
 
@@ -69,13 +70,13 @@ const About = () => {
                     <div className="text-3xl font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent glow-text">
                       15+
                     </div>
-                    <div className="text-sm text-muted-foreground">Years</div>
+                    <div className="text-sm text-muted-foreground">{t('about.years')}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent glow-text">
                       500+
                     </div>
-                    <div className="text-sm text-muted-foreground">Clients</div>
+                    <div className="text-sm text-muted-foreground">{t('about.clients')}</div>
                   </div>
                 </div>
               </div>

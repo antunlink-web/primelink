@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
+  const { t } = useTranslation();
+  
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--glass-bg)] backdrop-blur-xl border-b border-[var(--glass-border)] shadow-lg">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -14,21 +18,22 @@ const Header = () => {
 
         <nav className="hidden md:flex items-center space-x-8">
           <a href="#services" className="text-foreground hover:text-primary transition-colors">
-            Services
+            {t('nav.services')}
           </a>
           <a href="#about" className="text-foreground hover:text-primary transition-colors">
-            About
+            {t('nav.about')}
           </a>
           <a href="#solutions" className="text-foreground hover:text-primary transition-colors">
-            Solutions
+            {t('nav.solutions')}
           </a>
           <a href="#contact" className="text-foreground hover:text-primary transition-colors">
-            Contact
+            {t('nav.contact')}
           </a>
         </nav>
 
-        <div className="flex items-center space-x-4">
-          <Button className="hidden md:inline-flex">Get Started</Button>
+        <div className="flex items-center space-x-2">
+          <LanguageSwitcher />
+          <Button className="hidden md:inline-flex">{t('hero.getStarted')}</Button>
           <Button variant="ghost" size="icon" className="md:hidden">
             <Menu className="h-6 w-6" />
           </Button>

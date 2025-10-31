@@ -1,40 +1,43 @@
 import { Cloud, Shield, Server, Cpu, Database, Zap } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-
-const services = [
-  {
-    icon: Cloud,
-    title: "Cloud Solutions",
-    description: "Scalable cloud infrastructure and migration services to modernize your operations.",
-  },
-  {
-    icon: Shield,
-    title: "Cybersecurity",
-    description: "Comprehensive security solutions to protect your data and infrastructure.",
-  },
-  {
-    icon: Server,
-    title: "IT Infrastructure",
-    description: "Enterprise-grade hardware and network solutions for optimal performance.",
-  },
-  {
-    icon: Cpu,
-    title: "AI & Automation",
-    description: "Intelligent automation and AI-powered solutions to streamline workflows.",
-  },
-  {
-    icon: Database,
-    title: "Data Management",
-    description: "Advanced data analytics, storage, and management solutions.",
-  },
-  {
-    icon: Zap,
-    title: "Digital Transformation",
-    description: "End-to-end digital transformation to modernize your business.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const { t } = useTranslation();
+  
+  const services = [
+    {
+      icon: Cloud,
+      titleKey: "services.cloud.title",
+      descriptionKey: "services.cloud.description",
+    },
+    {
+      icon: Shield,
+      titleKey: "services.security.title",
+      descriptionKey: "services.security.description",
+    },
+    {
+      icon: Server,
+      titleKey: "services.infrastructure.title",
+      descriptionKey: "services.infrastructure.description",
+    },
+    {
+      icon: Cpu,
+      titleKey: "services.ai.title",
+      descriptionKey: "services.ai.description",
+    },
+    {
+      icon: Database,
+      titleKey: "services.data.title",
+      descriptionKey: "services.data.description",
+    },
+    {
+      icon: Zap,
+      titleKey: "services.digital.title",
+      descriptionKey: "services.digital.description",
+    },
+  ];
+
   return (
     <section id="services" className="py-24 bg-gradient-to-b from-background via-secondary/50 to-background relative overflow-hidden">
       {/* Background image with overlay */}
@@ -52,10 +55,10 @@ const Services = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-foreground to-primary bg-clip-text">
-            Our Services
+            {t('services.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Comprehensive IT solutions tailored to your business needs
+            {t('services.description')}
           </p>
         </div>
 
@@ -75,12 +78,12 @@ const Services = () => {
                   <service.icon className="h-8 w-8 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
                 </div>
                 <CardTitle className="text-2xl mb-3 text-foreground group-hover:text-primary transition-colors group-hover:glow-text">
-                  {service.title}
+                  {t(service.titleKey)}
                 </CardTitle>
               </CardHeader>
               <CardContent className="relative z-10">
                 <CardDescription className="text-base leading-relaxed">
-                  {service.description}
+                  {t(service.descriptionKey)}
                 </CardDescription>
               </CardContent>
             </Card>

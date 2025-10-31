@@ -1,11 +1,15 @@
-const stats = [
-  { value: "500+", label: "Happy Clients" },
-  { value: "99.9%", label: "Uptime" },
-  { value: "24/7", label: "Support" },
-  { value: "15+", label: "Years Experience" },
-];
+import { useTranslation } from "react-i18next";
 
 const Stats = () => {
+  const { t } = useTranslation();
+  
+  const stats = [
+    { value: "500+", labelKey: "stats.clients" },
+    { value: "99.9%", labelKey: "stats.uptime" },
+    { value: "24/7", labelKey: "stats.support" },
+    { value: "15+", labelKey: "stats.experience" },
+  ];
+
   return (
     <section className="py-20 bg-card text-white relative overflow-hidden border-y border-[var(--glass-border)]">
       {/* Gradient mesh */}
@@ -28,7 +32,7 @@ const Stats = () => {
                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity shadow-[var(--shadow-glow)]"></div>
               </div>
               <div className="text-white/70 text-sm md:text-base font-medium">
-                {stat.label}
+                {t(stat.labelKey)}
               </div>
             </div>
           ))}

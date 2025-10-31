@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "services": "Usluge",
+    "about": "O nama",
+    "solutions": "Rješenja",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Transformirajte svoje poslovanje s",
+    "titleHighlight": "Naprednim IT Rješenjima",
+    "description": "Osnažujemo poduzeća vrhunskom tehnologijom, sigurnošću i inovacijama za digitalno doba.",
+    "getStarted": "Započnite",
+    "viewSolutions": "Pogledajte Rješenja",
+    "support247": "Podrška 24/7",
+    "enterpriseSecurity": "Sigurnost Poduzeća",
+    "cloudInfrastructure": "Cloud Infrastruktura"
+  },
+  "services": {
+    "title": "Naše Usluge",
+    "description": "Sveobuhvatna IT rješenja prilagođena vašim poslovnim potrebama",
+    "cloud": {
+      "title": "Cloud Rješenja",
+      "description": "Skalabilna cloud infrastruktura i usluge migracije za modernizaciju vaših operacija."
+    },
+    "security": {
+      "title": "Kibernetička Sigurnost",
+      "description": "Sveobuhvatna sigurnosna rješenja za zaštitu vaših podataka i infrastrukture."
+    },
+    "infrastructure": {
+      "title": "IT Infrastruktura",
+      "description": "Rješenja hardvera i mreža poslovne razine za optimalne performanse."
+    },
+    "ai": {
+      "title": "AI i Automatizacija",
+      "description": "Inteligentna automatizacija i rješenja pokrenuta umjetnom inteligencijom za pojednostavljenje radnih procesa."
+    },
+    "data": {
+      "title": "Upravljanje Podacima",
+      "description": "Napredna analitika, pohrana i rješenja za upravljanje podacima."
+    },
+    "digital": {
+      "title": "Digitalna Transformacija",
+      "description": "Cjelovita digitalna transformacija za modernizaciju vašeg poslovanja."
+    }
+  },
+  "stats": {
+    "clients": "Zadovoljnih Klijenata",
+    "uptime": "Vrijeme Rada",
+    "support": "Podrška",
+    "experience": "Godina Iskustva"
+  },
+  "about": {
+    "title": "Zašto Odabrati Nas?",
+    "description": "Isporučujemo IT rješenja poslovne razine koja potiču inovacije i rast poslovanja. Naš tim stručnjaka posvećen je vašem uspjehu s vrhunskom tehnologijom i neprikosnivenom podrškom.",
+    "benefit1": "Vodeća stručnost u industriji s certificiranim profesionalcima",
+    "benefit2": "Prilagođena rješenja prema vašim poslovnim potrebama",
+    "benefit3": "Dokazana uspješnost s Fortune 500 tvrtkama",
+    "benefit4": "24/7 posvećena podrška i praćenje",
+    "benefit5": "Vrhunska tehnologija i inovacije",
+    "benefit6": "Skalabilna rješenja koja rastu s vašim poslovanjem",
+    "learnMore": "Saznajte Više O Nama",
+    "years": "Godina",
+    "clients": "Klijenti"
+  },
+  "caseStudies": {
+    "badge": "Priče o Uspjehu",
+    "title": "Dokazani Rezultati za Vodeće u Industriji",
+    "description": "Otkrijte kako smo pomogli organizacijama transformirati njihovu IT infrastrukturu i postići mjerljive poslovne rezultate",
+    "readMore": "Pročitajte Potpunu Studiju Slučaja",
+    "callToAction": "Želite vidjeti kako možemo pomoći vašem poslovanju postići slične rezultate?",
+    "discussProject": "Razgovarajte o Vašem Projektu",
+    "finance": {
+      "client": "Global Finance Corp",
+      "industry": "Financije",
+      "title": "Cloud Migracija i Sigurnosna Obnova",
+      "description": "Uspješno migrirano 500+ poslužitelja u cloud infrastrukturu uz implementaciju zero-trust sigurnosne arhitekture.",
+      "metric1": "99.99%",
+      "label1": "Postignut Uptime",
+      "metric2": "60%",
+      "label2": "Smanjenje Troškova",
+      "metric3": "3x",
+      "label3": "Poboljšanje Performansi"
+    },
+    "health": {
+      "client": "HealthTech Solutions",
+      "industry": "Zdravstvo",
+      "title": "AI Sustav za Upravljanje Pacijentima",
+      "description": "Razvijen inteligentni sustav za upravljanje pacijentima s prediktivnom analitikom i automatiziranim radnim procesima.",
+      "metric1": "85%",
+      "label1": "Povećanje Učinkovitosti",
+      "metric2": "2M+",
+      "label2": "Opsluženih Pacijenata",
+      "metric3": "40%",
+      "label3": "Ušteda Troškova"
+    },
+    "retail": {
+      "client": "RetailPro International",
+      "industry": "Maloprodaja",
+      "title": "Omnikanalna E-trgovina Platforma",
+      "description": "Izgrađeno skalabilno e-trgovinsko rješenje koje integrira online i offline kanale s real-time sinkronizacijom inventara.",
+      "metric1": "250%",
+      "label1": "Povećanje Prodaje",
+      "metric2": "50K",
+      "label2": "Dnevnih Narudžbi",
+      "metric3": "4.8/5",
+      "label3": "Ocjena Kupaca"
+    }
+  },
+  "contact": {
+    "title": "Spremni Transformirati Svoje Poslovanje?",
+    "description": "Razgovarajmo kako vam možemo pomoći postići vaše IT ciljeve",
+    "email": "Pošaljite Email",
+    "call": "Nazovite Nas",
+    "visit": "Posjetite Nas",
+    "schedule": "Zakažite Konzultaciju"
+  },
+  "footer": {
+    "description": "Vodeći pružatelj IT rješenja za moderna poduzeća.",
+    "services": "Usluge",
+    "cloudSolutions": "Cloud Rješenja",
+    "cybersecurity": "Kibernetička Sigurnost",
+    "infrastructure": "IT Infrastruktura",
+    "aiAutomation": "AI i Automatizacija",
+    "company": "Tvrtka",
+    "about": "O Nama",
+    "careers": "Karijere",
+    "blog": "Blog",
+    "contact": "Kontakt",
+    "follow": "Pratite Nas",
+    "rights": "Sva prava pridržana."
+  }
+}
