@@ -1,11 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useNavigate, useLocation } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
 import logo from "@/assets/primelink-logo.png";
 
 const Header = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleCaseStudiesClick = () => {
+    navigate('/case-studies');
+  };
   
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--glass-bg)] backdrop-blur-xl border-b border-[var(--glass-border)] shadow-lg">
@@ -14,7 +32,11 @@ const Header = () => {
           href="#" 
           onClick={(e) => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (location.pathname !== '/') {
+              navigate('/');
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }}
           className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
         >
@@ -27,16 +49,44 @@ const Header = () => {
         </a>
 
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#services" className="text-foreground hover:text-primary transition-colors">
+          <a 
+            href="#services" 
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('services');
+            }}
+            className="text-foreground hover:text-primary transition-colors cursor-pointer"
+          >
             {t('nav.services')}
           </a>
-          <a href="#about" className="text-foreground hover:text-primary transition-colors">
+          <a 
+            href="#about" 
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('about');
+            }}
+            className="text-foreground hover:text-primary transition-colors cursor-pointer"
+          >
             {t('nav.about')}
           </a>
-          <a href="#case-studies" className="text-foreground hover:text-primary transition-colors">
+          <a 
+            href="/case-studies" 
+            onClick={(e) => {
+              e.preventDefault();
+              handleCaseStudiesClick();
+            }}
+            className="text-foreground hover:text-primary transition-colors cursor-pointer"
+          >
             {t('nav.caseStudies')}
           </a>
-          <a href="#contact" className="text-foreground hover:text-primary transition-colors">
+          <a 
+            href="#contact" 
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('contact');
+            }}
+            className="text-foreground hover:text-primary transition-colors cursor-pointer"
+          >
             {t('nav.contact')}
           </a>
         </nav>
@@ -45,7 +95,7 @@ const Header = () => {
           <LanguageSwitcher />
           <Button 
             className="hidden md:inline-flex"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => handleNavClick('contact')}
           >
             {t('hero.getStarted')}
           </Button>
