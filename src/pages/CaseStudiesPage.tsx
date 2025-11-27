@@ -115,10 +115,10 @@ const CaseStudiesPage = () => {
                   <div className="grid grid-cols-3 gap-4 mb-6 p-4 rounded-lg bg-secondary/50 border border-[var(--glass-border)] backdrop-blur-sm">
                     {study.results.map((result, idx) => (
                       <div key={idx} className="text-center group/stat">
-                        <div className="text-xl md:text-2xl font-bold text-primary mb-1 group-hover/stat:glow-text transition-all">
+                        <div className="text-base md:text-lg font-bold text-primary mb-1 group-hover/stat:glow-text transition-all">
                           {t(result.metricKey)}
                         </div>
-                        <div className="text-xs text-muted-foreground">
+                        <div className="text-xs text-muted-foreground leading-tight">
                           {t(result.labelKey)}
                         </div>
                       </div>
