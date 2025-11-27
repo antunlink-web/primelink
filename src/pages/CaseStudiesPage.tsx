@@ -48,7 +48,7 @@ const CaseStudiesPage = () => {
         { metricKey: "caseStudies.website.metric2", labelKey: "caseStudies.website.label2" },
         { metricKey: "caseStudies.website.metric3", labelKey: "caseStudies.website.label3" },
       ],
-      tags: ["High-Traffic", "Global", "Scale"],
+      tags: ["High-Traffic", "Global", "Microservices"],
       link: "/case-study/global-website",
     },
   ];
