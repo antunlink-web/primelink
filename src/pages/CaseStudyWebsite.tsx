@@ -79,6 +79,7 @@ const CaseStudyWebsite = () => {
                   'caseStudies.website.outcome2',
                   'caseStudies.website.outcome3',
                   'caseStudies.website.outcome4',
+                  'caseStudies.website.outcome5',
                 ].map((key, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
