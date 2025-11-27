@@ -22,7 +22,7 @@ const CaseStudyWebsite = () => {
         <div className="container mx-auto px-4 relative z-10">
           <Button 
             variant="ghost" 
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/case-studies")}
             className="mb-8 group hover:text-primary"
           >
             <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
