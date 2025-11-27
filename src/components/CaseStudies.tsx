@@ -3,46 +3,51 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const CaseStudies = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   
   const caseStudies = [
     {
-      clientKey: "caseStudies.finance.client",
-      industryKey: "caseStudies.finance.industry",
-      titleKey: "caseStudies.finance.title",
-      descriptionKey: "caseStudies.finance.description",
+      clientKey: "caseStudies.mobile.client",
+      industryKey: "caseStudies.mobile.industry",
+      titleKey: "caseStudies.mobile.title",
+      descriptionKey: "caseStudies.mobile.description",
       results: [
-        { metricKey: "caseStudies.finance.metric1", labelKey: "caseStudies.finance.label1" },
-        { metricKey: "caseStudies.finance.metric2", labelKey: "caseStudies.finance.label2" },
-        { metricKey: "caseStudies.finance.metric3", labelKey: "caseStudies.finance.label3" },
+        { metricKey: "caseStudies.mobile.metric1", labelKey: "caseStudies.mobile.label1" },
+        { metricKey: "caseStudies.mobile.metric2", labelKey: "caseStudies.mobile.label2" },
+        { metricKey: "caseStudies.mobile.metric3", labelKey: "caseStudies.mobile.label3" },
       ],
-      tags: ["Cloud", "Security", "Migration"],
+      tags: ["Self-Service", "Mobile", "UX"],
+      link: "/case-study/mobile-operator",
     },
     {
-      clientKey: "caseStudies.health.client",
-      industryKey: "caseStudies.health.industry",
-      titleKey: "caseStudies.health.title",
-      descriptionKey: "caseStudies.health.description",
+      clientKey: "caseStudies.medical.client",
+      industryKey: "caseStudies.medical.industry",
+      titleKey: "caseStudies.medical.title",
+      descriptionKey: "caseStudies.medical.description",
       results: [
-        { metricKey: "caseStudies.health.metric1", labelKey: "caseStudies.health.label1" },
-        { metricKey: "caseStudies.health.metric2", labelKey: "caseStudies.health.label2" },
-        { metricKey: "caseStudies.health.metric3", labelKey: "caseStudies.health.label3" },
+        { metricKey: "caseStudies.medical.metric1", labelKey: "caseStudies.medical.label1" },
+        { metricKey: "caseStudies.medical.metric2", labelKey: "caseStudies.medical.label2" },
+        { metricKey: "caseStudies.medical.metric3", labelKey: "caseStudies.medical.label3" },
       ],
-      tags: ["AI", "Healthcare", "Automation"],
+      tags: ["E-Learning", "Healthcare", "Video"],
+      link: "/case-study/medical-elearning",
     },
     {
-      clientKey: "caseStudies.retail.client",
-      industryKey: "caseStudies.retail.industry",
-      titleKey: "caseStudies.retail.title",
-      descriptionKey: "caseStudies.retail.description",
+      clientKey: "caseStudies.website.client",
+      industryKey: "caseStudies.website.industry",
+      titleKey: "caseStudies.website.title",
+      descriptionKey: "caseStudies.website.description",
       results: [
-        { metricKey: "caseStudies.retail.metric1", labelKey: "caseStudies.retail.label1" },
-        { metricKey: "caseStudies.retail.metric2", labelKey: "caseStudies.retail.label2" },
-        { metricKey: "caseStudies.retail.metric3", labelKey: "caseStudies.retail.label3" },
+        { metricKey: "caseStudies.website.metric1", labelKey: "caseStudies.website.label1" },
+        { metricKey: "caseStudies.website.metric2", labelKey: "caseStudies.website.label2" },
+        { metricKey: "caseStudies.website.metric3", labelKey: "caseStudies.website.label3" },
       ],
-      tags: ["E-commerce", "Integration", "Scale"],
+      tags: ["High-Traffic", "Global", "Scale"],
+      link: "/case-study/global-website",
     },
   ];
 
@@ -131,6 +136,7 @@ const CaseStudies = () => {
                 <Button 
                   variant="ghost" 
                   className="w-full group-hover:bg-primary/10 group-hover:text-primary transition-colors"
+                  onClick={() => navigate(study.link)}
                 >
                   {t('caseStudies.readMore')}
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
