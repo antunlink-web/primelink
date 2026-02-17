@@ -87,11 +87,11 @@ const PortfolioPage = () => {
           <Card className="overflow-hidden border-primary/20 bg-card shadow-[var(--shadow-card)]" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
             {/* Screenshot */}
             <div className="relative group">
-              <div className="aspect-[16/9] max-h-[400px] overflow-hidden bg-secondary">
+              <div className="aspect-[16/9] overflow-hidden bg-secondary flex items-center justify-center">
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-all duration-500 group-hover:scale-105"
                 />
               </div>
 
