@@ -2,7 +2,9 @@
   "nav": {
     "services": "Services",
     "about": "About",
+    "portfolio": "Portfolio",
     "caseStudies": "Case Studies",
+    "offer": "Offer",
     "contact": "Contact"
   },
   "hero": {

@@ -77,7 +77,7 @@ const Header = () => {
             }}
             className="text-foreground hover:text-primary transition-colors cursor-pointer"
           >
-            Portfolio
+            {t('nav.portfolio')}
           </a>
           <a 
             href="/case-studies" 
@@ -97,7 +97,7 @@ const Header = () => {
             }}
             className="text-foreground hover:text-primary transition-colors cursor-pointer"
           >
-            Ponuda
+            {t('nav.offer')}
           </a>
           <a 
             href="#contact" 
