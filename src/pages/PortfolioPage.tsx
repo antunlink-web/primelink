@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import trazilicaImg from "@/assets/projects/trazilica.png";
 import poslovniregistarImg from "@/assets/projects/poslovniregistar.png";
@@ -44,10 +44,19 @@ const projects = [
 
 const PortfolioPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
-  const goTo = (index: number) => {
+  const goTo = useCallback((index: number) => {
     setCurrentIndex((index + projects.length) % projects.length);
-  };
+  }, []);
+
+  useEffect(() => {
+    if (paused) return;
+    const interval = setInterval(() => {
+      goTo(currentIndex + 1);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [currentIndex, paused, goTo]);
 
   const project = projects[currentIndex];
 
@@ -73,14 +82,14 @@ const PortfolioPage = () => {
       {/* Carousel */}
       <section className="py-12">
         <div className="container mx-auto px-4 max-w-5xl">
-          <Card className="overflow-hidden border-primary/20 bg-card shadow-[var(--shadow-card)]">
+          <Card className="overflow-hidden border-primary/20 bg-card shadow-[var(--shadow-card)]" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
             {/* Screenshot */}
             <div className="relative group">
-              <div className="aspect-video overflow-hidden bg-secondary">
+              <div className="aspect-[16/9] max-h-[400px] overflow-hidden bg-secondary">
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
                 />
               </div>
 
