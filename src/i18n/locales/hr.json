@@ -2,7 +2,9 @@
   "nav": {
     "services": "Usluge",
     "about": "O nama",
+    "portfolio": "Projekti",
     "caseStudies": "Studije Slučaja",
+    "offer": "Ponuda",
     "contact": "Kontakt"
   },
   "hero": {
