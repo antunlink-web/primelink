@@ -5,38 +5,39 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 import trazilicaImg from "@/assets/projects/trazilica.png";
 import poslovniregistarImg from "@/assets/projects/poslovniregistar.png";
 import careflowImg from "@/assets/projects/careflow.png";
 import flowcallImg from "@/assets/projects/flowcall.png";
 
-const projects = [
+const projectsData = [
   {
     name: "Tražilica.hr",
     url: "https://trazilica.hr",
-    description: "Platforma za pronalaženje pouzdanih majstora s preko 5.000+ registriranih stručnjaka i 50.000+ recenzija.",
+    descKey: "portfolio.trazilica.description",
     tags: ["Marketplace", "Search Platform", "Reviews"],
     image: trazilicaImg,
   },
   {
     name: "PoslovniRegistar.hr",
     url: "https://poslovniregistar.hr",
-    description: "Svi podaci o hrvatskim tvrtkama na jednom mjestu — pretražujte 340.000+ subjekata iz službenih registara.",
+    descKey: "portfolio.poslovniregistar.description",
     tags: ["Business Data", "Search Engine", "SaaS"],
     image: poslovniregistarImg,
   },
   {
     name: "CareFlow.hr",
     url: "https://careflow.hr",
-    description: "Medicinski workflow management sustav za zdravstvene ustanove — digitalizacija procesa i upravljanje pacijentima.",
+    descKey: "portfolio.careflow.description",
     tags: ["Healthcare", "SaaS", "Workflow"],
     image: careflowImg,
   },
   {
     name: "FlowCall.eu",
     url: "https://flowcall.eu",
-    description: "Moderni CRM za high-volume pozive — power dialing, upravljanje leadovima i real-time analitika za prodajne timove.",
+    descKey: "portfolio.flowcall.description",
     tags: ["CRM", "SaaS", "Sales"],
     image: flowcallImg,
   },
@@ -45,9 +46,10 @@ const projects = [
 const PortfolioPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const { t } = useTranslation();
 
   const goTo = useCallback((index: number) => {
-    setCurrentIndex((index + projects.length) % projects.length);
+    setCurrentIndex((index + projectsData.length) % projectsData.length);
   }, []);
 
   useEffect(() => {
@@ -58,7 +60,7 @@ const PortfolioPage = () => {
     return () => clearInterval(interval);
   }, [currentIndex, paused, goTo]);
 
-  const project = projects[currentIndex];
+  const project = projectsData[currentIndex];
 
   return (
     <div className="min-h-screen bg-background">
@@ -68,13 +70,13 @@ const PortfolioPage = () => {
         <div className="absolute inset-0 bg-[var(--gradient-mesh)] opacity-30" />
         <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
           <Badge variant="outline" className="mb-6 border-primary/50 text-primary px-4 py-1.5 text-sm">
-            Portfolio
+            {t('portfolio.badge')}
           </Badge>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
-            Naši <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Projekti</span>
+            {t('portfolio.title')} <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{t('portfolio.titleHighlight')}</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Pogledajte neke od projekata koje smo razvili i koji su aktivni u produkciji.
+            {t('portfolio.description')}
           </p>
         </div>
       </section>
@@ -117,10 +119,10 @@ const PortfolioPage = () => {
                 ))}
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">{project.name}</h2>
-              <p className="text-muted-foreground mb-5">{project.description}</p>
+              <p className="text-muted-foreground mb-5">{t(project.descKey)}</p>
               <Button asChild variant="outline" className="border-primary/30 hover:bg-primary/10">
                 <a href={project.url} target="_blank" rel="noopener noreferrer">
-                  Posjeti stranicu <ExternalLink className="h-4 w-4 ml-1" />
+                  {t('portfolio.visitSite')} <ExternalLink className="h-4 w-4 ml-1" />
                 </a>
               </Button>
             </CardContent>
@@ -128,7 +130,7 @@ const PortfolioPage = () => {
 
           {/* Dots */}
           <div className="flex justify-center gap-2 mt-6">
-            {projects.map((_, i) => (
+            {projectsData.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}
@@ -141,7 +143,7 @@ const PortfolioPage = () => {
 
           {/* Thumbnails */}
           <div className="grid grid-cols-4 gap-3 mt-8">
-            {projects.map((p, i) => (
+            {projectsData.map((p, i) => (
               <button
                 key={p.name}
                 onClick={() => setCurrentIndex(i)}

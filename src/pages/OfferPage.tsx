@@ -5,9 +5,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check, Shield, Zap, Smartphone, Wrench, Rocket, ShoppingCart, CalendarCheck, Code, Globe, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const OfferPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleContact = () => {
     navigate('/');
@@ -25,16 +27,16 @@ const OfferPage = () => {
         <div className="absolute inset-0 bg-[var(--gradient-mesh)] opacity-30" />
         <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
           <Badge variant="outline" className="mb-6 border-primary/50 text-primary px-4 py-1.5 text-sm">
-            PrimeLink Web Rješenja
+            {t('offer.badge')}
           </Badge>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Prvi dojam je <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">ključan</span>
+            {t('offer.heroTitle')} <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{t('offer.heroHighlight')}</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Većina klijenata traži usluge putem interneta, a spora ili nepostojeća web stranica može značiti izgubljen posao.
+            {t('offer.heroDesc')}
           </p>
           <p className="text-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
-            <strong className="text-foreground">PrimeLink nudi rješenje:</strong> mi brinemo o tehnologiji, dizajnu i hostingu, dok se vi bavite svojim poslovanjem.
+            <strong className="text-foreground">{t('offer.heroSolution')}</strong> {t('offer.heroSolutionDesc')}
           </p>
         </div>
       </section>
@@ -47,13 +49,13 @@ const OfferPage = () => {
             <CardContent className="p-8 md:p-12">
               <div className="text-center mb-8">
                 <Badge className="mb-4 bg-primary/20 text-primary border-primary/30 text-base px-4 py-1">
-                  🔥 Bestseller Ponuda
+                  {t('offer.bestsellerBadge')}
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                  Landing Page Paket
+                  {t('offer.packageTitle')}
                 </h2>
                 <p className="text-muted-foreground text-lg">
-                  Sve što je potrebno za profesionalni start.
+                  {t('offer.packageDesc')}
                 </p>
               </div>
 
@@ -63,18 +65,18 @@ const OfferPage = () => {
                   <span className="text-7xl md:text-8xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                     99€
                   </span>
-                  <span className="text-xl text-muted-foreground ml-2">/ godišnje</span>
+                  <span className="text-xl text-muted-foreground ml-2">{t('offer.pricePerYear')}</span>
                 </div>
-                <p className="text-sm text-muted-foreground mt-3">+ PDV</p>
+                <p className="text-sm text-muted-foreground mt-3">{t('offer.plusVat')}</p>
               </div>
 
               {/* Features */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto mb-10">
                 {[
-                  { icon: Check, text: "Dizajn uključen" },
-                  { icon: Check, text: "Hosting uključen" },
-                  { icon: Shield, text: "SSL Sigurnost" },
-                  { icon: Wrench, text: "Tehnička podrška" },
+                  { icon: Check, text: t('offer.designIncluded') },
+                  { icon: Check, text: t('offer.hostingIncluded') },
+                  { icon: Shield, text: t('offer.sslSecurity') },
+                  { icon: Wrench, text: t('offer.techSupport') },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 bg-secondary/30 rounded-lg p-3 border border-border">
                     <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
@@ -87,7 +89,7 @@ const OfferPage = () => {
 
               <div className="text-center">
                 <Button size="lg" className="text-lg px-10 py-6 h-auto" onClick={handleContact}>
-                  👉 Zatražite ponudu
+                  {t('offer.requestOffer')}
                 </Button>
               </div>
             </CardContent>
@@ -100,19 +102,19 @@ const OfferPage = () => {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-              🛡️ Zašto odabrati <span className="text-primary">PrimeLink</span>?
+              {t('offer.whyTitle')} <span className="text-primary">PrimeLink</span>?
             </h2>
             <p className="text-lg text-muted-foreground">
-              Mi nismo samo agencija — mi smo vaš IT partner.
+              {t('offer.whySubtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { icon: Zap, title: "Munjevita brzina", desc: "Optimizirani serveri osiguravaju brzo učitavanje." },
-              { icon: Smartphone, title: "Mobile First", desc: "Izgleda savršeno na svakom mobitelu i tabletu." },
-              { icon: Wrench, title: "Bez brige", desc: "Mi rješavamo ažuriranja i tehničke probleme." },
-              { icon: Rocket, title: "Ključ u ruke", desc: "Samo nam pošaljite domenu — mi radimo ostalo." },
+              { icon: Zap, title: t('offer.speedTitle'), desc: t('offer.speedDesc') },
+              { icon: Smartphone, title: t('offer.mobileTitle'), desc: t('offer.mobileDesc') },
+              { icon: Wrench, title: t('offer.noWorryTitle'), desc: t('offer.noWorryDesc') },
+              { icon: Rocket, title: t('offer.turnkeyTitle'), desc: t('offer.turnkeyDesc') },
             ].map((item, i) => (
               <Card key={i} className="bg-card border-border hover:border-primary/30 transition-all hover:shadow-[var(--shadow-hover)]">
                 <CardContent className="p-6 flex items-start gap-4">
@@ -134,17 +136,17 @@ const OfferPage = () => {
       <section className="py-16">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-            💼 Trebate više od Landing stranice?
+            {t('offer.moreTitle')}
           </h2>
           <p className="text-lg text-muted-foreground mb-10">
-            Vaše poslovanje raste i treba specifične funkcionalnosti?
+            {t('offer.moreDesc')}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
             {[
-              { icon: ShoppingCart, title: "Web Shopovi" },
-              { icon: CalendarCheck, title: "Rezervacijski sustavi" },
-              { icon: Code, title: "Custom Aplikacije" },
+              { icon: ShoppingCart, title: t('offer.webShops') },
+              { icon: CalendarCheck, title: t('offer.bookingSystems') },
+              { icon: Code, title: t('offer.customApps') },
             ].map((item, i) => (
               <Card key={i} className="bg-card border-border hover:border-accent/30 transition-all hover:shadow-[var(--shadow-hover)]">
                 <CardContent className="p-8 flex flex-col items-center gap-3">
@@ -158,7 +160,7 @@ const OfferPage = () => {
           </div>
 
           <Button size="lg" variant="outline" className="text-lg px-8 py-6 h-auto border-primary/30 hover:bg-primary/10" onClick={handleContact}>
-            Kontaktirajte nas za custom projekt
+            {t('offer.contactCustom')}
           </Button>
         </div>
       </section>

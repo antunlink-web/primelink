@@ -174,5 +174,58 @@
     "contact": "Kontakt",
     "follow": "Pratite Nas",
     "rights": "Sva prava pridržana."
+  },
+  "offer": {
+    "badge": "PrimeLink Web Rješenja",
+    "heroTitle": "Prvi dojam je",
+    "heroHighlight": "ključan",
+    "heroDesc": "Većina klijenata traži usluge putem interneta, a spora ili nepostojeća web stranica može značiti izgubljen posao.",
+    "heroSolution": "PrimeLink nudi rješenje:",
+    "heroSolutionDesc": "mi brinemo o tehnologiji, dizajnu i hostingu, dok se vi bavite svojim poslovanjem.",
+    "bestsellerBadge": "🔥 Bestseller Ponuda",
+    "packageTitle": "Landing Page Paket",
+    "packageDesc": "Sve što je potrebno za profesionalni start.",
+    "pricePerYear": "/ godišnje",
+    "plusVat": "+ PDV",
+    "designIncluded": "Dizajn uključen",
+    "hostingIncluded": "Hosting uključen",
+    "sslSecurity": "SSL Sigurnost",
+    "techSupport": "Tehnička podrška",
+    "requestOffer": "👉 Zatražite ponudu",
+    "whyTitle": "🛡️ Zašto odabrati",
+    "whySubtitle": "Mi nismo samo agencija — mi smo vaš IT partner.",
+    "speedTitle": "Munjevita brzina",
+    "speedDesc": "Optimizirani serveri osiguravaju brzo učitavanje.",
+    "mobileTitle": "Mobile First",
+    "mobileDesc": "Izgleda savršeno na svakom mobitelu i tabletu.",
+    "noWorryTitle": "Bez brige",
+    "noWorryDesc": "Mi rješavamo ažuriranja i tehničke probleme.",
+    "turnkeyTitle": "Ključ u ruke",
+    "turnkeyDesc": "Samo nam pošaljite domenu — mi radimo ostalo.",
+    "moreTitle": "💼 Trebate više od Landing stranice?",
+    "moreDesc": "Vaše poslovanje raste i treba specifične funkcionalnosti?",
+    "webShops": "Web Shopovi",
+    "bookingSystems": "Rezervacijski sustavi",
+    "customApps": "Custom Aplikacije",
+    "contactCustom": "Kontaktirajte nas za custom projekt"
+  },
+  "portfolio": {
+    "badge": "Projekti",
+    "title": "Naši",
+    "titleHighlight": "Projekti",
+    "description": "Pogledajte neke od projekata koje smo razvili i koji su aktivni u produkciji.",
+    "visitSite": "Posjeti stranicu",
+    "trazilica": {
+      "description": "Platforma za pronalaženje pouzdanih majstora s preko 5.000+ registriranih stručnjaka i 50.000+ recenzija."
+    },
+    "poslovniregistar": {
+      "description": "Svi podaci o hrvatskim tvrtkama na jednom mjestu — pretražujte 340.000+ subjekata iz službenih registara."
+    },
+    "careflow": {
+      "description": "Digitalna platforma za udruge — organizirajte članove, donatore, komunikaciju i aktivnosti na jednom mjestu."
+    },
+    "flowcall": {
+      "description": "Moderni CRM za high-volume pozive — power dialing, upravljanje leadovima i real-time analitika za prodajne timove."
+    }
   }
 }
