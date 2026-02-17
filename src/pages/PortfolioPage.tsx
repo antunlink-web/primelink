@@ -27,8 +27,8 @@ const projects = [
     image: poslovniregistarImg,
   },
   {
-    name: "CareFlow.eu",
-    url: "https://careflow.eu",
+    name: "CareFlow.hr",
+    url: "https://careflow.hr",
     description: "Medicinski workflow management sustav za zdravstvene ustanove — digitalizacija procesa i upravljanje pacijentima.",
     tags: ["Healthcare", "SaaS", "Workflow"],
     image: careflowImg,
