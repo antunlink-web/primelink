@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import { CalendarCheck, Mail, Phone, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,7 +22,6 @@ const contactFormSchema = z.object({
   message: z.string().trim().min(1, { message: "Message is required" }).max(1000, { message: "Message must be less than 1000 characters" }),
 });
 
-// Replace with your Web3Forms access key from https://web3forms.com
 const WEB3FORMS_ACCESS_KEY = "7a6fbce5-f71b-4f52-a58e-12bcbbd3a492";
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -32,20 +31,14 @@ const Contact = () => {
   
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
+    defaultValues: { name: "", email: "", message: "" },
   });
 
   const onSubmit = async (data: ContactFormValues) => {
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           name: data.name,
@@ -55,45 +48,35 @@ const Contact = () => {
           from_name: "PrimeLink Contact Form",
         }),
       });
-
       const result = await response.json();
-
       if (result.success) {
-        toast.success("Message sent successfully! We'll get back to you soon.", {
-          duration: 5000,
-        });
+        toast.success("Message sent successfully! We'll get back to you soon.", { duration: 5000 });
         form.reset();
       } else {
         throw new Error(result.message || "Failed to send message");
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      toast.error("Failed to send message. Please try again or contact us directly.", {
-        duration: 5000,
-      });
+      toast.error("Failed to send message. Please try again or contact us directly.", { duration: 5000 });
     }
   };
   
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-background to-secondary/50 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[var(--gradient-mesh)]"></div>
-      
-      {/* Glowing orbs */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] animate-pulse-glow"></div>
+    <section id="contact" className="py-28 bg-card relative overflow-hidden border-t border-border">
+      <div className="absolute inset-0 bg-[var(--gradient-mesh)] opacity-30"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 glow-text">
+        <div className="max-w-4xl mx-auto text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
             {t('contact.title')}
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg text-muted-foreground">
             {t('contact.description')}
           </p>
         </div>
 
-        {/* Contact Form */}
-        <div className="max-w-3xl mx-auto mb-16 animate-fade-in-up">
-          <div className="bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] rounded-2xl p-8 shadow-[var(--shadow-xl)] hover:shadow-[var(--shadow-glow)] transition-all">
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="bg-background border border-border rounded-2xl p-8 shadow-[var(--shadow-card)]">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -104,17 +87,12 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel className="text-foreground">Name *</FormLabel>
                         <FormControl>
-                          <Input 
-                            placeholder="Your name" 
-                            {...field} 
-                            className="bg-secondary/50 border-[var(--glass-border)] focus:border-primary transition-colors"
-                          />
+                          <Input placeholder="Your name" {...field} className="bg-secondary/50 border-border focus:border-primary transition-colors" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
                   <FormField
                     control={form.control}
                     name="email"
@@ -122,19 +100,13 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel className="text-foreground">Email *</FormLabel>
                         <FormControl>
-                          <Input 
-                            type="email"
-                            placeholder="your.email@example.com" 
-                            {...field} 
-                            className="bg-secondary/50 border-[var(--glass-border)] focus:border-primary transition-colors"
-                          />
+                          <Input type="email" placeholder="your.email@example.com" {...field} className="bg-secondary/50 border-border focus:border-primary transition-colors" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                 </div>
-
                 <FormField
                   control={form.control}
                   name="message"
@@ -142,57 +114,47 @@ const Contact = () => {
                     <FormItem>
                       <FormLabel className="text-foreground">Message *</FormLabel>
                       <FormControl>
-                        <Textarea 
-                          placeholder="Tell us about your project or inquiry..." 
-                          {...field} 
-                          rows={6}
-                          className="bg-secondary/50 border-[var(--glass-border)] focus:border-primary transition-colors resize-none"
-                        />
+                        <Textarea placeholder="Tell us about your project or inquiry..." {...field} rows={6} className="bg-secondary/50 border-border focus:border-primary transition-colors resize-none" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-
                 <Button 
                   type="submit"
                   size="lg"
                   disabled={form.formState.isSubmitting}
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white text-lg px-8 py-6 shadow-[var(--shadow-glow)] hover:shadow-[var(--shadow-glow-strong)] transition-all hover:scale-[1.02] glow-border"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-base px-8 py-6 shadow-[var(--shadow-glow)] hover:shadow-[var(--shadow-glow-strong)] transition-all"
                 >
-                  {form.formState.isSubmitting ? "Sending..." : "Send Message"}
-                  {!form.formState.isSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
+                  <CalendarCheck className="mr-2 h-5 w-5" />
+                  {form.formState.isSubmitting ? "Sending..." : t('contact.schedule')}
                 </Button>
               </form>
             </Form>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center p-6 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] hover:shadow-[var(--shadow-glow)] hover:glow-border transition-all hover:-translate-y-1 animate-scale-in">
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:shadow-[var(--shadow-glow)] transition-all">
-              <Mail className="h-6 w-6 text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
+        <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="text-center p-6 rounded-xl bg-background border border-border hover:border-primary/30 transition-all">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3">
+              <Mail className="h-5 w-5 text-primary" />
             </div>
-            <h3 className="font-semibold text-foreground mb-2">{t('contact.email')}</h3>
-            <a href="mailto:primelink@primelink.hr" className="text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline">
-              primelink@primelink.hr
-            </a>
+            <h3 className="font-medium text-foreground mb-1">{t('contact.email')}</h3>
+            <a href="mailto:primelink@primelink.hr" className="text-sm text-muted-foreground hover:text-primary transition-colors">primelink@primelink.hr</a>
           </div>
-
-          <div className="text-center p-6 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] hover:shadow-[var(--shadow-glow)] hover:glow-border transition-all hover:-translate-y-1 animate-scale-in" style={{ animationDelay: "100ms" }}>
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-              <Phone className="h-6 w-6 text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
+          <div className="text-center p-6 rounded-xl bg-background border border-border hover:border-primary/30 transition-all">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3">
+              <Phone className="h-5 w-5 text-primary" />
             </div>
-            <h3 className="font-semibold text-foreground mb-2">{t('contact.call')}</h3>
-            <a href="tel:+385915122888" className="text-muted-foreground hover:text-primary transition-colors">+385915122888</a>
+            <h3 className="font-medium text-foreground mb-1">{t('contact.call')}</h3>
+            <a href="tel:+385915122888" className="text-sm text-muted-foreground hover:text-primary transition-colors">+385 91 512 2888</a>
           </div>
-
-          <div className="text-center p-6 rounded-lg bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] hover:shadow-[var(--shadow-glow)] hover:glow-border transition-all hover:-translate-y-1 animate-scale-in" style={{ animationDelay: "200ms" }}>
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-              <MapPin className="h-6 w-6 text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
+          <div className="text-center p-6 rounded-xl bg-background border border-border hover:border-primary/30 transition-all">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3">
+              <MapPin className="h-5 w-5 text-primary" />
             </div>
-            <h3 className="font-semibold text-foreground mb-2">{t('contact.visit')}</h3>
-            <p className="text-muted-foreground">Zagreb, Croatia</p>
+            <h3 className="font-medium text-foreground mb-1">{t('contact.visit')}</h3>
+            <p className="text-sm text-muted-foreground">Zagreb, Hrvatska</p>
           </div>
         </div>
       </div>
