@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -9,6 +10,18 @@ const Header = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
+  const [workOpen, setWorkOpen] = useState(false);
+  const workRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (workRef.current && !workRef.current.contains(e.target as Node)) {
+        setWorkOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleNavClick = (sectionId: string) => {
     if (location.pathname !== '/') {
@@ -69,26 +82,41 @@ const Header = () => {
           >
             {t('nav.about')}
           </a>
-          <a 
-            href="/portfolio" 
-            onClick={(e) => {
-              e.preventDefault();
-              navigate('/portfolio');
-            }}
-            className="text-foreground hover:text-primary transition-colors cursor-pointer"
-          >
-            {t('nav.portfolio')}
-          </a>
-          <a 
-            href="/case-studies" 
-            onClick={(e) => {
-              e.preventDefault();
-              handleCaseStudiesClick();
-            }}
-            className="text-foreground hover:text-primary transition-colors cursor-pointer"
-          >
-            {t('nav.caseStudies')}
-          </a>
+          <div className="relative" ref={workRef}>
+            <button
+              onClick={() => setWorkOpen(!workOpen)}
+              className="flex items-center gap-1 text-foreground hover:text-primary transition-colors cursor-pointer"
+            >
+              {t('nav.work')}
+              <ChevronDown className={`h-4 w-4 transition-transform ${workOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {workOpen && (
+              <div className="absolute top-full left-0 mt-2 w-48 rounded-lg border border-border bg-card shadow-lg z-50 py-1">
+                <a
+                  href="/portfolio"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/portfolio');
+                    setWorkOpen(false);
+                  }}
+                  className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                >
+                  {t('nav.portfolio')}
+                </a>
+                <a
+                  href="/case-studies"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/case-studies');
+                    setWorkOpen(false);
+                  }}
+                  className="block px-4 py-2.5 text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
+                >
+                  {t('nav.caseStudies')}
+                </a>
+              </div>
+            )}
+          </div>
           <a 
             href="/ponuda" 
             onClick={(e) => {
