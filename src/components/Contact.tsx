@@ -192,7 +192,7 @@ const Contact = () => {
               <MapPin className="h-6 w-6 text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]" />
             </div>
             <h3 className="font-semibold text-foreground mb-2">{t('contact.visit')}</h3>
-            <p className="text-muted-foreground">Tarska 26a, 10040 Zagreb, Croatia</p>
+            <p className="text-muted-foreground">Zagreb, Croatia</p>
           </div>
         </div>
       </div>
