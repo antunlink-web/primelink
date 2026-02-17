@@ -9,6 +9,7 @@ import CaseStudiesPage from "./pages/CaseStudiesPage";
 import CaseStudyMedical from "./pages/CaseStudyMedical";
 import CaseStudyMobile from "./pages/CaseStudyMobile";
 import CaseStudyWebsite from "./pages/CaseStudyWebsite";
+import OfferPage from "./pages/OfferPage";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/ponuda" element={<OfferPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-study/medical-elearning" element={<CaseStudyMedical />} />
           <Route path="/case-study/mobile-operator" element={<CaseStudyMobile />} />
