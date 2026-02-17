@@ -70,6 +70,16 @@ const Header = () => {
             {t('nav.about')}
           </a>
           <a 
+            href="/portfolio" 
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/portfolio');
+            }}
+            className="text-foreground hover:text-primary transition-colors cursor-pointer"
+          >
+            Portfolio
+          </a>
+          <a 
             href="/case-studies" 
             onClick={(e) => {
               e.preventDefault();
@@ -78,6 +88,16 @@ const Header = () => {
             className="text-foreground hover:text-primary transition-colors cursor-pointer"
           >
             {t('nav.caseStudies')}
+          </a>
+          <a 
+            href="/ponuda" 
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/ponuda');
+            }}
+            className="text-foreground hover:text-primary transition-colors cursor-pointer"
+          >
+            Ponuda
           </a>
           <a 
             href="#contact" 
