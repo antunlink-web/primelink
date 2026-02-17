@@ -174,5 +174,58 @@
     "contact": "Contact",
     "follow": "Follow Us",
     "rights": "All rights reserved."
+  },
+  "offer": {
+    "badge": "PrimeLink Web Solutions",
+    "heroTitle": "First impressions are",
+    "heroHighlight": "everything",
+    "heroDesc": "Most clients search for services online, and a slow or non-existent website can mean lost business.",
+    "heroSolution": "PrimeLink offers the solution:",
+    "heroSolutionDesc": "we take care of the technology, design, and hosting, while you focus on your business.",
+    "bestsellerBadge": "🔥 Bestseller Offer",
+    "packageTitle": "Landing Page Package",
+    "packageDesc": "Everything you need for a professional start.",
+    "pricePerYear": "/ yearly",
+    "plusVat": "+ VAT",
+    "designIncluded": "Design included",
+    "hostingIncluded": "Hosting included",
+    "sslSecurity": "SSL Security",
+    "techSupport": "Technical support",
+    "requestOffer": "👉 Request an offer",
+    "whyTitle": "🛡️ Why choose",
+    "whySubtitle": "We're not just an agency — we're your IT partner.",
+    "speedTitle": "Lightning fast",
+    "speedDesc": "Optimized servers ensure fast loading.",
+    "mobileTitle": "Mobile First",
+    "mobileDesc": "Looks perfect on every phone and tablet.",
+    "noWorryTitle": "No worries",
+    "noWorryDesc": "We handle updates and technical issues.",
+    "turnkeyTitle": "Turnkey",
+    "turnkeyDesc": "Just send us your domain — we do the rest.",
+    "moreTitle": "💼 Need more than a Landing page?",
+    "moreDesc": "Your business is growing and needs specific functionality?",
+    "webShops": "Web Shops",
+    "bookingSystems": "Booking Systems",
+    "customApps": "Custom Applications",
+    "contactCustom": "Contact us for a custom project"
+  },
+  "portfolio": {
+    "badge": "Portfolio",
+    "title": "Our",
+    "titleHighlight": "Projects",
+    "description": "Check out some of the projects we've developed that are active in production.",
+    "visitSite": "Visit website",
+    "trazilica": {
+      "description": "Platform for finding reliable tradespeople with over 5,000+ registered professionals and 50,000+ reviews."
+    },
+    "poslovniregistar": {
+      "description": "All data about Croatian companies in one place — search 340,000+ entities from official registers."
+    },
+    "careflow": {
+      "description": "Digital platform for NGOs — organize members, donors, communication, and activities in one place."
+    },
+    "flowcall": {
+      "description": "Modern CRM for high-volume calling — power dialing, lead management, and real-time analytics for sales teams."
+    }
   }
 }
