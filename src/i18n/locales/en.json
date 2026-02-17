@@ -9,59 +9,67 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Transform Your Business with",
-    "titleHighlight": "Advanced IT Solutions",
-    "description": "Empowering enterprises with cutting-edge technology, security, and innovation for the digital age.",
-    "getStarted": "Get Started",
-    "viewSolutions": "View Solutions",
+    "badge": "Certified IT Partners · Zagreb, Croatia",
+    "title": "Cut IT costs. Boost security.",
+    "titleHighlight": "No compromises.",
+    "description": "We help businesses modernize infrastructure, protect data, and scale operations — with predictable costs and 24/7 support.",
+    "scheduleConsultation": "Schedule a Consultation",
+    "viewSolutions": "View Services",
     "support247": "24/7 Support",
+    "supportBenefit": "Always there when you need us",
     "enterpriseSecurity": "Enterprise Security",
-    "cloudInfrastructure": "Cloud Infrastructure"
+    "securityBenefit": "Protection at every level",
+    "cloudInfrastructure": "Cloud Infrastructure",
+    "cloudBenefit": "Reduce costs by up to 30%",
+    "getStarted": "Get Started"
+  },
+  "trust": {
+    "title": "Technologies & partners we trust"
   },
   "services": {
-    "title": "Our Services",
-    "description": "Comprehensive IT solutions tailored to your business needs",
+    "title": "How we can help",
+    "description": "From cloud migration to fully managed IT — solutions tailored to your needs and budget.",
     "cloud": {
       "title": "Cloud Solutions",
-      "description": "Scalable cloud infrastructure and migration services to modernize your operations."
+      "description": "Reduce IT costs by up to 30% with scalable cloud infrastructure. Migration, optimization, and management — all in one place."
     },
     "security": {
       "title": "Cybersecurity",
-      "description": "Comprehensive security solutions to protect your data and infrastructure."
+      "description": "Protect your data and business from modern threats. Penetration testing, 24/7 monitoring, and regulatory compliance."
     },
     "infrastructure": {
-      "title": "IT Infrastructure",
-      "description": "Enterprise-grade hardware and network solutions for optimal performance."
+      "title": "Managed IT",
+      "description": "Let us handle your infrastructure — servers, networks, and workstations under constant monitoring and proactive maintenance."
     },
     "ai": {
       "title": "AI & Automation",
-      "description": "Intelligent automation and AI-powered solutions to streamline workflows."
+      "description": "Automate repetitive tasks and accelerate processes. Smart solutions that save time and reduce errors."
     },
     "data": {
       "title": "Data Management",
-      "description": "Advanced data analytics, storage, and management solutions."
+      "description": "Secure storage, advanced analytics, and backup strategies that ensure your business continuity."
     },
     "digital": {
       "title": "Digital Transformation",
-      "description": "End-to-end digital transformation to modernize your business."
+      "description": "Modernize business processes from the ground up. Strategy, implementation, and support on your path to digital maturity."
     }
   },
   "stats": {
     "clients": "Happy Clients",
-    "uptime": "Uptime",
+    "uptime": "Uptime Guarantee",
     "support": "Support",
     "experience": "Years Experience"
   },
   "about": {
-    "title": "Why Choose Us?",
-    "description": "We deliver enterprise-grade IT solutions that drive innovation and business growth. Our team of experts is committed to your success with cutting-edge technology and unparalleled support.",
-    "benefit1": "Industry-leading expertise with certified professionals",
-    "benefit2": "Custom solutions tailored to your business needs",
-    "benefit3": "Proven track record with Fortune 500 companies",
-    "benefit4": "24/7 dedicated support and monitoring",
-    "benefit5": "Cutting-edge technology and innovation",
+    "title": "Why businesses choose us",
+    "description": "We deliver IT solutions that actually work. Our team of certified experts is committed to your success — with technology that scales with your business.",
+    "benefit1": "Certified experts with years of experience",
+    "benefit2": "Solutions tailored to your budget and needs",
+    "benefit3": "Proven results with Croatian and international clients",
+    "benefit4": "24/7 support with guaranteed response times",
+    "benefit5": "Proactive approach — we prevent problems before they occur",
     "benefit6": "Scalable solutions that grow with your business",
-    "learnMore": "Learn More About Us",
+    "learnMore": "Learn More",
     "years": "Years",
     "clients": "Clients"
   },
@@ -154,19 +162,19 @@
     }
   },
   "contact": {
-    "title": "Ready to Transform Your Business?",
-    "description": "Let's discuss how we can help you achieve your IT goals",
-    "email": "Email Us",
-    "call": "Call Us",
-    "visit": "Visit Us",
+    "title": "Let's talk about your IT needs",
+    "description": "Schedule a free consultation and learn how we can optimize your infrastructure",
+    "email": "Email",
+    "call": "Phone",
+    "visit": "Location",
     "schedule": "Schedule a Consultation"
   },
   "footer": {
-    "description": "Leading IT solutions provider for modern enterprises.",
+    "description": "Your trusted IT partner for modern infrastructure, security, and cloud solutions.",
     "services": "Services",
     "cloudSolutions": "Cloud Solutions",
     "cybersecurity": "Cybersecurity",
-    "infrastructure": "IT Infrastructure",
+    "infrastructure": "Managed IT",
     "aiAutomation": "AI & Automation",
     "company": "Company",
     "about": "About Us",

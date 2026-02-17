@@ -9,59 +9,67 @@
     "contact": "Kontakt"
   },
   "hero": {
-    "title": "Transformirajte svoje poslovanje s",
-    "titleHighlight": "Naprednim IT Rješenjima",
-    "description": "Osnažujemo poduzeća vrhunskom tehnologijom, sigurnošću i inovacijama za digitalno doba.",
-    "getStarted": "Započnite",
-    "viewSolutions": "Pogledajte Rješenja",
+    "badge": "Certificirani IT partneri · Zagreb, Hrvatska",
+    "title": "Smanjite IT troškove. Povećajte sigurnost.",
+    "titleHighlight": "Bez kompromisa.",
+    "description": "Pomažemo hrvatskim tvrtkama modernizirati infrastrukturu, zaštititi podatke i skalirati poslovanje — s predvidivim troškovima i podrškom 24/7.",
+    "scheduleConsultation": "Zakažite konzultaciju",
+    "viewSolutions": "Pogledajte usluge",
     "support247": "Podrška 24/7",
-    "enterpriseSecurity": "Sigurnost Poduzeća",
-    "cloudInfrastructure": "Cloud Infrastruktura"
+    "supportBenefit": "Uvijek tu kad vam trebamo",
+    "enterpriseSecurity": "Enterprise sigurnost",
+    "securityBenefit": "Zaštita na svim razinama",
+    "cloudInfrastructure": "Cloud infrastruktura",
+    "cloudBenefit": "Smanjite troškove do 30%",
+    "getStarted": "Započnite"
+  },
+  "trust": {
+    "title": "Tehnologije i partneri kojima vjerujemo"
   },
   "services": {
-    "title": "Naše Usluge",
-    "description": "Sveobuhvatna IT rješenja prilagođena vašim poslovnim potrebama",
+    "title": "Kako vam možemo pomoći",
+    "description": "Od cloud migracije do potpunog upravljanja IT-jem — rješenja prilagođena vašim potrebama i budžetu.",
     "cloud": {
-      "title": "Cloud Rješenja",
-      "description": "Skalabilna cloud infrastruktura i usluge migracije za modernizaciju vaših operacija."
+      "title": "Cloud rješenja",
+      "description": "Smanjite IT troškove do 30% sa skalabilnom cloud infrastrukturom. Migracija, optimizacija i upravljanje — sve na jednom mjestu."
     },
     "security": {
-      "title": "Kibernetička Sigurnost",
-      "description": "Sveobuhvatna sigurnosna rješenja za zaštitu vaših podataka i infrastrukture."
+      "title": "Kibernetička sigurnost",
+      "description": "Zaštitite podatke i poslovanje od modernih prijetnji. Penetracijsko testiranje, nadzor 24/7 i usklađenost s regulativama."
     },
     "infrastructure": {
-      "title": "IT Infrastruktura",
-      "description": "Rješenja hardvera i mreža poslovne razine za optimalne performanse."
+      "title": "Upravljani IT",
+      "description": "Prepustite nam brigu o infrastrukturi — serveri, mreže i radne stanice pod stalnim nadzorom i proaktivnim održavanjem."
     },
     "ai": {
-      "title": "AI i Automatizacija",
-      "description": "Inteligentna automatizacija i rješenja pokrenuta umjetnom inteligencijom za pojednostavljenje radnih procesa."
+      "title": "AI i automatizacija",
+      "description": "Automatizirajte ponavljajuće zadatke i ubrzajte procese. Pametna rješenja koja štede vrijeme i smanjuju pogreške."
     },
     "data": {
-      "title": "Upravljanje Podacima",
-      "description": "Napredna analitika, pohrana i rješenja za upravljanje podacima."
+      "title": "Upravljanje podacima",
+      "description": "Sigurna pohrana, napredna analitika i backup strategije koje osiguravaju neprekidnost vašeg poslovanja."
     },
     "digital": {
-      "title": "Digitalna Transformacija",
-      "description": "Cjelovita digitalna transformacija za modernizaciju vašeg poslovanja."
+      "title": "Digitalna transformacija",
+      "description": "Modernizirajte poslovne procese od temelja. Strategija, implementacija i podrška na putu do digitalne zrelosti."
     }
   },
   "stats": {
-    "clients": "Zadovoljnih Klijenata",
-    "uptime": "Vrijeme Rada",
+    "clients": "Zadovoljnih klijenata",
+    "uptime": "Uptime garancija",
     "support": "Podrška",
-    "experience": "Godina Iskustva"
+    "experience": "Godina iskustva"
   },
   "about": {
-    "title": "Zašto Odabrati Nas?",
-    "description": "Isporučujemo IT rješenja poslovne razine koja potiču inovacije i rast poslovanja. Naš tim stručnjaka posvećen je vašem uspjehu s vrhunskom tehnologijom i neprikosnivenom podrškom.",
-    "benefit1": "Vodeća stručnost u industriji s certificiranim profesionalcima",
-    "benefit2": "Prilagođena rješenja prema vašim poslovnim potrebama",
-    "benefit3": "Dokazana uspješnost s Fortune 500 tvrtkama",
-    "benefit4": "24/7 posvećena podrška i praćenje",
-    "benefit5": "Vrhunska tehnologija i inovacije",
+    "title": "Zašto tvrtke biraju nas",
+    "description": "Isporučujemo IT rješenja koja stvarno funkcioniraju. Naš tim certificiranih stručnjaka posvećen je vašem uspjehu — s tehnologijom koja prati rast vašeg poslovanja.",
+    "benefit1": "Certificirani stručnjaci s dugogodišnjim iskustvom",
+    "benefit2": "Rješenja prilagođena vašem budžetu i potrebama",
+    "benefit3": "Dokazani rezultati s hrvatskim i međunarodnim klijentima",
+    "benefit4": "Podrška 24/7 s garantiranim vremenom odziva",
+    "benefit5": "Proaktivan pristup — sprječavamo probleme prije nego nastanu",
     "benefit6": "Skalabilna rješenja koja rastu s vašim poslovanjem",
-    "learnMore": "Saznajte Više O Nama",
+    "learnMore": "Saznajte više",
     "years": "Godina",
     "clients": "Klijenti"
   },
@@ -154,26 +162,26 @@
     }
   },
   "contact": {
-    "title": "Spremni Transformirati Svoje Poslovanje?",
-    "description": "Razgovarajmo kako vam možemo pomoći postići vaše IT ciljeve",
-    "email": "Pošaljite Email",
-    "call": "Nazovite Nas",
-    "visit": "Posjetite Nas",
-    "schedule": "Zakažite Konzultaciju"
+    "title": "Razgovarajmo o vašim IT potrebama",
+    "description": "Zakažite besplatnu konzultaciju i saznajte kako možemo optimizirati vašu infrastrukturu",
+    "email": "Email",
+    "call": "Telefon",
+    "visit": "Lokacija",
+    "schedule": "Zakažite konzultaciju"
   },
   "footer": {
-    "description": "Vodeći pružatelj IT rješenja za moderna poduzeća.",
+    "description": "Vaš pouzdani IT partner za modernu infrastrukturu, sigurnost i cloud rješenja.",
     "services": "Usluge",
-    "cloudSolutions": "Cloud Rješenja",
-    "cybersecurity": "Kibernetička Sigurnost",
-    "infrastructure": "IT Infrastruktura",
-    "aiAutomation": "AI i Automatizacija",
+    "cloudSolutions": "Cloud rješenja",
+    "cybersecurity": "Kibernetička sigurnost",
+    "infrastructure": "Upravljani IT",
+    "aiAutomation": "AI i automatizacija",
     "company": "Tvrtka",
-    "about": "O Nama",
+    "about": "O nama",
     "careers": "Karijere",
     "blog": "Blog",
     "contact": "Kontakt",
-    "follow": "Pratite Nas",
+    "follow": "Pratite nas",
     "rights": "Sva prava pridržana."
   },
   "offer": {
