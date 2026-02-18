@@ -52,7 +52,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; 2025 PrimeLink. {t('footer.rights')}</p>
+          <p>&copy; 2026 PrimeLink d.o.o. {t('footer.rights')}</p>
         </div>
       </div>
     </footer>
