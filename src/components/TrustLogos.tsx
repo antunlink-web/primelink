@@ -5,6 +5,8 @@ const partners = [
   { name: "Nextcloud", logo: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/nextcloud.svg" },
   { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" },
   { name: "Contabo", logo: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/contabo.svg" },
+  { name: "Cloudflare", logo: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/cloudflare.svg" },
+  { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/docker.svg" },
 ];
 
 const TrustLogos = () => {
