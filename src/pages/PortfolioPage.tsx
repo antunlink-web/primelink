@@ -11,6 +11,7 @@ import trazilicaImg from "@/assets/projects/trazilica.png";
 import poslovniregistarImg from "@/assets/projects/poslovniregistar.png";
 import careflowImg from "@/assets/projects/careflow.png";
 import flowcallImg from "@/assets/projects/flowcall.png";
+import lajtImg from "@/assets/projects/lajt.png";
 
 const projectsData = [
   {
@@ -40,6 +41,13 @@ const projectsData = [
     descKey: "portfolio.flowcall.description",
     tags: ["CRM", "SaaS", "Sales"],
     image: flowcallImg,
+  },
+  {
+    name: "Lajt.hr",
+    url: "https://lajt.hr",
+    descKey: "portfolio.lajt.description",
+    tags: ["Translation", "Legal", "Services"],
+    image: lajtImg,
   },
 ];
 
