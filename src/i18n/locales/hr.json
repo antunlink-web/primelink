@@ -220,24 +220,40 @@
   },
   "portfolio": {
     "badge": "Projekti",
-    "title": "Naši",
-    "titleHighlight": "Projekti",
-    "description": "Pogledajte neke od projekata koje smo razvili i koji su aktivni u produkciji.",
+    "heroTitle": "Naši radovi",
+    "heroSubtitle": "Odabrani projekti koji demonstriraju našu stručnost u SaaS platformama, sustavima automatizacije i prilagođenim web aplikacijama.",
+    "heroIntro": "Gradimo skalabilne digitalne platforme koje pomažu tvrtkama automatizirati procese, upravljati podacima i povećati prihode.",
+    "filterAll": "Sve",
+    "filterSaas": "SaaS",
+    "filterAutomation": "Automatizacija",
+    "filterWeb": "Web Aplikacije",
+    "filterIntegrations": "Integracije",
     "visitSite": "Posjeti stranicu",
+    "trustTitle": "Vjeruju nam startupi i poduzeća koja grade skalabilne digitalne proizvode",
+    "clientPlaceholder": "Klijent",
+    "ctaTitle": "Imate projekt na umu?",
+    "ctaDescription": "Dizajniramo i gradimo skalabilne platforme, sustave automatizacije i prilagođeni softver.",
+    "ctaStart": "Pokrenite projekt",
+    "ctaConsult": "Zakažite konzultaciju",
     "trazilica": {
-      "description": "Platforma za pronalaženje pouzdanih majstora s preko 5.000+ registriranih stručnjaka i 50.000+ recenzija."
+      "description": "Platforma za pronalaženje pouzdanih majstora s preko 5.000+ registriranih stručnjaka i 50.000+ recenzija.",
+      "industry": "Marketplace"
     },
     "poslovniregistar": {
-      "description": "Svi podaci o hrvatskim tvrtkama na jednom mjestu — pretražujte 340.000+ subjekata iz službenih registara."
+      "description": "Svi podaci o hrvatskim tvrtkama na jednom mjestu — pretražujte 340.000+ subjekata iz službenih registara.",
+      "industry": "Poslovni podaci"
     },
     "careflow": {
-      "description": "Digitalna platforma za udruge — organizirajte članove, donatore, komunikaciju i aktivnosti na jednom mjestu."
+      "description": "Digitalna platforma za udruge — organizirajte članove, donatore, komunikaciju i aktivnosti na jednom mjestu.",
+      "industry": "Zdravstvo & Udruge"
     },
     "flowcall": {
-      "description": "Moderni CRM za high-volume pozive — power dialing, upravljanje leadovima i real-time analitika za prodajne timove."
+      "description": "Moderni CRM za high-volume pozive — power dialing, upravljanje leadovima i real-time analitika za prodajne timove.",
+      "industry": "Prodaja & CRM"
     },
     "lajt": {
-      "description": "Stalni sudski tumač za engleski i ruski jezik u Zagrebu — ovjereni prijevodi diploma, uvjerenja, ugovora i pravnih dokumenata."
+      "description": "Stalni sudski tumač za engleski i ruski jezik u Zagrebu — ovjereni prijevodi diploma, uvjerenja, ugovora i pravnih dokumenata.",
+      "industry": "Pravne usluge"
     }
   }
 }

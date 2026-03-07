@@ -1,11 +1,11 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { ExternalLink, ArrowRight, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import trazilicaImg from "@/assets/projects/trazilica.png";
 import poslovniregistarImg from "@/assets/projects/poslovniregistar.png";
@@ -13,157 +13,239 @@ import careflowImg from "@/assets/projects/careflow.png";
 import flowcallImg from "@/assets/projects/flowcall.png";
 import lajtImg from "@/assets/projects/lajt.png";
 
+type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
+
 const projectsData = [
   {
+    id: "trazilica",
     name: "Tražilica.hr",
     url: "https://trazilica.hr",
     descKey: "portfolio.trazilica.description",
-    tags: ["Marketplace", "Search Platform", "Reviews"],
+    industryKey: "portfolio.trazilica.industry",
+    tags: ["React", "Node.js", "PostgreSQL", "ElasticSearch"],
     image: trazilicaImg,
+    category: ["web", "saas"] as FilterCategory[],
   },
   {
+    id: "poslovniregistar",
     name: "PoslovniRegistar.hr",
     url: "https://poslovniregistar.hr",
     descKey: "portfolio.poslovniregistar.description",
-    tags: ["Business Data", "Search Engine", "SaaS"],
+    industryKey: "portfolio.poslovniregistar.industry",
+    tags: ["React", "Python", "PostgreSQL", "REST API"],
     image: poslovniregistarImg,
+    category: ["saas", "web"] as FilterCategory[],
   },
   {
+    id: "careflow",
     name: "CareFlow.hr",
     url: "https://careflow.hr",
     descKey: "portfolio.careflow.description",
-    tags: ["Healthcare", "SaaS", "Workflow"],
+    industryKey: "portfolio.careflow.industry",
+    tags: ["React", "Supabase", "Tailwind", "TypeScript"],
     image: careflowImg,
+    category: ["saas", "automation"] as FilterCategory[],
   },
   {
+    id: "flowcall",
     name: "FlowCall.eu",
     url: "https://flowcall.eu",
     descKey: "portfolio.flowcall.description",
-    tags: ["CRM", "SaaS", "Sales"],
+    industryKey: "portfolio.flowcall.industry",
+    tags: ["React", "WebRTC", "Node.js", "PostgreSQL"],
     image: flowcallImg,
+    category: ["saas", "integrations"] as FilterCategory[],
   },
   {
+    id: "lajt",
     name: "Lajt.hr",
     url: "https://lajt.hr",
     descKey: "portfolio.lajt.description",
-    tags: ["Translation", "Legal", "Services"],
+    industryKey: "portfolio.lajt.industry",
+    tags: ["React", "i18n", "Tailwind", "Vite"],
     image: lajtImg,
+    category: ["web"] as FilterCategory[],
   },
 ];
 
+const filters: { key: FilterCategory; labelKey: string }[] = [
+  { key: "all", labelKey: "portfolio.filterAll" },
+  { key: "saas", labelKey: "portfolio.filterSaas" },
+  { key: "automation", labelKey: "portfolio.filterAutomation" },
+  { key: "web", labelKey: "portfolio.filterWeb" },
+  { key: "integrations", labelKey: "portfolio.filterIntegrations" },
+];
+
 const PortfolioPage = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
-  const goTo = useCallback((index: number) => {
-    setCurrentIndex((index + projectsData.length) % projectsData.length);
-  }, []);
+  const filtered = activeFilter === "all"
+    ? projectsData
+    : projectsData.filter((p) => p.category.includes(activeFilter));
 
-  useEffect(() => {
-    if (paused) return;
-    const interval = setInterval(() => {
-      goTo(currentIndex + 1);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [currentIndex, paused, goTo]);
-
-  const project = projectsData[currentIndex];
+  const handleNavClick = (sectionId: string) => {
+    navigate('/');
+    setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
-      <section className="pt-32 pb-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[var(--gradient-mesh)] opacity-30" />
-        <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
-          <Badge variant="outline" className="mb-6 border-primary/50 text-primary px-4 py-1.5 text-sm">
-            {t('portfolio.badge')}
-          </Badge>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
-            {t('portfolio.title')} <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{t('portfolio.titleHighlight')}</span>
+      {/* HERO */}
+      <section className="pt-36 pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[var(--gradient-mesh)] opacity-20" />
+        <div className="absolute top-20 right-0 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px]" />
+        <div className="container mx-auto px-4 relative z-10 max-w-4xl">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-px flex-1 max-w-[60px] bg-primary/50" />
+            <span className="text-sm font-medium tracking-widest uppercase text-primary">
+              {t('portfolio.badge')}
+            </span>
+          </div>
+
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tight leading-[1.1] mb-6">
+            {t('portfolio.heroTitle')}
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('portfolio.description')}
+
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-4">
+            {t('portfolio.heroSubtitle')}
+          </p>
+
+          <p className="text-base text-muted-foreground/70 max-w-xl leading-relaxed">
+            {t('portfolio.heroIntro')}
           </p>
         </div>
       </section>
 
-      {/* Carousel */}
-      <section className="py-12">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <Card className="overflow-hidden border-primary/20 bg-card shadow-[var(--shadow-card)]" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-            {/* Screenshot */}
-            <div className="relative group">
-              <div className="aspect-[16/9] overflow-hidden bg-secondary flex items-center justify-center">
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-full object-contain transition-all duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Navigation arrows */}
+      {/* FILTERS */}
+      <section className="pb-8">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="flex flex-wrap gap-2">
+            {filters.map((f) => (
               <button
-                onClick={() => goTo(currentIndex - 1)}
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-primary/20 transition-colors"
-              >
-                <ChevronLeft className="h-5 w-5 text-foreground" />
-              </button>
-              <button
-                onClick={() => goTo(currentIndex + 1)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-primary/20 transition-colors"
-              >
-                <ChevronRight className="h-5 w-5 text-foreground" />
-              </button>
-            </div>
-
-            <CardContent className="p-6 md:p-8">
-              <div className="flex flex-wrap gap-2 mb-3">
-                {project.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="text-xs">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">{project.name}</h2>
-              <p className="text-muted-foreground mb-5">{t(project.descKey)}</p>
-              <Button asChild variant="outline" className="border-primary/30 hover:bg-primary/10">
-                <a href={project.url} target="_blank" rel="noopener noreferrer">
-                  {t('portfolio.visitSite')} <ExternalLink className="h-4 w-4 ml-1" />
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
-
-          {/* Dots */}
-          <div className="flex justify-center gap-2 mt-6">
-            {projectsData.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentIndex(i)}
-                className={`h-2.5 rounded-full transition-all ${
-                  i === currentIndex ? "w-8 bg-primary" : "w-2.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                key={f.key}
+                onClick={() => setActiveFilter(f.key)}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeFilter === f.key
+                    ? "bg-primary text-primary-foreground shadow-[var(--shadow-glow)]"
+                    : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80 border border-border"
                 }`}
-              />
+              >
+                {t(f.labelKey)}
+              </button>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Thumbnails */}
-          <div className="grid grid-cols-4 gap-3 mt-8">
-            {projectsData.map((p, i) => (
-              <button
-                key={p.name}
-                onClick={() => setCurrentIndex(i)}
-                className={`rounded-lg overflow-hidden border-2 transition-all ${
-                  i === currentIndex
-                    ? "border-primary shadow-[var(--shadow-card)]"
-                    : "border-border opacity-60 hover:opacity-100"
-                }`}
+      {/* PROJECT GRID */}
+      <section className="py-8 pb-24">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filtered.map((project, i) => (
+              <a
+                key={project.id}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative rounded-2xl border border-border bg-card overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[var(--shadow-hover)] hover:-translate-y-1"
+                style={{ animationDelay: `${i * 80}ms` }}
               >
-                <img src={p.image} alt={p.name} className="w-full aspect-video object-cover object-top" />
-              </button>
+                {/* Screenshot */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-background/60 backdrop-blur-sm border border-border flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                    <ArrowUpRight className="h-3.5 w-3.5 text-foreground" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-5">
+                  <p className="text-xs font-medium uppercase tracking-wider text-primary mb-2">
+                    {t(project.industryKey)}
+                  </p>
+                  <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {project.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-2">
+                    {t(project.descKey)}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[11px] px-2 py-0.5 rounded-md bg-secondary text-muted-foreground border border-border/50"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CLIENT TRUST */}
+      <section className="py-20 border-t border-border">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-10">
+            {t('portfolio.trustTitle')}
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-50">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="h-10 rounded-lg bg-secondary/50 border border-border/30 flex items-center justify-center"
+              >
+                <span className="text-xs text-muted-foreground font-medium">
+                  {t('portfolio.clientPlaceholder')} {i}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[var(--gradient-mesh)] opacity-15" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary/8 blur-[100px]" />
+        <div className="container mx-auto px-4 max-w-3xl relative z-10 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-5 tracking-tight">
+            {t('portfolio.ctaTitle')}
+          </h2>
+          <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
+            {t('portfolio.ctaDescription')}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="text-base px-8 shadow-[var(--shadow-glow)]"
+              onClick={() => handleNavClick('contact')}
+            >
+              {t('portfolio.ctaStart')}
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-base px-8 border-border hover:bg-secondary"
+              onClick={() => handleNavClick('contact')}
+            >
+              {t('portfolio.ctaConsult')}
+            </Button>
           </div>
         </div>
       </section>
