@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Zap, BarChart3, Users, Send, Timer, TrendingUp, MessageSquare, Settings, Shield } from "lucide-react";
+import { ArrowLeft, Zap, BarChart3, Users, Send, Timer, TrendingUp, MessageSquare, Smartphone, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -13,27 +13,27 @@ import analyticsImg from "@/assets/flowsms/analytics.png";
 
 const metrics = [
   { icon: Timer, value: "3×", label: "Faster Campaign Execution" },
-  { icon: Users, value: "100%", label: "Centralized Communication" },
-  { icon: TrendingUp, value: "Scalable", label: "Messaging Infrastructure" },
-  { icon: Zap, value: "60%+", label: "Operational Efficiency Gain" },
+  { icon: Users, value: "98.2%", label: "SMS Delivery Rate" },
+  { icon: TrendingUp, value: "Scalable", label: "Add Devices to Scale" },
+  { icon: Zap, value: "0€", label: "Per-Message Fees" },
 ];
 
 const featureCards = [
-  { icon: Users, title: "Contact Management", desc: "Import, tag, segment, and organize contacts with smart filters." },
-  { icon: Send, title: "Bulk SMS Campaigns", desc: "Schedule and send personalized campaigns to targeted audiences." },
-  { icon: Settings, title: "Automation Workflows", desc: "Trigger automated sequences based on events or schedules." },
-  { icon: BarChart3, title: "Campaign Analytics", desc: "Track delivery rates, engagement, and performance in real time." },
-  { icon: MessageSquare, title: "Two-Way Messaging", desc: "View and respond to SMS conversations in a unified inbox." },
-  { icon: Shield, title: "Team Collaboration", desc: "Role-based access and shared workspace for your team." },
+  { icon: Smartphone, title: "Android Device Gateway", desc: "Connect real Android phones with SIM or eSIM — no third-party gateways or per-SMS fees." },
+  { icon: Send, title: "Bulk SMS Campaigns", desc: "Upload CSV or use the API to send thousands of messages distributed across devices." },
+  { icon: Users, title: "Contact Management", desc: "Import, tag, segment, and organize contacts with smart filters and lists." },
+  { icon: BarChart3, title: "Real-Time Analytics", desc: "Track delivery rates, sent/failed/received metrics, and device performance." },
+  { icon: MessageSquare, title: "Two-Way Messaging", desc: "Receive and view incoming SMS replies in a unified inbox." },
+  { icon: Shield, title: "Device Auto-Distribution", desc: "Messages are automatically balanced across connected devices for optimal throughput." },
 ];
 
-const techStack = ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "REST API", "Twilio", "Docker"];
+const techStack = ["React", "TypeScript", "Node.js", "PostgreSQL", "Android SDK", "REST API", "WebSocket", "Docker"];
 
 const screenshots = [
-  { img: campaignImg, title: "Campaign Builder", desc: "Create and schedule bulk SMS campaigns with audience targeting and personalization." },
-  { img: contactsImg, title: "Contacts Management", desc: "Organize your entire contact database with tags, segments, and smart filters." },
-  { img: automationImg, title: "Automation Workflows", desc: "Build automated messaging sequences triggered by user events or schedules." },
-  { img: analyticsImg, title: "Analytics Dashboard", desc: "Monitor delivery rates, engagement metrics, and campaign performance." },
+  { img: campaignImg, title: "Campaign Builder", desc: "Create bulk SMS campaigns with message templates, recipient lists, and scheduling." },
+  { img: contactsImg, title: "Contacts Management", desc: "Import contacts via CSV, organize with tags and filters, and build targeted lists." },
+  { img: automationImg, title: "Device Management", desc: "Monitor connected Android devices, track messages sent per device, and configure automation rules." },
+  { img: analyticsImg, title: "Analytics & Reporting", desc: "Track delivery rates (98.2%), messages sent/failed/received, and device performance over time." },
 ];
 
 const CaseStudyFlowSMS = () => {
@@ -61,10 +61,10 @@ const CaseStudyFlowSMS = () => {
               SaaS Platform
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              FlowSMS — SMS CRM platform for automated business communication
+              FlowSMS — Send unlimited SMS using real Android phones
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              A scalable messaging platform that allows businesses to manage contacts, run bulk SMS campaigns, and automate communication workflows.
+              An Android-based SMS sending platform that turns real phones into scalable messaging gateways — no per-message fees, no third-party APIs.
             </p>
           </div>
         </div>
@@ -85,10 +85,10 @@ const CaseStudyFlowSMS = () => {
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Project Overview</p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              All SMS operations in one platform
+              Turn Android phones into SMS gateways
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              FlowSMS was built to help companies manage high-volume SMS communication in one unified platform — from contact management and campaign scheduling to real-time analytics — replacing fragmented tools and manual workflows with a single, intuitive interface designed for speed and scale.
+              FlowSMS lets businesses connect Android phones with SIM or eSIM cards to a web dashboard and send SMS at scale. No gateways, no per-message fees — just add devices to increase capacity. Setup takes less than 3 minutes.
             </p>
           </div>
         </div>
@@ -103,9 +103,9 @@ const CaseStudyFlowSMS = () => {
               <Badge className="mb-5 px-3 py-1 bg-destructive/10 text-destructive border-destructive/20">
                 The Challenge
               </Badge>
-              <h3 className="text-2xl font-bold text-foreground mb-4">Fragmented tools &amp; manual processes</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Expensive APIs &amp; no control</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Businesses sending SMS campaigns rely on scattered spreadsheets, disconnected tools, and manual workflows. Contact lists live in one place, campaign scheduling in another, and there's no unified view of delivery or engagement — leading to wasted time, missed messages, and zero visibility into performance.
+                Traditional SMS APIs like Twilio charge per message, making high-volume campaigns expensive. Businesses have no control over delivery infrastructure, face rate limits, and can't scale without increasing costs linearly.
               </p>
             </div>
 
@@ -114,9 +114,9 @@ const CaseStudyFlowSMS = () => {
               <Badge className="mb-5 px-3 py-1 bg-accent/10 text-accent border-accent/20">
                 The Solution
               </Badge>
-              <h3 className="text-2xl font-bold text-foreground mb-4">One platform for everything SMS</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Real phones, zero per-SMS fees</h3>
               <p className="text-muted-foreground leading-relaxed">
-                FlowSMS centralizes every aspect of business messaging — contact management, bulk SMS campaigns, automation workflows, campaign tracking, and team collaboration — into a single, powerful platform that replaces complexity with clarity.
+                FlowSMS uses real Android devices as SMS gateways. Install the app, connect to the dashboard, and start sending. Messages are auto-distributed across devices. Scale by simply adding more phones — costs stay flat.
               </p>
             </div>
           </div>
