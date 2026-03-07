@@ -26,7 +26,6 @@ const Header = () => {
 
   const handlePageNav = (path: string) => {
     setMobileOpen(false);
-    setMobileWorkOpen(false);
     navigate(path);
   };
 
