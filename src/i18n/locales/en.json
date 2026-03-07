@@ -220,24 +220,40 @@
   },
   "portfolio": {
     "badge": "Portfolio",
-    "title": "Our",
-    "titleHighlight": "Projects",
-    "description": "Check out some of the projects we've developed that are active in production.",
+    "heroTitle": "Our Work",
+    "heroSubtitle": "Selected projects demonstrating our expertise in SaaS platforms, automation systems, and custom web applications.",
+    "heroIntro": "We build scalable digital platforms that help businesses automate workflows, manage data, and grow revenue.",
+    "filterAll": "All",
+    "filterSaas": "SaaS",
+    "filterAutomation": "Automation",
+    "filterWeb": "Web Apps",
+    "filterIntegrations": "Integrations",
     "visitSite": "Visit website",
+    "trustTitle": "Trusted by startups and enterprises building scalable digital products",
+    "clientPlaceholder": "Client",
+    "ctaTitle": "Have a project in mind?",
+    "ctaDescription": "We design and build scalable platforms, automation systems, and custom software.",
+    "ctaStart": "Start a Project",
+    "ctaConsult": "Book a Consultation",
     "trazilica": {
-      "description": "Platform for finding reliable tradespeople with over 5,000+ registered professionals and 50,000+ reviews."
+      "description": "Platform for finding reliable tradespeople with over 5,000+ registered professionals and 50,000+ reviews.",
+      "industry": "Marketplace"
     },
     "poslovniregistar": {
-      "description": "All data about Croatian companies in one place — search 340,000+ entities from official registers."
+      "description": "All data about Croatian companies in one place — search 340,000+ entities from official registers.",
+      "industry": "Business Data"
     },
     "careflow": {
-      "description": "Digital platform for NGOs — organize members, donors, communication, and activities in one place."
+      "description": "Digital platform for NGOs — organize members, donors, communication, and activities in one place.",
+      "industry": "Healthcare & NGO"
     },
     "flowcall": {
-      "description": "Modern CRM for high-volume calling — power dialing, lead management, and real-time analytics for sales teams."
+      "description": "Modern CRM for high-volume calling — power dialing, lead management, and real-time analytics for sales teams.",
+      "industry": "Sales & CRM"
     },
     "lajt": {
-      "description": "Certified court translator for English and Russian in Zagreb — official translations of diplomas, certificates, contracts, and legal documents."
+      "description": "Certified court translator for English and Russian in Zagreb — official translations of diplomas, certificates, contracts, and legal documents.",
+      "industry": "Legal Services"
     }
   }
 }
