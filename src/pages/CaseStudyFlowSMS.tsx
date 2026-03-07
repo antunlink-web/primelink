@@ -30,10 +30,10 @@ const featureCards = [
 const techStack = ["React", "TypeScript", "Node.js", "PostgreSQL", "Android SDK", "REST API", "WebSocket", "Docker"];
 
 const screenshots = [
-  { img: campaignImg, title: "Campaign Builder", desc: "Create bulk SMS campaigns with message templates, recipient lists, and scheduling." },
-  { img: contactsImg, title: "Contacts Management", desc: "Import contacts via CSV, organize with tags and filters, and build targeted lists." },
-  { img: automationImg, title: "Device Management", desc: "Monitor connected Android devices, track messages sent per device, and configure automation rules." },
-  { img: analyticsImg, title: "Analytics & Reporting", desc: "Track delivery rates (98.2%), messages sent/failed/received, and device performance over time." },
+  { img: campaignImg, title: "Campaigns", desc: "Track total campaigns, active and scheduled status, device capacity, and estimated sending speed." },
+  { img: contactsImg, title: "Contacts Book", desc: "Manage your contact database with import, search, and CSV upload — organized by name, phone, email, and country." },
+  { img: automationImg, title: "Keyword Automations", desc: "Set up keyword-based rules to auto-reply, opt-out contacts, or tag inbound messages automatically." },
+  { img: analyticsImg, title: "QR Mobile Login", desc: "Scan a QR code from the FlowSMS Android app to instantly connect your phone as an SMS gateway device." },
 ];
 
 const CaseStudyFlowSMS = () => {
