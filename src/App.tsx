@@ -11,6 +11,7 @@ import CaseStudyMobile from "./pages/CaseStudyMobile";
 import CaseStudyWebsite from "./pages/CaseStudyWebsite";
 import OfferPage from "./pages/OfferPage";
 import PortfolioPage from "./pages/PortfolioPage";
+import CaseStudyFlowSMS from "./pages/CaseStudyFlowSMS";
 
 const queryClient = new QueryClient();
 
