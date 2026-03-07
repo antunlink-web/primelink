@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -10,20 +10,7 @@ const Header = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  const [workOpen, setWorkOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileWorkOpen, setMobileWorkOpen] = useState(false);
-  const workRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (workRef.current && !workRef.current.contains(e.target as Node)) {
-        setWorkOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   const handleNavClick = (sectionId: string) => {
     setMobileOpen(false);
