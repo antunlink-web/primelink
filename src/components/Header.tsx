@@ -63,18 +63,8 @@ const Header = () => {
         <nav className="hidden md:flex items-center space-x-8">
           <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('services'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.services')}</a>
           <a href="#about" onClick={(e) => { e.preventDefault(); handleNavClick('about'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.about')}</a>
-          <div className="relative" ref={workRef}>
-            <button onClick={() => setWorkOpen(!workOpen)} className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
-              {t('nav.work')}
-              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${workOpen ? 'rotate-180' : ''}`} />
-            </button>
-            {workOpen && (
-              <div className="absolute top-full left-0 mt-2 w-44 rounded-lg border border-border bg-card shadow-lg z-50 py-1">
-                <a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); setWorkOpen(false); }} className="block px-4 py-2.5 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">{t('nav.portfolio')}</a>
-                <a href="/case-studies" onClick={(e) => { e.preventDefault(); navigate('/case-studies'); setWorkOpen(false); }} className="block px-4 py-2.5 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">{t('nav.caseStudies')}</a>
-              </div>
-            )}
-          </div>
+          <a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.portfolio')}</a>
+          <a href="/case-studies" onClick={(e) => { e.preventDefault(); navigate('/case-studies'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.caseStudies')}</a>
           <a href="/ponuda" onClick={(e) => { e.preventDefault(); navigate('/ponuda'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.offer')}</a>
           <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.contact')}</a>
         </nav>
@@ -93,18 +83,8 @@ const Header = () => {
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-1">
             <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('services'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.services')}</a>
             <a href="#about" onClick={(e) => { e.preventDefault(); handleNavClick('about'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.about')}</a>
-            <div>
-              <button onClick={() => setMobileWorkOpen(!mobileWorkOpen)} className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary w-full">
-                {t('nav.work')}
-                <ChevronDown className={`h-4 w-4 transition-transform ${mobileWorkOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {mobileWorkOpen && (
-                <div className="pl-4 flex flex-col space-y-1 mt-1">
-                  <a href="/portfolio" onClick={(e) => { e.preventDefault(); handlePageNav('/portfolio'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">{t('nav.portfolio')}</a>
-                  <a href="/case-studies" onClick={(e) => { e.preventDefault(); handlePageNav('/case-studies'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">{t('nav.caseStudies')}</a>
-                </div>
-              )}
-            </div>
+            <a href="/portfolio" onClick={(e) => { e.preventDefault(); handlePageNav('/portfolio'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.portfolio')}</a>
+            <a href="/case-studies" onClick={(e) => { e.preventDefault(); handlePageNav('/case-studies'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.caseStudies')}</a>
             <a href="/ponuda" onClick={(e) => { e.preventDefault(); handlePageNav('/ponuda'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.offer')}</a>
             <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.contact')}</a>
             <Button className="w-full mt-3" onClick={() => handleNavClick('contact')}>{t('hero.getStarted')}</Button>
