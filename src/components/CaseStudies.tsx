@@ -49,6 +49,19 @@ const CaseStudies = () => {
       tags: ["High-Traffic", "Global", "Scale"],
       link: "/case-study/global-website",
     },
+    {
+      clientKey: "caseStudies.flowsms.client",
+      industryKey: "caseStudies.flowsms.industry",
+      titleKey: "caseStudies.flowsms.title",
+      descriptionKey: "caseStudies.flowsms.description",
+      results: [
+        { metricKey: "caseStudies.flowsms.metric1", labelKey: "caseStudies.flowsms.label1" },
+        { metricKey: "caseStudies.flowsms.metric2", labelKey: "caseStudies.flowsms.label2" },
+        { metricKey: "caseStudies.flowsms.metric3", labelKey: "caseStudies.flowsms.label3" },
+      ],
+      tags: ["SaaS", "Android", "SMS"],
+      link: "/case-study/flowsms",
+    },
   ];
 
   return (
