@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Zap, BarChart3, Users, Send, Timer, TrendingUp } from "lucide-react";
+import { ArrowLeft, Zap, BarChart3, Users, Send, Timer, TrendingUp, MessageSquare, Settings, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -18,25 +18,22 @@ const metrics = [
   { icon: Zap, value: "60%+", label: "Operational Efficiency Gain" },
 ];
 
-const features = [
-  "Contact management with tags, segments, and import/export",
-  "Bulk SMS campaigns with scheduling and personalization",
-  "Automation workflows triggered by events or schedules",
-  "Real-time campaign tracking and delivery analytics",
-  "Team collaboration with role-based access",
-  "Conversation view for two-way SMS communication",
+const featureCards = [
+  { icon: Users, title: "Contact Management", desc: "Import, tag, segment, and organize contacts with smart filters." },
+  { icon: Send, title: "Bulk SMS Campaigns", desc: "Schedule and send personalized campaigns to targeted audiences." },
+  { icon: Settings, title: "Automation Workflows", desc: "Trigger automated sequences based on events or schedules." },
+  { icon: BarChart3, title: "Campaign Analytics", desc: "Track delivery rates, engagement, and performance in real time." },
+  { icon: MessageSquare, title: "Two-Way Messaging", desc: "View and respond to SMS conversations in a unified inbox." },
+  { icon: Shield, title: "Team Collaboration", desc: "Role-based access and shared workspace for your team." },
 ];
 
-const techStack = [
-  "React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "REST API", "Twilio", "Docker",
-];
+const techStack = ["React", "TypeScript", "Node.js", "PostgreSQL", "Redis", "REST API", "Twilio", "Docker"];
 
 const screenshots = [
-  { img: dashboardImg, title: "Dashboard Overview", desc: "Real-time overview of campaigns, contacts, and messaging activity." },
-  { img: campaignImg, title: "Campaign Builder", desc: "Create and schedule bulk SMS campaigns with audience targeting." },
-  { img: contactsImg, title: "Contacts Management", desc: "Organize contacts with tags, segments, and smart filters." },
-  { img: automationImg, title: "Automation Workflows", desc: "Build automated messaging sequences triggered by events." },
-  { img: analyticsImg, title: "Analytics Dashboard", desc: "Track delivery rates, engagement, and campaign performance." },
+  { img: campaignImg, title: "Campaign Builder", desc: "Create and schedule bulk SMS campaigns with audience targeting and personalization." },
+  { img: contactsImg, title: "Contacts Management", desc: "Organize your entire contact database with tags, segments, and smart filters." },
+  { img: automationImg, title: "Automation Workflows", desc: "Build automated messaging sequences triggered by user events or schedules." },
+  { img: analyticsImg, title: "Analytics Dashboard", desc: "Monitor delivery rates, engagement metrics, and campaign performance." },
 ];
 
 const CaseStudyFlowSMS = () => {
@@ -46,8 +43,8 @@ const CaseStudyFlowSMS = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
+      {/* ── HERO ── */}
+      <section className="pt-32 pb-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-[var(--gradient-mesh)]" />
         <div className="container mx-auto px-4 relative z-10">
           <Button
@@ -59,7 +56,7 @@ const CaseStudyFlowSMS = () => {
             Back to Portfolio
           </Button>
 
-          <div className="max-w-4xl mx-auto text-center mb-12">
+          <div className="max-w-4xl mx-auto text-center mb-14">
             <Badge className="mb-6 px-4 py-1.5 bg-primary/10 text-primary border-primary/20">
               SaaS Platform
             </Badge>
@@ -70,57 +67,92 @@ const CaseStudyFlowSMS = () => {
               A scalable messaging platform that allows businesses to manage contacts, run bulk SMS campaigns, and automate communication workflows.
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* Hero screenshot */}
-          <div className="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-xl)]">
-            <img src={dashboardImg} alt="FlowSMS Dashboard" className="w-full" />
+      {/* ── LARGE DASHBOARD SCREENSHOT ── */}
+      <section className="pb-24">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-xl)]">
+            <img src={dashboardImg} alt="FlowSMS Dashboard" className="w-full block" />
           </div>
         </div>
       </section>
 
-      {/* Overview */}
+      {/* ── OVERVIEW ── */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Project Overview</h2>
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Project Overview</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              All SMS operations in one platform
+            </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              FlowSMS was built to help companies manage high-volume SMS communication in one unified platform. Instead of juggling spreadsheets, multiple tools, and manual workflows, businesses can now centralize their entire messaging operation — from contact management to campaign analytics — in a single, intuitive interface designed for speed and scale.
+              FlowSMS was built to help companies manage high-volume SMS communication in one unified platform — from contact management and campaign scheduling to real-time analytics — replacing fragmented tools and manual workflows with a single, intuitive interface designed for speed and scale.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Challenge */}
+      {/* ── CHALLENGE / SOLUTION — TWO COLUMNS ── */}
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <Badge className="mb-4 px-3 py-1 bg-destructive/10 text-destructive border-destructive/20">
-              The Challenge
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Fragmented tools, manual processes</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Businesses sending SMS campaigns often rely on fragmented tools, spreadsheets, or manual workflows. Contact lists live in one place, campaign scheduling in another, and there's no unified view of delivery or engagement metrics. This leads to wasted time, missed messages, and zero visibility into what's working. Teams need a platform that brings everything together — without the complexity.
-            </p>
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+            {/* Challenge */}
+            <div className="p-8 md:p-10 rounded-2xl bg-card border border-border">
+              <Badge className="mb-5 px-3 py-1 bg-destructive/10 text-destructive border-destructive/20">
+                The Challenge
+              </Badge>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Fragmented tools &amp; manual processes</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Businesses sending SMS campaigns rely on scattered spreadsheets, disconnected tools, and manual workflows. Contact lists live in one place, campaign scheduling in another, and there's no unified view of delivery or engagement — leading to wasted time, missed messages, and zero visibility into performance.
+              </p>
+            </div>
+
+            {/* Solution */}
+            <div className="p-8 md:p-10 rounded-2xl bg-card border border-border">
+              <Badge className="mb-5 px-3 py-1 bg-accent/10 text-accent border-accent/20">
+                The Solution
+              </Badge>
+              <h3 className="text-2xl font-bold text-foreground mb-4">One platform for everything SMS</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                FlowSMS centralizes every aspect of business messaging — contact management, bulk SMS campaigns, automation workflows, campaign tracking, and team collaboration — into a single, powerful platform that replaces complexity with clarity.
+              </p>
+            </div>
+          </div>
+
+          {/* Tech stack */}
+          <div className="max-w-5xl mx-auto mt-10 flex flex-wrap items-center gap-2 justify-center">
+            <span className="text-sm text-muted-foreground mr-2">Built with:</span>
+            {techStack.map((t) => (
+              <Badge key={t} variant="secondary" className="px-3 py-1 text-xs bg-secondary text-secondary-foreground border-border">
+                {t}
+              </Badge>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Solution */}
+      {/* ── FEATURES — CARD GRID ── */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <Badge className="mb-4 px-3 py-1 bg-accent/10 text-accent border-accent/20">
-              The Solution
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">One platform for all SMS operations</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              FlowSMS centralizes every aspect of business SMS communication into a single, powerful platform:
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              {features.map((f, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border">
-                  <Zap className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                  <span className="text-foreground">{f}</span>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Key Features</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">Everything you need for SMS at scale</h2>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {featureCards.map((f, i) => (
+                <div
+                  key={i}
+                  className="p-6 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-[var(--shadow-hover)] transition-all duration-300"
+                >
+                  <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <f.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{f.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
                 </div>
               ))}
             </div>
@@ -128,42 +160,24 @@ const CaseStudyFlowSMS = () => {
         </div>
       </section>
 
-      {/* Tech Stack */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">Technology Stack</h3>
-            <div className="flex flex-wrap gap-2">
-              {techStack.map((t) => (
-                <Badge key={t} variant="secondary" className="px-3 py-1.5 text-sm bg-secondary text-secondary-foreground border-border">
-                  {t}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Product Screenshots */}
+      {/* ── PRODUCT SCREENSHOTS ── */}
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <Badge className="mb-4 px-3 py-1 bg-primary/10 text-primary border-primary/20">
-                Product Interface
-              </Badge>
+              <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Product Interface</p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">Built for speed and clarity</h2>
             </div>
 
-            <div className="space-y-20">
+            <div className="space-y-16">
               {screenshots.map((s, i) => (
-                <div key={i} className="space-y-4">
-                  <div className="max-w-2xl">
-                    <h3 className="text-2xl font-bold text-foreground mb-2">{s.title}</h3>
-                    <p className="text-muted-foreground">{s.desc}</p>
+                <div key={i}>
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-foreground mb-1">{s.title}</h3>
+                    <p className="text-muted-foreground text-sm">{s.desc}</p>
                   </div>
                   <div className="rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-hover)] transition-shadow duration-300">
-                    <img src={s.img} alt={s.title} className="w-full" />
+                    <img src={s.img} alt={s.title} className="w-full block" />
                   </div>
                 </div>
               ))}
@@ -172,18 +186,21 @@ const CaseStudyFlowSMS = () => {
         </div>
       </section>
 
-      {/* Results / Metrics */}
+      {/* ── RESULTS — METRICS ── */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 px-3 py-1 bg-accent/10 text-accent border-accent/20">
-              Results
-            </Badge>
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Results</p>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12">Measurable impact</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {metrics.map((m, i) => (
-                <div key={i} className="p-6 rounded-2xl bg-card border border-border text-center hover:shadow-[var(--shadow-hover)] transition-shadow duration-300">
-                  <m.icon className="h-8 w-8 text-primary mx-auto mb-4" />
+                <div
+                  key={i}
+                  className="p-6 rounded-2xl bg-card border border-border text-center hover:border-primary/30 hover:shadow-[var(--shadow-hover)] transition-all duration-300"
+                >
+                  <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <m.icon className="h-6 w-6 text-primary" />
+                  </div>
                   <div className="text-3xl font-bold text-foreground mb-1">{m.value}</div>
                   <div className="text-sm text-muted-foreground">{m.label}</div>
                 </div>
@@ -193,7 +210,7 @@ const CaseStudyFlowSMS = () => {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── CTA ── */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-[var(--gradient-mesh)]" />
         <div className="container mx-auto px-4 relative z-10">
@@ -207,7 +224,7 @@ const CaseStudyFlowSMS = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 h-12 text-base"
                 onClick={() => navigate("/#contact")}
               >
                 Start a Project
@@ -215,7 +232,7 @@ const CaseStudyFlowSMS = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-border hover:bg-secondary px-8"
+                className="border-border hover:bg-secondary px-8 h-12 text-base"
                 onClick={() => navigate("/#contact")}
               >
                 Book Consultation
