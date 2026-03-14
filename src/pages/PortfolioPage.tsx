@@ -12,6 +12,7 @@ import poslovniregistarImg from "@/assets/projects/poslovniregistar.png";
 import careflowImg from "@/assets/projects/careflow.png";
 import flowcallImg from "@/assets/projects/flowcall.png";
 import lajtImg from "@/assets/projects/lajt.png";
+import flowsmsImg from "@/assets/projects/flowsms.png";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
