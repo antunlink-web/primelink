@@ -357,6 +357,10 @@
     "lajt": {
       "description": "Stalni sudski tumač za engleski i ruski jezik u Zagrebu — ovjereni prijevodi diploma, uvjerenja, ugovora i pravnih dokumenata.",
       "industry": "Pravne usluge"
+    },
+    "flowsms": {
+      "description": "Platforma za masovno slanje SMS-ova putem Android uređaja — bez ograničenja i bez naknade po poruci.",
+      "industry": "Komunikacije & SaaS"
     }
   }
 }

@@ -357,6 +357,10 @@
     "lajt": {
       "description": "Certified court translator for English and Russian in Zagreb — official translations of diplomas, certificates, contracts, and legal documents.",
       "industry": "Legal Services"
+    },
+    "flowsms": {
+      "description": "Android-based SMS sending platform — send unlimited SMS using real phones with SIM/eSIM, no per-message fees.",
+      "industry": "Communication & SaaS"
     }
   }
 }
