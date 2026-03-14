@@ -210,20 +210,23 @@ const PortfolioPage = () => {
 
       {/* CLIENT TRUST */}
       <section className="py-20 border-t border-border">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
+        <div className="container mx-auto px-4 max-w-5xl text-center">
           <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-10">
             {t('portfolio.trustTitle')}
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-50">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="h-10 rounded-lg bg-secondary/50 border border-border/30 flex items-center justify-center"
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
+            {projectsData.map((project) => (
+              <a
+                key={project.id}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-12 rounded-lg bg-secondary/50 border border-border/30 flex items-center justify-center px-4 opacity-60 hover:opacity-100 hover:border-primary/30 transition-all duration-300"
               >
-                <span className="text-xs text-muted-foreground font-medium">
-                  {t('portfolio.clientPlaceholder')} {i}
+                <span className="text-sm text-muted-foreground font-medium whitespace-nowrap">
+                  {project.name}
                 </span>
-              </div>
+              </a>
             ))}
           </div>
         </div>
