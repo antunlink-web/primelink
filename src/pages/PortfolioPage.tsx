@@ -67,6 +67,16 @@ const projectsData = [
     image: lajtImg,
     category: ["web"] as FilterCategory[],
   },
+  {
+    id: "flowsms",
+    name: "FlowSMS.eu",
+    url: "https://flowsms.eu",
+    descKey: "portfolio.flowsms.description",
+    industryKey: "portfolio.flowsms.industry",
+    tags: ["React", "Android SDK", "Node.js", "PostgreSQL"],
+    image: flowsmsImg,
+    category: ["saas", "integrations"] as FilterCategory[],
+  },
 ];
 
 const filters: { key: FilterCategory; labelKey: string }[] = [
