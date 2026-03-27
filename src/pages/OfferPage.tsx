@@ -90,7 +90,7 @@ const OfferPage = () => {
               <CardContent className="p-8 flex flex-col flex-1">
                 <h3 className="text-2xl font-bold text-foreground mb-2">Starter</h3>
                 <div className="mb-6">
-                  <span className="text-4xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">149€</span>
+                    <span className="text-4xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">199€</span>
                   <span className="text-muted-foreground ml-1">{t('offer.pricePerYear')}</span>
                   <p className="text-xs text-muted-foreground mt-1">{t('offer.plusVat')}</p>
                 </div>
@@ -115,7 +115,7 @@ const OfferPage = () => {
                   <Badge className="bg-primary/20 text-primary border-primary/30">{t('offer.popular')}</Badge>
                 </div>
                 <div className="mb-6">
-                  <span className="text-4xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">299€</span>
+                    <span className="text-4xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">399€</span>
                   <span className="text-muted-foreground ml-1">{t('offer.pricePerYear')}</span>
                   <p className="text-xs text-muted-foreground mt-1">{t('offer.plusVat')}</p>
                 </div>
