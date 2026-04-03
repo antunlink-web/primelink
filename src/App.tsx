@@ -6,14 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollToTop } from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import CaseStudiesPage from "./pages/CaseStudiesPage";
-import CaseStudyMedical from "./pages/CaseStudyMedical";
-import CaseStudyMobile from "./pages/CaseStudyMobile";
-import CaseStudyWebsite from "./pages/CaseStudyWebsite";
 import OfferPage from "./pages/OfferPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import QuoteFormPage from "./pages/QuoteFormPage";
-import CaseStudyFlowSMS from "./pages/CaseStudyFlowSMS";
 
 const queryClient = new QueryClient();
 
