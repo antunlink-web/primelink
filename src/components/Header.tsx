@@ -50,7 +50,7 @@ const Header = () => {
           <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('services'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.services')}</a>
           <a href="#about" onClick={(e) => { e.preventDefault(); handleNavClick('about'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.about')}</a>
           <a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.portfolio')}</a>
-          <a href="/case-studies" onClick={(e) => { e.preventDefault(); navigate('/case-studies'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.caseStudies')}</a>
+          
           <a href="/ponuda" onClick={(e) => { e.preventDefault(); navigate('/ponuda'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.offer')}</a>
           <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.contact')}</a>
         </nav>
