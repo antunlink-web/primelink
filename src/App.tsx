@@ -6,14 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollToTop } from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import CaseStudiesPage from "./pages/CaseStudiesPage";
-import CaseStudyMedical from "./pages/CaseStudyMedical";
-import CaseStudyMobile from "./pages/CaseStudyMobile";
-import CaseStudyWebsite from "./pages/CaseStudyWebsite";
 import OfferPage from "./pages/OfferPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import QuoteFormPage from "./pages/QuoteFormPage";
-import CaseStudyFlowSMS from "./pages/CaseStudyFlowSMS";
 
 const queryClient = new QueryClient();
 
@@ -29,11 +24,7 @@ const App = () => (
           <Route path="/ponuda" element={<OfferPage />} />
           <Route path="/ponuda/forma" element={<QuoteFormPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/case-studies" element={<CaseStudiesPage />} />
-          <Route path="/case-study/medical-elearning" element={<CaseStudyMedical />} />
-          <Route path="/case-study/mobile-operator" element={<CaseStudyMobile />} />
-          <Route path="/case-study/global-website" element={<CaseStudyWebsite />} />
-          <Route path="/case-study/flowsms" element={<CaseStudyFlowSMS />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

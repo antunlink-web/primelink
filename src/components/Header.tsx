@@ -50,7 +50,7 @@ const Header = () => {
           <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('services'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.services')}</a>
           <a href="#about" onClick={(e) => { e.preventDefault(); handleNavClick('about'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.about')}</a>
           <a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.portfolio')}</a>
-          <a href="/case-studies" onClick={(e) => { e.preventDefault(); navigate('/case-studies'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.caseStudies')}</a>
+          
           <a href="/ponuda" onClick={(e) => { e.preventDefault(); navigate('/ponuda'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.offer')}</a>
           <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.contact')}</a>
         </nav>
@@ -70,7 +70,7 @@ const Header = () => {
             <a href="#services" onClick={(e) => { e.preventDefault(); handleNavClick('services'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.services')}</a>
             <a href="#about" onClick={(e) => { e.preventDefault(); handleNavClick('about'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.about')}</a>
             <a href="/portfolio" onClick={(e) => { e.preventDefault(); handlePageNav('/portfolio'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.portfolio')}</a>
-            <a href="/case-studies" onClick={(e) => { e.preventDefault(); handlePageNav('/case-studies'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.caseStudies')}</a>
+            
             <a href="/ponuda" onClick={(e) => { e.preventDefault(); handlePageNav('/ponuda'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.offer')}</a>
             <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.contact')}</a>
             <Button className="w-full mt-3" onClick={() => handleNavClick('contact')}>{t('hero.getStarted')}</Button>
