@@ -167,10 +167,10 @@ const QuoteFormPage = () => {
             <p className="text-lg text-muted-foreground mb-8">
               Javit ćemo vam se u najkraćem mogućem roku s prijedlogom rješenja.
             </p>
-            <div className="flex items-center justify-center gap-2 text-muted-foreground">
+            <a href="tel:+385915122888" className="flex items-center justify-center gap-2 text-muted-foreground hover:text-primary transition-colors">
               <Phone className="h-4 w-4 text-primary" />
-              <span>U međuvremenu nas možete nazvati: +385 99 123 4567</span>
-            </div>
+              <span>U međuvremenu nas možete nazvati: +385 91 512 2888</span>
+            </a>
           </div>
         </section>
         <Footer />
