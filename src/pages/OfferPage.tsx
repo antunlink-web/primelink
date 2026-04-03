@@ -13,10 +13,7 @@ const OfferPage = () => {
   const { t } = useTranslation();
 
   const handleContact = () => {
-    navigate('/');
-    setTimeout(() => {
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    navigate('/ponuda/forma');
   };
 
   const scrollToPackages = () => {

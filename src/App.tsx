@@ -12,6 +12,7 @@ import CaseStudyMobile from "./pages/CaseStudyMobile";
 import CaseStudyWebsite from "./pages/CaseStudyWebsite";
 import OfferPage from "./pages/OfferPage";
 import PortfolioPage from "./pages/PortfolioPage";
+import QuoteFormPage from "./pages/QuoteFormPage";
 import CaseStudyFlowSMS from "./pages/CaseStudyFlowSMS";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/ponuda" element={<OfferPage />} />
+          <Route path="/ponuda/forma" element={<QuoteFormPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-study/medical-elearning" element={<CaseStudyMedical />} />
