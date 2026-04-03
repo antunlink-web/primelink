@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Check, Shield, Zap, Smartphone, Wrench, Rocket, ShoppingCart, CalendarCheck, Code, Send, FileText, Globe2, Star } from "lucide-react";
+import { Check, Shield, Zap, Smartphone, Wrench, Rocket, ShoppingCart, CalendarCheck, Code, Send, Globe2, Star, Target, Briefcase, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -38,23 +38,8 @@ const OfferPage = () => {
             {t('offer.heroSubtitle2')}
           </p>
 
-          {/* Trust badges */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
-            {[
-              { icon: Zap, text: t('offer.trustFast') },
-              { icon: Smartphone, text: t('offer.trustMobile') },
-              { icon: Shield, text: t('offer.trustSecure') },
-              { icon: Wrench, text: t('offer.trustSupport') },
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 bg-secondary/50 border border-border rounded-full px-4 py-2 text-sm text-muted-foreground">
-                <item.icon className="h-4 w-4 text-primary" />
-                <span>{item.text}</span>
-              </div>
-            ))}
-          </div>
-
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <Button size="lg" className="text-lg px-8 py-6 h-auto" onClick={handleContact}>
               {t('offer.ctaStart')}
             </Button>
@@ -63,18 +48,18 @@ const OfferPage = () => {
             </Button>
           </div>
 
-          {/* Credibility line */}
+          {/* Trust line */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1.5"><Star className="h-4 w-4 text-primary" /> {t('offer.cred1')}</span>
-            <span className="flex items-center gap-1.5"><Rocket className="h-4 w-4 text-primary" /> {t('offer.cred2')}</span>
-            <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-primary" /> {t('offer.cred3')}</span>
+            <span className="flex items-center gap-1.5"><Zap className="h-4 w-4 text-primary" /> {t('offer.cred1')}</span>
+            <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-primary" /> {t('offer.cred2')}</span>
+            <span className="flex items-center gap-1.5"><Rocket className="h-4 w-4 text-primary" /> {t('offer.cred3')}</span>
           </div>
         </div>
       </section>
 
       {/* 2. PRICING PACKAGES */}
       <section id="packages" className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4 max-w-5xl">
+        <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
               {t('offer.packagesTitle')}
@@ -84,13 +69,13 @@ const OfferPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Starter */}
             <Card className="bg-card border-border hover:border-primary/20 transition-all hover:shadow-[var(--shadow-hover)] flex flex-col">
               <CardContent className="p-8 flex flex-col flex-1">
                 <h3 className="text-2xl font-bold text-foreground mb-2">Starter</h3>
                 <div className="mb-6">
-                    <span className="text-4xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">199€</span>
+                  <span className="text-4xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">199€</span>
                   <span className="text-muted-foreground ml-1">{t('offer.pricePerYear')}</span>
                   <p className="text-xs text-muted-foreground mt-1">{t('offer.plusVat')}</p>
                 </div>
@@ -106,7 +91,7 @@ const OfferPage = () => {
               </CardContent>
             </Card>
 
-            {/* Business - highlighted */}
+            {/* Business */}
             <Card className="relative bg-card border-primary/40 shadow-[var(--shadow-glow-strong)] hover:shadow-[var(--shadow-glow-strong)] flex flex-col scale-[1.02]">
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent" />
               <CardContent className="p-8 flex flex-col flex-1">
@@ -115,7 +100,7 @@ const OfferPage = () => {
                   <Badge className="bg-primary/20 text-primary border-primary/30">{t('offer.popular')}</Badge>
                 </div>
                 <div className="mb-6">
-                    <span className="text-4xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">399€</span>
+                  <span className="text-4xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">399€</span>
                   <span className="text-muted-foreground ml-1">{t('offer.pricePerYear')}</span>
                   <p className="text-xs text-muted-foreground mt-1">{t('offer.plusVat')}</p>
                 </div>
@@ -150,6 +135,27 @@ const OfferPage = () => {
                 <Button variant="outline" className="w-full border-accent/30 hover:bg-accent/10" onClick={handleContact}>{t('offer.contactUs')}</Button>
               </CardContent>
             </Card>
+
+            {/* Web + Klijenti - highlighted upsell */}
+            <Card className="relative bg-card border-accent/40 shadow-[0_0_30px_-5px_hsl(var(--accent)/0.3)] hover:shadow-[0_0_40px_-5px_hsl(var(--accent)/0.4)] flex flex-col transition-all">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent to-primary" />
+              <CardContent className="p-8 flex flex-col flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-2xl font-bold text-foreground">{t('offer.clientsCardTitle')}</h3>
+                  <Badge className="bg-accent/20 text-accent border-accent/30">{t('offer.recommended')}</Badge>
+                </div>
+                <p className="text-sm text-muted-foreground mb-6">{t('offer.clientsCardDesc')}</p>
+                <ul className="space-y-3 mb-8 flex-1">
+                  {(['clientsF1','clientsF2','clientsF3','clientsF4'] as const).map((key) => (
+                    <li key={key} className="flex items-center gap-2 text-muted-foreground">
+                      <Check className="h-4 w-4 text-accent flex-shrink-0" />
+                      <span>{t(`offer.${key}`)}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" onClick={handleContact}>{t('offer.ctaStart')}</Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -167,7 +173,7 @@ const OfferPage = () => {
             {[
               { icon: Send, step: "1", title: t('offer.step1Title'), desc: t('offer.step1Desc') },
               { icon: Code, step: "2", title: t('offer.step2Title'), desc: t('offer.step2Desc') },
-              { icon: Globe2, step: "3", title: t('offer.step3Title'), desc: t('offer.step3Desc') },
+              { icon: Users, step: "3", title: t('offer.step3Title'), desc: t('offer.step3Desc') },
             ].map((item, i) => (
               <div key={i} className="text-center">
                 <div className="w-14 h-14 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
@@ -195,10 +201,10 @@ const OfferPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { icon: Zap, title: t('offer.speedTitle'), desc: t('offer.speedDesc') },
-              { icon: Smartphone, title: t('offer.mobileTitle'), desc: t('offer.mobileDesc') },
-              { icon: Wrench, title: t('offer.noWorryTitle'), desc: t('offer.noWorryDesc') },
-              { icon: Rocket, title: t('offer.turnkeyTitle'), desc: t('offer.turnkeyDesc') },
+              { icon: Target, title: t('offer.speedTitle'), desc: t('offer.speedDesc') },
+              { icon: Shield, title: t('offer.mobileTitle'), desc: t('offer.mobileDesc') },
+              { icon: Zap, title: t('offer.noWorryTitle'), desc: t('offer.noWorryDesc') },
+              { icon: Briefcase, title: t('offer.turnkeyTitle'), desc: t('offer.turnkeyDesc') },
             ].map((item, i) => (
               <Card key={i} className="bg-card border-border hover:border-primary/30 transition-all hover:shadow-[var(--shadow-hover)]">
                 <CardContent className="p-6 flex items-start gap-4">
@@ -216,33 +222,18 @@ const OfferPage = () => {
         </div>
       </section>
 
-      {/* 5. EXPANDED SERVICES */}
+      {/* 5. WANT CLIENTS SECTION */}
       <section className="py-20">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
             {t('offer.moreTitle')}
           </h2>
-          <p className="text-lg text-muted-foreground mb-10">
+          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
             {t('offer.moreDesc')}
           </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-            {[
-              { icon: ShoppingCart, title: t('offer.webShops'), desc: t('offer.webShopsDesc') },
-              { icon: CalendarCheck, title: t('offer.bookingSystems'), desc: t('offer.bookingDesc') },
-              { icon: Code, title: t('offer.customApps'), desc: t('offer.customAppsDesc') },
-            ].map((item, i) => (
-              <Card key={i} className="bg-card border-border hover:border-accent/30 transition-all hover:shadow-[var(--shadow-hover)]">
-                <CardContent className="p-8 flex flex-col items-center gap-3">
-                  <div className="h-14 w-14 rounded-xl bg-accent/10 flex items-center justify-center">
-                    <item.icon className="h-7 w-7 text-accent" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <Button size="lg" className="text-lg px-10 py-6 h-auto" onClick={handleContact}>
+            {t('offer.ctaStart')}
+          </Button>
         </div>
       </section>
 
@@ -256,7 +247,7 @@ const OfferPage = () => {
           </div>
 
           <Accordion type="single" collapsible className="space-y-3">
-            {[1,2,3,4].map((i) => (
+            {[1,2,3,4,5,6].map((i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-lg bg-card px-4">
                 <AccordionTrigger className="text-foreground hover:no-underline">
                   {t(`offer.faq${i}Q`)}
@@ -281,7 +272,7 @@ const OfferPage = () => {
               {t('offer.ctaStart')}
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-10 py-6 h-auto border-primary/30 hover:bg-primary/10" onClick={handleContact}>
-              {t('offer.contactUs')}
+              {t('offer.finalCtaCall')}
             </Button>
           </div>
         </div>
