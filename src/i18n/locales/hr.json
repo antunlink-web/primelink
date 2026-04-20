@@ -373,6 +373,10 @@
     "flowsms": {
       "description": "Platforma za masovno slanje SMS-ova putem Android uređaja — bez ograničenja i bez naknade po poruci.",
       "industry": "Komunikacije & SaaS"
+    },
+    "textro": {
+      "description": "SMS API za developere — pošaljite SMS putem jednostavnog REST API-ja, bez vlastite infrastrukture.",
+      "industry": "Developer API & SaaS"
     }
   }
 }
