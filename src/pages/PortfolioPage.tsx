@@ -13,6 +13,7 @@ import careflowImg from "@/assets/projects/careflow.png";
 import flowcallImg from "@/assets/projects/flowcall.png";
 import lajtImg from "@/assets/projects/lajt.png";
 import flowsmsImg from "@/assets/projects/flowsms.png";
+import textroImg from "@/assets/projects/textro.png";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
@@ -75,6 +76,16 @@ const projectsData = [
     industryKey: "portfolio.flowsms.industry",
     tags: ["React", "Android SDK", "Node.js", "PostgreSQL"],
     image: flowsmsImg,
+    category: ["saas", "integrations"] as FilterCategory[],
+  },
+  {
+    id: "textro",
+    name: "Textro.eu",
+    url: "https://textro.eu",
+    descKey: "portfolio.textro.description",
+    industryKey: "portfolio.textro.industry",
+    tags: ["React", "REST API", "Supabase", "Webhooks"],
+    image: textroImg,
     category: ["saas", "integrations"] as FilterCategory[],
   },
 ];

@@ -373,6 +373,10 @@
     "flowsms": {
       "description": "Android-based SMS sending platform — send unlimited SMS using real phones with SIM/eSIM, no per-message fees.",
       "industry": "Communication & SaaS"
+    },
+    "textro": {
+      "description": "Developer-first SMS API — send SMS via a simple REST API with webhooks and prepaid billing, no infrastructure required.",
+      "industry": "Developer API & SaaS"
     }
   }
 }
