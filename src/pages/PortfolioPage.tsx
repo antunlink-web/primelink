@@ -14,6 +14,8 @@ import flowcallImg from "@/assets/projects/flowcall.png";
 import lajtImg from "@/assets/projects/lajt.png";
 import flowsmsImg from "@/assets/projects/flowsms.png";
 import textroImg from "@/assets/projects/textro.png";
+import mojakartaImg from "@/assets/projects/mojakarta.png";
+import perksImg from "@/assets/projects/perks.png";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
@@ -87,6 +89,26 @@ const projectsData = [
     tags: ["React", "REST API", "Supabase", "Webhooks"],
     image: textroImg,
     category: ["saas", "integrations"] as FilterCategory[],
+  },
+  {
+    id: "mojakarta",
+    name: "Mojakarta.hr",
+    url: "https://mojakarta.hr",
+    descKey: "portfolio.mojakarta.description",
+    industryKey: "portfolio.mojakarta.industry",
+    tags: ["React", "Stripe", "Supabase", "QR"],
+    image: mojakartaImg,
+    category: ["saas", "web"] as FilterCategory[],
+  },
+  {
+    id: "perks",
+    name: "Perks.hr",
+    url: "https://perks.hr",
+    descKey: "portfolio.perks.description",
+    industryKey: "portfolio.perks.industry",
+    tags: ["React", "Node.js", "PostgreSQL", "i18n"],
+    image: perksImg,
+    category: ["saas", "web"] as FilterCategory[],
   },
 ];
 
