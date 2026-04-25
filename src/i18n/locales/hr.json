@@ -377,6 +377,14 @@
     "textro": {
       "description": "SMS API za developere — pošaljite SMS putem jednostavnog REST API-ja, bez vlastite infrastrukture.",
       "industry": "Developer API & SaaS"
+    },
+    "mojakarta": {
+      "description": "Platforma za prodaju ulaznica i organizaciju događaja — kreirajte stranicu događaja, prodajte ulaznice online i primajte uplate direktno.",
+      "industry": "Eventi & Ticketing"
+    },
+    "perks": {
+      "description": "Platforma za popuste i pogodnosti za zaposlenike — 300+ ekskluzivnih popusta i pokloni za više od 100.000 zaposlenika.",
+      "industry": "HR & Benefiti"
     }
   }
 }

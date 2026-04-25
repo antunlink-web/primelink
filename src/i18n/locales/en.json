@@ -377,6 +377,14 @@
     "textro": {
       "description": "Developer-first SMS API — send SMS via a simple REST API with webhooks and prepaid billing, no infrastructure required.",
       "industry": "Developer API & SaaS"
+    },
+    "mojakarta": {
+      "description": "Event ticketing platform — create an event page, sell tickets online and receive payments directly.",
+      "industry": "Events & Ticketing"
+    },
+    "perks": {
+      "description": "Employee perks and discounts platform — 300+ exclusive discounts and gift cards for over 100,000 employees.",
+      "industry": "HR & Benefits"
     }
   }
 }
