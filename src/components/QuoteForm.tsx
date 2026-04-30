@@ -899,47 +899,72 @@ const QuoteForm = () => {
                 />
               </div>
 
-              <div className="bg-secondary/30 border border-border rounded-xl p-4 mt-4">
-                <p className="text-sm text-muted-foreground">
-                  Na temelju vaših odgovora pripremit ćemo prijedlog rješenja za vaše poslovanje.
+              {/* Što slijedi */}
+              <div className="bg-secondary/30 border border-border rounded-xl p-5 mt-4 space-y-3">
+                <h3 className="text-base font-semibold text-foreground">
+                  Što slijedi nakon ovoga?
+                </h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex gap-2">
+                    <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    Pregledam vaše odgovore
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    Pripremim konkretan prijedlog
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    Javljam vam se (obično isti ili sljedeći dan)
+                  </li>
+                </ul>
+                <p className="text-sm text-foreground pt-1">
+                  Odgovaram osobno — bez generičkih ponuda.
                 </p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground pt-1">
+                  <Clock className="h-3.5 w-3.5 text-primary" />
+                  Obično odgovaram unutar 24h
+                </div>
               </div>
             </div>
           )}
 
           {/* Navigation */}
-          <div className="flex items-center justify-between mt-10 pt-6 border-t border-border">
-            {step > 1 ? (
-              <Button
-                variant="ghost"
-                onClick={goBack}
-                className="gap-2"
-              >
-                <ArrowLeft className="h-4 w-4" /> Nazad
-              </Button>
-            ) : (
-              <div />
-            )}
+          {step > 0 && (
+            <div className="flex items-center justify-between mt-10 pt-6 border-t border-border">
+              {step >= 1 ? (
+                <Button
+                  variant="ghost"
+                  onClick={goBack}
+                  className="gap-2"
+                >
+                  <ArrowLeft className="h-4 w-4" /> Nazad
+                </Button>
+              ) : (
+                <div />
+              )}
 
-            {step < TOTAL_STEPS ? (
-              <Button
-                onClick={goNext}
-                disabled={!canProceed()}
-                className="gap-2"
-              >
-                Dalje <ArrowRight className="h-4 w-4" />
-              </Button>
-            ) : (
-              <Button
-                onClick={handleSubmit}
-                disabled={!canProceed() || submitting}
-                className="gap-2"
-              >
-                <Send className="h-4 w-4" />
-                {submitting ? "Šaljem..." : "Pošalji upit"}
-              </Button>
-            )}
-          </div>
+              {step < TOTAL_STEPS ? (
+                <Button
+                  onClick={goNext}
+                  disabled={!canProceed()}
+                  className="gap-2"
+                >
+                  Dalje <ArrowRight className="h-4 w-4" />
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleSubmit}
+                  disabled={!canProceed() || submitting}
+                  size="lg"
+                  className="gap-2"
+                >
+                  <Send className="h-4 w-4" />
+                  {submitting ? "Šaljem..." : "Zatraži prijedlog"}
+                </Button>
+              )}
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
