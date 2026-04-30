@@ -217,7 +217,7 @@ const QuoteForm = () => {
     setStep((s) => {
       const prev = s - 1;
       if (prev === 2 && !hasFollowUp) return 1;
-      return Math.max(1, prev);
+      return Math.max(0, prev);
     });
   };
 
