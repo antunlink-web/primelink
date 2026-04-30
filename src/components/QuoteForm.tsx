@@ -22,6 +22,7 @@ type FormData = {
   timeline: string;
   budget: string;
   wantsClientHelp: string;
+  socialLinks: string;
   inspirationLinks: string;
   inspirationLikes: string[];
   name: string;
@@ -42,6 +43,7 @@ const initialData: FormData = {
   timeline: "",
   budget: "",
   wantsClientHelp: "",
+  socialLinks: "",
   inspirationLinks: "",
   inspirationLikes: [],
   name: "",
@@ -49,8 +51,8 @@ const initialData: FormData = {
   phone: "",
 };
 
-// Steps: 1=purpose, 2=follow-up (dynamic, may be skipped), 3=need, 4=business, 5=timeline/budget, 6=inspiration (optional), 7=summary, 8=contact
-const TOTAL_STEPS = 8;
+// Steps: 1=purpose, 2=follow-up (dynamic, may be skipped), 3=need, 4=business, 5=social/existing content (optional), 6=timeline/budget, 7=inspiration (optional), 8=summary, 9=contact
+const TOTAL_STEPS = 9;
 
 const PURPOSE_BOOKING = "Klijenti me često zovu — želim lakše naručivanje";
 const PURPOSE_LEADS = "Želim više upita putem weba";
