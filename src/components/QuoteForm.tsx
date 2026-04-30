@@ -179,8 +179,20 @@ const QuoteForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const update = (field: keyof FormData, value: string) =>
+  const update = <K extends keyof FormData>(field: K, value: FormData[K]) =>
     setData((prev) => ({ ...prev, [field]: value }));
+
+  const toggleInspirationLike = (label: string) => {
+    setData((prev) => {
+      const exists = prev.inspirationLikes.includes(label);
+      return {
+        ...prev,
+        inspirationLikes: exists
+          ? prev.inspirationLikes.filter((l) => l !== label)
+          : [...prev.inspirationLikes, label],
+      };
+    });
+  };
 
   const isHighValue = ["500€ – 1000€", "1000€+"].includes(data.budget);
   const wantsAds =
@@ -229,8 +241,10 @@ const QuoteForm = () => {
       case 5:
         return !!data.timeline && !!data.budget && !!data.wantsClientHelp;
       case 6:
-        return true;
+        return true; // inspiration is optional
       case 7:
+        return true; // recommendation summary
+      case 8:
         return (
           data.name.trim().length > 0 &&
           z.string().email().safeParse(data.email.trim()).success
@@ -259,6 +273,12 @@ const QuoteForm = () => {
       `Kada: ${data.timeline}`,
       `Budžet: ${data.budget}`,
       `Pomoć s klijentima: ${data.wantsClientHelp}`,
+      data.inspirationLinks.trim()
+        ? `Inspiracija (linkovi): ${data.inspirationLinks.trim()}`
+        : null,
+      data.inspirationLikes.length > 0
+        ? `Sviđa im se: ${data.inspirationLikes.join(", ")}`
+        : null,
       `---`,
       `Preporučeno rješenje:`,
       ...recommendations.map((r) => `• ${r.title} — ${r.description}`),
