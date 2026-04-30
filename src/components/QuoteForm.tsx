@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, ArrowLeft, ArrowRight, Send, Phone, Sparkles, Calendar, MessageSquare, ShoppingCart, Globe } from "lucide-react";
 import { toast } from "sonner";
@@ -21,6 +22,8 @@ type FormData = {
   timeline: string;
   budget: string;
   wantsClientHelp: string;
+  inspirationLinks: string;
+  inspirationLikes: string[];
   name: string;
   email: string;
   phone: string;
@@ -39,13 +42,15 @@ const initialData: FormData = {
   timeline: "",
   budget: "",
   wantsClientHelp: "",
+  inspirationLinks: "",
+  inspirationLikes: [],
   name: "",
   email: "",
   phone: "",
 };
 
-// Steps: 1=purpose, 2=follow-up (dynamic, may be skipped), 3=need, 4=business, 5=timeline/budget, 6=summary, 7=contact
-const TOTAL_STEPS = 7;
+// Steps: 1=purpose, 2=follow-up (dynamic, may be skipped), 3=need, 4=business, 5=timeline/budget, 6=inspiration (optional), 7=summary, 8=contact
+const TOTAL_STEPS = 8;
 
 const PURPOSE_BOOKING = "Klijenti me često zovu — želim lakše naručivanje";
 const PURPOSE_LEADS = "Želim više upita putem weba";
