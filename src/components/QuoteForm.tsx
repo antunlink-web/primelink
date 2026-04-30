@@ -803,9 +803,30 @@ const QuoteForm = () => {
           {/* STEP 8 — Recommendation summary */}
           {step === 8 && (
             <div className="space-y-6">
+              {/* Vaš odabir */}
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-3">Vaš odabir</h2>
+                <div className="rounded-xl border border-border bg-secondary/30 divide-y divide-border overflow-hidden">
+                  <div className="flex items-start gap-3 p-4">
+                    <span className="text-xs uppercase tracking-wide text-muted-foreground min-w-[90px] pt-0.5">Cilj</span>
+                    <span className="text-sm text-foreground">{data.purpose || "—"}</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-4">
+                    <span className="text-xs uppercase tracking-wide text-muted-foreground min-w-[90px] pt-0.5">Rješenje</span>
+                    <span className="text-sm text-foreground">{solutionType}</span>
+                  </div>
+                  {extraOptions.length > 0 && (
+                    <div className="flex items-start gap-3 p-4">
+                      <span className="text-xs uppercase tracking-wide text-muted-foreground min-w-[90px] pt-0.5">Dodatno</span>
+                      <span className="text-sm text-foreground">{extraOptions.join(" • ")}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-primary" />
-                <h2 className="text-2xl font-bold text-foreground">Preporučeno rješenje</h2>
+                <h3 className="text-xl font-bold text-foreground">Preporučeno rješenje</h3>
               </div>
               <p className="text-muted-foreground -mt-2">
                 Na temelju vaših odgovora, evo što bismo vam predložili:
