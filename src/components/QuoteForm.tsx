@@ -22,6 +22,7 @@ type FormData = {
   timeline: string;
   budget: string;
   wantsClientHelp: string;
+  socialLinks: string;
   inspirationLinks: string;
   inspirationLikes: string[];
   name: string;
@@ -42,6 +43,7 @@ const initialData: FormData = {
   timeline: "",
   budget: "",
   wantsClientHelp: "",
+  socialLinks: "",
   inspirationLinks: "",
   inspirationLikes: [],
   name: "",
@@ -49,8 +51,8 @@ const initialData: FormData = {
   phone: "",
 };
 
-// Steps: 1=purpose, 2=follow-up (dynamic, may be skipped), 3=need, 4=business, 5=timeline/budget, 6=inspiration (optional), 7=summary, 8=contact
-const TOTAL_STEPS = 8;
+// Steps: 1=purpose, 2=follow-up (dynamic, may be skipped), 3=need, 4=business, 5=social/existing content (optional), 6=timeline/budget, 7=inspiration (optional), 8=summary, 9=contact
+const TOTAL_STEPS = 9;
 
 const PURPOSE_BOOKING = "Klijenti me često zovu — želim lakše naručivanje";
 const PURPOSE_LEADS = "Želim više upita putem weba";
@@ -239,12 +241,14 @@ const QuoteForm = () => {
           (data.hasWebsite !== "Da" || data.websiteUrl.trim().length > 0)
         );
       case 5:
-        return !!data.timeline && !!data.budget && !!data.wantsClientHelp;
+        return true; // social/existing content is optional
       case 6:
-        return true; // inspiration is optional
+        return !!data.timeline && !!data.budget && !!data.wantsClientHelp;
       case 7:
-        return true; // recommendation summary
+        return true; // inspiration is optional
       case 8:
+        return true; // recommendation summary
+      case 9:
         return (
           data.name.trim().length > 0 &&
           z.string().email().safeParse(data.email.trim()).success
@@ -273,6 +277,9 @@ const QuoteForm = () => {
       `Kada: ${data.timeline}`,
       `Budžet: ${data.budget}`,
       `Pomoć s klijentima: ${data.wantsClientHelp}`,
+      data.socialLinks.trim()
+        ? `Postojeći sadržaj / profili: ${data.socialLinks.trim()}`
+        : null,
       data.inspirationLinks.trim()
         ? `Inspiracija (linkovi): ${data.inspirationLinks.trim()}`
         : null,
@@ -554,8 +561,35 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 5 — Timeline & budget */}
+          {/* STEP 5 — Existing content / social profiles (optional) */}
           {step === 5 && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-1">
+                  Imate li već sadržaj ili profile koje možemo iskoristiti?
+                </h2>
+                <p className="text-muted-foreground">
+                  Možete poslati linkove vaših društvenih mreža ili postojećih stranica (npr. Facebook, Instagram, LinkedIn…). To pomaže da brže pripremimo prijedlog s vašim stvarnim sadržajem.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Linkovi <span className="text-muted-foreground font-normal">(neobavezno)</span>
+                </label>
+                <Textarea
+                  placeholder="npr. https://facebook.com/..., https://instagram.com/..."
+                  value={data.socialLinks}
+                  onChange={(e) => update("socialLinks", e.target.value)}
+                  maxLength={1000}
+                  className="min-h-[110px]"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* STEP 6 — Timeline & budget */}
+          {step === 6 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-1">Ciljevi i ulaganje</h2>
@@ -617,8 +651,8 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 6 — Inspiration (optional) */}
-          {step === 6 && (
+          {/* STEP 7 — Inspiration (optional) */}
+          {step === 7 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-1">
@@ -680,8 +714,8 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 7 — Recommendation summary */}
-          {step === 7 && (
+          {/* STEP 8 — Recommendation summary */}
+          {step === 8 && (
             <div className="space-y-6">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-primary" />
@@ -717,8 +751,8 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 8 — Contact */}
-          {step === 8 && (
+          {/* STEP 9 — Contact */}
+          {step === 9 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-1">Kontakt podaci</h2>
