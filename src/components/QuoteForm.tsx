@@ -264,50 +264,62 @@ const QuoteForm = () => {
 
     const leadQuality = isHighValue ? "HIGH" : "STANDARD";
     const recommendations = buildRecommendations(data);
-    const messageBody = [
-      `--- NOVI UPIT (${leadQuality}) ---`,
-      `Svrha stranice: ${data.purpose}`,
+    const extraSelections = [
       data.bookingType ? `Način rezervacije: ${data.bookingType}` : null,
       data.contactPref ? `Preferirani kontakt: ${data.contactPref}` : null,
       data.sellType ? `Što prodaje: ${data.sellType}` : null,
-      `Što treba: ${data.need}`,
-      `Djelatnost: ${data.business}`,
-      `Ima web: ${data.hasWebsite}${data.hasWebsite === "Da" ? ` (${data.websiteUrl})` : ""}`,
-      `Cilj: ${data.goal}`,
-      `Kada: ${data.timeline}`,
-      `Budžet: ${data.budget}`,
-      `Pomoć s klijentima: ${data.wantsClientHelp}`,
-      data.socialLinks.trim()
-        ? `Postojeći sadržaj / profili: ${data.socialLinks.trim()}`
-        : null,
-      data.inspirationLinks.trim()
-        ? `Inspiracija (linkovi): ${data.inspirationLinks.trim()}`
-        : null,
-      data.inspirationLikes.length > 0
-        ? `Sviđa im se: ${data.inspirationLikes.join(", ")}`
-        : null,
-      `---`,
-      `Preporučeno rješenje:`,
-      ...recommendations.map((r) => `• ${r.title} — ${r.description}`),
-      `---`,
-      `Ime: ${data.name}`,
-      `Email: ${data.email}`,
-      `Telefon: ${data.phone || "nije uneseno"}`,
+      data.need ? `Tip projekta: ${data.need}` : null,
+      data.goal ? `Glavni cilj: ${data.goal}` : null,
     ]
       .filter(Boolean)
-      .join("\n");
+      .join(" | ");
+
+    const existingSite =
+      data.hasWebsite === "Da"
+        ? `Da — ${data.websiteUrl || "(bez linka)"}`
+        : data.hasWebsite || "—";
+
+    const messageBody = [
+      `--- NOVI UPIT S /upit FORME (${leadQuality}) ---`,
+      ``,
+      `Ime: ${data.name}`,
+      `Email: ${data.email}`,
+      `Telefon: ${data.phone || "—"}`,
+      ``,
+      `Što želi postići: ${data.purpose || "—"}`,
+      `Dodatni odabiri: ${extraSelections || "—"}`,
+      `Čime se bavi: ${data.business || "—"}`,
+      `Postojeća stranica: ${existingSite}`,
+      `Društvene mreže / sadržaj: ${data.socialLinks.trim() || "—"}`,
+      `Primjeri stranica koje se sviđaju: ${data.inspirationLinks.trim() || "—"}`,
+      `Što im se sviđa kod primjera: ${
+        data.inspirationLikes.length > 0 ? data.inspirationLikes.join(", ") : "—"
+      }`,
+      `Rok: ${data.timeline || "—"}`,
+      `Preferirani model: ${data.budget || "—"}`,
+      `Želi pomoć oko dovođenja klijenata: ${data.wantsClientHelp || "—"}`,
+      `Dodatne napomene: —`,
+      ``,
+      `--- Preporučeno rješenje ---`,
+      ...recommendations.map((r) => `• ${r.title} — ${r.description}`),
+    ].join("\n");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           name: data.name,
           email: data.email,
+          phone: data.phone || "",
           message: messageBody,
-          subject: `${leadQuality === "HIGH" ? "🔥 " : ""}Novi upit za ponudu — ${data.name}`,
-          from_name: "PrimeLink Quote Form",
+          subject: "Novi upit s /upit forme – Primelink",
+          from_name: "Primelink web upit",
+          page_source: "/upit",
         }),
       });
       const result = await response.json();
@@ -317,7 +329,9 @@ const QuoteForm = () => {
         throw new Error(result.message);
       }
     } catch {
-      toast.error("Greška pri slanju. Pokušajte ponovo.");
+      toast.error(
+        "Došlo je do greške. Molimo pokušajte ponovno ili nas kontaktirajte direktno."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -330,10 +344,10 @@ const QuoteForm = () => {
           <Check className="h-8 w-8 text-primary" />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Hvala na upitu!
+          Hvala!
         </h2>
         <p className="text-lg text-muted-foreground mb-8">
-          Javit ćemo vam se u najkraćem mogućem roku s prijedlogom rješenja.
+          Zaprimili smo vaš upit i javit ćemo vam se s konkretnim prijedlogom.
         </p>
         <a href="tel:+385915122888" className="flex items-center justify-center gap-2 text-muted-foreground hover:text-primary transition-colors">
           <Phone className="h-4 w-4 text-primary" />
