@@ -365,28 +365,91 @@ const QuoteForm = () => {
 
   const recommendations = buildRecommendations(data);
 
+  // ----- Dynamic "Vaš odabir" summary -----
+  const solutionType = (() => {
+    switch (data.purpose) {
+      case PURPOSE_BOOKING:
+        return "Web stranica + sustav za rezervacije";
+      case PURPOSE_LEADS:
+        return "Web stranica optimizirana za upite";
+      case PURPOSE_ECOMMERCE:
+        return "Webshop";
+      case PURPOSE_PRESENTATION:
+        return "Profesionalna prezentacijska stranica";
+      default:
+        return "Web stranica po mjeri";
+    }
+  })();
+
+  const extraOptions: string[] = [];
+  if (data.bookingType) extraOptions.push(data.bookingType);
+  if (data.contactPref) extraOptions.push(`Kontakt: ${data.contactPref}`);
+  if (data.sellType) extraOptions.push(`Prodaja: ${data.sellType}`);
+  if (data.wantsClientHelp === "Da" || data.wantsClientHelp === "Možda") {
+    extraOptions.push("Marketing / dovođenje klijenata");
+  }
+
   return (
     <div className="max-w-xl mx-auto">
-      {/* Progress */}
-      <div className="mb-10">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-sm text-muted-foreground">
-            Korak {step} / {TOTAL_STEPS}
-          </span>
-          <span className="text-sm text-muted-foreground">
-            {Math.round((step / TOTAL_STEPS) * 100)}%
-          </span>
+      {/* Progress (hidden on intro screen) */}
+      {step > 0 && (
+        <div className="mb-10">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm text-muted-foreground">
+              Korak {step} od {TOTAL_STEPS}
+            </span>
+            <span className="text-sm text-muted-foreground">
+              {Math.round((step / TOTAL_STEPS) * 100)}%
+            </span>
+          </div>
+          <div className="w-full h-2 bg-secondary rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
+            />
+          </div>
         </div>
-        <div className="w-full h-2 bg-secondary rounded-full overflow-hidden">
-          <div
-            className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500 ease-out"
-            style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
-          />
-        </div>
-      </div>
+      )}
 
       <Card className="bg-card border-border">
         <CardContent className="p-6 md:p-10">
+          {/* STEP 0 — Intro */}
+          {step === 0 && (
+            <div className="text-center space-y-6 py-4">
+              <div className="inline-flex w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 items-center justify-center mx-auto">
+                <Sparkles className="h-7 w-7 text-primary" />
+              </div>
+              <div className="space-y-3">
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+                  Dobijte prijedlog web stranice za vaše poslovanje
+                </h2>
+                <p className="text-muted-foreground text-base md:text-lg">
+                  Odgovorite na par pitanja — pripremit ću konkretno rješenje za vas.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 pt-2 justify-center">
+                <Button
+                  size="lg"
+                  onClick={() => setStep(1)}
+                  className="gap-2"
+                >
+                  Započni <ArrowRight className="h-4 w-4" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="ghost"
+                  onClick={() => setStep(TOTAL_STEPS)}
+                  className="gap-2"
+                >
+                  <Phone className="h-4 w-4" /> Samo me kontaktirajte
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground pt-2">
+                Obično odgovaram unutar 24h — osobno, bez generičkih ponuda.
+              </p>
+            </div>
+          )}
+
           {/* STEP 1 — Purpose */}
           {step === 1 && (
             <div className="space-y-6">
