@@ -617,8 +617,71 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 6 — Recommendation summary */}
+          {/* STEP 6 — Inspiration (optional) */}
           {step === 6 && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-1">
+                  Imate li primjere koji vam se sviđaju?
+                </h2>
+                <p className="text-muted-foreground">
+                  Možete poslati linkove stranica ili aplikacija koje vam se sviđaju (nije bitno iz vaše branše). To pomaže da bolje prilagodimo dizajn i smjer.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Linkovi <span className="text-muted-foreground font-normal">(neobavezno)</span>
+                </label>
+                <Textarea
+                  placeholder="npr. https://..., https://..."
+                  value={data.inspirationLinks}
+                  onChange={(e) => update("inspirationLinks", e.target.value)}
+                  maxLength={1000}
+                  className="min-h-[110px]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-3">
+                  Što vam se sviđa kod tih primjera?
+                </label>
+                <div className="space-y-3">
+                  {["Dizajn", "Jednostavnost", "Funkcionalnosti", "Brzina korištenja", "Ne znam"].map(
+                    (opt) => {
+                      const selected = data.inspirationLikes.includes(opt);
+                      return (
+                        <button
+                          key={opt}
+                          type="button"
+                          onClick={() => toggleInspirationLike(opt)}
+                          className={`w-full text-left px-5 py-4 rounded-xl border transition-all text-sm md:text-base ${
+                            selected
+                              ? "border-primary bg-primary/10 text-foreground shadow-[0_0_15px_-3px_hsl(var(--primary)/0.3)]"
+                              : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:bg-secondary/50"
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div
+                              className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
+                                selected ? "border-primary bg-primary" : "border-muted-foreground/30"
+                              }`}
+                            >
+                              {selected && <Check className="h-3 w-3 text-primary-foreground" />}
+                            </div>
+                            <span>{opt}</span>
+                          </div>
+                        </button>
+                      );
+                    }
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 7 — Recommendation summary */}
+          {step === 7 && (
             <div className="space-y-6">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-primary" />
@@ -654,8 +717,8 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 7 — Contact */}
-          {step === 7 && (
+          {/* STEP 8 — Contact */}
+          {step === 8 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-1">Kontakt podaci</h2>
