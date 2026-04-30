@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, ArrowLeft, ArrowRight, Send, Phone, Sparkles, Calendar, MessageSquare, ShoppingCart, Globe } from "lucide-react";
+import { Check, ArrowLeft, ArrowRight, Send, Phone, Sparkles, Calendar, MessageSquare, ShoppingCart, Globe, Clock } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -176,7 +176,7 @@ const buildRecommendations = (data: FormData): Recommendation[] => {
 };
 
 const QuoteForm = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0); // 0 = intro screen, 1..TOTAL_STEPS = form steps
   const [data, setData] = useState<FormData>(initialData);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
