@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, ArrowLeft, ArrowRight, Send, Phone, Sparkles, Calendar, MessageSquare, ShoppingCart, Globe } from "lucide-react";
+import { Check, ArrowLeft, ArrowRight, Send, Phone, Sparkles, Calendar, MessageSquare, ShoppingCart, Globe, Clock } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -176,7 +176,7 @@ const buildRecommendations = (data: FormData): Recommendation[] => {
 };
 
 const QuoteForm = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0); // 0 = intro screen, 1..TOTAL_STEPS = form steps
   const [data, setData] = useState<FormData>(initialData);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -217,7 +217,7 @@ const QuoteForm = () => {
     setStep((s) => {
       const prev = s - 1;
       if (prev === 2 && !hasFollowUp) return 1;
-      return Math.max(1, prev);
+      return Math.max(0, prev);
     });
   };
 
@@ -349,9 +349,15 @@ const QuoteForm = () => {
         <p className="text-lg text-muted-foreground mb-8">
           Zaprimili smo vaš upit i javit ćemo vam se s konkretnim prijedlogom.
         </p>
-        <a href="tel:+385915122888" className="flex items-center justify-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+        <p className="text-sm text-muted-foreground mb-3">
+          Ako želite ubrzati, možete nas odmah nazvati:
+        </p>
+        <a
+          href="tel:+385915122888"
+          className="inline-flex items-center justify-center gap-2 text-foreground font-medium hover:text-primary transition-colors"
+        >
           <Phone className="h-4 w-4 text-primary" />
-          <span>U međuvremenu nas možete nazvati: +385 91 512 2888</span>
+          <span>+385 91 512 2888</span>
         </a>
       </div>
     );
@@ -359,28 +365,91 @@ const QuoteForm = () => {
 
   const recommendations = buildRecommendations(data);
 
+  // ----- Dynamic "Vaš odabir" summary -----
+  const solutionType = (() => {
+    switch (data.purpose) {
+      case PURPOSE_BOOKING:
+        return "Web stranica + sustav za rezervacije";
+      case PURPOSE_LEADS:
+        return "Web stranica optimizirana za upite";
+      case PURPOSE_ECOMMERCE:
+        return "Webshop";
+      case PURPOSE_PRESENTATION:
+        return "Profesionalna prezentacijska stranica";
+      default:
+        return "Web stranica po mjeri";
+    }
+  })();
+
+  const extraOptions: string[] = [];
+  if (data.bookingType) extraOptions.push(data.bookingType);
+  if (data.contactPref) extraOptions.push(`Kontakt: ${data.contactPref}`);
+  if (data.sellType) extraOptions.push(`Prodaja: ${data.sellType}`);
+  if (data.wantsClientHelp === "Da" || data.wantsClientHelp === "Možda") {
+    extraOptions.push("Marketing / dovođenje klijenata");
+  }
+
   return (
     <div className="max-w-xl mx-auto">
-      {/* Progress */}
-      <div className="mb-10">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-sm text-muted-foreground">
-            Korak {step} / {TOTAL_STEPS}
-          </span>
-          <span className="text-sm text-muted-foreground">
-            {Math.round((step / TOTAL_STEPS) * 100)}%
-          </span>
+      {/* Progress (hidden on intro screen) */}
+      {step > 0 && (
+        <div className="mb-10">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm text-muted-foreground">
+              Korak {step} od {TOTAL_STEPS}
+            </span>
+            <span className="text-sm text-muted-foreground">
+              {Math.round((step / TOTAL_STEPS) * 100)}%
+            </span>
+          </div>
+          <div className="w-full h-2 bg-secondary rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
+            />
+          </div>
         </div>
-        <div className="w-full h-2 bg-secondary rounded-full overflow-hidden">
-          <div
-            className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500 ease-out"
-            style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
-          />
-        </div>
-      </div>
+      )}
 
       <Card className="bg-card border-border">
         <CardContent className="p-6 md:p-10">
+          {/* STEP 0 — Intro */}
+          {step === 0 && (
+            <div className="text-center space-y-6 py-4">
+              <div className="inline-flex w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 items-center justify-center mx-auto">
+                <Sparkles className="h-7 w-7 text-primary" />
+              </div>
+              <div className="space-y-3">
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+                  Dobijte prijedlog web stranice za vaše poslovanje
+                </h2>
+                <p className="text-muted-foreground text-base md:text-lg">
+                  Odgovorite na par pitanja — pripremit ću konkretno rješenje za vas.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 pt-2 justify-center">
+                <Button
+                  size="lg"
+                  onClick={() => setStep(1)}
+                  className="gap-2"
+                >
+                  Započni <ArrowRight className="h-4 w-4" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="ghost"
+                  onClick={() => setStep(TOTAL_STEPS)}
+                  className="gap-2"
+                >
+                  <Phone className="h-4 w-4" /> Samo me kontaktirajte
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground pt-2">
+                Obično odgovaram unutar 24h — osobno, bez generičkih ponuda.
+              </p>
+            </div>
+          )}
+
           {/* STEP 1 — Purpose */}
           {step === 1 && (
             <div className="space-y-6">
@@ -522,6 +591,9 @@ const QuoteForm = () => {
                   onChange={(e) => update("business", e.target.value)}
                   maxLength={200}
                 />
+                <p className="text-xs text-muted-foreground mt-2">
+                  Dovoljno je par riječi (npr. frizerski salon, građevina…).
+                </p>
               </div>
 
               <div>
@@ -731,9 +803,30 @@ const QuoteForm = () => {
           {/* STEP 8 — Recommendation summary */}
           {step === 8 && (
             <div className="space-y-6">
+              {/* Vaš odabir */}
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-3">Vaš odabir</h2>
+                <div className="rounded-xl border border-border bg-secondary/30 divide-y divide-border overflow-hidden">
+                  <div className="flex items-start gap-3 p-4">
+                    <span className="text-xs uppercase tracking-wide text-muted-foreground min-w-[90px] pt-0.5">Cilj</span>
+                    <span className="text-sm text-foreground">{data.purpose || "—"}</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-4">
+                    <span className="text-xs uppercase tracking-wide text-muted-foreground min-w-[90px] pt-0.5">Rješenje</span>
+                    <span className="text-sm text-foreground">{solutionType}</span>
+                  </div>
+                  {extraOptions.length > 0 && (
+                    <div className="flex items-start gap-3 p-4">
+                      <span className="text-xs uppercase tracking-wide text-muted-foreground min-w-[90px] pt-0.5">Dodatno</span>
+                      <span className="text-sm text-foreground">{extraOptions.join(" • ")}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-primary" />
-                <h2 className="text-2xl font-bold text-foreground">Preporučeno rješenje</h2>
+                <h3 className="text-xl font-bold text-foreground">Preporučeno rješenje</h3>
               </div>
               <p className="text-muted-foreground -mt-2">
                 Na temelju vaših odgovora, evo što bismo vam predložili:
@@ -806,47 +899,72 @@ const QuoteForm = () => {
                 />
               </div>
 
-              <div className="bg-secondary/30 border border-border rounded-xl p-4 mt-4">
-                <p className="text-sm text-muted-foreground">
-                  Na temelju vaših odgovora pripremit ćemo prijedlog rješenja za vaše poslovanje.
+              {/* Što slijedi */}
+              <div className="bg-secondary/30 border border-border rounded-xl p-5 mt-4 space-y-3">
+                <h3 className="text-base font-semibold text-foreground">
+                  Što slijedi nakon ovoga?
+                </h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex gap-2">
+                    <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    Pregledam vaše odgovore
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    Pripremim konkretan prijedlog
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                    Javljam vam se (obično isti ili sljedeći dan)
+                  </li>
+                </ul>
+                <p className="text-sm text-foreground pt-1">
+                  Odgovaram osobno — bez generičkih ponuda.
                 </p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground pt-1">
+                  <Clock className="h-3.5 w-3.5 text-primary" />
+                  Obično odgovaram unutar 24h
+                </div>
               </div>
             </div>
           )}
 
           {/* Navigation */}
-          <div className="flex items-center justify-between mt-10 pt-6 border-t border-border">
-            {step > 1 ? (
-              <Button
-                variant="ghost"
-                onClick={goBack}
-                className="gap-2"
-              >
-                <ArrowLeft className="h-4 w-4" /> Nazad
-              </Button>
-            ) : (
-              <div />
-            )}
+          {step > 0 && (
+            <div className="flex items-center justify-between mt-10 pt-6 border-t border-border">
+              {step >= 1 ? (
+                <Button
+                  variant="ghost"
+                  onClick={goBack}
+                  className="gap-2"
+                >
+                  <ArrowLeft className="h-4 w-4" /> Nazad
+                </Button>
+              ) : (
+                <div />
+              )}
 
-            {step < TOTAL_STEPS ? (
-              <Button
-                onClick={goNext}
-                disabled={!canProceed()}
-                className="gap-2"
-              >
-                Dalje <ArrowRight className="h-4 w-4" />
-              </Button>
-            ) : (
-              <Button
-                onClick={handleSubmit}
-                disabled={!canProceed() || submitting}
-                className="gap-2"
-              >
-                <Send className="h-4 w-4" />
-                {submitting ? "Šaljem..." : "Pošalji upit"}
-              </Button>
-            )}
-          </div>
+              {step < TOTAL_STEPS ? (
+                <Button
+                  onClick={goNext}
+                  disabled={!canProceed()}
+                  className="gap-2"
+                >
+                  Dalje <ArrowRight className="h-4 w-4" />
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleSubmit}
+                  disabled={!canProceed() || submitting}
+                  size="lg"
+                  className="gap-2"
+                >
+                  <Send className="h-4 w-4" />
+                  {submitting ? "Šaljem..." : "Zatraži prijedlog"}
+                </Button>
+              )}
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
