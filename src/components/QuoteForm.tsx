@@ -241,12 +241,14 @@ const QuoteForm = () => {
           (data.hasWebsite !== "Da" || data.websiteUrl.trim().length > 0)
         );
       case 5:
-        return !!data.timeline && !!data.budget && !!data.wantsClientHelp;
+        return true; // social/existing content is optional
       case 6:
-        return true; // inspiration is optional
+        return !!data.timeline && !!data.budget && !!data.wantsClientHelp;
       case 7:
-        return true; // recommendation summary
+        return true; // inspiration is optional
       case 8:
+        return true; // recommendation summary
+      case 9:
         return (
           data.name.trim().length > 0 &&
           z.string().email().safeParse(data.email.trim()).success
@@ -275,6 +277,9 @@ const QuoteForm = () => {
       `Kada: ${data.timeline}`,
       `Budžet: ${data.budget}`,
       `Pomoć s klijentima: ${data.wantsClientHelp}`,
+      data.socialLinks.trim()
+        ? `Postojeći sadržaj / profili: ${data.socialLinks.trim()}`
+        : null,
       data.inspirationLinks.trim()
         ? `Inspiracija (linkovi): ${data.inspirationLinks.trim()}`
         : null,
