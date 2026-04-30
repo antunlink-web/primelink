@@ -349,9 +349,15 @@ const QuoteForm = () => {
         <p className="text-lg text-muted-foreground mb-8">
           Zaprimili smo vaš upit i javit ćemo vam se s konkretnim prijedlogom.
         </p>
-        <a href="tel:+385915122888" className="flex items-center justify-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+        <p className="text-sm text-muted-foreground mb-3">
+          Ako želite ubrzati, možete nas odmah nazvati:
+        </p>
+        <a
+          href="tel:+385915122888"
+          className="inline-flex items-center justify-center gap-2 text-foreground font-medium hover:text-primary transition-colors"
+        >
           <Phone className="h-4 w-4 text-primary" />
-          <span>U međuvremenu nas možete nazvati: +385 91 512 2888</span>
+          <span>+385 91 512 2888</span>
         </a>
       </div>
     );
