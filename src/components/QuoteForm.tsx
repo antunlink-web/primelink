@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, ArrowLeft, ArrowRight, Send, Phone, Sparkles, Calendar, MessageSquare, ShoppingCart, Globe } from "lucide-react";
 import { toast } from "sonner";
@@ -21,6 +22,8 @@ type FormData = {
   timeline: string;
   budget: string;
   wantsClientHelp: string;
+  inspirationLinks: string;
+  inspirationLikes: string[];
   name: string;
   email: string;
   phone: string;
@@ -39,13 +42,15 @@ const initialData: FormData = {
   timeline: "",
   budget: "",
   wantsClientHelp: "",
+  inspirationLinks: "",
+  inspirationLikes: [],
   name: "",
   email: "",
   phone: "",
 };
 
-// Steps: 1=purpose, 2=follow-up (dynamic, may be skipped), 3=need, 4=business, 5=timeline/budget, 6=summary, 7=contact
-const TOTAL_STEPS = 7;
+// Steps: 1=purpose, 2=follow-up (dynamic, may be skipped), 3=need, 4=business, 5=timeline/budget, 6=inspiration (optional), 7=summary, 8=contact
+const TOTAL_STEPS = 8;
 
 const PURPOSE_BOOKING = "Klijenti me često zovu — želim lakše naručivanje";
 const PURPOSE_LEADS = "Želim više upita putem weba";
@@ -174,8 +179,20 @@ const QuoteForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const update = (field: keyof FormData, value: string) =>
+  const update = <K extends keyof FormData>(field: K, value: FormData[K]) =>
     setData((prev) => ({ ...prev, [field]: value }));
+
+  const toggleInspirationLike = (label: string) => {
+    setData((prev) => {
+      const exists = prev.inspirationLikes.includes(label);
+      return {
+        ...prev,
+        inspirationLikes: exists
+          ? prev.inspirationLikes.filter((l) => l !== label)
+          : [...prev.inspirationLikes, label],
+      };
+    });
+  };
 
   const isHighValue = ["500€ – 1000€", "1000€+"].includes(data.budget);
   const wantsAds =
@@ -224,8 +241,10 @@ const QuoteForm = () => {
       case 5:
         return !!data.timeline && !!data.budget && !!data.wantsClientHelp;
       case 6:
-        return true;
+        return true; // inspiration is optional
       case 7:
+        return true; // recommendation summary
+      case 8:
         return (
           data.name.trim().length > 0 &&
           z.string().email().safeParse(data.email.trim()).success
@@ -254,6 +273,12 @@ const QuoteForm = () => {
       `Kada: ${data.timeline}`,
       `Budžet: ${data.budget}`,
       `Pomoć s klijentima: ${data.wantsClientHelp}`,
+      data.inspirationLinks.trim()
+        ? `Inspiracija (linkovi): ${data.inspirationLinks.trim()}`
+        : null,
+      data.inspirationLikes.length > 0
+        ? `Sviđa im se: ${data.inspirationLikes.join(", ")}`
+        : null,
       `---`,
       `Preporučeno rješenje:`,
       ...recommendations.map((r) => `• ${r.title} — ${r.description}`),
@@ -592,8 +617,71 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 6 — Recommendation summary */}
+          {/* STEP 6 — Inspiration (optional) */}
           {step === 6 && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-1">
+                  Imate li primjere koji vam se sviđaju?
+                </h2>
+                <p className="text-muted-foreground">
+                  Možete poslati linkove stranica ili aplikacija koje vam se sviđaju (nije bitno iz vaše branše). To pomaže da bolje prilagodimo dizajn i smjer.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Linkovi <span className="text-muted-foreground font-normal">(neobavezno)</span>
+                </label>
+                <Textarea
+                  placeholder="npr. https://..., https://..."
+                  value={data.inspirationLinks}
+                  onChange={(e) => update("inspirationLinks", e.target.value)}
+                  maxLength={1000}
+                  className="min-h-[110px]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-3">
+                  Što vam se sviđa kod tih primjera?
+                </label>
+                <div className="space-y-3">
+                  {["Dizajn", "Jednostavnost", "Funkcionalnosti", "Brzina korištenja", "Ne znam"].map(
+                    (opt) => {
+                      const selected = data.inspirationLikes.includes(opt);
+                      return (
+                        <button
+                          key={opt}
+                          type="button"
+                          onClick={() => toggleInspirationLike(opt)}
+                          className={`w-full text-left px-5 py-4 rounded-xl border transition-all text-sm md:text-base ${
+                            selected
+                              ? "border-primary bg-primary/10 text-foreground shadow-[0_0_15px_-3px_hsl(var(--primary)/0.3)]"
+                              : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:bg-secondary/50"
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div
+                              className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
+                                selected ? "border-primary bg-primary" : "border-muted-foreground/30"
+                              }`}
+                            >
+                              {selected && <Check className="h-3 w-3 text-primary-foreground" />}
+                            </div>
+                            <span>{opt}</span>
+                          </div>
+                        </button>
+                      );
+                    }
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 7 — Recommendation summary */}
+          {step === 7 && (
             <div className="space-y-6">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-primary" />
@@ -629,8 +717,8 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 7 — Contact */}
-          {step === 7 && (
+          {/* STEP 8 — Contact */}
+          {step === 8 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-1">Kontakt podaci</h2>
