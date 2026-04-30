@@ -591,6 +591,9 @@ const QuoteForm = () => {
                   onChange={(e) => update("business", e.target.value)}
                   maxLength={200}
                 />
+                <p className="text-xs text-muted-foreground mt-2">
+                  Dovoljno je par riječi (npr. frizerski salon, građevina…).
+                </p>
               </div>
 
               <div>
