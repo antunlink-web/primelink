@@ -561,8 +561,35 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 5 — Timeline & budget */}
+          {/* STEP 5 — Existing content / social profiles (optional) */}
           {step === 5 && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold text-foreground mb-1">
+                  Imate li već sadržaj ili profile koje možemo iskoristiti?
+                </h2>
+                <p className="text-muted-foreground">
+                  Možete poslati linkove vaših društvenih mreža ili postojećih stranica (npr. Facebook, Instagram, LinkedIn…). To pomaže da brže pripremimo prijedlog s vašim stvarnim sadržajem.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Linkovi <span className="text-muted-foreground font-normal">(neobavezno)</span>
+                </label>
+                <Textarea
+                  placeholder="npr. https://facebook.com/..., https://instagram.com/..."
+                  value={data.socialLinks}
+                  onChange={(e) => update("socialLinks", e.target.value)}
+                  maxLength={1000}
+                  className="min-h-[110px]"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* STEP 6 — Timeline & budget */}
+          {step === 6 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-1">Ciljevi i ulaganje</h2>
@@ -624,8 +651,8 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 6 — Inspiration (optional) */}
-          {step === 6 && (
+          {/* STEP 7 — Inspiration (optional) */}
+          {step === 7 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-1">
@@ -687,8 +714,8 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 7 — Recommendation summary */}
-          {step === 7 && (
+          {/* STEP 8 — Recommendation summary */}
+          {step === 8 && (
             <div className="space-y-6">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-primary" />
@@ -724,8 +751,8 @@ const QuoteForm = () => {
             </div>
           )}
 
-          {/* STEP 8 — Contact */}
-          {step === 8 && (
+          {/* STEP 9 — Contact */}
+          {step === 9 && (
             <div className="space-y-6">
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-1">Kontakt podaci</h2>
