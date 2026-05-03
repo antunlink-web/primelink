@@ -42,7 +42,7 @@ const Header = () => {
           }}
           className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
         >
-          <img src={logo} alt="PrimeLink Logo" className="h-9 w-9" />
+          <img src={logo} alt="PrimeLink Logo" className="h-9 w-auto object-contain" />
           <span className="text-xl font-bold text-foreground">PrimeLink</span>
         </a>
 
