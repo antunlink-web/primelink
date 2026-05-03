@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <img src={logo} alt="PrimeLink Logo" className="h-9 w-9" />
+              <img src={logo} alt="PrimeLink Logo" className="h-9 w-auto object-contain" />
               <span className="text-lg font-bold text-foreground">PrimeLink</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
