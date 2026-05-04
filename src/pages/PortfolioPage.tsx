@@ -16,6 +16,7 @@ import flowsmsImg from "@/assets/projects/flowsms.png";
 import textroImg from "@/assets/projects/textro.png";
 import mojakartaImg from "@/assets/projects/mojakarta.png";
 import perksImg from "@/assets/projects/perks.png";
+import lumibabyImg from "@/assets/projects/lumibaby.png";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
@@ -109,6 +110,16 @@ const projectsData = [
     tags: ["React", "Node.js", "PostgreSQL", "i18n"],
     image: perksImg,
     category: ["saas", "web"] as FilterCategory[],
+  },
+  {
+    id: "lumibaby",
+    name: "Lumibaby.hr",
+    url: "https://lumibaby.hr",
+    descKey: "portfolio.lumibaby.description",
+    industryKey: "portfolio.lumibaby.industry",
+    tags: ["E-commerce", "Webshop", "Stripe", "React"],
+    image: lumibabyImg,
+    category: ["web"] as FilterCategory[],
   },
 ];
 
