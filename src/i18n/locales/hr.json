@@ -385,6 +385,10 @@
     "perks": {
       "description": "Platforma za popuste i pogodnosti za zaposlenike — 300+ ekskluzivnih popusta i pokloni za više od 100.000 zaposlenika.",
       "industry": "HR & Benefiti"
+    },
+    "lumibaby": {
+      "description": "Webshop za bebi opremu — pažljivo birani proizvodi za sigurnost i udobnost vašeg djeteta, s brzom dostavom u Hrvatskoj.",
+      "industry": "E-commerce & Bebi oprema"
     }
   }
 }

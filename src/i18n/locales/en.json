@@ -385,6 +385,10 @@
     "perks": {
       "description": "Employee perks and discounts platform — 300+ exclusive discounts and gift cards for over 100,000 employees.",
       "industry": "HR & Benefits"
+    },
+    "lumibaby": {
+      "description": "Baby gear webshop — carefully selected products for your child's safety and comfort, with fast delivery across Croatia.",
+      "industry": "E-commerce & Baby Gear"
     }
   }
 }
