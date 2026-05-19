@@ -389,6 +389,26 @@
     "lumibaby": {
       "description": "Baby gear webshop — carefully selected products for your child's safety and comfort, with fast delivery across Croatia.",
       "industry": "E-commerce & Baby Gear"
+    },
+    "amidekoracije": {
+      "description": "Floral and decorative studio — elegant decorations for weddings and special occasions, focused on emotion, atmosphere and detail.",
+      "industry": "Decorations & Weddings"
+    },
+    "aurumgradnja": {
+      "description": "Premium construction company — quality and precise execution of demanding building projects with full transparency.",
+      "industry": "Construction & Real Estate"
+    },
+    "tijelokaodioprirode": {
+      "description": "Interdisciplinary summer camp in nature for children aged 6 to 11 — small groups and an individual approach.",
+      "industry": "Education & Kids"
+    },
+    "evaciglar": {
+      "description": "Court interpreter for Slovenian — translations, interpreting and Slovenian language tutoring with an individual approach.",
+      "industry": "Translation & Languages"
+    },
+    "integriscentar": {
+      "description": "Orthomolecular medicine center — analytical approach to health through root-cause analysis and individual protocols.",
+      "industry": "Health & Medicine"
     }
   }
 }
