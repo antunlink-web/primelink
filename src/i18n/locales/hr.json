@@ -389,6 +389,26 @@
     "lumibaby": {
       "description": "Webshop za bebi opremu — pažljivo birani proizvodi za sigurnost i udobnost vašeg djeteta, s brzom dostavom u Hrvatskoj.",
       "industry": "E-commerce & Bebi oprema"
+    },
+    "amidekoracije": {
+      "description": "Cvjetna i dekorativna studija — elegantne dekoracije za vjenčanja i posebne prigode, s naglaskom na emociju, atmosferu i detalje.",
+      "industry": "Dekoracije & Vjenčanja"
+    },
+    "aurumgradnja": {
+      "description": "Vrhunska graditeljska tvrtka — kvalitetna i precizna izvedba zahtjevnih građevinskih projekata uz potpunu transparentnost.",
+      "industry": "Graditeljstvo & Nekretnine"
+    },
+    "tijelokaodioprirode": {
+      "description": "Interdisciplinarni ljetni kamp u prirodi za djecu od 6 do 11 godina — male grupe i individualan pristup.",
+      "industry": "Edukacija & Djeca"
+    },
+    "evaciglar": {
+      "description": "Sudski tumač za slovenski jezik — prijevodi, tumačenje i učenje slovenskog jezika uz individualan pristup.",
+      "industry": "Prijevodi & Jezici"
+    },
+    "integriscentar": {
+      "description": "Centar za ortomolekularnu medicinu — analitički pristup zdravlju kroz analizu uzroka i individualne protokole.",
+      "industry": "Zdravlje & Medicina"
     }
   }
 }

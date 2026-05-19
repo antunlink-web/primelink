@@ -17,6 +17,11 @@ import textroImg from "@/assets/projects/textro.png";
 import mojakartaImg from "@/assets/projects/mojakarta.png";
 import perksImg from "@/assets/projects/perks.png";
 import lumibabyImg from "@/assets/projects/lumibaby.png";
+import amidekoracijeImg from "@/assets/projects/amidekoracije.png";
+import aurumgradnjaImg from "@/assets/projects/aurumgradnja.png";
+import tijelokaodioprirodeImg from "@/assets/projects/tijelokaodioprirode.png";
+import evaciglarImg from "@/assets/projects/evaciglar.png";
+import integriscentarImg from "@/assets/projects/integriscentar.png";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
@@ -119,6 +124,56 @@ const projectsData = [
     industryKey: "portfolio.lumibaby.industry",
     tags: ["E-commerce", "Webshop", "Stripe", "React"],
     image: lumibabyImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "amidekoracije",
+    name: "Amidekoracije.eu",
+    url: "https://amidekoracije.eu",
+    descKey: "portfolio.amidekoracije.description",
+    industryKey: "portfolio.amidekoracije.industry",
+    tags: ["Web", "Branding", "React", "i18n"],
+    image: amidekoracijeImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "aurumgradnja",
+    name: "Aurumgradnja.com",
+    url: "https://aurumgradnja.com",
+    descKey: "portfolio.aurumgradnja.description",
+    industryKey: "portfolio.aurumgradnja.industry",
+    tags: ["Web", "Branding", "React", "SEO"],
+    image: aurumgradnjaImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "tijelokaodioprirode",
+    name: "Tijelokaodioprirode.eu",
+    url: "https://tijelokaodioprirode.eu",
+    descKey: "portfolio.tijelokaodioprirode.description",
+    industryKey: "portfolio.tijelokaodioprirode.industry",
+    tags: ["Web", "Landing", "React", "Forms"],
+    image: tijelokaodioprirodeImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "evaciglar",
+    name: "Evaciglar.eu",
+    url: "https://evaciglar.eu",
+    descKey: "portfolio.evaciglar.description",
+    industryKey: "portfolio.evaciglar.industry",
+    tags: ["Web", "i18n", "React", "SEO"],
+    image: evaciglarImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "integriscentar",
+    name: "Integriscentar.com",
+    url: "https://integriscentar.com",
+    descKey: "portfolio.integriscentar.description",
+    industryKey: "portfolio.integriscentar.industry",
+    tags: ["Web", "Branding", "React", "Forms"],
+    image: integriscentarImg,
     category: ["web"] as FilterCategory[],
   },
 ];
