@@ -211,7 +211,7 @@ export const services: ServiceDetail[] = [
     h1: "Stripe integracije za web stranice i aplikacije",
     seoTitle: "Stripe integracije za tvrtke u Hrvatskoj | PrimeLink",
     seoDescription:
-      "Implementacija Stripe plaćanja, pretplata i Stripe Connect platformi u web stranice, web aplikacije i SaaS proizvode. Sigurno, brzo i u skladu s PCI standardima.",
+      "Implementacija Stripe plaćanja, pretplata i Connect platformi u web stranice, aplikacije i SaaS proizvode — sigurno i prema PCI standardima.",
     hero:
       "Implementiramo Stripe za web stranice, web shopove i SaaS proizvode — od jednokratnih plaćanja do pretplata, kupona, refundacija i Stripe Connect platformi.",
     forWhom: [
