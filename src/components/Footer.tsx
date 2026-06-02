@@ -74,6 +74,7 @@ const Footer = () => {
               <li><a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.portfolio')}</a></li>
               <li><a href="/ponuda" onClick={(e) => { e.preventDefault(); navigate('/ponuda'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.offer')}</a></li>
               <li><a href="/ponuda/forma" onClick={(e) => { e.preventDefault(); navigate('/ponuda/forma'); }} className="hover:text-foreground transition-colors cursor-pointer">Zatražite ponudu</a></li>
+              <li><Link to="/besplatna-seo-analiza" className="hover:text-foreground transition-colors">Besplatna SEO analiza</Link></li>
               <li><a href="/#contact" onClick={(e) => { e.preventDefault(); goToSection('contact'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.contact')}</a></li>
             </ul>
           </div>
