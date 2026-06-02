@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Check, Shield, Zap, Smartphone, Wrench, Rocket, ShoppingCart, CalendarCheck, Code, Send, Globe2, Star, Target, Briefcase, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 const OfferPage = () => {
   const navigate = useNavigate();
@@ -22,6 +23,24 @@ const OfferPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Ponuda — Web stranice, web shop i automatizacija | PrimeLink</title>
+        <meta name="description" content="Paketi za izradu web stranica, web shopova i automatizacije. Transparentne cijene, fiksni rokovi i podrška nakon lansiranja." />
+        <link rel="canonical" href="https://primelink.hr/ponuda" />
+        <meta property="og:title" content="Ponuda — Web stranice i automatizacija | PrimeLink" />
+        <meta property="og:description" content="Paketi za izradu web stranica, web shopova i automatizacije. Transparentne cijene i fiksni rokovi." />
+        <meta property="og:url" content="https://primelink.hr/ponuda" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [1,2,3,4,5,6].map((i) => ({
+            "@type": "Question",
+            name: t(`offer.faq${i}Q`),
+            acceptedAnswer: { "@type": "Answer", text: t(`offer.faq${i}A`) }
+          }))
+        })}</script>
+      </Helmet>
       <Header />
 
       {/* 1. HERO SECTION */}

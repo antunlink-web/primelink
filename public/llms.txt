@@ -1,0 +1,12 @@
+# PrimeLink
+
+> PrimeLink d.o.o. is a Croatian IT company providing cloud infrastructure, cybersecurity, web development, and automation services for small and mid-sized businesses.
+
+Contact: primelink@primelink.hr · +385 91 512 2888 · Zagreb, Croatia
+
+## Pages
+
+- [Home](/): Overview of PrimeLink's IT services, cloud, security, and support offerings.
+- [Ponuda (Offer)](/ponuda): Service packages and pricing for websites, web shops, and automation, plus FAQ.
+- [Request a quote](/ponuda/forma): Multi-step questionnaire to request a personalized offer.
+- [Portfolio](/portfolio): Selected client projects — websites, web shops, SaaS, and automations.
