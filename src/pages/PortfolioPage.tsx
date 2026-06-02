@@ -247,7 +247,7 @@ const PortfolioPage = () => {
             {t('portfolio.heroSubtitle')}
           </p>
 
-          <p className="text-base text-muted-foreground/70 max-w-xl leading-relaxed">
+          <p className="text-base text-muted-foreground max-w-xl leading-relaxed">
             {t('portfolio.heroIntro')}
           </p>
         </div>
@@ -291,7 +291,7 @@ const PortfolioPage = () => {
                 <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
                   <img
                     src={project.image}
-                    alt={project.name}
+                    alt={`${project.name} — ${t(project.industryKey)} projekt`}
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -305,9 +305,9 @@ const PortfolioPage = () => {
                   <p className="text-xs font-medium uppercase tracking-wider text-primary mb-2">
                     {t(project.industryKey)}
                   </p>
-                  <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  <h2 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {project.name}
-                  </h3>
+                  </h2>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-2">
                     {t(project.descKey)}
                   </p>
