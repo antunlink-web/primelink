@@ -12,10 +12,10 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>PrimeLink — IT rješenja, cloud i kibernetička sigurnost</title>
+        <title>Izrada web stranica i web aplikacija za tvrtke | PrimeLink</title>
         <meta name="description" content="PrimeLink d.o.o. — moderna IT rješenja, cloud infrastruktura, kibernetička sigurnost i razvoj web stranica za poduzeća u Hrvatskoj." />
         <link rel="canonical" href="https://primelink.hr/" />
-        <meta property="og:title" content="PrimeLink — IT rješenja, cloud i kibernetička sigurnost" />
+        <meta property="og:title" content="Izrada web stranica i web aplikacija za tvrtke | PrimeLink" />
         <meta property="og:description" content="Moderna IT rješenja, cloud infrastruktura i kibernetička sigurnost za poduzeća u Hrvatskoj." />
         <meta property="og:url" content="https://primelink.hr/" />
         <meta property="og:type" content="website" />
