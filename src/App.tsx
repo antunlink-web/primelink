@@ -3,14 +3,15 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useParams, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import { ScrollToTop } from "./components/ScrollToTop";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import OfferPage from "./pages/OfferPage";
-import PortfolioPage from "./pages/PortfolioPage";
-import QuoteFormPage from "./pages/QuoteFormPage";
-import ServicePage from "./pages/ServicePage";
-import ContactPage from "./pages/ContactPage";
+const NotFound = lazy(() => import("./pages/NotFound"));
+const OfferPage = lazy(() => import("./pages/OfferPage"));
+const PortfolioPage = lazy(() => import("./pages/PortfolioPage"));
+const QuoteFormPage = lazy(() => import("./pages/QuoteFormPage"));
+const ServicePage = lazy(() => import("./pages/ServicePage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
 
 const LegacyRedirect = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -26,6 +27,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/ponuda" element={<OfferPage />} />
@@ -47,6 +49,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
