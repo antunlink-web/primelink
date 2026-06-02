@@ -205,6 +205,26 @@ const PortfolioPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Portfolio — Naši projekti i klijenti | PrimeLink</title>
+        <meta name="description" content="Pregledajte odabrane projekte koje smo razvili — web stranice, web shopovi, SaaS i automatizacije za hrvatske i strane klijente." />
+        <link rel="canonical" href="https://primelink.hr/portfolio" />
+        <meta property="og:title" content="Portfolio — Naši projekti | PrimeLink" />
+        <meta property="og:description" content="Odabrani projekti — web stranice, web shopovi, SaaS i automatizacije." />
+        <meta property="og:url" content="https://primelink.hr/portfolio" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "PrimeLink Portfolio",
+          url: "https://primelink.hr/portfolio",
+          hasPart: projectsData.map((p) => ({
+            "@type": "CreativeWork",
+            name: p.name,
+            url: p.url
+          }))
+        })}</script>
+      </Helmet>
       <Header />
 
       {/* HERO */}
