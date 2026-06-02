@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import OfferPage from "./pages/OfferPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import QuoteFormPage from "./pages/QuoteFormPage";
+import ServicePage from "./pages/ServicePage";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/ponuda" element={<OfferPage />} />
           <Route path="/ponuda/forma" element={<QuoteFormPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/usluge/:slug" element={<ServicePage />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

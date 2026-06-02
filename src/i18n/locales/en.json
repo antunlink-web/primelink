@@ -9,26 +9,26 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Certified IT Partners · Zagreb, Croatia",
-    "title": "Cut IT costs. Boost security.",
-    "titleHighlight": "No compromises.",
-    "description": "We help businesses modernize infrastructure, protect data, and scale operations — with predictable costs and 24/7 support.",
-    "scheduleConsultation": "Schedule a Consultation",
+    "badge": "Websites, CRM & web apps · Zagreb, Croatia",
+    "title": "Websites, CRM systems and web apps",
+    "titleHighlight": "for serious businesses.",
+    "description": "PrimeLink helps companies modernize their web presence, automate business processes and turn outdated websites into professional digital tools.",
+    "scheduleConsultation": "Request a quote",
     "viewSolutions": "View Services",
-    "support247": "24/7 Support",
-    "supportBenefit": "Always there when you need us",
-    "enterpriseSecurity": "Enterprise Security",
-    "securityBenefit": "Protection at every level",
-    "cloudInfrastructure": "Cloud Infrastructure",
-    "cloudBenefit": "Reduce costs by up to 30%",
-    "getStarted": "Get Started"
+    "support247": "Stripe integrations",
+    "supportBenefit": "Payments & subscriptions in SaaS",
+    "enterpriseSecurity": "CRM & web apps",
+    "securityBenefit": "Custom tools for your team",
+    "cloudInfrastructure": "Websites from €499",
+    "cloudBenefit": "Fast delivery with fixed pricing",
+    "getStarted": "Request a quote"
   },
   "trust": {
     "title": "Technologies & partners we trust"
   },
   "services": {
-    "title": "How we can help",
-    "description": "From cloud migration to fully managed IT — solutions tailored to your needs and budget.",
+    "title": "What we build for businesses",
+    "description": "Websites, CRM systems, web applications and SaaS products — tailored to your processes and goals.",
     "cloud": {
       "title": "Cloud Solutions",
       "description": "Reduce IT costs by up to 30% with scalable cloud infrastructure. Migration, optimization, and management — all in one place."
