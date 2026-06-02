@@ -12,8 +12,8 @@ const Hero = () => {
       {/* Subtle background elements */}
       <div className="absolute inset-0 bg-[var(--gradient-dark)]"></div>
       <div className="absolute inset-0 bg-[var(--gradient-mesh)]"></div>
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px]"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-accent/8 rounded-full blur-[150px]"></div>
+      <div className="hidden md:block absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px]"></div>
+      <div className="hidden md:block absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-accent/8 rounded-full blur-[150px]"></div>
 
       <div className="container mx-auto px-4 z-10 relative">
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
