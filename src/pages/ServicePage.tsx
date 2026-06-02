@@ -160,7 +160,7 @@ const ServicePage = ({ fixedSlug }: { fixedSlug?: string }) => {
                 {related.map((r) => (
                   <Link
                     key={r.slug}
-                    to={`/usluge/${r.slug}`}
+                    to={`/${r.slug}`}
                     className="rounded-xl border border-border bg-card p-5 hover:border-primary/40 transition-all hover:shadow-[var(--shadow-hover)] group"
                   >
                     <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
