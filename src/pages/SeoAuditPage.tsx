@@ -17,7 +17,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+
+// Shared Web3Forms access key (same as QuoteForm). Lead notifications go to PrimeLink.
+const WEB3FORMS_ACCESS_KEY = "65b937ba-7a1f-4605-bd6e-51f19e97b7cd";
+
+// NOTE on abuse protection:
+//   - URL validacija + honeypot polje su implementirani niže.
+//   - Audit (provjera URL-a) NE šalje email — email se šalje tek nakon
+//     submita lead forme ispod rezultata.
+//   - Prije veće javne upotrebe dodati CAPTCHA (hCaptcha / Turnstile)
+//     i rate limiting (npr. 5 leadova / IP / sat) na serverskoj strani.
 
 // ---------------------------------------------------------------------------
 // Backend integration point
@@ -118,8 +130,13 @@ const SeoAuditPage = () => {
 
   const [leadEmail, setLeadEmail] = useState("");
   const [leadUrl, setLeadUrl] = useState("");
+  const [leadName, setLeadName] = useState("");
+  const [leadPhone, setLeadPhone] = useState("");
   const [leadMessage, setLeadMessage] = useState("");
+  const [leadConsent, setLeadConsent] = useState(true);
+  const [leadHoneypot, setLeadHoneypot] = useState(""); // spam trap — mora ostati prazno
   const [leadSending, setLeadSending] = useState(false);
+  const [leadSubmitted, setLeadSubmitted] = useState(false);
 
   const handleAudit = async (e: FormEvent) => {
     e.preventDefault();
@@ -154,20 +171,102 @@ const SeoAuditPage = () => {
 
   const handleLead = async (e: FormEvent) => {
     e.preventDefault();
-    if (!leadEmail || !leadUrl) {
-      toast({ title: "Nedostaju podaci", description: "Unesite email i URL stranice.", variant: "destructive" });
+
+    // Honeypot: ako je polje popunjeno, prekidamo bez slanja.
+    if (leadHoneypot) return;
+
+    if (!leadName.trim() || !leadEmail.trim() || !leadUrl.trim()) {
+      toast({
+        title: "Nedostaju podaci",
+        description: "Unesite ime, email i URL stranice.",
+        variant: "destructive",
+      });
       return;
     }
+    if (!isValidUrl(leadUrl)) {
+      toast({
+        title: "Neispravan URL",
+        description: "Provjerite adresu web stranice.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setLeadSending(true);
-    // TODO: integrirati s postojećim Web3Forms endpointom ili /api/lead.
-    await new Promise((r) => setTimeout(r, 900));
-    setLeadSending(false);
-    setLeadEmail("");
-    setLeadMessage("");
-    toast({
-      title: "Hvala na upitu",
-      description: "Javljamo se unutar 24 sata s detaljnom analizom.",
-    });
+
+    const timestamp = new Date().toISOString();
+    const messageLines = [
+      `--- Novi lead: Besplatna SEO analiza ---`,
+      `Web stranica: ${leadUrl}`,
+      `Ime: ${leadName}`,
+      `Email: ${leadEmail}`,
+      `Telefon: ${leadPhone || "—"}`,
+      `Kontakt s prijedlogom: ${leadConsent ? "DA" : "NE"}`,
+      `Vrijeme: ${timestamp}`,
+      ``,
+      `--- Poruka korisnika ---`,
+      leadMessage?.trim() || "—",
+      ``,
+      `--- Rezultati audita prikazani korisniku ---`,
+      result ? `SEO score: ${result.seoScore}` : "",
+      result ? `Mobilna brzina: ${result.performanceScore}` : "",
+      result ? `Tehničko stanje: ${result.technicalScore}` : "",
+      result ? `Potencijal redizajna: ${result.redesignPotential}` : "",
+      ``,
+      `--- Detektirani problemi ---`,
+      ...(result?.issues.map(
+        (i) => `• [${i.severity}] ${i.title} — ${i.recommendation}`,
+      ) ?? []),
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    // TODO (opcionalno): spremiti lead/audit i u Supabase ako je Lovable Cloud
+    // uključen. Predviđena tablica `seo_audit_leads`:
+    //   website_url, seo_score, performance_score, technical_score,
+    //   redesign_potential, issues_json, name, email, phone, message, created_at.
+    // Trenutno Cloud nije aktiviran pa preskačemo INSERT bez greške.
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "Novi lead: Besplatna SEO analiza – PrimeLink",
+          from_name: "PrimeLink SEO audit",
+          page_source: "/besplatna-seo-analiza",
+          name: leadName,
+          email: leadEmail,
+          phone: leadPhone || "",
+          website: leadUrl,
+          consent: leadConsent ? "yes" : "no",
+          timestamp,
+          seo_score: result?.seoScore ?? "",
+          performance_score: result?.performanceScore ?? "",
+          technical_score: result?.technicalScore ?? "",
+          redesign_potential: result?.redesignPotential ?? "",
+          issues_json: JSON.stringify(result?.issues ?? []),
+          message: messageLines,
+          botcheck: leadHoneypot, // Web3Forms built-in honeypot
+        }),
+      });
+      const data = await response.json();
+      if (!data.success) throw new Error(data.message || "Slanje nije uspjelo.");
+      setLeadSubmitted(true);
+    } catch {
+      toast({
+        title: "Greška pri slanju",
+        description:
+          "Pokušajte ponovno ili nas kontaktirajte na primelink@primelink.hr.",
+        variant: "destructive",
+      });
+    } finally {
+      setLeadSending(false);
+    }
   };
 
   const checks = [
@@ -314,48 +413,123 @@ const SeoAuditPage = () => {
               {/* Lead capture */}
               <Card className="p-6 md:p-8 bg-secondary/50">
                 <div className="max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-bold text-foreground mb-2 text-center">
-                    Želite detaljniju analizu i konkretan prijedlog poboljšanja?
-                  </h3>
-                  <p className="text-muted-foreground text-center mb-6">
-                    Pošaljite upit i izrađujemo detaljan izvještaj s prioritetima i procjenom efekta.
-                  </p>
-                  <form onSubmit={handleLead} className="space-y-4">
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <Input
-                        type="email"
-                        placeholder="Vaš email"
-                        value={leadEmail}
-                        onChange={(e) => setLeadEmail(e.target.value)}
-                        required
-                        aria-label="Email"
-                      />
-                      <Input
-                        type="text"
-                        placeholder="URL stranice"
-                        value={leadUrl}
-                        onChange={(e) => setLeadUrl(e.target.value)}
-                        required
-                        aria-label="URL stranice"
-                      />
+                  {leadSubmitted ? (
+                    <div className="text-center py-6">
+                      <div className="w-14 h-14 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle2 className="h-7 w-7 text-primary" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-foreground mb-2">
+                        Hvala!
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Zaprimili smo vaš zahtjev i javit ćemo vam se s prijedlogom poboljšanja.
+                      </p>
                     </div>
-                    <Textarea
-                      placeholder="Kratka poruka (opcionalno)"
-                      value={leadMessage}
-                      onChange={(e) => setLeadMessage(e.target.value)}
-                      rows={4}
-                      aria-label="Poruka"
-                    />
-                    <Button type="submit" size="lg" className="w-full" disabled={leadSending}>
-                      {leadSending ? (
-                        <>
-                          <Loader2 className="h-4 w-4 animate-spin" /> Šaljem…
-                        </>
-                      ) : (
-                        <>Pošalji upit <ArrowRight className="h-4 w-4" /></>
-                      )}
-                    </Button>
-                  </form>
+                  ) : (
+                    <>
+                      <h3 className="text-2xl font-bold text-foreground mb-2 text-center">
+                        Želite detaljniju analizu i konkretan prijedlog poboljšanja?
+                      </h3>
+                      <p className="text-muted-foreground text-center mb-6">
+                        Pošaljite upit i izrađujemo detaljan izvještaj s prioritetima i procjenom efekta.
+                      </p>
+                      <form onSubmit={handleLead} className="space-y-4" noValidate>
+                        {/* Honeypot — sakriven od korisnika, vidljiv botovima */}
+                        <input
+                          type="text"
+                          name="botcheck"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          value={leadHoneypot}
+                          onChange={(e) => setLeadHoneypot(e.target.value)}
+                          style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                          aria-hidden="true"
+                        />
+
+                        <div>
+                          <Label htmlFor="lead-url">Web stranica</Label>
+                          <Input
+                            id="lead-url"
+                            type="text"
+                            placeholder="https://vasa-stranica.hr"
+                            value={leadUrl}
+                            onChange={(e) => setLeadUrl(e.target.value)}
+                            required
+                            className="mt-1.5"
+                          />
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="lead-name">Ime i prezime</Label>
+                            <Input
+                              id="lead-name"
+                              type="text"
+                              value={leadName}
+                              onChange={(e) => setLeadName(e.target.value)}
+                              required
+                              className="mt-1.5"
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="lead-email">Email</Label>
+                            <Input
+                              id="lead-email"
+                              type="email"
+                              value={leadEmail}
+                              onChange={(e) => setLeadEmail(e.target.value)}
+                              required
+                              className="mt-1.5"
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <Label htmlFor="lead-phone">Telefon (opcionalno)</Label>
+                          <Input
+                            id="lead-phone"
+                            type="tel"
+                            value={leadPhone}
+                            onChange={(e) => setLeadPhone(e.target.value)}
+                            className="mt-1.5"
+                          />
+                        </div>
+
+                        <div>
+                          <Label htmlFor="lead-message">Poruka (opcionalno)</Label>
+                          <Textarea
+                            id="lead-message"
+                            value={leadMessage}
+                            onChange={(e) => setLeadMessage(e.target.value)}
+                            rows={4}
+                            className="mt-1.5"
+                          />
+                        </div>
+
+                        <div className="flex items-start gap-2.5 pt-1">
+                          <Checkbox
+                            id="lead-consent"
+                            checked={leadConsent}
+                            onCheckedChange={(v) => setLeadConsent(v === true)}
+                            className="mt-0.5"
+                          />
+                          <Label htmlFor="lead-consent" className="text-sm font-normal text-muted-foreground leading-relaxed">
+                            Želim da me kontaktirate s prijedlogom poboljšanja.
+                          </Label>
+                        </div>
+
+                        <Button type="submit" size="lg" className="w-full" disabled={leadSending}>
+                          {leadSending ? (
+                            <>
+                              <Loader2 className="h-4 w-4 animate-spin" /> Šaljem…
+                            </>
+                          ) : (
+                            <>Zatraži detaljnu analizu <ArrowRight className="h-4 w-4" /></>
+                          )}
+                        </Button>
+                      </form>
+                    </>
+                  )}
                 </div>
               </Card>
             </div>
