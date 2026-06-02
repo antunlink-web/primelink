@@ -1,6 +1,6 @@
-import { Linkedin, Instagram, Facebook } from "lucide-react";
+import { Linkedin, Instagram, Facebook, MapPin, Mail, Phone } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import logo from "@/assets/primelink-logo.png";
 
 const Footer = () => {
@@ -36,18 +36,34 @@ const Footer = () => {
               <img src={logo} alt="PrimeLink Logo" className="h-9 w-auto object-contain" />
               <span className="text-lg font-bold text-foreground">PrimeLink</span>
             </a>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               {t('footer.description')}
             </p>
+            <address className="not-italic space-y-2 text-sm text-muted-foreground">
+              <div className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5 text-primary flex-shrink-0" />
+                <span>PrimeLink d.o.o.<br />Zagreb, Hrvatska</span>
+              </div>
+              <a href="mailto:primelink@primelink.hr" className="flex items-center gap-2 hover:text-foreground transition-colors">
+                <Mail className="h-4 w-4 text-primary flex-shrink-0" />
+                primelink@primelink.hr
+              </a>
+              <a href="tel:+385915122888" className="flex items-center gap-2 hover:text-foreground transition-colors">
+                <Phone className="h-4 w-4 text-primary flex-shrink-0" />
+                +385 91 512 2888
+              </a>
+            </address>
           </div>
 
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">{t('footer.services')}</h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
-              <li><a href="/#services" onClick={(e) => { e.preventDefault(); goToSection('services'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.cloudSolutions')}</a></li>
-              <li><a href="/#services" onClick={(e) => { e.preventDefault(); goToSection('services'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.cybersecurity')}</a></li>
-              <li><a href="/#services" onClick={(e) => { e.preventDefault(); goToSection('services'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.infrastructure')}</a></li>
-              <li><a href="/#services" onClick={(e) => { e.preventDefault(); goToSection('services'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.aiAutomation')}</a></li>
+              <li><Link to="/usluge/izrada-web-stranica" className="hover:text-foreground transition-colors">Izrada web stranica</Link></li>
+              <li><Link to="/usluge/redizajn-web-stranica" className="hover:text-foreground transition-colors">Redizajn web stranica</Link></li>
+              <li><Link to="/usluge/crm-sustavi" className="hover:text-foreground transition-colors">Izrada CRM sustava</Link></li>
+              <li><Link to="/usluge/web-aplikacije" className="hover:text-foreground transition-colors">Izrada web aplikacija</Link></li>
+              <li><Link to="/usluge/stripe-integracije" className="hover:text-foreground transition-colors">Stripe integracije</Link></li>
+              <li><Link to="/usluge/saas-razvoj" className="hover:text-foreground transition-colors">SaaS razvoj</Link></li>
             </ul>
           </div>
 
@@ -57,6 +73,7 @@ const Footer = () => {
               <li><a href="/#about" onClick={(e) => { e.preventDefault(); goToSection('about'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.about')}</a></li>
               <li><a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.portfolio')}</a></li>
               <li><a href="/ponuda" onClick={(e) => { e.preventDefault(); navigate('/ponuda'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.offer')}</a></li>
+              <li><a href="/ponuda/forma" onClick={(e) => { e.preventDefault(); navigate('/ponuda/forma'); }} className="hover:text-foreground transition-colors cursor-pointer">Zatražite ponudu</a></li>
               <li><a href="/#contact" onClick={(e) => { e.preventDefault(); goToSection('contact'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.contact')}</a></li>
             </ul>
           </div>

@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CalendarCheck, Shield, Cloud, Headphones } from "lucide-react";
+import { ArrowRight, Phone, Code2, Database, CreditCard } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-background">
@@ -17,7 +19,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-secondary/50 text-muted-foreground text-sm mb-8">
-            <Shield className="h-4 w-4 text-primary" />
+            <Code2 className="h-4 w-4 text-primary" />
             <span>{t('hero.badge')}</span>
           </div>
 
@@ -35,11 +37,11 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Button 
               size="lg" 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => navigate('/ponuda/forma')}
               className="bg-primary hover:bg-primary/90 text-primary-foreground text-base px-8 py-6 shadow-[var(--shadow-glow)] hover:shadow-[var(--shadow-glow-strong)] transition-all hover:scale-[1.02]"
             >
-              <CalendarCheck className="mr-2 h-5 w-5" />
               {t('hero.scheduleConsultation')}
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button 
               size="lg" 
@@ -48,24 +50,23 @@ const Hero = () => {
               className="border border-border bg-secondary/30 text-foreground hover:bg-secondary/60 text-base px-8 py-6 transition-all"
             >
               {t('hero.viewSolutions')}
-              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
 
           {/* Value props */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <div className="flex flex-col items-center gap-2 p-4 rounded-xl bg-secondary/30 border border-border">
-              <Cloud className="h-6 w-6 text-primary" />
+              <Code2 className="h-6 w-6 text-primary" />
               <span className="text-sm font-medium text-foreground">{t('hero.cloudInfrastructure')}</span>
               <span className="text-xs text-muted-foreground text-center">{t('hero.cloudBenefit')}</span>
             </div>
             <div className="flex flex-col items-center gap-2 p-4 rounded-xl bg-secondary/30 border border-border">
-              <Shield className="h-6 w-6 text-primary" />
+              <Database className="h-6 w-6 text-primary" />
               <span className="text-sm font-medium text-foreground">{t('hero.enterpriseSecurity')}</span>
               <span className="text-xs text-muted-foreground text-center">{t('hero.securityBenefit')}</span>
             </div>
             <div className="flex flex-col items-center gap-2 p-4 rounded-xl bg-secondary/30 border border-border">
-              <Headphones className="h-6 w-6 text-primary" />
+              <CreditCard className="h-6 w-6 text-primary" />
               <span className="text-sm font-medium text-foreground">{t('hero.support247')}</span>
               <span className="text-xs text-muted-foreground text-center">{t('hero.supportBenefit')}</span>
             </div>
