@@ -15,9 +15,10 @@ const iconMap = {
   rocket: Rocket,
 };
 
-const ServicePage = () => {
-  const { slug } = useParams<{ slug: string }>();
+const ServicePage = ({ fixedSlug }: { fixedSlug?: string }) => {
+  const { slug: paramSlug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const slug = fixedSlug || paramSlug;
   const service = slug ? getService(slug) : undefined;
 
   if (!service) {
@@ -32,7 +33,7 @@ const ServicePage = () => {
   }
 
   const Icon = iconMap[service.icon];
-  const url = `https://primelink.hr/usluge/${service.slug}`;
+  const url = `https://primelink.hr/${service.slug}`;
   const related = service.related.map((s) => getService(s)).filter(Boolean) as typeof services;
 
   const serviceJsonLd = {
@@ -159,7 +160,7 @@ const ServicePage = () => {
                 {related.map((r) => (
                   <Link
                     key={r.slug}
-                    to={`/usluge/${r.slug}`}
+                    to={`/${r.slug}`}
                     className="rounded-xl border border-border bg-card p-5 hover:border-primary/40 transition-all hover:shadow-[var(--shadow-hover)] group"
                   >
                     <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors mb-2">

@@ -33,7 +33,7 @@ const Services = () => {
           {services.map((service, index) => (
             <Link
               key={service.slug}
-              to={`/usluge/${service.slug}`}
+              to={`/${service.slug}`}
               className="block group"
               style={{ animationDelay: `${index * 80}ms` }}
             >
