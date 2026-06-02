@@ -58,7 +58,7 @@ const Header = () => {
         <div className="flex items-center space-x-3">
           <LanguageSwitcher />
           <Button size="sm" className="hidden md:inline-flex" onClick={() => handleNavClick('contact')}>{t('hero.getStarted')}</Button>
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setMobileOpen(!mobileOpen)}>
+          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen}>
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>

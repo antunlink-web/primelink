@@ -6,6 +6,7 @@ import { ExternalLink, ArrowRight, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 import trazilicaImg from "@/assets/projects/trazilica.png";
 import poslovniregistarImg from "@/assets/projects/poslovniregistar.png";
