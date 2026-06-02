@@ -37,7 +37,7 @@ const App = () => (
           <Route path="/saas-razvoj" element={<ServicePage fixedSlug="saas-razvoj" />} />
 
           {/* Legacy /usluge/ redirects */}
-          <Route path="/usluge/:slug" element={<Navigate to="/:slug" replace />} />
+          <Route path="/usluge/:slug" element={<LegacyRedirect />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
