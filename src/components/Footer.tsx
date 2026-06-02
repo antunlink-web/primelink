@@ -58,12 +58,12 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">{t('footer.services')}</h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
-              <li><Link to="/usluge/izrada-web-stranica" className="hover:text-foreground transition-colors">Izrada web stranica</Link></li>
-              <li><Link to="/usluge/redizajn-web-stranica" className="hover:text-foreground transition-colors">Redizajn web stranica</Link></li>
-              <li><Link to="/usluge/crm-sustavi" className="hover:text-foreground transition-colors">Izrada CRM sustava</Link></li>
-              <li><Link to="/usluge/web-aplikacije" className="hover:text-foreground transition-colors">Izrada web aplikacija</Link></li>
-              <li><Link to="/usluge/stripe-integracije" className="hover:text-foreground transition-colors">Stripe integracije</Link></li>
-              <li><Link to="/usluge/saas-razvoj" className="hover:text-foreground transition-colors">SaaS razvoj</Link></li>
+              <li><Link to="/izrada-web-stranica" className="hover:text-foreground transition-colors">Izrada web stranica</Link></li>
+              <li><Link to="/redizajn-web-stranice" className="hover:text-foreground transition-colors">Redizajn web stranica</Link></li>
+              <li><Link to="/izrada-crm-sustava" className="hover:text-foreground transition-colors">Izrada CRM sustava</Link></li>
+              <li><Link to="/izrada-web-aplikacija" className="hover:text-foreground transition-colors">Izrada web aplikacija</Link></li>
+              <li><Link to="/stripe-integracije" className="hover:text-foreground transition-colors">Stripe integracije</Link></li>
+              <li><Link to="/saas-razvoj" className="hover:text-foreground transition-colors">SaaS razvoj</Link></li>
             </ul>
           </div>
 

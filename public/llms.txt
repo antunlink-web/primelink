@@ -7,12 +7,13 @@ Contact: primelink@primelink.hr · +385 91 512 2888 · Zagreb, Croatia
 ## Pages
 
 - [Home](/): Overview of PrimeLink's services — websites, CRM, web apps, SaaS, Stripe.
-- [Izrada web stranica](/usluge/izrada-web-stranica): Custom website development from €499 + VAT.
-- [Redizajn web stranica](/usluge/redizajn-web-stranica): Website redesign without losing SEO positions.
-- [Izrada CRM sustava](/usluge/crm-sustavi): Custom CRM systems tailored to business processes.
-- [Izrada web aplikacija](/usluge/web-aplikacije): Internal tools, portals and business web applications.
-- [Stripe integracije](/usluge/stripe-integracije): Stripe payments, subscriptions and Connect platforms.
-- [SaaS razvoj](/usluge/saas-razvoj): SaaS product development from MVP to production.
+- [Izrada web stranica](/izrada-web-stranica): Custom website development from €499 + VAT.
+- [Redizajn web stranica](/redizajn-web-stranice): Website redesign without losing SEO positions.
+- [Izrada CRM sustava](/izrada-crm-sustava): Custom CRM systems tailored to business processes.
+- [Izrada web aplikacija](/izrada-web-aplikacija): Internal tools, portals and business web applications.
+- [Stripe integracije](/stripe-integracije): Stripe payments, subscriptions and Connect platforms.
+- [SaaS razvoj](/saas-razvoj): SaaS product development from MVP to production.
 - [Ponuda](/ponuda): Service packages and FAQ.
 - [Request a quote](/ponuda/forma): Multi-step questionnaire to request a personalized offer.
 - [Portfolio](/portfolio): Selected client projects.
+- [Kontakt](/kontakt): Contact form and company details.
