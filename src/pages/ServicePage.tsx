@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Globe, RefreshCw, Users, Layers, CreditCard, Rocket, ArrowRight, Check, Phone } from "lucide-react";
+import { Globe, RefreshCw, Users, Layers, CreditCard, Rocket, ArrowRight, Check, Phone, Search } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -171,6 +171,29 @@ const ServicePage = ({ fixedSlug }: { fixedSlug?: string }) => {
                     </span>
                   </Link>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {/* SEO Audit CTA for selected services */}
+          {slug && ['izrada-web-stranica', 'redizajn-web-stranice', 'izrada-web-aplikacija'].includes(slug) && (
+            <div className="max-w-4xl mx-auto mb-16">
+              <div className="rounded-2xl border border-border bg-card p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6">
+                <div className="flex-1">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 mb-4">
+                    <Search className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                    Želite prvo provjeriti stanje postojeće web stranice?
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Pokrenite besplatnu SEO analizu i saznajte koje tehničke, SEO i brzinske probleme treba popraviti.
+                  </p>
+                </div>
+                <Button size="lg" className="md:flex-shrink-0" onClick={() => navigate('/besplatna-seo-analiza')}>
+                  Provjeri web stranicu
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </div>
             </div>
           )}

@@ -52,6 +52,7 @@ const Header = () => {
           <a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.portfolio')}</a>
           
           <a href="/ponuda" onClick={(e) => { e.preventDefault(); navigate('/ponuda'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.offer')}</a>
+          <a href="/besplatna-seo-analiza" onClick={(e) => { e.preventDefault(); navigate('/besplatna-seo-analiza'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">Besplatna SEO analiza</a>
           <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer">{t('nav.contact')}</a>
         </nav>
 
@@ -72,6 +73,7 @@ const Header = () => {
             <a href="/portfolio" onClick={(e) => { e.preventDefault(); handlePageNav('/portfolio'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.portfolio')}</a>
             
             <a href="/ponuda" onClick={(e) => { e.preventDefault(); handlePageNav('/ponuda'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.offer')}</a>
+            <a href="/besplatna-seo-analiza" onClick={(e) => { e.preventDefault(); handlePageNav('/besplatna-seo-analiza'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">Besplatna SEO analiza</a>
             <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-secondary">{t('nav.contact')}</a>
             <Button className="w-full mt-3" onClick={() => handleNavClick('contact')}>{t('hero.getStarted')}</Button>
           </nav>
