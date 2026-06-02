@@ -48,7 +48,7 @@ const Pricing = () => {
             <Button
               variant="outline"
               className="w-full"
-              onClick={() => navigate("/usluge/izrada-web-stranica")}
+              onClick={() => navigate("/izrada-web-stranica")}
             >
               Saznajte više
               <ArrowRight className="ml-2 h-4 w-4" />

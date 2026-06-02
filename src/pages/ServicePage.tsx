@@ -15,9 +15,10 @@ const iconMap = {
   rocket: Rocket,
 };
 
-const ServicePage = () => {
-  const { slug } = useParams<{ slug: string }>();
+const ServicePage = ({ fixedSlug }: { fixedSlug?: string }) => {
+  const { slug: paramSlug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const slug = fixedSlug || paramSlug;
   const service = slug ? getService(slug) : undefined;
 
   if (!service) {
@@ -32,7 +33,7 @@ const ServicePage = () => {
   }
 
   const Icon = iconMap[service.icon];
-  const url = `https://primelink.hr/usluge/${service.slug}`;
+  const url = `https://primelink.hr/${service.slug}`;
   const related = service.related.map((s) => getService(s)).filter(Boolean) as typeof services;
 
   const serviceJsonLd = {
