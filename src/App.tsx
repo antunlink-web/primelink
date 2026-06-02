@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams, Navigate } from "react-router-dom";
 import { ScrollToTop } from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -11,6 +11,11 @@ import PortfolioPage from "./pages/PortfolioPage";
 import QuoteFormPage from "./pages/QuoteFormPage";
 import ServicePage from "./pages/ServicePage";
 import ContactPage from "./pages/ContactPage";
+
+const LegacyRedirect = () => {
+  const { slug } = useParams<{ slug: string }>();
+  return slug ? <Navigate to={`/${slug}`} replace /> : <NotFound />;
+};
 
 const queryClient = new QueryClient();
 
