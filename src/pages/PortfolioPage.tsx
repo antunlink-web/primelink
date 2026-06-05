@@ -1,15 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-import trazilicaImg from "@/assets/projects/trazilica.png";
-import poslovniregistarImg from "@/assets/projects/poslovniregistar.png";
 import careflowImg from "@/assets/projects/careflow.png";
 import flowcallImg from "@/assets/projects/flowcall.png";
 import lajtImg from "@/assets/projects/lajt.png";
@@ -27,26 +24,6 @@ import integriscentarImg from "@/assets/projects/integriscentar.png";
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
 const projectsData = [
-  {
-    id: "trazilica",
-    name: "Tražilica.hr",
-    url: "https://trazilica.hr",
-    descKey: "portfolio.trazilica.description",
-    industryKey: "portfolio.trazilica.industry",
-    tags: ["React", "Node.js", "PostgreSQL", "ElasticSearch"],
-    image: trazilicaImg,
-    category: ["web", "saas"] as FilterCategory[],
-  },
-  {
-    id: "poslovniregistar",
-    name: "PoslovniRegistar.hr",
-    url: "https://poslovniregistar.hr",
-    descKey: "portfolio.poslovniregistar.description",
-    industryKey: "portfolio.poslovniregistar.industry",
-    tags: ["React", "Python", "PostgreSQL", "REST API"],
-    image: poslovniregistarImg,
-    category: ["saas", "web"] as FilterCategory[],
-  },
   {
     id: "careflow",
     name: "CareFlow.hr",
