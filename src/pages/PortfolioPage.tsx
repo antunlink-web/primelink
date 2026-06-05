@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 import careflowImg from "@/assets/projects/careflow.png";
+import trazilicaImg from "@/assets/projects/trazilica.png";
 import flowcallImg from "@/assets/projects/flowcall.png";
 import lajtImg from "@/assets/projects/lajt.png";
 import flowsmsImg from "@/assets/projects/flowsms.png";
@@ -24,6 +25,16 @@ import integriscentarImg from "@/assets/projects/integriscentar.png";
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
 const projectsData = [
+  {
+    id: "trazilica",
+    name: "Trazilica.hr",
+    url: "https://trazilica.hr",
+    descKey: "portfolio.trazilica.description",
+    industryKey: "portfolio.trazilica.industry",
+    tags: ["React", "Node.js", "PostgreSQL", "ElasticSearch"],
+    image: trazilicaImg,
+    category: ["saas", "web"] as FilterCategory[],
+  },
   {
     id: "careflow",
     name: "CareFlow.hr",

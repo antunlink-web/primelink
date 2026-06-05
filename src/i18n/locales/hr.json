@@ -351,11 +351,7 @@
     "ctaStart": "Pokrenite projekt",
     "ctaConsult": "Zakažite konzultaciju",
     "trazilica": {
-      "description": "Platforma za pronalaženje pouzdanih majstora s preko 5.000+ registriranih stručnjaka i 50.000+ recenzija.",
-      "industry": "Marketplace"
-    },
-    "poslovniregistar": {
-      "description": "Svi podaci o hrvatskim tvrtkama na jednom mjestu — pretražujte 340.000+ subjekata iz službenih registara.",
+      "description": "Tražilica hrvatskih tvrtki — pretražite 340.000+ poslovnih subjekata iz službenih registara na jednom mjestu.",
       "industry": "Poslovni podaci"
     },
     "careflow": {
