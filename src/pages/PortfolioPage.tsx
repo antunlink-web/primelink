@@ -25,26 +25,6 @@ type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
 const projectsData = [
   {
-    id: "trazilica",
-    name: "Tražilica.hr",
-    url: "https://trazilica.hr",
-    descKey: "portfolio.trazilica.description",
-    industryKey: "portfolio.trazilica.industry",
-    tags: ["React", "Node.js", "PostgreSQL", "ElasticSearch"],
-    image: trazilicaImg,
-    category: ["web", "saas"] as FilterCategory[],
-  },
-  {
-    id: "poslovniregistar",
-    name: "PoslovniRegistar.hr",
-    url: "https://poslovniregistar.hr",
-    descKey: "portfolio.poslovniregistar.description",
-    industryKey: "portfolio.poslovniregistar.industry",
-    tags: ["React", "Python", "PostgreSQL", "REST API"],
-    image: poslovniregistarImg,
-    category: ["saas", "web"] as FilterCategory[],
-  },
-  {
     id: "careflow",
     name: "CareFlow.hr",
     url: "https://careflow.hr",
