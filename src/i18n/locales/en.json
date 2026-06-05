@@ -351,11 +351,7 @@
     "ctaStart": "Start a Project",
     "ctaConsult": "Book a Consultation",
     "trazilica": {
-      "description": "Platform for finding reliable tradespeople with over 5,000+ registered professionals and 50,000+ reviews.",
-      "industry": "Marketplace"
-    },
-    "poslovniregistar": {
-      "description": "All data about Croatian companies in one place — search 340,000+ entities from official registers.",
+      "description": "Croatian company search engine — explore 340,000+ business entities from official registers in one place.",
       "industry": "Business Data"
     },
     "careflow": {
