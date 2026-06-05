@@ -7,8 +7,6 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-import trazilicaImg from "@/assets/projects/trazilica.png";
-import poslovniregistarImg from "@/assets/projects/poslovniregistar.png";
 import careflowImg from "@/assets/projects/careflow.png";
 import flowcallImg from "@/assets/projects/flowcall.png";
 import lajtImg from "@/assets/projects/lajt.png";
