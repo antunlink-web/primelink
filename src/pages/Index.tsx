@@ -8,7 +8,6 @@ import Credibility from "@/components/Credibility";
 import HomeLeadForm from "@/components/HomeLeadForm";
 import Pricing from "@/components/Pricing";
 import Stats from "@/components/Stats";
-import About from "@/components/About";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 
