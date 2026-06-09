@@ -123,11 +123,8 @@ const HeroMockup = () => {
       </div>
 
       {/* Floating badge */}
-      <div className="hidden md:flex absolute -bottom-5 -left-5 items-center gap-2 px-3 py-2 rounded-xl border border-border bg-card/95 backdrop-blur shadow-[var(--shadow-xl)]">
-        <span className="relative flex h-2 w-2">
-          <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-60" />
-          <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-        </span>
+      <div className="hidden md:flex absolute -bottom-5 -left-5 items-center gap-2 px-3 py-2 rounded-xl border border-border bg-card/95 shadow-[var(--shadow-xl)]">
+        <span className="inline-flex h-2 w-2 rounded-full bg-accent" />
         <span className="text-[11px] text-foreground font-medium">Live · Uptime 99.9%</span>
       </div>
     </div>

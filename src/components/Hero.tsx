@@ -13,8 +13,8 @@ const Hero = () => {
       {/* Background */}
       <div className="absolute inset-0 bg-[var(--gradient-dark)]" />
       <div className="absolute inset-0 bg-[var(--gradient-mesh)]" />
-      <div className="hidden md:block absolute top-1/4 -left-32 w-[520px] h-[520px] bg-primary/10 rounded-full blur-[160px]" />
-      <div className="hidden md:block absolute bottom-0 right-0 w-[420px] h-[420px] bg-accent/8 rounded-full blur-[150px]" />
+      <div className="hidden lg:block absolute top-1/4 -left-32 w-[520px] h-[520px] bg-primary/10 rounded-full blur-[160px]" />
+      <div className="hidden lg:block absolute bottom-0 right-0 w-[420px] h-[420px] bg-accent/8 rounded-full blur-[150px]" />
       {/* Subtle grid */}
       <div
         aria-hidden
