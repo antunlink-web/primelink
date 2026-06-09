@@ -2,9 +2,9 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-import trazilicaImg from "@/assets/projects/trazilica-new.png";
-import flowsmsImg from "@/assets/projects/flowsms.png";
-import careflowImg from "@/assets/projects/careflow.png";
+import trazilicaImg from "@/assets/projects/trazilica-new.webp";
+import flowsmsImg from "@/assets/projects/flowsms.webp";
+import careflowImg from "@/assets/projects/careflow.webp";
 
 const cases = [
   {
@@ -79,8 +79,11 @@ const PortfolioHighlights = () => {
                 <img
                   src={c.image}
                   alt={`${c.name} — ${c.type}`}
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
+                  width={800}
+                  height={500}
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col">

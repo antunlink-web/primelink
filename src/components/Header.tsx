@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
-import logo from "@/assets/primelink-logo.png";
+import logo from "@/assets/primelink-logo.webp";
 
 const usluge = [
   { label: "Izrada web stranica", to: "/izrada-web-stranica" },

@@ -1,7 +1,7 @@
 import { Linkedin, Instagram, Facebook, MapPin, Mail, Phone } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import logo from "@/assets/primelink-logo.png";
+import logo from "@/assets/primelink-logo.webp";
 
 const Footer = () => {
   const { t } = useTranslation();
