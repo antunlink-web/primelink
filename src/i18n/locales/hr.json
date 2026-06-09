@@ -55,9 +55,9 @@
     }
   },
   "stats": {
-    "clients": "Zadovoljnih klijenata",
+    "clients": "Realiziranih projekata",
     "uptime": "Uptime garancija",
-    "support": "Podrška",
+    "support": "Prosječno vrijeme odgovora",
     "experience": "Godina iskustva"
   },
   "about": {

@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import TrustLogos from "@/components/TrustLogos";
+import CapabilitiesStrip from "@/components/CapabilitiesStrip";
 import Services from "@/components/Services";
 import Solutions from "@/components/Solutions";
 import PortfolioHighlights from "@/components/PortfolioHighlights";
@@ -8,7 +8,6 @@ import Credibility from "@/components/Credibility";
 import HomeLeadForm from "@/components/HomeLeadForm";
 import Pricing from "@/components/Pricing";
 import Stats from "@/components/Stats";
-import About from "@/components/About";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 
@@ -26,7 +25,7 @@ const Index = () => {
       </Helmet>
       <Header />
       <Hero />
-      <TrustLogos />
+      <CapabilitiesStrip />
       <Services />
       <Solutions />
       <PortfolioHighlights />
@@ -34,7 +33,6 @@ const Index = () => {
       <HomeLeadForm />
       <Pricing />
       <Stats />
-      <About />
       <Footer />
     </div>
   );
