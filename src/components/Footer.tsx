@@ -56,26 +56,32 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">{t('footer.services')}</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">Usluge</h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li><Link to="/izrada-web-stranica" className="hover:text-foreground transition-colors">Izrada web stranica</Link></li>
               <li><Link to="/redizajn-web-stranice" className="hover:text-foreground transition-colors">Redizajn web stranica</Link></li>
-              <li><Link to="/izrada-crm-sustava" className="hover:text-foreground transition-colors">Izrada CRM sustava</Link></li>
-              <li><Link to="/izrada-web-aplikacija" className="hover:text-foreground transition-colors">Izrada web aplikacija</Link></li>
+              <li><Link to="/izrada-web-aplikacija" className="hover:text-foreground transition-colors">Web aplikacije</Link></li>
+              <li><Link to="/izrada-crm-sustava" className="hover:text-foreground transition-colors">CRM sustavi</Link></li>
               <li><Link to="/stripe-integracije" className="hover:text-foreground transition-colors">Stripe integracije</Link></li>
               <li><Link to="/saas-razvoj" className="hover:text-foreground transition-colors">SaaS razvoj</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">{t('footer.company')}</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">Rješenja</h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
-              <li><a href="/#about" onClick={(e) => { e.preventDefault(); goToSection('about'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.about')}</a></li>
-              <li><a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.portfolio')}</a></li>
-              <li><a href="/ponuda" onClick={(e) => { e.preventDefault(); navigate('/ponuda'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.offer')}</a></li>
-              <li><a href="/ponuda/forma" onClick={(e) => { e.preventDefault(); navigate('/ponuda/forma'); }} className="hover:text-foreground transition-colors cursor-pointer">Zatražite ponudu</a></li>
+              <li><Link to="/izrada-crm-sustava" className="hover:text-foreground transition-colors">PrimeCRM</Link></li>
+              <li><Link to="/stripe-integracije" className="hover:text-foreground transition-colors">PrimePay</Link></li>
+              <li><Link to="/besplatna-seo-analiza" className="hover:text-foreground transition-colors">PrimeAudit</Link></li>
+              <li><Link to="/redizajn-web-stranice" className="hover:text-foreground transition-colors">PrimeDemo</Link></li>
+            </ul>
+
+            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mt-8 mb-4">Korisni linkovi</h4>
+            <ul className="space-y-2.5 text-sm text-muted-foreground">
+              <li><a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="hover:text-foreground transition-colors cursor-pointer">Portfolio</a></li>
               <li><Link to="/besplatna-seo-analiza" className="hover:text-foreground transition-colors">Besplatna SEO analiza</Link></li>
-              <li><a href="/#contact" onClick={(e) => { e.preventDefault(); goToSection('contact'); }} className="hover:text-foreground transition-colors cursor-pointer">{t('footer.contact')}</a></li>
+              <li><a href="/ponuda/forma" onClick={(e) => { e.preventDefault(); navigate('/ponuda/forma'); }} className="hover:text-foreground transition-colors cursor-pointer">Zatražite ponudu</a></li>
+              <li><a href="/#contact" onClick={(e) => { e.preventDefault(); goToSection('contact'); }} className="hover:text-foreground transition-colors cursor-pointer">Kontakt</a></li>
             </ul>
           </div>
 
