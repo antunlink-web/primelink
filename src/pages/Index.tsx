@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import TrustLogos from "@/components/TrustLogos";
+import CapabilitiesStrip from "@/components/CapabilitiesStrip";
 import Services from "@/components/Services";
 import Solutions from "@/components/Solutions";
 import PortfolioHighlights from "@/components/PortfolioHighlights";
@@ -26,7 +26,7 @@ const Index = () => {
       </Helmet>
       <Header />
       <Hero />
-      <TrustLogos />
+      <CapabilitiesStrip />
       <Services />
       <Solutions />
       <PortfolioHighlights />
@@ -34,7 +34,6 @@ const Index = () => {
       <HomeLeadForm />
       <Pricing />
       <Stats />
-      <About />
       <Footer />
     </div>
   );
