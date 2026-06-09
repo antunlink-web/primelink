@@ -7,11 +7,11 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-import careflowImg from "@/assets/projects/careflow.png";
-import trazilicaImg from "@/assets/projects/trazilica-new.png";
+import careflowImg from "@/assets/projects/careflow.webp";
+import trazilicaImg from "@/assets/projects/trazilica-new.webp";
 import flowcallImg from "@/assets/projects/flowcall.png";
 import lajtImg from "@/assets/projects/lajt.png";
-import flowsmsImg from "@/assets/projects/flowsms.png";
+import flowsmsImg from "@/assets/projects/flowsms.webp";
 import textroImg from "@/assets/projects/textro.png";
 import mojakartaImg from "@/assets/projects/mojakarta.png";
 import perksImg from "@/assets/projects/perks.png";
