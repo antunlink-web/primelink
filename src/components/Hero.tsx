@@ -46,7 +46,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => navigate('/besplatna-seo-analiza')}
               className="border border-border bg-secondary/30 text-foreground hover:bg-secondary/60 text-base px-8 py-6 transition-all"
             >
               {t('hero.viewSolutions')}
