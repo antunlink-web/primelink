@@ -406,5 +406,465 @@
       "description": "Centar za ortomolekularnu medicinu — analitički pristup zdravlju kroz analizu uzroka i individualne protokole.",
       "industry": "Zdravlje & Medicina"
     }
+  },
+  "common": {
+    "learnMore": "Saznajte više",
+    "viewProject": "Pogledajte projekt",
+    "viewService": "Pogledajte uslugu",
+    "allReferences": "Sve reference",
+    "requestQuote": "Zatražite ponudu",
+    "contactUs": "Kontaktirajte nas",
+    "back": "Nazad",
+    "next": "Dalje",
+    "send": "Pošalji",
+    "sending": "Šaljem…",
+    "optional": "(neobavezno)",
+    "loading": "Učitavanje…"
+  },
+  "headerNav": {
+    "services": "Usluge",
+    "solutions": "Rješenja",
+    "portfolio": "Portfolio",
+    "seoAudit": "Besplatna SEO analiza",
+    "contact": "Kontakt",
+    "requestQuote": "Zatražite ponudu",
+    "openMenu": "Otvori izbornik",
+    "closeMenu": "Zatvori izbornik",
+    "services_items": {
+      "web": "Izrada web stranica",
+      "redesign": "Redizajn web stranica",
+      "webapp": "Web aplikacije",
+      "crm": "CRM sustavi",
+      "stripe": "Stripe integracije",
+      "saas": "SaaS razvoj",
+      "seo": "SEO optimizacija"
+    },
+    "solution_items": {
+      "primecrm": { "label": "PrimeCRM", "desc": "CRM sustavi" },
+      "primepay": { "label": "PrimePay", "desc": "Stripe & naplate" },
+      "primeaudit": { "label": "PrimeAudit", "desc": "SEO analiza" },
+      "primedemo": { "label": "PrimeDemo", "desc": "Demo redizajni" }
+    }
+  },
+  "footerNew": {
+    "address": "Zagreb, Hrvatska",
+    "servicesTitle": "Usluge",
+    "solutionsTitle": "Rješenja",
+    "usefulLinksTitle": "Korisni linkovi",
+    "portfolio": "Portfolio",
+    "seoAudit": "Besplatna SEO analiza",
+    "requestQuote": "Zatražite ponudu",
+    "contact": "Kontakt"
+  },
+  "heroBullets": {
+    "fixed": "Fiksne ponude",
+    "fast": "Brza isporuka",
+    "stack": "React · Stripe · Postgres"
+  },
+  "capabilities": {
+    "label": "Što radimo",
+    "web": "Web stranice",
+    "crm": "CRM sustavi",
+    "stripe": "Stripe integracije",
+    "seo": "SEO optimizacija",
+    "saas": "SaaS razvoj",
+    "maintenance": "Održavanje"
+  },
+  "mockup": {
+    "nav": {
+      "overview": "Pregled",
+      "clients": "Klijenti",
+      "payments": "Naplate",
+      "seo": "SEO",
+      "reports": "Izvještaji"
+    },
+    "kpis": {
+      "conversion": "Konverzija",
+      "visits": "Posjeta",
+      "revenue": "Naplate"
+    },
+    "chartTitle": "Mjesečni rast prihoda",
+    "tasks": {
+      "t1": "Stripe pretplata aktivirana",
+      "t2": "SEO audit — 18 prijedloga",
+      "t3": "Redizajn početne stranice"
+    },
+    "live": "Uživo · Uptime 99.9%"
+  },
+  "solutionsSection": {
+    "badge": "Rješenja",
+    "title": "Gotovi proizvodi PrimeLinka",
+    "subtitle": "Ne gradimo samo web stranice. Razvijamo poslovne sustave koji rješavaju konkretne probleme — od CRM-a i naplata do SEO i redizajna.",
+    "items": {
+      "primecrm": {
+        "name": "PrimeCRM",
+        "tagline": "CRM platforma za prodaju i operativu",
+        "description": "CRM sustavi za prodaju, donacije, evidenciju klijenata i interne procese. Bez licenci po korisniku i bez nepotrebnih modula."
+      },
+      "primepay": {
+        "name": "PrimePay",
+        "tagline": "Stripe naplate, pretplate i donacije",
+        "description": "Stripe integracije, pretplate, online plaćanja i donacijski sustavi — sigurno, brzo i u skladu s PCI standardima."
+      },
+      "primeaudit": {
+        "name": "PrimeAudit",
+        "tagline": "SEO i tehnička analiza web stranica",
+        "description": "Besplatna analiza SEO, brzine i tehničkih problema vaše web stranice s konkretnim prijedlozima poboljšanja."
+      },
+      "primedemo": {
+        "name": "PrimeDemo",
+        "tagline": "Brzi prijedlozi redizajna",
+        "description": "Demo prijedlog kako bi vaša postojeća web stranica mogla izgledati nakon redizajna — prije nego donesete odluku."
+      }
+    }
+  },
+  "credibility": {
+    "badge": "Što radimo konkretno",
+    "title": "Što PrimeLink radi konkretno",
+    "subtitle": "Nismo agencija koja prodaje paušalna obećanja. Radimo konkretne stvari koje tvrtkama donose stvarnu vrijednost.",
+    "items": {
+      "modernize": { "title": "Modernizacija zastarjelih web stranica", "description": "Zamjena starih WordPress predložaka modernim, brzim i SEO čistim stranicama — bez gubitka pozicija." },
+      "demo": { "title": "Demo prijedlozi prije odluke", "description": "Pokazujemo kako bi vaša nova stranica mogla izgledati prije nego išta plaćate ili potpisujete." },
+      "crm": { "title": "CRM sustavi i interne aplikacije", "description": "Custom CRM i interni alati koji prate vaše procese — bez licenci po korisniku i bez nepotrebnih modula." },
+      "stripe": { "title": "Stripe naplate i pretplate", "description": "Postavljanje plaćanja, pretplata i donacijskih sustava preko Stripea — sigurno i u skladu s PCI standardima." },
+      "seo": { "title": "SEO i tehnička optimizacija", "description": "Tehnički SEO, brzina učitavanja, Core Web Vitals i čista struktura — temelj za dugoročan organski rast." },
+      "hosting": { "title": "Hosting, održavanje i podrška", "description": "Pouzdan hosting, sigurnosne nadogradnje i kontinuirana podrška — bez 'isporučili i zaboravili'." }
+    }
+  },
+  "caseHighlights": {
+    "badge": "Reference",
+    "title": "Odabrane studije slučaja",
+    "subtitle": "Pravi projekti, pravi problemi i pravi rezultati — bez generičkih screenshotova.",
+    "problem": "Problem",
+    "solution": "Rješenje",
+    "result": "Rezultat",
+    "items": {
+      "trazilica": {
+        "type": "SaaS · Tražilica poslovnih subjekata",
+        "problem": "Podaci o 340.000+ hrvatskih tvrtki bili su razbacani po službenim registrima — pretraživanje je bilo sporo i fragmentirano.",
+        "solution": "Razvili smo unificiranu tražilicu s ElasticSearch indeksom, čistim React sučeljem i naprednim filterima nad svim registrima.",
+        "result": "Korisnici u nekoliko sekundi pronalaze podatke koje su prije tražili po više različitih izvora."
+      },
+      "flowsms": {
+        "type": "SaaS · SMS platforma",
+        "problem": "SMS API-ji poput Twilija naplaćuju po poruci, što kampanje velikog volumena čini skupima i nepredvidivima.",
+        "solution": "Izgradili smo platformu koja koristi prave Android uređaje kao gatewaye — bez naknada po poruci i s automatskom raspodjelom prometa.",
+        "result": "Stopa isporuke 98,2%, kampanje se izvršavaju 3× brže, a trošak po poruci pada na nulu."
+      },
+      "careflow": {
+        "type": "Web aplikacija · Upravljanje udrugama",
+        "problem": "Udruge su koristile Excel, papir i razdvojene alate za članove, donatore i komunikaciju — sve je trošilo vrijeme i bilo podložno greškama.",
+        "solution": "Razvili smo digitalnu platformu koja centralizira članstvo, donacije, komunikaciju i aktivnosti u jednom sučelju.",
+        "result": "Administrativno opterećenje smanjeno, podaci o članovima i donatorima na jednom mjestu i dostupni odmah."
+      }
+    }
+  },
+  "leadForm": {
+    "badge": "Kontakt",
+    "title": "Zatražite ponudu",
+    "subtitle": "Pošaljite nekoliko podataka — pripremit ćemo konkretan prijedlog.",
+    "whatNeed": "Što trebate?",
+    "needs": {
+      "newSite": "Nova web stranica",
+      "redesign": "Redizajn postojeće web stranice",
+      "crm": "CRM sustav",
+      "webapp": "Web aplikacija",
+      "stripe": "Stripe integracija",
+      "seo": "SEO analiza"
+    },
+    "name": "Ime i prezime",
+    "website": "Web stranica / domena",
+    "websitePlaceholder": "vasadomena.hr",
+    "email": "Email",
+    "phone": "Telefon",
+    "message": "Poruka",
+    "messagePlaceholder": "Kratak opis projekta ili pitanja…",
+    "responseTime": "Odgovaramo u roku 24 sata.",
+    "send": "Pošaljite upit",
+    "sending": "Šaljem…",
+    "thanksTitle": "Hvala!",
+    "thanksMessage": "Zaprimili smo vaš upit i javit ćemo vam se u roku 24 sata s konkretnim prijedlogom.",
+    "errorName": "Unesite ime i prezime",
+    "errorEmail": "Neispravna e-mail adresa",
+    "errorGeneric": "Provjerite unesene podatke.",
+    "errorSubmit": "Slanje nije uspjelo. Pokušajte ponovno ili nas kontaktirajte direktno."
+  },
+  "pricingSection": {
+    "badge": "Početne cijene",
+    "title": "Jasno postavljene cijene, bez skrivenih troškova",
+    "subtitle": "Svaki projekt započinje kratkom analizom i fiksnom ponudom. Plaćate ono što je dogovoreno — bez naknadnih iznenađenja.",
+    "webLabel": "Web stranice",
+    "webPriceFrom": "od 499€",
+    "webVat": "+ PDV",
+    "webDesc": "Profesionalna prezentacijska web stranica spremna za klijente.",
+    "webF1": "Custom dizajn prilagođen brendu",
+    "webF2": "Mobile-first i optimizirana brzina",
+    "webF3": "Osnovna SEO optimizacija",
+    "webF4": "Hosting, SSL i tehnička podrška",
+    "webCta": "Saznajte više",
+    "appBadge": "Po projektu",
+    "appLabel": "CRM sustavi i web aplikacije",
+    "appPriceLabel": "Cijena po projektu",
+    "appDesc": "Cijena ovisi o opsegu, integracijama i broju korisnika. Ponuda u 48h.",
+    "appF1": "CRM sustavi prilagođeni vašim procesima",
+    "appF2": "Web aplikacije i interni alati",
+    "appF3": "Stripe i druge integracije plaćanja",
+    "appF4": "SaaS proizvodi — od MVP-a do produkcije",
+    "appCta": "Zatražite ponudu"
+  },
+  "servicesGrid": {
+    "viewService": "Pogledajte uslugu",
+    "items": {
+      "izrada-web-stranica": { "title": "Izrada web stranica", "description": "Profesionalne, brze i SEO optimizirane web stranice. Custom dizajn, jasna poruka i tehnička podloga koja konvertira posjetitelje u upite." },
+      "redizajn-web-stranica": { "title": "Redizajn web stranica", "description": "Modernizacija postojeće stranice bez gubitka SEO pozicija. Bolji dizajn, brže učitavanje i jasnija struktura sadržaja." },
+      "crm-sustavi": { "title": "Izrada CRM sustava", "description": "Custom CRM prilagođen vašim prodajnim i operativnim procesima. Bez licenci po korisniku i bez nepotrebnih modula." },
+      "web-aplikacije": { "title": "Izrada web aplikacija", "description": "Interni alati, klijentski portali i poslovne aplikacije koje zamjenjuju Excel, papir i nepovezane sustave." },
+      "stripe-integracije": { "title": "Stripe integracije", "description": "Implementacija Stripe plaćanja, pretplata i Connect platformi. Sigurno, brzo i u skladu s PCI standardima." },
+      "saas-razvoj": { "title": "SaaS razvoj", "description": "Razvoj SaaS proizvoda od ideje do produkcije. MVP, skalabilna arhitektura, pretplate i onboarding korisnika." }
+    }
+  },
+  "servicePage": {
+    "notFound": "Usluga nije pronađena",
+    "backHome": "Povratak na početnu",
+    "scheduleCall": "Dogovorite kratki poziv",
+    "forWhom": "Za koga je ova usluga",
+    "whatsIncluded": "Što je uključeno",
+    "typicalExamples": "Tipični primjeri",
+    "processTitle": "Kako izgleda proces",
+    "step": "Korak",
+    "related": "Povezane usluge",
+    "seoAuditTitle": "Želite prvo provjeriti stanje postojeće web stranice?",
+    "seoAuditDesc": "Pokrenite besplatnu SEO analizu i saznajte koje tehničke, SEO i brzinske probleme treba popraviti.",
+    "seoAuditCta": "Provjeri web stranicu",
+    "ctaSubtitle": "U 48 sati šaljemo konkretnu ponudu, jasne rokove i točan opis onoga što dobivate."
+  },
+  "seoAuditPage": {
+    "title": "Besplatna SEO analiza web stranice",
+    "subtitle": "Provjerite osnovne SEO, brzinske i tehničke probleme svoje web stranice u nekoliko sekundi.",
+    "freeTool": "Besplatni alat",
+    "urlPlaceholder": "https://vasa-stranica.hr",
+    "analyze": "Analiziraj stranicu",
+    "analyzing": "Analiziram…",
+    "analysisNote": "Analiza je informativna i ne sprema podatke o vašoj stranici.",
+    "checksTitle": "Što analiza provjerava",
+    "checksSubtitle": "Brza, automatska provjera ključnih SEO i tehničkih parametara koji najčešće utječu na vidljivost i konverziju.",
+    "checks": {
+      "c1": "SEO naslov i meta description",
+      "c2": "Struktura H1, H2 i H3 elemenata",
+      "c3": "sitemap.xml i robots.txt",
+      "c4": "Mobilne performanse i Core Web Vitals",
+      "c5": "Optimizacija slika",
+      "c6": "Osnovni tehnički problemi",
+      "c7": "Struktura za konverziju"
+    },
+    "resultsFor": "Rezultati analize za",
+    "scoreSeo": "SEO",
+    "scoreMobile": "Mobilna brzina",
+    "scoreTechnical": "Tehničko stanje",
+    "scoreRedesign": "Potencijal redizajna",
+    "redesignLow": "Nizak",
+    "redesignMedium": "Srednji",
+    "redesignHigh": "Visok",
+    "issuesTitle": "Detektirani problemi i preporuke",
+    "sevHigh": "visok",
+    "sevMedium": "srednji",
+    "sevLow": "nizak",
+    "samples": {
+      "s1Title": "Nedostaje meta description",
+      "s1Rec": "Dodajte jedinstveni meta description (do 160 znakova) za svaku stranicu.",
+      "s2Title": "Slike nisu optimizirane",
+      "s2Rec": "Konvertirajte slike u WebP/AVIF format i koristite responsive srcset.",
+      "s3Title": "Više od jednog H1 elementa",
+      "s3Rec": "Zadržite samo jedan H1 po stranici i organizirajte sadržaj kroz H2/H3.",
+      "s4Title": "Spori Largest Contentful Paint na mobilnim uređajima",
+      "s4Rec": "Smanjite render-blocking JS/CSS i lazy-load slike izvan viewporta.",
+      "s5Title": "Nedostaje sitemap.xml",
+      "s5Rec": "Generirajte sitemap.xml i navedite ga u robots.txt."
+    },
+    "errInvalidUrlTitle": "Neispravan URL",
+    "errInvalidUrlDesc": "Unesite valjanu adresu, npr. https://primjer.hr",
+    "errMissingTitle": "Nedostaju podaci",
+    "errMissingDesc": "Unesite ime, email i URL stranice.",
+    "errCheckUrlDesc": "Provjerite adresu web stranice.",
+    "errSendTitle": "Greška pri slanju",
+    "errSendDesc": "Pokušajte ponovno ili nas kontaktirajte na primelink@primelink.hr.",
+    "thanksTitle": "Hvala!",
+    "thanksMessage": "Zaprimili smo vaš zahtjev i javit ćemo vam se s prijedlogom poboljšanja.",
+    "leadTitle": "Želite detaljniju analizu i konkretan prijedlog poboljšanja?",
+    "leadSubtitle": "Pošaljite upit i izrađujemo detaljan izvještaj s prioritetima i procjenom efekta.",
+    "urlLabel": "Web stranica",
+    "nameLabel": "Ime i prezime",
+    "emailLabel": "Email",
+    "phoneLabel": "Telefon (opcionalno)",
+    "messageLabel": "Poruka (opcionalno)",
+    "consent": "Želim da me kontaktirate s prijedlogom poboljšanja.",
+    "requestDetailed": "Zatraži detaljnu analizu",
+    "sending": "Šaljem…",
+    "bottomCtaTitle": "Trebate pomoć oko optimizacije ili redizajna?",
+    "bottomCtaSubtitle": "PrimeLink izrađuje moderne web stranice, CRM sustave i web aplikacije za tvrtke u Hrvatskoj.",
+    "viewServices": "Pogledajte usluge"
+  },
+  "portfolioPage": {
+    "metaTitle": "Portfolio — Naši projekti i klijenti | PrimeLink",
+    "metaDescription": "Pregledajte odabrane projekte koje smo razvili — web stranice, web shopovi, SaaS i automatizacije za hrvatske i strane klijente.",
+    "industryAlt": "projekt"
+  },
+  "quoteFormPage": {
+    "h1": "Zatražite ponudu",
+    "metaTitle": "Zatražite ponudu — PrimeLink",
+    "metaDescription": "Ispunite kratki upitnik i recite nam o svom projektu. Javljamo se s personaliziranom ponudom unutar 24 sata."
+  },
+  "quoteForm": {
+    "intro": {
+      "title": "Dobijte prijedlog web stranice za vaše poslovanje",
+      "subtitle": "Odgovorite na par pitanja — pripremit ću konkretno rješenje za vas.",
+      "start": "Započni",
+      "justContact": "Samo me kontaktirajte",
+      "footnote": "Obično odgovaram unutar 24h — osobno, bez generičkih ponuda."
+    },
+    "progress": "Korak {{step}} od {{total}}",
+    "step1": {
+      "title": "Kako vam web stranica treba služiti?",
+      "subtitle": "Odaberite što najbolje opisuje vašu situaciju.",
+      "booking": "Klijenti me često zovu — želim lakše naručivanje",
+      "leads": "Želim više upita putem weba",
+      "presentation": "Želim profesionalnu prezentaciju poslovanja",
+      "ecommerce": "Želim prodavati online",
+      "unsure": "Nisam siguran"
+    },
+    "step2": {
+      "bookingTitle": "Kako želite da klijenti rezerviraju?",
+      "bookingCalendar": "Kalendar (odabir termina)",
+      "bookingForm": "Forma (upit)",
+      "bookingUnsure": "Nisam siguran",
+      "leadsTitle": "Kako želite da vas klijenti kontaktiraju?",
+      "leadsPhone": "Telefon",
+      "leadsWhatsapp": "WhatsApp",
+      "leadsEmail": "Email",
+      "leadsForm": "Forma",
+      "sellTitle": "Što želite prodavati?",
+      "sellPhysical": "Fizičke proizvode",
+      "sellServices": "Usluge",
+      "sellDigital": "Digitalno"
+    },
+    "step3": {
+      "title": "Što vam konkretno treba?",
+      "subtitle": "Tip projekta koji najbolje odgovara.",
+      "new": "Nova web stranica",
+      "redesign": "Redizajn postojeće stranice",
+      "ads": "Dovođenje klijenata (oglasi)",
+      "all": "Sve od navedenog"
+    },
+    "step4": {
+      "title": "O vašem poslovanju",
+      "businessLabel": "Čime se bavite?",
+      "businessPlaceholder": "npr. frizerski salon, IT tvrtka, restoran...",
+      "businessHint": "Dovoljno je par riječi (npr. frizerski salon, građevina…).",
+      "hasWebsite": "Imate li već web stranicu?",
+      "yes": "Da",
+      "no": "Ne",
+      "goal": "Koji je vaš glavni cilj?",
+      "goalInquiries": "Više upita",
+      "goalSales": "Više prodaje",
+      "goalPresence": "Bolja online prisutnost",
+      "goalUnknown": "Ne znam još"
+    },
+    "step5": {
+      "title": "Imate li već sadržaj ili profile koje možemo iskoristiti?",
+      "subtitle": "Možete poslati linkove vaših društvenih mreža ili postojećih stranica (npr. Facebook, Instagram, LinkedIn…). To pomaže da brže pripremimo prijedlog s vašim stvarnim sadržajem.",
+      "linksLabel": "Linkovi",
+      "optional": "(neobavezno)",
+      "placeholder": "npr. https://facebook.com/..., https://instagram.com/..."
+    },
+    "step6": {
+      "title": "Ciljevi i ulaganje",
+      "timelineLabel": "Kada želite krenuti?",
+      "tlAsap": "Odmah",
+      "tl30": "U sljedećih 30 dana",
+      "tlLater": "Kasnije",
+      "budgetLabel": "Planirani budžet",
+      "b1": "Do 200€",
+      "b2": "200€ – 500€",
+      "b3": "500€ – 1000€",
+      "b4": "1000€+",
+      "budgetHint": "Ne obvezuje vas ni na što — služi samo za preporuku najboljeg rješenja.",
+      "helpLabel": "Želite li i pomoć oko dovođenja klijenata?",
+      "recommended": "⭐ Preporučeno za vas",
+      "helpYes": "Da",
+      "helpMaybe": "Možda",
+      "helpNo": "Ne"
+    },
+    "step7": {
+      "title": "Imate li primjere koji vam se sviđaju?",
+      "subtitle": "Možete poslati linkove stranica ili aplikacija koje vam se sviđaju (nije bitno iz vaše branše). To pomaže da bolje prilagodimo dizajn i smjer.",
+      "linksLabel": "Linkovi",
+      "optional": "(neobavezno)",
+      "placeholder": "npr. https://..., https://...",
+      "whatLike": "Što vam se sviđa kod tih primjera?",
+      "design": "Dizajn",
+      "simplicity": "Jednostavnost",
+      "features": "Funkcionalnosti",
+      "speed": "Brzina korištenja",
+      "dontKnow": "Ne znam"
+    },
+    "step8": {
+      "yourChoice": "Vaš odabir",
+      "goal": "Cilj",
+      "solution": "Rješenje",
+      "extra": "Dodatno",
+      "recTitle": "Preporučeno rješenje",
+      "recIntro": "Na temelju vaših odgovora, evo što bismo vam predložili:",
+      "footnote": "Ovo je okvirna preporuka — finalni prijedlog s točnim opsegom i cijenom šaljemo nakon kratke analize.",
+      "solBooking": "Web stranica + sustav za rezervacije",
+      "solLeads": "Web stranica optimizirana za upite",
+      "solShop": "Webshop",
+      "solPresentation": "Profesionalna prezentacijska stranica",
+      "solDefault": "Web stranica po mjeri",
+      "extraMarketing": "Marketing / dovođenje klijenata"
+    },
+    "step9": {
+      "title": "Kontakt podaci",
+      "name": "Ime *",
+      "namePh": "Vaše ime",
+      "email": "Email *",
+      "emailPh": "email@primjer.hr",
+      "phone": "Telefon",
+      "phoneSuffix": "(preporučeno)",
+      "phonePh": "+385...",
+      "whatNext": "Što slijedi nakon ovoga?",
+      "n1": "Pregledam vaše odgovore",
+      "n2": "Pripremim konkretan prijedlog",
+      "n3": "Javljam vam se (obično isti ili sljedeći dan)",
+      "personal": "Odgovaram osobno — bez generičkih ponuda.",
+      "within": "Obično odgovaram unutar 24h"
+    },
+    "thanksTitle": "Hvala!",
+    "thanksMessage": "Zaprimili smo vaš upit i javit ćemo vam se s konkretnim prijedlogom.",
+    "thanksCallPrompt": "Ako želite ubrzati, možete nas odmah nazvati:",
+    "back": "Nazad",
+    "next": "Dalje",
+    "submit": "Zatraži prijedlog",
+    "submitting": "Šaljem...",
+    "errorGeneric": "Došlo je do greške. Molimo pokušajte ponovno ili nas kontaktirajte direktno.",
+    "rec": {
+      "websiteTitle": "Profesionalna web stranica",
+      "websiteDesc": "Moderna, brza i optimizirana stranica koja gradi povjerenje i jasno komunicira što nudite.",
+      "calendarTitle": "Sustav za online rezervacije",
+      "calendarDesc": "Kalendar gdje klijenti sami biraju slobodan termin — manje poziva, manje propuštenih prilika.",
+      "formTitle": "Forma za narudžbe / upite",
+      "formDesc": "Strukturirana forma koja prikuplja sve potrebne podatke o narudžbi prije nego klijent nazove.",
+      "bookingTitle": "Booking modul po mjeri",
+      "bookingDesc": "Predložit ćemo najbolji način rezervacija (kalendar ili forma) prema vašoj djelatnosti.",
+      "leadsTitle": "Optimizacija za upite",
+      "leadsDesc": "Jasni CTA-ovi i kontakt putem {{channel}} — fokus stranice je da pretvori posjetitelja u upit.",
+      "leadsChannelFallback": "preferirani kanal",
+      "shopTitle": "Webshop",
+      "shopDesc": "Online trgovina prilagođena prodaji ({{what}}) s plaćanjem, dostavom i upravljanjem narudžbama.",
+      "shopWhatFallback": "vaše proizvode",
+      "presentationTitle": "Premium prezentacijski dizajn",
+      "presentationDesc": "Naglasak na vizualnom identitetu, fotografijama i tipografiji — stranica koja izgleda kao da je iza nje ozbiljna firma.",
+      "adsTitle": "Dovođenje klijenata (oglasi)",
+      "adsDesc": "Google i Meta oglasi usmjereni na vašu ciljanu publiku — stranica i oglasi rade kao jedan sustav."
+    }
   }
 }
