@@ -1,10 +1,12 @@
 import { Activity, Users, CreditCard, TrendingUp, Search, Check } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 /**
  * Premium dashboard mockup used as the right-side hero visual.
  * Pure HTML/SVG — no images, no JS work, mobile-light.
  */
 const HeroMockup = () => {
+  const { t } = useTranslation();
   return (
     <div className="relative w-full max-w-[560px] mx-auto lg:mx-0 lg:ml-auto select-none">
       {/* Soft blue glow behind the mockup */}
@@ -34,11 +36,11 @@ const HeroMockup = () => {
           {/* Sidebar */}
           <aside className="col-span-3 rounded-lg border border-border bg-background/60 p-2.5 space-y-1.5">
             {[
-              { i: Activity, label: "Pregled", active: true },
-              { i: Users, label: "Klijenti" },
-              { i: CreditCard, label: "Naplate" },
-              { i: Search, label: "SEO" },
-              { i: TrendingUp, label: "Izvještaji" },
+              { i: Activity, label: t('mockup.nav.overview'), active: true },
+              { i: Users, label: t('mockup.nav.clients') },
+              { i: CreditCard, label: t('mockup.nav.payments') },
+              { i: Search, label: t('mockup.nav.seo') },
+              { i: TrendingUp, label: t('mockup.nav.reports') },
             ].map(({ i: Icon, label, active }) => (
               <div
                 key={label}
@@ -59,9 +61,9 @@ const HeroMockup = () => {
             {/* KPI cards */}
             <div className="grid grid-cols-3 gap-2">
               {[
-                { v: "+38%", l: "Konverzija" },
-                { v: "12.4k", l: "Posjeta" },
-                { v: "€18.6k", l: "Naplate" },
+                { v: "+38%", l: t('mockup.kpis.conversion') },
+                { v: "12.4k", l: t('mockup.kpis.visits') },
+                { v: "€18.6k", l: t('mockup.kpis.revenue') },
               ].map((k) => (
                 <div
                   key={k.l}
@@ -79,7 +81,7 @@ const HeroMockup = () => {
             <div className="rounded-lg border border-border bg-background/70 p-3">
               <div className="flex items-center justify-between mb-2">
                 <div className="text-[10px] text-muted-foreground">
-                  Mjesečni rast prihoda
+                  {t('mockup.chartTitle')}
                 </div>
                 <div className="text-[10px] text-accent font-medium">▲ 24.3%</div>
               </div>
@@ -106,9 +108,9 @@ const HeroMockup = () => {
             {/* Task list */}
             <div className="rounded-lg border border-border bg-background/70 p-3 space-y-1.5">
               {[
-                "Stripe pretplata aktivirana",
-                "SEO audit — 18 prijedloga",
-                "Redizajn početne stranice",
+                t('mockup.tasks.t1'),
+                t('mockup.tasks.t2'),
+                t('mockup.tasks.t3'),
               ].map((t) => (
                 <div key={t} className="flex items-center gap-2 text-[10px] text-foreground/85">
                   <span className="w-4 h-4 rounded-md bg-accent/20 border border-accent/40 flex items-center justify-center flex-shrink-0">
@@ -125,7 +127,7 @@ const HeroMockup = () => {
       {/* Floating badge */}
       <div className="hidden md:flex absolute -bottom-5 -left-5 items-center gap-2 px-3 py-2 rounded-xl border border-border bg-card/95 shadow-[var(--shadow-xl)]">
         <span className="inline-flex h-2 w-2 rounded-full bg-accent" />
-        <span className="text-[11px] text-foreground font-medium">Live · Uptime 99.9%</span>
+        <span className="text-[11px] text-foreground font-medium">{t('mockup.live')}</span>
       </div>
     </div>
   );

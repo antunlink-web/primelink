@@ -1,29 +1,31 @@
 import { Globe, Users, CreditCard, Search, Rocket, ServerCog } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const capabilities = [
-  { icon: Globe, label: "Web stranice" },
-  { icon: Users, label: "CRM sustavi" },
-  { icon: CreditCard, label: "Stripe integracije" },
-  { icon: Search, label: "SEO optimizacija" },
-  { icon: Rocket, label: "SaaS razvoj" },
-  { icon: ServerCog, label: "Održavanje" },
-];
+  { icon: Globe, key: "web" },
+  { icon: Users, key: "crm" },
+  { icon: CreditCard, key: "stripe" },
+  { icon: Search, key: "seo" },
+  { icon: Rocket, key: "saas" },
+  { icon: ServerCog, key: "maintenance" },
+] as const;
 
 const CapabilitiesStrip = () => {
+  const { t } = useTranslation();
   return (
     <section className="py-12 bg-background border-y border-border">
       <div className="container mx-auto px-4">
         <p className="text-center text-[11px] font-semibold tracking-[0.25em] uppercase text-muted-foreground/80 mb-7">
-          Što radimo
+          {t('capabilities.label')}
         </p>
         <ul className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 md:gap-x-14">
-          {capabilities.map(({ icon: Icon, label }) => (
+          {capabilities.map(({ icon: Icon, key }) => (
             <li
-              key={label}
+              key={key}
               className="flex items-center gap-2.5 text-foreground/80 hover:text-foreground transition-colors"
             >
               <Icon className="h-4 w-4 text-primary" strokeWidth={1.75} />
-              <span className="text-sm font-medium tracking-tight">{label}</span>
+              <span className="text-sm font-medium tracking-tight">{t(`capabilities.${key}`)}</span>
             </li>
           ))}
         </ul>
