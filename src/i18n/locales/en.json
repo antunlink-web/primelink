@@ -406,5 +406,465 @@
       "description": "Orthomolecular medicine center — analytical approach to health through root-cause analysis and individual protocols.",
       "industry": "Health & Medicine"
     }
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "viewProject": "View project",
+    "viewService": "View service",
+    "allReferences": "All references",
+    "requestQuote": "Request a quote",
+    "contactUs": "Contact us",
+    "back": "Back",
+    "next": "Next",
+    "send": "Send",
+    "sending": "Sending…",
+    "optional": "(optional)",
+    "loading": "Loading…"
+  },
+  "headerNav": {
+    "services": "Services",
+    "solutions": "Solutions",
+    "portfolio": "Portfolio",
+    "seoAudit": "Free SEO audit",
+    "contact": "Contact",
+    "requestQuote": "Request a quote",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "services_items": {
+      "web": "Website development",
+      "redesign": "Website redesign",
+      "webapp": "Web applications",
+      "crm": "CRM systems",
+      "stripe": "Stripe integrations",
+      "saas": "SaaS development",
+      "seo": "SEO optimization"
+    },
+    "solution_items": {
+      "primecrm": { "label": "PrimeCRM", "desc": "CRM systems" },
+      "primepay": { "label": "PrimePay", "desc": "Stripe & payments" },
+      "primeaudit": { "label": "PrimeAudit", "desc": "SEO analysis" },
+      "primedemo": { "label": "PrimeDemo", "desc": "Redesign demos" }
+    }
+  },
+  "footerNew": {
+    "address": "Zagreb, Croatia",
+    "servicesTitle": "Services",
+    "solutionsTitle": "Solutions",
+    "usefulLinksTitle": "Useful links",
+    "portfolio": "Portfolio",
+    "seoAudit": "Free SEO audit",
+    "requestQuote": "Request a quote",
+    "contact": "Contact"
+  },
+  "heroBullets": {
+    "fixed": "Fixed quotes",
+    "fast": "Fast delivery",
+    "stack": "React · Stripe · Postgres"
+  },
+  "capabilities": {
+    "label": "What we do",
+    "web": "Websites",
+    "crm": "CRM systems",
+    "stripe": "Stripe integrations",
+    "seo": "SEO optimization",
+    "saas": "SaaS development",
+    "maintenance": "Maintenance"
+  },
+  "mockup": {
+    "nav": {
+      "overview": "Overview",
+      "clients": "Clients",
+      "payments": "Payments",
+      "seo": "SEO",
+      "reports": "Reports"
+    },
+    "kpis": {
+      "conversion": "Conversion",
+      "visits": "Visits",
+      "revenue": "Revenue"
+    },
+    "chartTitle": "Monthly revenue growth",
+    "tasks": {
+      "t1": "Stripe subscription activated",
+      "t2": "SEO audit — 18 recommendations",
+      "t3": "Homepage redesign"
+    },
+    "live": "Live · Uptime 99.9%"
+  },
+  "solutionsSection": {
+    "badge": "Solutions",
+    "title": "Ready-made PrimeLink products",
+    "subtitle": "We don't just build websites. We develop business systems that solve real problems — from CRM and payments to SEO and redesign.",
+    "items": {
+      "primecrm": {
+        "name": "PrimeCRM",
+        "tagline": "CRM platform for sales and operations",
+        "description": "CRM systems for sales, donations, client records and internal processes. No per-user licenses and no unnecessary modules."
+      },
+      "primepay": {
+        "name": "PrimePay",
+        "tagline": "Stripe payments, subscriptions and donations",
+        "description": "Stripe integrations, subscriptions, online payments and donation systems — secure, fast and PCI-compliant."
+      },
+      "primeaudit": {
+        "name": "PrimeAudit",
+        "tagline": "SEO and technical website analysis",
+        "description": "Free analysis of SEO, speed and technical issues on your website with concrete recommendations for improvement."
+      },
+      "primedemo": {
+        "name": "PrimeDemo",
+        "tagline": "Quick redesign proposals",
+        "description": "A demo of how your existing website could look after a redesign — before you make a decision."
+      }
+    }
+  },
+  "credibility": {
+    "badge": "What we actually do",
+    "title": "What PrimeLink actually delivers",
+    "subtitle": "We're not an agency that sells vague promises. We deliver concrete work that creates real value for businesses.",
+    "items": {
+      "modernize": { "title": "Modernizing outdated websites", "description": "Replacing old WordPress templates with modern, fast and SEO-clean sites — without losing rankings." },
+      "demo": { "title": "Demo proposals before you decide", "description": "We show how your new website could look before you pay or sign anything." },
+      "crm": { "title": "CRM systems and internal apps", "description": "Custom CRM and internal tools that match your processes — no per-user licenses, no unnecessary modules." },
+      "stripe": { "title": "Stripe payments and subscriptions", "description": "Setting up payments, subscriptions and donation systems via Stripe — secure and PCI-compliant." },
+      "seo": { "title": "SEO and technical optimization", "description": "Technical SEO, load speed, Core Web Vitals and clean structure — the foundation for long-term organic growth." },
+      "hosting": { "title": "Hosting, maintenance and support", "description": "Reliable hosting, security updates and ongoing support — not 'shipped and forgotten'." }
+    }
+  },
+  "caseHighlights": {
+    "badge": "References",
+    "title": "Selected case studies",
+    "subtitle": "Real projects, real problems and real results — no generic screenshots.",
+    "problem": "Problem",
+    "solution": "Solution",
+    "result": "Result",
+    "items": {
+      "trazilica": {
+        "type": "SaaS · Company search engine",
+        "problem": "Data on 340,000+ Croatian companies was scattered across official registers — searching was slow and fragmented.",
+        "solution": "We built a unified search engine with an ElasticSearch index, a clean React interface and advanced filters across all registers.",
+        "result": "Users find in seconds the data they used to look up across multiple different sources."
+      },
+      "flowsms": {
+        "type": "SaaS · SMS platform",
+        "problem": "SMS APIs like Twilio charge per message, making high-volume campaigns expensive and unpredictable.",
+        "solution": "We built a platform that uses real Android devices as gateways — with no per-message fees and automatic traffic distribution.",
+        "result": "98.2% delivery rate, campaigns run 3× faster, and cost per message drops to zero."
+      },
+      "careflow": {
+        "type": "Web app · NGO management",
+        "problem": "NGOs used Excel, paper and disconnected tools for members, donors and communication — wasting time and prone to errors.",
+        "solution": "We built a digital platform that centralizes membership, donations, communication and activities in one interface.",
+        "result": "Administrative workload reduced; data on members and donors is in one place and available instantly."
+      }
+    }
+  },
+  "leadForm": {
+    "badge": "Contact",
+    "title": "Request a quote",
+    "subtitle": "Send us a few details — we'll prepare a concrete proposal.",
+    "whatNeed": "What do you need?",
+    "needs": {
+      "newSite": "New website",
+      "redesign": "Redesign of existing website",
+      "crm": "CRM system",
+      "webapp": "Web application",
+      "stripe": "Stripe integration",
+      "seo": "SEO analysis"
+    },
+    "name": "Full name",
+    "website": "Website / domain",
+    "websitePlaceholder": "yourdomain.com",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "messagePlaceholder": "Short description of your project or question…",
+    "responseTime": "We reply within 24 hours.",
+    "send": "Send request",
+    "sending": "Sending…",
+    "thanksTitle": "Thank you!",
+    "thanksMessage": "We've received your request and will get back to you within 24 hours with a concrete proposal.",
+    "errorName": "Please enter your full name",
+    "errorEmail": "Invalid email address",
+    "errorGeneric": "Please check the data you entered.",
+    "errorSubmit": "Sending failed. Please try again or contact us directly."
+  },
+  "pricingSection": {
+    "badge": "Starting prices",
+    "title": "Clear pricing, no hidden costs",
+    "subtitle": "Every project starts with a short analysis and a fixed quote. You pay what was agreed — with no surprises later.",
+    "webLabel": "Websites",
+    "webPriceFrom": "from €499",
+    "webVat": "+ VAT",
+    "webDesc": "A professional presentation website, ready for clients.",
+    "webF1": "Custom design tailored to your brand",
+    "webF2": "Mobile-first and speed-optimized",
+    "webF3": "Basic SEO optimization",
+    "webF4": "Hosting, SSL and technical support",
+    "webCta": "Learn more",
+    "appBadge": "Per project",
+    "appLabel": "CRM systems and web applications",
+    "appPriceLabel": "Price per project",
+    "appDesc": "Price depends on scope, integrations and number of users. Quote within 48h.",
+    "appF1": "CRM systems tailored to your processes",
+    "appF2": "Web applications and internal tools",
+    "appF3": "Stripe and other payment integrations",
+    "appF4": "SaaS products — from MVP to production",
+    "appCta": "Request a quote"
+  },
+  "servicesGrid": {
+    "viewService": "View service",
+    "items": {
+      "izrada-web-stranica": { "title": "Website development", "description": "Professional, fast and SEO-optimized websites. Custom design, clear messaging and a technical foundation that converts visitors into inquiries." },
+      "redizajn-web-stranica": { "title": "Website redesign", "description": "Modernizing your existing site without losing SEO rankings. Better design, faster loading and clearer content structure." },
+      "crm-sustavi": { "title": "CRM systems", "description": "Custom CRM tailored to your sales and operational processes. No per-user licenses and no unnecessary modules." },
+      "web-aplikacije": { "title": "Web applications", "description": "Internal tools, client portals and business applications that replace Excel, paper and disconnected systems." },
+      "stripe-integracije": { "title": "Stripe integrations", "description": "Implementation of Stripe payments, subscriptions and Connect platforms. Secure, fast and PCI-compliant." },
+      "saas-razvoj": { "title": "SaaS development", "description": "SaaS product development from idea to production. MVP, scalable architecture, subscriptions and user onboarding." }
+    }
+  },
+  "servicePage": {
+    "notFound": "Service not found",
+    "backHome": "Back to home",
+    "scheduleCall": "Schedule a quick call",
+    "forWhom": "Who this service is for",
+    "whatsIncluded": "What's included",
+    "typicalExamples": "Typical examples",
+    "processTitle": "What the process looks like",
+    "step": "Step",
+    "related": "Related services",
+    "seoAuditTitle": "Want to check the state of your existing website first?",
+    "seoAuditDesc": "Run a free SEO audit and find out which technical, SEO and speed issues need fixing.",
+    "seoAuditCta": "Check your website",
+    "ctaSubtitle": "Within 48 hours we send a concrete quote, clear deadlines and an exact description of what you get."
+  },
+  "seoAuditPage": {
+    "title": "Free SEO audit of your website",
+    "subtitle": "Check the basic SEO, speed and technical issues on your website in just a few seconds.",
+    "freeTool": "Free tool",
+    "urlPlaceholder": "https://your-website.com",
+    "analyze": "Analyze website",
+    "analyzing": "Analyzing…",
+    "analysisNote": "The analysis is informational and does not store data about your website.",
+    "checksTitle": "What the audit checks",
+    "checksSubtitle": "A quick, automated check of the key SEO and technical parameters that most affect visibility and conversion.",
+    "checks": {
+      "c1": "SEO title and meta description",
+      "c2": "Structure of H1, H2 and H3 elements",
+      "c3": "sitemap.xml and robots.txt",
+      "c4": "Mobile performance and Core Web Vitals",
+      "c5": "Image optimization",
+      "c6": "Basic technical issues",
+      "c7": "Conversion-oriented structure"
+    },
+    "resultsFor": "Audit results for",
+    "scoreSeo": "SEO",
+    "scoreMobile": "Mobile speed",
+    "scoreTechnical": "Technical health",
+    "scoreRedesign": "Redesign potential",
+    "redesignLow": "Low",
+    "redesignMedium": "Medium",
+    "redesignHigh": "High",
+    "issuesTitle": "Detected issues and recommendations",
+    "sevHigh": "high",
+    "sevMedium": "medium",
+    "sevLow": "low",
+    "samples": {
+      "s1Title": "Missing meta description",
+      "s1Rec": "Add a unique meta description (up to 160 characters) for each page.",
+      "s2Title": "Images are not optimized",
+      "s2Rec": "Convert images to WebP/AVIF format and use a responsive srcset.",
+      "s3Title": "More than one H1 element",
+      "s3Rec": "Keep only one H1 per page and structure content with H2/H3.",
+      "s4Title": "Slow Largest Contentful Paint on mobile devices",
+      "s4Rec": "Reduce render-blocking JS/CSS and lazy-load images outside the viewport.",
+      "s5Title": "Missing sitemap.xml",
+      "s5Rec": "Generate sitemap.xml and reference it in robots.txt."
+    },
+    "errInvalidUrlTitle": "Invalid URL",
+    "errInvalidUrlDesc": "Please enter a valid address, e.g. https://example.com",
+    "errMissingTitle": "Missing data",
+    "errMissingDesc": "Please enter your name, email and website URL.",
+    "errCheckUrlDesc": "Please check the website address.",
+    "errSendTitle": "Sending error",
+    "errSendDesc": "Please try again or contact us at primelink@primelink.hr.",
+    "thanksTitle": "Thank you!",
+    "thanksMessage": "We've received your request and will get back to you with improvement recommendations.",
+    "leadTitle": "Want a more detailed analysis and a concrete improvement plan?",
+    "leadSubtitle": "Send us a request and we'll prepare a detailed report with priorities and expected impact.",
+    "urlLabel": "Website",
+    "nameLabel": "Full name",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone (optional)",
+    "messageLabel": "Message (optional)",
+    "consent": "I'd like you to contact me with an improvement plan.",
+    "requestDetailed": "Request detailed analysis",
+    "sending": "Sending…",
+    "bottomCtaTitle": "Need help with optimization or a redesign?",
+    "bottomCtaSubtitle": "PrimeLink builds modern websites, CRM systems and web applications for businesses in Croatia.",
+    "viewServices": "View services"
+  },
+  "portfolioPage": {
+    "metaTitle": "Portfolio — Our projects and clients | PrimeLink",
+    "metaDescription": "Explore selected projects we've delivered — websites, web shops, SaaS and automations for Croatian and international clients.",
+    "industryAlt": "project"
+  },
+  "quoteFormPage": {
+    "h1": "Request a quote",
+    "metaTitle": "Request a quote — PrimeLink",
+    "metaDescription": "Fill in a short questionnaire and tell us about your project. We'll reply with a personalized quote within 24 hours."
+  },
+  "quoteForm": {
+    "intro": {
+      "title": "Get a website proposal for your business",
+      "subtitle": "Answer a few questions — I'll prepare a concrete solution for you.",
+      "start": "Get started",
+      "justContact": "Just contact me",
+      "footnote": "I usually reply within 24h — personally, no generic offers."
+    },
+    "progress": "Step {{step}} of {{total}}",
+    "step1": {
+      "title": "What should the website do for you?",
+      "subtitle": "Pick the option that best describes your situation.",
+      "booking": "Clients call me often — I want easier booking",
+      "leads": "I want more inquiries through the web",
+      "presentation": "I want a professional presentation of my business",
+      "ecommerce": "I want to sell online",
+      "unsure": "Not sure"
+    },
+    "step2": {
+      "bookingTitle": "How would you like clients to book?",
+      "bookingCalendar": "Calendar (pick a time slot)",
+      "bookingForm": "Form (inquiry)",
+      "bookingUnsure": "Not sure",
+      "leadsTitle": "How would you like clients to reach you?",
+      "leadsPhone": "Phone",
+      "leadsWhatsapp": "WhatsApp",
+      "leadsEmail": "Email",
+      "leadsForm": "Form",
+      "sellTitle": "What would you like to sell?",
+      "sellPhysical": "Physical products",
+      "sellServices": "Services",
+      "sellDigital": "Digital products"
+    },
+    "step3": {
+      "title": "What exactly do you need?",
+      "subtitle": "Pick the project type that best fits.",
+      "new": "New website",
+      "redesign": "Redesign of existing site",
+      "ads": "Bringing in clients (ads)",
+      "all": "All of the above"
+    },
+    "step4": {
+      "title": "About your business",
+      "businessLabel": "What do you do?",
+      "businessPlaceholder": "e.g. hair salon, IT company, restaurant...",
+      "businessHint": "A few words is enough (e.g. hair salon, construction…).",
+      "hasWebsite": "Do you already have a website?",
+      "yes": "Yes",
+      "no": "No",
+      "goal": "What's your main goal?",
+      "goalInquiries": "More inquiries",
+      "goalSales": "More sales",
+      "goalPresence": "Better online presence",
+      "goalUnknown": "Don't know yet"
+    },
+    "step5": {
+      "title": "Do you have any existing content or profiles we can use?",
+      "subtitle": "You can send links to your social profiles or existing pages (e.g. Facebook, Instagram, LinkedIn…). It helps us prepare a proposal with your real content faster.",
+      "linksLabel": "Links",
+      "optional": "(optional)",
+      "placeholder": "e.g. https://facebook.com/..., https://instagram.com/..."
+    },
+    "step6": {
+      "title": "Goals and investment",
+      "timelineLabel": "When would you like to start?",
+      "tlAsap": "Right away",
+      "tl30": "In the next 30 days",
+      "tlLater": "Later",
+      "budgetLabel": "Planned budget",
+      "b1": "Up to €200",
+      "b2": "€200 – €500",
+      "b3": "€500 – €1000",
+      "b4": "€1000+",
+      "budgetHint": "This doesn't commit you to anything — it only helps us recommend the best solution.",
+      "helpLabel": "Would you also like help bringing in clients?",
+      "recommended": "⭐ Recommended for you",
+      "helpYes": "Yes",
+      "helpMaybe": "Maybe",
+      "helpNo": "No"
+    },
+    "step7": {
+      "title": "Are there any examples you like?",
+      "subtitle": "You can send links to sites or apps you like (they don't have to be in your industry). It helps us better tailor the design direction.",
+      "linksLabel": "Links",
+      "optional": "(optional)",
+      "placeholder": "e.g. https://..., https://...",
+      "whatLike": "What do you like about those examples?",
+      "design": "Design",
+      "simplicity": "Simplicity",
+      "features": "Features",
+      "speed": "Speed of use",
+      "dontKnow": "Not sure"
+    },
+    "step8": {
+      "yourChoice": "Your selection",
+      "goal": "Goal",
+      "solution": "Solution",
+      "extra": "Extras",
+      "recTitle": "Recommended solution",
+      "recIntro": "Based on your answers, here's what we'd propose:",
+      "footnote": "This is an initial recommendation — a final proposal with exact scope and price follows a short analysis.",
+      "solBooking": "Website + booking system",
+      "solLeads": "Website optimized for inquiries",
+      "solShop": "Webshop",
+      "solPresentation": "Professional presentation website",
+      "solDefault": "Custom website",
+      "extraMarketing": "Marketing / bringing in clients"
+    },
+    "step9": {
+      "title": "Contact details",
+      "name": "Name *",
+      "namePh": "Your name",
+      "email": "Email *",
+      "emailPh": "email@example.com",
+      "phone": "Phone",
+      "phoneSuffix": "(recommended)",
+      "phonePh": "+385...",
+      "whatNext": "What happens next?",
+      "n1": "I review your answers",
+      "n2": "I prepare a concrete proposal",
+      "n3": "I get back to you (usually the same or next day)",
+      "personal": "I reply personally — no generic offers.",
+      "within": "I usually reply within 24h"
+    },
+    "thanksTitle": "Thank you!",
+    "thanksMessage": "We've received your request and will get back to you with a concrete proposal.",
+    "thanksCallPrompt": "If you want to speed things up, you can call us right away:",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Request proposal",
+    "submitting": "Sending...",
+    "errorGeneric": "Something went wrong. Please try again or contact us directly.",
+    "rec": {
+      "websiteTitle": "Professional website",
+      "websiteDesc": "A modern, fast and optimized site that builds trust and clearly communicates what you offer.",
+      "calendarTitle": "Online booking system",
+      "calendarDesc": "A calendar where clients pick an available slot themselves — fewer calls, fewer missed opportunities.",
+      "formTitle": "Order / inquiry form",
+      "formDesc": "A structured form that collects all the necessary order details before the client calls.",
+      "bookingTitle": "Custom booking module",
+      "bookingDesc": "We'll propose the best booking approach (calendar or form) based on your industry.",
+      "leadsTitle": "Optimized for inquiries",
+      "leadsDesc": "Clear CTAs and contact via {{channel}} — the site is focused on turning visitors into inquiries.",
+      "leadsChannelFallback": "the preferred channel",
+      "shopTitle": "Webshop",
+      "shopDesc": "An online store tailored to selling ({{what}}) with payments, delivery and order management.",
+      "shopWhatFallback": "your products",
+      "presentationTitle": "Premium presentation design",
+      "presentationDesc": "Focus on visual identity, photography and typography — a site that feels like there's a serious company behind it.",
+      "adsTitle": "Bringing in clients (ads)",
+      "adsDesc": "Google and Meta ads aimed at your target audience — the site and ads work together as one system."
+    }
   }
 }
