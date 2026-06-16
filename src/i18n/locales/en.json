@@ -405,6 +405,34 @@
     "integriscentar": {
       "description": "Orthomolecular medicine center — analytical approach to health through root-cause analysis and individual protocols.",
       "industry": "Health & Medicine"
+    },
+    "airwolt": {
+      "description": "Sales, service and installation of air-conditioning units plus electrical works for homes and businesses.",
+      "industry": "HVAC & Electric"
+    },
+    "infinityservices": {
+      "description": "Professional cleaning and maintenance of apartments, hotels and business spaces in Zadar and the surrounding area.",
+      "industry": "Cleaning & Maintenance"
+    },
+    "konzaltingprimelink": {
+      "description": "Consulting services for Russian-speaking clients in Croatia — company setup, documents and translation.",
+      "industry": "Consulting & Legal"
+    },
+    "prika": {
+      "description": "Extra virgin olive oil from Čista Velika — family-run grove and organic production in Dalmatia.",
+      "industry": "Olive Oil & Organic"
+    },
+    "protekst": {
+      "description": "Wholesale of industrial cleaning cloths for workshops, industry and nautical use — delivery across Croatia.",
+      "industry": "B2B & Wholesale"
+    },
+    "udrugalumen": {
+      "description": "Educational workshops for children — 3D printing, scanning and creative use of modern technology.",
+      "industry": "Education & Kids"
+    },
+    "voltapp": {
+      "description": "Platform for EV charging stations — installation, maintenance and management of chargers for partner locations.",
+      "industry": "EV Charging & SaaS"
     }
   },
   "common": {

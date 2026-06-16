@@ -405,6 +405,34 @@
     "integriscentar": {
       "description": "Centar za ortomolekularnu medicinu — analitički pristup zdravlju kroz analizu uzroka i individualne protokole.",
       "industry": "Zdravlje & Medicina"
+    },
+    "airwolt": {
+      "description": "Prodaja, servis i montaža klima uređaja te elektroinstalaterski radovi za kućanstva i tvrtke.",
+      "industry": "HVAC & Elektro"
+    },
+    "infinityservices": {
+      "description": "Profesionalno čišćenje i održavanje apartmana, hotela i poslovnih prostora u Zadru i okolici.",
+      "industry": "Čišćenje & Održavanje"
+    },
+    "konzaltingprimelink": {
+      "description": "Konzultantske usluge za ruskogovorne klijente u Hrvatskoj — otvaranje tvrtki, dokumenti i prevođenje.",
+      "industry": "Konzalting & Pravne usluge"
+    },
+    "prika": {
+      "description": "Ekstra djevičansko maslinovo ulje iz Čiste Velike — obiteljski maslinik i ekološka proizvodnja.",
+      "industry": "Maslinovo ulje & Eko proizvodnja"
+    },
+    "protekst": {
+      "description": "Veleprodaja industrijskih krpa za radionice, industriju i nautiku s isporukom u cijeloj Hrvatskoj.",
+      "industry": "B2B & Veleprodaja"
+    },
+    "udrugalumen": {
+      "description": "Edukacijske radionice za djecu — 3D printanje, skeniranje i kreativna primjena moderne tehnologije.",
+      "industry": "Edukacija & Djeca"
+    },
+    "voltapp": {
+      "description": "Platforma za EV punionice — postavljanje, održavanje i upravljanje punionicama za partnerske lokacije.",
+      "industry": "EV punionice & SaaS"
     }
   },
   "common": {
