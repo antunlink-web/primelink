@@ -21,6 +21,13 @@ import aurumgradnjaImg from "@/assets/projects/aurumgradnja.png";
 import tijelokaodioprirodeImg from "@/assets/projects/tijelokaodioprirode.png";
 import evaciglarImg from "@/assets/projects/evaciglar.png";
 import integriscentarImg from "@/assets/projects/integriscentar.png";
+import airwoltImg from "@/assets/projects/airwolt.webp";
+import infinityservicesImg from "@/assets/projects/infinityservices.webp";
+import konzaltingprimelinkImg from "@/assets/projects/konzaltingprimelink.webp";
+import prikaImg from "@/assets/projects/prika.webp";
+import protekstImg from "@/assets/projects/protekst.webp";
+import udrugalumenImg from "@/assets/projects/udrugalumen.webp";
+import voltappImg from "@/assets/projects/voltapp.webp";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
@@ -164,6 +171,76 @@ const projectsData = [
     tags: ["Web", "Branding", "React", "Forms"],
     image: integriscentarImg,
     category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "airwolt",
+    name: "Airwolthvacelectric.hr",
+    url: "https://airwolthvacelectric.hr",
+    descKey: "portfolio.airwolt.description",
+    industryKey: "portfolio.airwolt.industry",
+    tags: ["Web", "Branding", "React", "SEO"],
+    image: airwoltImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "infinityservices",
+    name: "Infinityservices.hr",
+    url: "https://infinityservices.hr",
+    descKey: "portfolio.infinityservices.description",
+    industryKey: "portfolio.infinityservices.industry",
+    tags: ["Web", "Forms", "React", "SEO"],
+    image: infinityservicesImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "konzaltingprimelink",
+    name: "Konzalting.primelink.hr",
+    url: "https://konzalting.primelink.hr",
+    descKey: "portfolio.konzaltingprimelink.description",
+    industryKey: "portfolio.konzaltingprimelink.industry",
+    tags: ["Web", "i18n", "React", "Landing"],
+    image: konzaltingprimelinkImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "prika",
+    name: "Prika.hr",
+    url: "https://prika.hr",
+    descKey: "portfolio.prika.description",
+    industryKey: "portfolio.prika.industry",
+    tags: ["Web", "Branding", "React", "SEO"],
+    image: prikaImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "protekst",
+    name: "Protekst.eu",
+    url: "https://protekst.eu",
+    descKey: "portfolio.protekst.description",
+    industryKey: "portfolio.protekst.industry",
+    tags: ["Web", "B2B", "React", "Catalog"],
+    image: protekstImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "udrugalumen",
+    name: "Udrugalumen.hr",
+    url: "https://udrugalumen.hr",
+    descKey: "portfolio.udrugalumen.description",
+    industryKey: "portfolio.udrugalumen.industry",
+    tags: ["Web", "Edukacija", "React", "Forms"],
+    image: udrugalumenImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "voltapp",
+    name: "Voltapp.hr",
+    url: "https://voltapp.hr",
+    descKey: "portfolio.voltapp.description",
+    industryKey: "portfolio.voltapp.industry",
+    tags: ["Web", "SaaS", "React", "Landing"],
+    image: voltappImg,
+    category: ["saas", "web"] as FilterCategory[],
   },
 ];
 
