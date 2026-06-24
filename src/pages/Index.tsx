@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import CapabilitiesStrip from "@/components/CapabilitiesStrip";
 import Services from "@/components/Services";
 import Solutions from "@/components/Solutions";
+import DemoLibrary from "@/components/DemoLibrary";
 import PortfolioHighlights from "@/components/PortfolioHighlights";
 import Credibility from "@/components/Credibility";
 import HomeLeadForm from "@/components/HomeLeadForm";
@@ -28,6 +29,7 @@ const Index = () => {
       <CapabilitiesStrip />
       <Services />
       <Solutions />
+      <DemoLibrary />
       <PortfolioHighlights />
       <Credibility />
       <HomeLeadForm />
