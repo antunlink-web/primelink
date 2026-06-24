@@ -92,7 +92,7 @@ const Footer = () => {
             <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">Korisni linkovi</h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li><a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="hover:text-foreground transition-colors cursor-pointer">Portfolio</a></li>
-              <li><Link to="/besplatna-seo-analiza" className="hover:text-foreground transition-colors">Besplatna SEO analiza</Link></li>
+              <li><Link to="/besplatna-seo-analiza" className="hover:text-foreground transition-colors">SEO analiza</Link></li>
               <li><a href="/ponuda/forma" onClick={(e) => { e.preventDefault(); navigate('/ponuda/forma'); }} className="hover:text-foreground transition-colors cursor-pointer">Zatražite ponudu</a></li>
               <li><a href="/#contact" onClick={(e) => { e.preventDefault(); goToSection('contact'); }} className="hover:text-foreground transition-colors cursor-pointer">Kontakt</a></li>
             </ul>
