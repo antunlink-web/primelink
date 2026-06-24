@@ -301,16 +301,16 @@ const SeoAuditPage = () => {
 
       <main className="pt-28 md:pt-32">
         {/* Hero */}
-        <section className="container mx-auto px-4 py-12 md:py-20">
+        <section className="container mx-auto px-4 pt-8 pb-6 md:pt-12 md:pb-8">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium mb-6">
               <Sparkles className="h-3.5 w-3.5" />
-              Besplatni alat
+              Besplatan alat
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">
-              Besplatna SEO analiza web stranice
+              SEO analiza
             </h1>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Provjerite osnovne SEO, brzinske i tehničke probleme svoje web stranice u nekoliko sekundi.
             </p>
 
@@ -322,7 +322,7 @@ const SeoAuditPage = () => {
               <Input
                 type="text"
                 inputMode="url"
-                placeholder="https://vasa-stranica.hr"
+                placeholder="Unesite URL web stranice"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 className="h-12 text-base"
@@ -338,32 +338,73 @@ const SeoAuditPage = () => {
                 ) : (
                   <>
                     <Search className="h-4 w-4" />
-                    Analiziraj stranicu
+                    Pokreni analizu
                   </>
                 )}
               </Button>
             </form>
             <p className="text-xs text-muted-foreground mt-3">
-              Analiza je informativna i ne sprema podatke o vašoj stranici.
+              Analiza je informativna. Ne spremamo podatke o vašoj stranici.
             </p>
           </div>
         </section>
 
         {/* Explanation */}
         {!result && (
-          <section className="container mx-auto px-4 py-8 md:py-12">
+          <section className="container mx-auto px-4 pt-4 pb-12 md:pt-6 md:pb-16">
             <div className="max-w-4xl mx-auto">
+              {/* Sample result preview */}
+              <Card className="p-5 md:p-6 mb-10 max-w-2xl mx-auto bg-card/80">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground/70 font-semibold">
+                    Primjer rezultata
+                  </div>
+                  <span className="text-[11px] px-2 py-0.5 rounded-full border border-border text-muted-foreground">
+                    demo
+                  </span>
+                </div>
+                <ul className="divide-y divide-border">
+                  {[
+                    { label: "SEO naslov", value: "pronađen", tone: "ok" as const },
+                    { label: "Meta opis", value: "nedostaje", tone: "bad" as const },
+                    { label: "Mobile performanse", value: "potrebno poboljšanje", tone: "warn" as const },
+                    { label: "Tehnički problemi", value: "2 upozorenja", tone: "warn" as const },
+                  ].map((row) => (
+                    <li key={row.label} className="flex items-center justify-between py-2.5 text-sm">
+                      <span className="text-muted-foreground">{row.label}</span>
+                      <span
+                        className={
+                          "inline-flex items-center gap-1.5 font-medium " +
+                          (row.tone === "ok"
+                            ? "text-green-500"
+                            : row.tone === "warn"
+                              ? "text-yellow-500"
+                              : "text-red-500")
+                        }
+                      >
+                        {row.tone === "ok" ? (
+                          <CheckCircle2 className="h-4 w-4" />
+                        ) : (
+                          <AlertTriangle className="h-4 w-4" />
+                        )}
+                        {row.value}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 text-center">
                 Što analiza provjerava
               </h2>
               <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
                 Brza, automatska provjera ključnih SEO i tehničkih parametara koji najčešće utječu na vidljivost i konverziju.
               </p>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="grid md:grid-cols-2 gap-3 max-w-3xl mx-auto">
                 {checks.map((c) => (
                   <div
                     key={c}
-                    className="flex items-start gap-3 p-4 rounded-lg border border-border bg-card"
+                    className="flex items-start gap-3 p-4 rounded-xl border border-border bg-card hover:border-primary/30 transition-colors"
                   >
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-foreground">{c}</span>
@@ -537,13 +578,13 @@ const SeoAuditPage = () => {
         )}
 
         {/* Bottom CTA */}
-        <section className="container mx-auto px-4 py-16 md:py-24">
+        <section className="container mx-auto px-4 py-12 md:py-16">
           <div className="max-w-4xl mx-auto text-center bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 rounded-2xl p-8 md:p-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Trebate pomoć oko optimizacije ili redizajna?
+              Želite bolju web stranicu i više kvalitetnih upita?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              PrimeLink izrađuje moderne web stranice, CRM sustave i web aplikacije za tvrtke u Hrvatskoj.
+              PrimeLink izrađuje moderne web stranice, CRM sustave i web aplikacije za tvrtke koje žele ozbiljniji digitalni nastup.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button size="lg" asChild>
