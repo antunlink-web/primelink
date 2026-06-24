@@ -221,7 +221,7 @@ const SeoAuditPage = () => {
       .filter(Boolean)
       .join("\n");
 
-    // TODO (opcionalno): spremiti lead/audit i u Supabase ako je Lovable Cloud
+    // TODO: spremiti lead/audit u bazu podataka
     // uključen. Predviđena tablica `seo_audit_leads`:
     //   website_url, seo_score, performance_score, technical_score,
     //   redesign_potential, issues_json, name, email, phone, message, created_at.

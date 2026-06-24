@@ -109,7 +109,7 @@ const Header = () => {
 
           <a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Portfolio</a>
           <a href="https://demo.primelink.com.hr" rel="noopener" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Primjeri</a>
-          <a href="/besplatna-seo-analiza" onClick={(e) => { e.preventDefault(); navigate('/besplatna-seo-analiza'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Besplatna SEO analiza</a>
+          <a href="/besplatna-seo-analiza" onClick={(e) => { e.preventDefault(); navigate('/besplatna-seo-analiza'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors">SEO analiza</a>
           <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Kontakt</a>
         </nav>
 
@@ -136,7 +136,7 @@ const Header = () => {
             <div className="h-px bg-border my-3" />
             <a href="/portfolio" onClick={(e) => { e.preventDefault(); handlePageNav('/portfolio'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">Portfolio</a>
             <a href="https://demo.primelink.com.hr" rel="noopener" onClick={() => setMobileOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">Primjeri</a>
-            <a href="/besplatna-seo-analiza" onClick={(e) => { e.preventDefault(); handlePageNav('/besplatna-seo-analiza'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">Besplatna SEO analiza</a>
+            <a href="/besplatna-seo-analiza" onClick={(e) => { e.preventDefault(); handlePageNav('/besplatna-seo-analiza'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">SEO analiza</a>
             <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">Kontakt</a>
             <Button className="w-full mt-3" onClick={() => { setMobileOpen(false); navigate('/ponuda/forma'); }}>Zatražite ponudu</Button>
           </nav>
