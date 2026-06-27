@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -180,6 +180,11 @@ const QuoteForm = () => {
   const [data, setData] = useState<FormData>(initialData);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const topRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [step, submitted]);
 
   const update = <K extends keyof FormData>(field: K, value: FormData[K]) =>
     setData((prev) => ({ ...prev, [field]: value }));
@@ -390,7 +395,7 @@ const QuoteForm = () => {
   }
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div ref={topRef} className="max-w-xl mx-auto scroll-mt-24">
       {/* Progress (hidden on intro screen) */}
       {step > 0 && (
         <div className="mb-10">
