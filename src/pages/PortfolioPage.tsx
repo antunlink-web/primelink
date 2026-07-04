@@ -13,7 +13,7 @@ import flowcallImg from "@/assets/projects/flowcall.png";
 import lajtImg from "@/assets/projects/lajt.png";
 import flowsmsImg from "@/assets/projects/flowsms.webp";
 import textroImg from "@/assets/projects/textro.png";
-import mojakartaImg from "@/assets/projects/mojakarta.png";
+import mojakartaImg from "@/assets/projects/mojakarta.webp";
 import perksImg from "@/assets/projects/perks.png";
 import lumibabyImg from "@/assets/projects/lumibaby.png";
 import amidekoracijeImg from "@/assets/projects/amidekoracije.png";
