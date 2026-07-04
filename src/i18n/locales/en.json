@@ -433,6 +433,26 @@
     "voltapp": {
       "description": "Platform for EV charging stations — installation, maintenance and management of chargers for partner locations.",
       "industry": "EV Charging & SaaS"
+    },
+    "yogawithnika": {
+      "description": "Website for a yoga instructor — classes, workshops and online bookings with a calm, modern design.",
+      "industry": "Wellness & Yoga"
+    },
+    "dadathlon": {
+      "description": "Sports event for dads and kids — registrations, course details and sponsors on a vibrant landing page.",
+      "industry": "Sports Event"
+    },
+    "daddyhood": {
+      "description": "Community and content for modern dads — blog, resources and newsletter with a warm family aesthetic.",
+      "industry": "Community & Blog"
+    },
+    "donatice": {
+      "description": "Women's football club Donatice — news, squad and fan information on a modern website.",
+      "industry": "Sport & Club"
+    },
+    "controlmaster": {
+      "description": "Corporate website for a company specialised in measurement and control instruments for industry.",
+      "industry": "Industry & B2B"
     }
   },
   "common": {

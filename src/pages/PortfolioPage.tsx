@@ -28,6 +28,11 @@ import prikaImg from "@/assets/projects/prika.webp";
 import protekstImg from "@/assets/projects/protekst.webp";
 import udrugalumenImg from "@/assets/projects/udrugalumen.webp";
 import voltappImg from "@/assets/projects/voltapp.webp";
+import yogawithnikaImg from "@/assets/projects/yogawithnika.webp";
+import dadathlonImg from "@/assets/projects/dadathlon.webp";
+import daddyhoodImg from "@/assets/projects/daddyhood.webp";
+import donaticeImg from "@/assets/projects/donatice.webp";
+import controlmasterImg from "@/assets/projects/controlmaster.webp";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
@@ -241,6 +246,56 @@ const projectsData = [
     tags: ["Web", "SaaS", "React", "Landing"],
     image: voltappImg,
     category: ["saas", "web"] as FilterCategory[],
+  },
+  {
+    id: "yogawithnika",
+    name: "Yogawithnika.eu",
+    url: "https://yogawithnika.eu",
+    descKey: "portfolio.yogawithnika.description",
+    industryKey: "portfolio.yogawithnika.industry",
+    tags: ["Web", "Booking", "React", "SEO"],
+    image: yogawithnikaImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "dadathlon",
+    name: "Dadathlon.eu",
+    url: "https://dadathlon.eu",
+    descKey: "portfolio.dadathlon.description",
+    industryKey: "portfolio.dadathlon.industry",
+    tags: ["Web", "Event", "React", "Forms"],
+    image: dadathlonImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "daddyhood",
+    name: "Daddyhood.eu",
+    url: "https://daddyhood.eu",
+    descKey: "portfolio.daddyhood.description",
+    industryKey: "portfolio.daddyhood.industry",
+    tags: ["Web", "Blog", "React", "Newsletter"],
+    image: daddyhoodImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "donatice",
+    name: "Donatice.eu",
+    url: "https://donatice.eu",
+    descKey: "portfolio.donatice.description",
+    industryKey: "portfolio.donatice.industry",
+    tags: ["Web", "Sport", "React", "SEO"],
+    image: donaticeImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "controlmaster",
+    name: "Controlmaster.hr",
+    url: "https://controlmaster.hr",
+    descKey: "portfolio.controlmaster.description",
+    industryKey: "portfolio.controlmaster.industry",
+    tags: ["Web", "B2B", "React", "SEO"],
+    image: controlmasterImg,
+    category: ["web"] as FilterCategory[],
   },
 ];
 

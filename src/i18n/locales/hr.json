@@ -433,6 +433,26 @@
     "voltapp": {
       "description": "Platforma za EV punionice — postavljanje, održavanje i upravljanje punionicama za partnerske lokacije.",
       "industry": "EV punionice & SaaS"
+    },
+    "yogawithnika": {
+      "description": "Web stranica za joga instruktoricu — satovi, radionice i online rezervacije uz miran, moderan dizajn.",
+      "industry": "Wellness & Joga"
+    },
+    "dadathlon": {
+      "description": "Sportski događaj za tate i djecu — prijave, informacije o stazi i sponzorima uz živopisnu landing stranicu.",
+      "industry": "Sportski događaj"
+    },
+    "daddyhood": {
+      "description": "Zajednica i sadržaj za moderne očeve — blog, resursi i newsletter uz toplu, obiteljsku estetiku.",
+      "industry": "Zajednica & Blog"
+    },
+    "donatice": {
+      "description": "Ženski nogometni klub Donatice — vijesti, momčad i navijačke informacije na modernoj web stranici.",
+      "industry": "Sport & Klub"
+    },
+    "controlmaster": {
+      "description": "Prezentacijska web stranica za tvrtku specijaliziranu za mjerne i kontrolne uređaje u industriji.",
+      "industry": "Industrija & B2B"
     }
   },
   "common": {
