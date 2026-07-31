@@ -129,16 +129,6 @@ const projectsData = [
     category: ["web"] as FilterCategory[],
   },
   {
-    id: "amidekoracije",
-    name: "Amidekoracije.eu",
-    url: "https://amidekoracije.eu",
-    descKey: "portfolio.amidekoracije.description",
-    industryKey: "portfolio.amidekoracije.industry",
-    tags: ["Web", "Branding", "React", "i18n"],
-    image: amidekoracijeImg,
-    category: ["web"] as FilterCategory[],
-  },
-  {
     id: "aurumgradnja",
     name: "Aurumgradnja.com",
     url: "https://aurumgradnja.com",
@@ -166,16 +156,6 @@ const projectsData = [
     industryKey: "portfolio.evaciglar.industry",
     tags: ["Web", "i18n", "React", "SEO"],
     image: evaciglarImg,
-    category: ["web"] as FilterCategory[],
-  },
-  {
-    id: "integriscentar",
-    name: "Integriscentar.com",
-    url: "https://integriscentar.com",
-    descKey: "portfolio.integriscentar.description",
-    industryKey: "portfolio.integriscentar.industry",
-    tags: ["Web", "Branding", "React", "Forms"],
-    image: integriscentarImg,
     category: ["web"] as FilterCategory[],
   },
   {
