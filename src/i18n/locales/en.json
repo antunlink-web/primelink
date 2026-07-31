@@ -386,10 +386,6 @@
       "description": "Baby gear webshop — carefully selected products for your child's safety and comfort, with fast delivery across Croatia.",
       "industry": "E-commerce & Baby Gear"
     },
-    "amidekoracije": {
-      "description": "Floral and decorative studio — elegant decorations for weddings and special occasions, focused on emotion, atmosphere and detail.",
-      "industry": "Decorations & Weddings"
-    },
     "aurumgradnja": {
       "description": "Premium construction company — quality and precise execution of demanding building projects with full transparency.",
       "industry": "Construction & Real Estate"
@@ -401,10 +397,6 @@
     "evaciglar": {
       "description": "Court interpreter for Slovenian — translations, interpreting and Slovenian language tutoring with an individual approach.",
       "industry": "Translation & Languages"
-    },
-    "integriscentar": {
-      "description": "Orthomolecular medicine center — analytical approach to health through root-cause analysis and individual protocols.",
-      "industry": "Health & Medicine"
     },
     "airwolt": {
       "description": "Sales, service and installation of air-conditioning units plus electrical works for homes and businesses.",
@@ -447,12 +439,24 @@
       "industry": "Community & Blog"
     },
     "donatice": {
-      "description": "Women's football club Donatice — news, squad and fan information on a modern website.",
-      "industry": "Sport & Club"
+      "description": "A modern website for Donat Sladoledi from Zadar featuring ice creams, sundaes and desserts, a wholesale offer for hospitality venues, location and direct contact.",
+      "industry": "Hospitality"
     },
     "controlmaster": {
       "description": "Corporate website for a company specialised in measurement and control instruments for industry.",
       "industry": "Industry & B2B"
+    },
+    "arks": {
+      "description": "Redesign of a corporate website for occupational safety, fire protection and environmental protection services.",
+      "industry": "Business services"
+    },
+    "euroratan": {
+      "description": "Web catalogue of outdoor and indoor rattan furniture, pergolas, WPC decking and interior furnishing equipment.",
+      "industry": "Web catalogue"
+    },
+    "xiiigimnazija": {
+      "description": "A modern, accessible website for XIII. gimnazija in Zagreb with news, tenders, school programmes, documents and a content management system.",
+      "industry": "Education"
     }
   },
   "common": {
@@ -488,10 +492,22 @@
       "seo": "SEO optimization"
     },
     "solution_items": {
-      "primecrm": { "label": "PrimeCRM", "desc": "CRM systems" },
-      "primepay": { "label": "PrimePay", "desc": "Stripe & payments" },
-      "primeaudit": { "label": "PrimeAudit", "desc": "SEO analysis" },
-      "primedemo": { "label": "PrimeDemo", "desc": "Redesign demos" }
+      "primecrm": {
+        "label": "PrimeCRM",
+        "desc": "CRM systems"
+      },
+      "primepay": {
+        "label": "PrimePay",
+        "desc": "Stripe & payments"
+      },
+      "primeaudit": {
+        "label": "PrimeAudit",
+        "desc": "SEO analysis"
+      },
+      "primedemo": {
+        "label": "PrimeDemo",
+        "desc": "Redesign demos"
+      }
     }
   },
   "footerNew": {
@@ -571,12 +587,30 @@
     "title": "What PrimeLink actually delivers",
     "subtitle": "We're not an agency that sells vague promises. We deliver concrete work that creates real value for businesses.",
     "items": {
-      "modernize": { "title": "Modernizing outdated websites", "description": "Replacing old WordPress templates with modern, fast and SEO-clean sites — without losing rankings." },
-      "demo": { "title": "Demo proposals before you decide", "description": "We show how your new website could look before you pay or sign anything." },
-      "crm": { "title": "CRM systems and internal apps", "description": "Custom CRM and internal tools that match your processes — no per-user licenses, no unnecessary modules." },
-      "stripe": { "title": "Stripe payments and subscriptions", "description": "Setting up payments, subscriptions and donation systems via Stripe — secure and PCI-compliant." },
-      "seo": { "title": "SEO and technical optimization", "description": "Technical SEO, load speed, Core Web Vitals and clean structure — the foundation for long-term organic growth." },
-      "hosting": { "title": "Hosting, maintenance and support", "description": "Reliable hosting, security updates and ongoing support — not 'shipped and forgotten'." }
+      "modernize": {
+        "title": "Modernizing outdated websites",
+        "description": "Replacing old WordPress templates with modern, fast and SEO-clean sites — without losing rankings."
+      },
+      "demo": {
+        "title": "Demo proposals before you decide",
+        "description": "We show how your new website could look before you pay or sign anything."
+      },
+      "crm": {
+        "title": "CRM systems and internal apps",
+        "description": "Custom CRM and internal tools that match your processes — no per-user licenses, no unnecessary modules."
+      },
+      "stripe": {
+        "title": "Stripe payments and subscriptions",
+        "description": "Setting up payments, subscriptions and donation systems via Stripe — secure and PCI-compliant."
+      },
+      "seo": {
+        "title": "SEO and technical optimization",
+        "description": "Technical SEO, load speed, Core Web Vitals and clean structure — the foundation for long-term organic growth."
+      },
+      "hosting": {
+        "title": "Hosting, maintenance and support",
+        "description": "Reliable hosting, security updates and ongoing support — not 'shipped and forgotten'."
+      }
     }
   },
   "caseHighlights": {
@@ -663,12 +697,30 @@
   "servicesGrid": {
     "viewService": "View service",
     "items": {
-      "izrada-web-stranica": { "title": "Website development", "description": "Professional, fast and SEO-optimized websites. Custom design, clear messaging and a technical foundation that converts visitors into inquiries." },
-      "redizajn-web-stranica": { "title": "Website redesign", "description": "Modernizing your existing site without losing SEO rankings. Better design, faster loading and clearer content structure." },
-      "crm-sustavi": { "title": "CRM systems", "description": "Custom CRM tailored to your sales and operational processes. No per-user licenses and no unnecessary modules." },
-      "web-aplikacije": { "title": "Web applications", "description": "Internal tools, client portals and business applications that replace Excel, paper and disconnected systems." },
-      "stripe-integracije": { "title": "Stripe integrations", "description": "Implementation of Stripe payments, subscriptions and Connect platforms. Secure, fast and PCI-compliant." },
-      "saas-razvoj": { "title": "SaaS development", "description": "SaaS product development from idea to production. MVP, scalable architecture, subscriptions and user onboarding." }
+      "izrada-web-stranica": {
+        "title": "Website development",
+        "description": "Professional, fast and SEO-optimized websites. Custom design, clear messaging and a technical foundation that converts visitors into inquiries."
+      },
+      "redizajn-web-stranica": {
+        "title": "Website redesign",
+        "description": "Modernizing your existing site without losing SEO rankings. Better design, faster loading and clearer content structure."
+      },
+      "crm-sustavi": {
+        "title": "CRM systems",
+        "description": "Custom CRM tailored to your sales and operational processes. No per-user licenses and no unnecessary modules."
+      },
+      "web-aplikacije": {
+        "title": "Web applications",
+        "description": "Internal tools, client portals and business applications that replace Excel, paper and disconnected systems."
+      },
+      "stripe-integracije": {
+        "title": "Stripe integrations",
+        "description": "Implementation of Stripe payments, subscriptions and Connect platforms. Secure, fast and PCI-compliant."
+      },
+      "saas-razvoj": {
+        "title": "SaaS development",
+        "description": "SaaS product development from idea to production. MVP, scalable architecture, subscriptions and user onboarding."
+      }
     }
   },
   "servicePage": {

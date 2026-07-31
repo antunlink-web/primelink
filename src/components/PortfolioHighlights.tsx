@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 
-import trazilicaImg from "@/assets/projects/trazilica-new.webp";
-import flowsmsImg from "@/assets/projects/flowsms.webp";
-import careflowImg from "@/assets/projects/careflow.webp";
+import trazilicaImg from "@/assets/projects/trazilica-portfolio.webp";
+import flowsmsImg from "@/assets/projects/flowsms-portfolio.webp";
+import careflowImg from "@/assets/projects/careflow-portfolio.webp";
 
 const cases = [
   { key: "trazilica", image: trazilicaImg, name: "Trazilica.hr", url: "https://trazilica.hr" },

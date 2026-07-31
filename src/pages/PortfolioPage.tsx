@@ -7,32 +7,33 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-import careflowImg from "@/assets/projects/careflow.webp";
-import trazilicaImg from "@/assets/projects/trazilica-new.webp";
-import flowcallImg from "@/assets/projects/flowcall.png";
-import lajtImg from "@/assets/projects/lajt.png";
-import flowsmsImg from "@/assets/projects/flowsms.webp";
-import textroImg from "@/assets/projects/textro.png";
-import mojakartaImg from "@/assets/projects/mojakarta.webp";
-import perksImg from "@/assets/projects/perks.png";
-import lumibabyImg from "@/assets/projects/lumibaby.png";
-import amidekoracijeImg from "@/assets/projects/amidekoracije.png";
-import aurumgradnjaImg from "@/assets/projects/aurumgradnja.png";
-import tijelokaodioprirodeImg from "@/assets/projects/tijelokaodioprirode.png";
-import evaciglarImg from "@/assets/projects/evaciglar.png";
-import integriscentarImg from "@/assets/projects/integriscentar.png";
-import airwoltImg from "@/assets/projects/airwolt.webp";
-import infinityservicesImg from "@/assets/projects/infinityservices.webp";
-import konzaltingprimelinkImg from "@/assets/projects/konzaltingprimelink.webp";
-import prikaImg from "@/assets/projects/prika.webp";
-import protekstImg from "@/assets/projects/protekst.webp";
-import udrugalumenImg from "@/assets/projects/udrugalumen.webp";
-import voltappImg from "@/assets/projects/voltapp.webp";
-import yogawithnikaImg from "@/assets/projects/yogawithnika.webp";
-import dadathlonImg from "@/assets/projects/dadathlon.webp";
-import daddyhoodImg from "@/assets/projects/daddyhood.webp";
-import donaticeImg from "@/assets/projects/donatice.webp";
-import controlmasterImg from "@/assets/projects/controlmaster.webp";
+import careflowImg from "@/assets/projects/careflow-portfolio.webp";
+import trazilicaImg from "@/assets/projects/trazilica-portfolio.webp";
+import flowcallImg from "@/assets/projects/flowcall-portfolio.webp";
+import lajtImg from "@/assets/projects/lajt-portfolio.webp";
+import flowsmsImg from "@/assets/projects/flowsms-portfolio.webp";
+import textroImg from "@/assets/projects/textro-portfolio.webp";
+import mojakartaImg from "@/assets/projects/mojakarta-portfolio.webp";
+import perksImg from "@/assets/projects/perks-portfolio.webp";
+import lumibabyImg from "@/assets/projects/lumibaby-portfolio.webp";
+import aurumgradnjaImg from "@/assets/projects/aurumgradnja-portfolio.webp";
+import tijelokaodioprirodeImg from "@/assets/projects/tijelokaodioprirode-portfolio.webp";
+import evaciglarImg from "@/assets/projects/evaciglar-portfolio.webp";
+import airwoltImg from "@/assets/projects/airwolt-portfolio.webp";
+import infinityservicesImg from "@/assets/projects/infinityservices-portfolio.webp";
+import konzaltingprimelinkImg from "@/assets/projects/konzaltingprimelink-portfolio.webp";
+import prikaImg from "@/assets/projects/prika-portfolio.webp";
+import protekstImg from "@/assets/projects/protekst-portfolio.webp";
+import udrugalumenImg from "@/assets/projects/udrugalumen-portfolio.webp";
+import voltappImg from "@/assets/projects/voltapp-portfolio.webp";
+import yogawithnikaImg from "@/assets/projects/yogawithnika-portfolio.webp";
+import dadathlonImg from "@/assets/projects/dadathlon-portfolio.webp";
+import daddyhoodImg from "@/assets/projects/daddyhood-portfolio.webp";
+import donaticeImg from "@/assets/projects/donatice-portfolio.webp";
+import controlmasterImg from "@/assets/projects/controlmaster-portfolio.webp";
+import arksImg from "@/assets/projects/arks-portfolio.webp";
+import euroratanImg from "@/assets/projects/euroratan-portfolio.webp";
+import xiiiGimnazijaImg from "@/assets/projects/xiii-gimnazija-portfolio.webp";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
@@ -128,16 +129,6 @@ const projectsData = [
     category: ["web"] as FilterCategory[],
   },
   {
-    id: "amidekoracije",
-    name: "Amidekoracije.eu",
-    url: "https://amidekoracije.eu",
-    descKey: "portfolio.amidekoracije.description",
-    industryKey: "portfolio.amidekoracije.industry",
-    tags: ["Web", "Branding", "React", "i18n"],
-    image: amidekoracijeImg,
-    category: ["web"] as FilterCategory[],
-  },
-  {
     id: "aurumgradnja",
     name: "Aurumgradnja.com",
     url: "https://aurumgradnja.com",
@@ -165,16 +156,6 @@ const projectsData = [
     industryKey: "portfolio.evaciglar.industry",
     tags: ["Web", "i18n", "React", "SEO"],
     image: evaciglarImg,
-    category: ["web"] as FilterCategory[],
-  },
-  {
-    id: "integriscentar",
-    name: "Integriscentar.com",
-    url: "https://integriscentar.com",
-    descKey: "portfolio.integriscentar.description",
-    industryKey: "portfolio.integriscentar.industry",
-    tags: ["Web", "Branding", "React", "Forms"],
-    image: integriscentarImg,
     category: ["web"] as FilterCategory[],
   },
   {
@@ -283,7 +264,7 @@ const projectsData = [
     url: "https://donatice.eu",
     descKey: "portfolio.donatice.description",
     industryKey: "portfolio.donatice.industry",
-    tags: ["Web", "Sport", "React", "SEO"],
+    tags: ["Web", "Ugostiteljstvo", "React", "SEO"],
     image: donaticeImg,
     category: ["web"] as FilterCategory[],
   },
@@ -295,6 +276,36 @@ const projectsData = [
     industryKey: "portfolio.controlmaster.industry",
     tags: ["Web", "B2B", "React", "SEO"],
     image: controlmasterImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "arks",
+    name: "ARKS.hr",
+    url: "https://arks.hr/",
+    descKey: "portfolio.arks.description",
+    industryKey: "portfolio.arks.industry",
+    tags: ["Web", "Redizajn", "React", "SEO"],
+    image: arksImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "euroratan",
+    name: "Euroratan.com",
+    url: "https://euroratan.com/",
+    descKey: "portfolio.euroratan.description",
+    industryKey: "portfolio.euroratan.industry",
+    tags: ["Web", "Katalog", "React", "SEO"],
+    image: euroratanImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "xiiigimnazija",
+    name: "XIII. gimnazija",
+    url: "https://xiiigimnazija.hr/",
+    descKey: "portfolio.xiiigimnazija.description",
+    industryKey: "portfolio.xiiigimnazija.industry",
+    tags: ["Web", "CMS", "React", "Pristupačnost"],
+    image: xiiiGimnazijaImg,
     category: ["web"] as FilterCategory[],
   },
 ];
@@ -411,7 +422,11 @@ const PortfolioPage = () => {
                 <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
                   <img
                     src={project.image}
-                    alt={`${project.name} — ${t(project.industryKey)} projekt`}
+                    alt={`Naslovna stranica web stranice ${project.name} — ${t(project.industryKey)} projekt`}
+                    loading="lazy"
+                    decoding="async"
+                    width={1440}
+                    height={900}
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
