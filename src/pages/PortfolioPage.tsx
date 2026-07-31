@@ -264,7 +264,7 @@ const projectsData = [
     url: "https://donatice.eu",
     descKey: "portfolio.donatice.description",
     industryKey: "portfolio.donatice.industry",
-    tags: ["Web", "Sport", "React", "SEO"],
+    tags: ["Web", "Ugostiteljstvo", "React", "SEO"],
     image: donaticeImg,
     category: ["web"] as FilterCategory[],
   },
@@ -276,6 +276,36 @@ const projectsData = [
     industryKey: "portfolio.controlmaster.industry",
     tags: ["Web", "B2B", "React", "SEO"],
     image: controlmasterImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "arks",
+    name: "ARKS.hr",
+    url: "https://arks.hr/",
+    descKey: "portfolio.arks.description",
+    industryKey: "portfolio.arks.industry",
+    tags: ["Web", "Redizajn", "React", "SEO"],
+    image: arksImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "euroratan",
+    name: "Euroratan.com",
+    url: "https://euroratan.com/",
+    descKey: "portfolio.euroratan.description",
+    industryKey: "portfolio.euroratan.industry",
+    tags: ["Web", "Katalog", "React", "SEO"],
+    image: euroratanImg,
+    category: ["web"] as FilterCategory[],
+  },
+  {
+    id: "xiiigimnazija",
+    name: "XIII. gimnazija",
+    url: "https://xiiigimnazija.hr/",
+    descKey: "portfolio.xiiigimnazija.description",
+    industryKey: "portfolio.xiiigimnazija.industry",
+    tags: ["Web", "CMS", "React", "Pristupačnost"],
+    image: xiiiGimnazijaImg,
     category: ["web"] as FilterCategory[],
   },
 ];
@@ -392,7 +422,11 @@ const PortfolioPage = () => {
                 <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
                   <img
                     src={project.image}
-                    alt={`${project.name} — ${t(project.industryKey)} projekt`}
+                    alt={`Naslovna stranica web stranice ${project.name} — ${t(project.industryKey)} projekt`}
+                    loading="lazy"
+                    decoding="async"
+                    width={1440}
+                    height={900}
                     className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
