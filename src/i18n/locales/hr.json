@@ -386,10 +386,6 @@
       "description": "Webshop za bebi opremu — pažljivo birani proizvodi za sigurnost i udobnost vašeg djeteta, s brzom dostavom u Hrvatskoj.",
       "industry": "E-commerce & Bebi oprema"
     },
-    "amidekoracije": {
-      "description": "Cvjetna i dekorativna studija — elegantne dekoracije za vjenčanja i posebne prigode, s naglaskom na emociju, atmosferu i detalje.",
-      "industry": "Dekoracije & Vjenčanja"
-    },
     "aurumgradnja": {
       "description": "Vrhunska graditeljska tvrtka — kvalitetna i precizna izvedba zahtjevnih građevinskih projekata uz potpunu transparentnost.",
       "industry": "Graditeljstvo & Nekretnine"
@@ -401,10 +397,6 @@
     "evaciglar": {
       "description": "Sudski tumač za slovenski jezik — prijevodi, tumačenje i učenje slovenskog jezika uz individualan pristup.",
       "industry": "Prijevodi & Jezici"
-    },
-    "integriscentar": {
-      "description": "Centar za ortomolekularnu medicinu — analitički pristup zdravlju kroz analizu uzroka i individualne protokole.",
-      "industry": "Zdravlje & Medicina"
     },
     "airwolt": {
       "description": "Prodaja, servis i montaža klima uređaja te elektroinstalaterski radovi za kućanstva i tvrtke.",
@@ -447,12 +439,24 @@
       "industry": "Zajednica & Blog"
     },
     "donatice": {
-      "description": "Ženski nogometni klub Donatice — vijesti, momčad i navijačke informacije na modernoj web stranici.",
-      "industry": "Sport & Klub"
+      "description": "Moderna web stranica za Donat Sladolede iz Zadra s pregledom sladoleda, kupova i deserata, veleprodajnom ponudom za ugostitelje, lokacijom i izravnim kontaktom.",
+      "industry": "Ugostiteljstvo"
     },
     "controlmaster": {
       "description": "Prezentacijska web stranica za tvrtku specijaliziranu za mjerne i kontrolne uređaje u industriji.",
       "industry": "Industrija & B2B"
+    },
+    "arks": {
+      "description": "Redizajn poslovne web stranice za stručne usluge zaštite na radu, zaštite od požara i zaštite okoliša.",
+      "industry": "Poslovne usluge"
+    },
+    "euroratan": {
+      "description": "Web katalog vanjskog i unutarnjeg namještaja od ratana, pergola, WPC podnih obloga i opreme za uređenje prostora.",
+      "industry": "Web katalog"
+    },
+    "xiiigimnazija": {
+      "description": "Moderna i pristupačna web stranica XIII. gimnazije u Zagrebu s vijestima, natječajima, školskim programima, dokumentima i sustavom za upravljanje sadržajem.",
+      "industry": "Obrazovanje"
     }
   },
   "common": {
@@ -488,10 +492,22 @@
       "seo": "SEO optimizacija"
     },
     "solution_items": {
-      "primecrm": { "label": "PrimeCRM", "desc": "CRM sustavi" },
-      "primepay": { "label": "PrimePay", "desc": "Stripe & naplate" },
-      "primeaudit": { "label": "PrimeAudit", "desc": "SEO analiza" },
-      "primedemo": { "label": "PrimeDemo", "desc": "Demo redizajni" }
+      "primecrm": {
+        "label": "PrimeCRM",
+        "desc": "CRM sustavi"
+      },
+      "primepay": {
+        "label": "PrimePay",
+        "desc": "Stripe & naplate"
+      },
+      "primeaudit": {
+        "label": "PrimeAudit",
+        "desc": "SEO analiza"
+      },
+      "primedemo": {
+        "label": "PrimeDemo",
+        "desc": "Demo redizajni"
+      }
     }
   },
   "footerNew": {
@@ -571,12 +587,30 @@
     "title": "Što PrimeLink radi konkretno",
     "subtitle": "Nismo agencija koja prodaje paušalna obećanja. Radimo konkretne stvari koje tvrtkama donose stvarnu vrijednost.",
     "items": {
-      "modernize": { "title": "Modernizacija zastarjelih web stranica", "description": "Zamjena starih WordPress predložaka modernim, brzim i SEO čistim stranicama — bez gubitka pozicija." },
-      "demo": { "title": "Demo prijedlozi prije odluke", "description": "Pokazujemo kako bi vaša nova stranica mogla izgledati prije nego išta plaćate ili potpisujete." },
-      "crm": { "title": "CRM sustavi i interne aplikacije", "description": "Custom CRM i interni alati koji prate vaše procese — bez licenci po korisniku i bez nepotrebnih modula." },
-      "stripe": { "title": "Stripe naplate i pretplate", "description": "Postavljanje plaćanja, pretplata i donacijskih sustava preko Stripea — sigurno i u skladu s PCI standardima." },
-      "seo": { "title": "SEO i tehnička optimizacija", "description": "Tehnički SEO, brzina učitavanja, Core Web Vitals i čista struktura — temelj za dugoročan organski rast." },
-      "hosting": { "title": "Hosting, održavanje i podrška", "description": "Pouzdan hosting, sigurnosne nadogradnje i kontinuirana podrška — bez 'isporučili i zaboravili'." }
+      "modernize": {
+        "title": "Modernizacija zastarjelih web stranica",
+        "description": "Zamjena starih WordPress predložaka modernim, brzim i SEO čistim stranicama — bez gubitka pozicija."
+      },
+      "demo": {
+        "title": "Demo prijedlozi prije odluke",
+        "description": "Pokazujemo kako bi vaša nova stranica mogla izgledati prije nego išta plaćate ili potpisujete."
+      },
+      "crm": {
+        "title": "CRM sustavi i interne aplikacije",
+        "description": "Custom CRM i interni alati koji prate vaše procese — bez licenci po korisniku i bez nepotrebnih modula."
+      },
+      "stripe": {
+        "title": "Stripe naplate i pretplate",
+        "description": "Postavljanje plaćanja, pretplata i donacijskih sustava preko Stripea — sigurno i u skladu s PCI standardima."
+      },
+      "seo": {
+        "title": "SEO i tehnička optimizacija",
+        "description": "Tehnički SEO, brzina učitavanja, Core Web Vitals i čista struktura — temelj za dugoročan organski rast."
+      },
+      "hosting": {
+        "title": "Hosting, održavanje i podrška",
+        "description": "Pouzdan hosting, sigurnosne nadogradnje i kontinuirana podrška — bez 'isporučili i zaboravili'."
+      }
     }
   },
   "caseHighlights": {
@@ -663,12 +697,30 @@
   "servicesGrid": {
     "viewService": "Pogledajte uslugu",
     "items": {
-      "izrada-web-stranica": { "title": "Izrada web stranica", "description": "Profesionalne, brze i SEO optimizirane web stranice. Custom dizajn, jasna poruka i tehnička podloga koja konvertira posjetitelje u upite." },
-      "redizajn-web-stranica": { "title": "Redizajn web stranica", "description": "Modernizacija postojeće stranice bez gubitka SEO pozicija. Bolji dizajn, brže učitavanje i jasnija struktura sadržaja." },
-      "crm-sustavi": { "title": "Izrada CRM sustava", "description": "Custom CRM prilagođen vašim prodajnim i operativnim procesima. Bez licenci po korisniku i bez nepotrebnih modula." },
-      "web-aplikacije": { "title": "Izrada web aplikacija", "description": "Interni alati, klijentski portali i poslovne aplikacije koje zamjenjuju Excel, papir i nepovezane sustave." },
-      "stripe-integracije": { "title": "Stripe integracije", "description": "Implementacija Stripe plaćanja, pretplata i Connect platformi. Sigurno, brzo i u skladu s PCI standardima." },
-      "saas-razvoj": { "title": "SaaS razvoj", "description": "Razvoj SaaS proizvoda od ideje do produkcije. MVP, skalabilna arhitektura, pretplate i onboarding korisnika." }
+      "izrada-web-stranica": {
+        "title": "Izrada web stranica",
+        "description": "Profesionalne, brze i SEO optimizirane web stranice. Custom dizajn, jasna poruka i tehnička podloga koja konvertira posjetitelje u upite."
+      },
+      "redizajn-web-stranica": {
+        "title": "Redizajn web stranica",
+        "description": "Modernizacija postojeće stranice bez gubitka SEO pozicija. Bolji dizajn, brže učitavanje i jasnija struktura sadržaja."
+      },
+      "crm-sustavi": {
+        "title": "Izrada CRM sustava",
+        "description": "Custom CRM prilagođen vašim prodajnim i operativnim procesima. Bez licenci po korisniku i bez nepotrebnih modula."
+      },
+      "web-aplikacije": {
+        "title": "Izrada web aplikacija",
+        "description": "Interni alati, klijentski portali i poslovne aplikacije koje zamjenjuju Excel, papir i nepovezane sustave."
+      },
+      "stripe-integracije": {
+        "title": "Stripe integracije",
+        "description": "Implementacija Stripe plaćanja, pretplata i Connect platformi. Sigurno, brzo i u skladu s PCI standardima."
+      },
+      "saas-razvoj": {
+        "title": "SaaS razvoj",
+        "description": "Razvoj SaaS proizvoda od ideje do produkcije. MVP, skalabilna arhitektura, pretplate i onboarding korisnika."
+      }
     }
   },
   "servicePage": {
