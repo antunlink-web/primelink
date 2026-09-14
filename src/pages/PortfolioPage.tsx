@@ -384,7 +384,7 @@ const PortfolioPage = () => {
           "@type": "CollectionPage",
           name: "PrimeLink Portfolio",
           url: "https://primelink.hr/portfolio",
-          hasPart: projectsData.map((p) => ({
+          hasPart: sortedProjects.map((p) => ({
             "@type": "CreativeWork",
             name: p.name,
             url: p.url
@@ -505,7 +505,7 @@ const PortfolioPage = () => {
             {t('portfolio.trustTitle')}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
-            {projectsData.map((project) => (
+            {sortedProjects.map((project) => (
               <a
                 key={project.id}
                 href={project.url}
