@@ -37,7 +37,24 @@ import xiiiGimnazijaImg from "@/assets/projects/xiii-gimnazija-portfolio.webp";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
-const projectsData = [
+type Project = {
+  id: string;
+  name: string;
+  url: string;
+  descKey: string;
+  industryKey: string;
+  tags: string[];
+  image: string;
+  category: FilterCategory[];
+  /** Pinned projects always sort first. */
+  pinned?: boolean;
+  /** ISO date (YYYY-MM-DD) of completion/publication. Undefined = date unknown, needs review. */
+  completedAt?: string;
+  /** Manual tie-breaker only; lower shows first. */
+  sortOrder?: number;
+};
+
+const projectsData: Project[] = [
   {
     id: "trazilica",
     name: "Trazilica.hr",
@@ -47,7 +64,9 @@ const projectsData = [
     tags: ["React", "Node.js", "PostgreSQL", "ElasticSearch"],
     image: trazilicaImg,
     category: ["saas", "web"] as FilterCategory[],
+    pinned: true,
   },
+
   {
     id: "careflow",
     name: "CareFlow.hr",
