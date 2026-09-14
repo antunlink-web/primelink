@@ -329,6 +329,21 @@ const projectsData: Project[] = [
   },
 ];
 
+/**
+ * Order: pinned first, then completedAt descending (unknown dates last,
+ * preserving their declaration order), then sortOrder / declaration order.
+ */
+const sortedProjects = projectsData
+  .map((p, index) => ({ ...p, sortOrder: p.sortOrder ?? index }))
+  .sort((a, b) => {
+    if (!!a.pinned !== !!b.pinned) return a.pinned ? -1 : 1;
+    if (a.completedAt && b.completedAt && a.completedAt !== b.completedAt) {
+      return a.completedAt < b.completedAt ? 1 : -1;
+    }
+    if (!!a.completedAt !== !!b.completedAt) return a.completedAt ? -1 : 1;
+    return a.sortOrder - b.sortOrder;
+  });
+
 const filters: { key: FilterCategory; labelKey: string }[] = [
   { key: "all", labelKey: "portfolio.filterAll" },
   { key: "saas", labelKey: "portfolio.filterSaas" },
@@ -343,8 +358,9 @@ const PortfolioPage = () => {
   const navigate = useNavigate();
 
   const filtered = activeFilter === "all"
-    ? projectsData
-    : projectsData.filter((p) => p.category.includes(activeFilter));
+    ? sortedProjects
+    : sortedProjects.filter((p) => p.category.includes(activeFilter));
+
 
   const handleNavClick = (sectionId: string) => {
     navigate('/');
