@@ -34,6 +34,9 @@ import controlmasterImg from "@/assets/projects/controlmaster-portfolio.webp";
 import arksImg from "@/assets/projects/arks-portfolio.webp";
 import euroratanImg from "@/assets/projects/euroratan-portfolio.webp";
 import xiiiGimnazijaImg from "@/assets/projects/xiii-gimnazija-portfolio.webp";
+import chairsImg from "@/assets/projects/chairs-portfolio.webp";
+import hpcspgImg from "@/assets/projects/hpcspg-portfolio.webp";
+import pingvinsportImg from "@/assets/projects/pingvinsport-portfolio.webp";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
@@ -66,6 +69,41 @@ const projectsData: Project[] = [
     category: ["saas", "web"] as FilterCategory[],
     pinned: true,
   },
+
+  {
+    id: "chairs",
+    name: "chairs.hr",
+    url: "https://chairs.hr/",
+    descKey: "portfolio.chairs.description",
+    industryKey: "portfolio.chairs.industry",
+    tags: ["Web stranica", "Web katalog", "B2B", "Višejezično"],
+    image: chairsImg,
+    category: ["web"] as FilterCategory[],
+    completedAt: "2026-09-01",
+  },
+  {
+    id: "hpcspg",
+    name: "HPC-SPG",
+    url: "https://hpc-spg.hr/",
+    descKey: "portfolio.hpcspg.description",
+    industryKey: "portfolio.hpcspg.industry",
+    tags: ["Web stranica", "Redizajn", "CMS", "B2B"],
+    image: hpcspgImg,
+    category: ["web"] as FilterCategory[],
+    completedAt: "2026-09-01",
+  },
+  {
+    id: "pingvinsport",
+    name: "Pingvin Sport & Ski",
+    url: "https://pingvinsport.com/",
+    descKey: "portfolio.pingvinsport.description",
+    industryKey: "portfolio.pingvinsport.industry",
+    tags: ["Web stranica", "Online prijave", "Sport"],
+    image: pingvinsportImg,
+    category: ["web"] as FilterCategory[],
+    completedAt: "2026-09-01",
+  },
+
 
   {
     id: "careflow",
