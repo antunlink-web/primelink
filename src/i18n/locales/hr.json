@@ -457,6 +457,18 @@
     "xiiigimnazija": {
       "description": "Moderna i pristupačna web stranica XIII. gimnazije u Zagrebu s vijestima, natječajima, školskim programima, dokumentima i sustavom za upravljanje sadržajem.",
       "industry": "Obrazovanje"
+    },
+    "chairs": {
+      "description": "Moderan web katalog profesionalnog namještaja za hrvatsko tržište, s više od 400 proizvoda, kategorijama, kolekcijama, referencama, novostima i dvojezičnim sadržajem.",
+      "industry": "Web katalog"
+    },
+    "hpcspg": {
+      "description": "Redizajn i migracija web stranice za tvrtku za upravljanje zgradama, s modernom prezentacijom usluga, novostima, obrascima i vlastitim administracijskim sustavom.",
+      "industry": "Upravljanje zgradama"
+    },
+    "pingvinsport": {
+      "description": "Nova web stranica za sportsku i ski školu za djecu, s prezentacijom programa, terminima, detaljnim informacijama i online prijavama.",
+      "industry": "Sport & Edukacija"
     }
   },
   "common": {

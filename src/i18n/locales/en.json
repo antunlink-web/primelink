@@ -457,6 +457,18 @@
     "xiiigimnazija": {
       "description": "A modern, accessible website for XIII. gimnazija in Zagreb with news, tenders, school programmes, documents and a content management system.",
       "industry": "Education"
+    },
+    "chairs": {
+      "description": "A modern web catalogue of professional furniture for the Croatian market, with 400+ products, categories, collections, references, news and bilingual content.",
+      "industry": "Web catalogue"
+    },
+    "hpcspg": {
+      "description": "Redesign and migration of a website for a building management company, with a modern service presentation, news, forms and a custom admin system.",
+      "industry": "Building management"
+    },
+    "pingvinsport": {
+      "description": "A new website for a children's sports and ski school, with programme presentation, schedules, detailed information and online registrations.",
+      "industry": "Sports & Education"
     }
   },
   "common": {

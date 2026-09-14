@@ -34,6 +34,9 @@ import controlmasterImg from "@/assets/projects/controlmaster-portfolio.webp";
 import arksImg from "@/assets/projects/arks-portfolio.webp";
 import euroratanImg from "@/assets/projects/euroratan-portfolio.webp";
 import xiiiGimnazijaImg from "@/assets/projects/xiii-gimnazija-portfolio.webp";
+import chairsImg from "@/assets/projects/chairs-portfolio.webp";
+import hpcspgImg from "@/assets/projects/hpcspg-portfolio.webp";
+import pingvinsportImg from "@/assets/projects/pingvinsport-portfolio.webp";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
