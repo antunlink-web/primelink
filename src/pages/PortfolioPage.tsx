@@ -37,7 +37,24 @@ import xiiiGimnazijaImg from "@/assets/projects/xiii-gimnazija-portfolio.webp";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
-const projectsData = [
+type Project = {
+  id: string;
+  name: string;
+  url: string;
+  descKey: string;
+  industryKey: string;
+  tags: string[];
+  image: string;
+  category: FilterCategory[];
+  /** Pinned projects always sort first. */
+  pinned?: boolean;
+  /** ISO date (YYYY-MM-DD) of completion/publication. Undefined = date unknown, needs review. */
+  completedAt?: string;
+  /** Manual tie-breaker only; lower shows first. */
+  sortOrder?: number;
+};
+
+const projectsData: Project[] = [
   {
     id: "trazilica",
     name: "Trazilica.hr",
@@ -47,7 +64,9 @@ const projectsData = [
     tags: ["React", "Node.js", "PostgreSQL", "ElasticSearch"],
     image: trazilicaImg,
     category: ["saas", "web"] as FilterCategory[],
+    pinned: true,
   },
+
   {
     id: "careflow",
     name: "CareFlow.hr",
@@ -310,6 +329,21 @@ const projectsData = [
   },
 ];
 
+/**
+ * Order: pinned first, then completedAt descending (unknown dates last,
+ * preserving their declaration order), then sortOrder / declaration order.
+ */
+const sortedProjects = projectsData
+  .map((p, index) => ({ ...p, sortOrder: p.sortOrder ?? index }))
+  .sort((a, b) => {
+    if (!!a.pinned !== !!b.pinned) return a.pinned ? -1 : 1;
+    if (a.completedAt && b.completedAt && a.completedAt !== b.completedAt) {
+      return a.completedAt < b.completedAt ? 1 : -1;
+    }
+    if (!!a.completedAt !== !!b.completedAt) return a.completedAt ? -1 : 1;
+    return a.sortOrder - b.sortOrder;
+  });
+
 const filters: { key: FilterCategory; labelKey: string }[] = [
   { key: "all", labelKey: "portfolio.filterAll" },
   { key: "saas", labelKey: "portfolio.filterSaas" },
@@ -324,8 +358,9 @@ const PortfolioPage = () => {
   const navigate = useNavigate();
 
   const filtered = activeFilter === "all"
-    ? projectsData
-    : projectsData.filter((p) => p.category.includes(activeFilter));
+    ? sortedProjects
+    : sortedProjects.filter((p) => p.category.includes(activeFilter));
+
 
   const handleNavClick = (sectionId: string) => {
     navigate('/');
@@ -349,7 +384,7 @@ const PortfolioPage = () => {
           "@type": "CollectionPage",
           name: "PrimeLink Portfolio",
           url: "https://primelink.hr/portfolio",
-          hasPart: projectsData.map((p) => ({
+          hasPart: sortedProjects.map((p) => ({
             "@type": "CreativeWork",
             name: p.name,
             url: p.url
@@ -470,7 +505,7 @@ const PortfolioPage = () => {
             {t('portfolio.trustTitle')}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
-            {projectsData.map((project) => (
+            {sortedProjects.map((project) => (
               <a
                 key={project.id}
                 href={project.url}
