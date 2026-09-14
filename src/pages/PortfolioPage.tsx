@@ -101,7 +101,6 @@ const projectsData: Project[] = [
     tags: ["Web stranica", "Online prijave", "Sport"],
     image: pingvinsportImg,
     category: ["web"] as FilterCategory[],
-    completedAt: "2026-09-01",
   },
 
 
