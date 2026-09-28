@@ -7,6 +7,58 @@ import { legacyRoutePattern, legacyRoutes, notFoundSeo, pageSeo, type SeoMetadat
 
 const root = resolve(import.meta.dir, "..");
 const read = (file: string) => readFile(resolve(root, file), "utf8");
+// Deployment contracts run during both build and test:static without Docker.
+const dockerfile = await read("Dockerfile");
+assert.match(dockerfile, /^FROM oven\/bun:1\.4\.2 AS build$/m);
+assert.match(dockerfile, /^COPY package\.json bun\.lock \.\/$/m);
+assert.match(dockerfile, /^RUN bun install --frozen-lockfile --registry=https:\/\/registry\.npmjs\.org$/m);
+assert(dockerfile.indexOf("COPY package.json bun.lock ./") < dockerfile.indexOf("COPY . ."));
+assert.match(dockerfile, /^RUN bun run build$/m);
+assert.match(dockerfile, /^FROM nginx:alpine$/m);
+assert.match(dockerfile, /^ARG BUILD_COMMIT$/m);
+assert.match(dockerfile, /org\.opencontainers\.image\.title="primelink\.hr"/);
+assert.match(dockerfile, /org\.opencontainers\.image\.revision="\$\{BUILD_COMMIT\}"/);
+assert.match(dockerfile, /^COPY nginx\.conf \/etc\/nginx\/conf\.d\/default\.conf$/m);
+assert.match(dockerfile, /^COPY --from=build \/app\/dist \/usr\/share\/nginx\/html$/m);
+assert.match(dockerfile, /^COPY --from=build \/app\/dist\/static-routes\.map \/etc\/nginx\/primelink-static-routes\.map$/m);
+assert.match(dockerfile, /^EXPOSE 3000$/m);
+assert.match(dockerfile, /HEALTHCHECK[\s\S]*http:\/\/localhost:3000\//);
+assert(!/bun\.lockb|\.\.\/|deploy\/selfcontained/.test(dockerfile), "Docker must use only repository inputs");
+
+const nginx = (await read("nginx.conf")).replace(/#.*$/gm, "");
+assert.match(nginx, /map \$uri \$primelink_entrypoint\s*\{\s*default \/__primelink_no_static_route__;\s*include \/etc\/nginx\/primelink-static-routes\.map;\s*\}/);
+assert(nginx.indexOf("map ") < nginx.indexOf("server {"), "Map belongs at HTTP scope");
+assert.match(nginx, /listen 3000;/);
+assert.match(nginx, /error_page 404 \/404\.html;/);
+assert.match(nginx, /location = \/404\.html\s*\{\s*internal;\s*add_header Cache-Control "no-cache" always;\s*\}/);
+assert.match(nginx, /location \/\s*\{\s*try_files \$primelink_entrypoint \$uri =404;\s*\}/);
+assert(!/\/index\.html|rewrite\s|error_page\s+404\s+=/.test(nginx), "No blanket SPA fallback or successful error status");
+for (const directive of nginx.matchAll(/try_files\s+([^;]+);/g)) {
+  assert(["$uri =404", "$primelink_entrypoint $uri =404"].includes(directive[1]), "Only file checks ending in 404 are allowed");
+}
+assert.match(nginx, /location \^~ \/assets\/\s*\{\s*try_files \$uri =404;\s*add_header Cache-Control "public, max-age=31536000, immutable";\s*\}/);
+assert.match(nginx, /location \/vendor\/fonts\/\s*\{\s*try_files \$uri =404;\s*\}/);
+assert(nginx.includes('location ~ "^/vendor/fonts/inter-[a-f0-9]{12}\\.ttf$" {\n        try_files $uri =404;\n        add_header Cache-Control "public, max-age=31536000, immutable";'), "Only content-hashed fonts may use immutable caching");
+assert.match(nginx, /add_header Cache-Control "no-cache" always;/);
+const redirect = nginx.match(/location ~\* (\^\/usluge\/[^\s]+)\s*\{\s*return 302 \/\$1;\s*\}/);
+assert(redirect, "Single-slug HTTP legacy redirect required");
+const legacyRegex = new RegExp(redirect[1], "i");
+for (const path of ["/usluge/portfolio", "/USLUGE/PORTFOLIO/", "/usluge/nonexistent"]) assert(legacyRegex.test(path));
+for (const path of ["/usluge/", "/usluge/ponuda/forma"]) assert(!legacyRegex.test(path));
+
+const ignore = (await read(".dockerignore")).trim().split(/\r?\n/).filter((line) => line && !line.startsWith("#"));
+function ignored(path: string) {
+  let result = false;
+  for (const rule of ignore) {
+    const negate = rule.startsWith("!");
+    const pattern = negate ? rule.slice(1) : rule;
+    if (new Bun.Glob(pattern).match(path) || path.split("/").some((part) => new Bun.Glob(pattern).match(part))) result = !negate;
+  }
+  return result;
+}
+for (const path of [".git/config", "node_modules/vite/index.js", "dist/index.html", ".env", ".env.local", "debug.log", ".DS_Store"]) assert(ignored(path), `Build context must exclude ${path}`);
+for (const path of ["public/sitemap.xml", "public/vendor/fonts/inter.css", "public/vendor/fonts/inter-a699af1dea30.ttf", "scripts/generate-static.tsx", "scripts/check-static.ts", "src/data/seo.ts", "bun.lock", "package.json", "index.html", "Dockerfile", "nginx.conf"]) assert(!ignored(path), `Build context must include ${path}`);
+
 const manifest = JSON.parse(await read("dist/static-routes.json"));
 const sitemap = [...(await read("public/sitemap.xml")).matchAll(/<loc>(.*?)<\/loc>/g)]
   .map((match) => new URL(match[1]).pathname).sort();
@@ -82,6 +134,8 @@ assert.equal(titles.size, sitemap.length, "Every public title must be distinct")
 assert.equal(descriptions.size, sitemap.length, "Every public description must be distinct");
 for (const { target, file } of manifest.compatibilityRoutes) await check(file, pageSeo[target]);
 await check("404.html", notFoundSeo);
+assert.equal((await parse("404.html")).values.robots[0].replace(/\s/g, ""), "noindex,nofollow");
+assert.equal((await parse("404.html")).values.canonical, undefined);
 assert.match(await read("dist/404.html"), /Oops! Page not found/);
 assert.match(await read("dist/404.html"), /Return to Home/);
 
@@ -118,6 +172,10 @@ const forbiddenReferences = [
   "fonts.googleapis.com", "fonts.gstatic.com", "cdn.jsdelivr.net", "lovable",
   "lovable-core-prod", "pkg.dev", "supabase.co", "supabase.com", "VITE_SUPABASE", "@supabase/",
 ];
+for (const file of ["Dockerfile", "nginx.conf", "index.html", "bun.lock", "package.json", "public/vendor/fonts/inter.css"]) {
+  const contents = (await read(file)).toLowerCase();
+  for (const reference of forbiddenReferences) assert(!contents.includes(reference.toLowerCase()), `${file}: forbidden infrastructure reference ${reference}`);
+}
 for (const file of await readdir(resolve(root, "dist"), { recursive: true, withFileTypes: true })) {
   if (!file.isFile()) continue;
   const path = resolve(file.parentPath, file.name);
@@ -144,3 +202,4 @@ for (const file of ["inter.css", ...fontFiles]) {
   assert.deepEqual(await readFile(resolve(root, "dist/vendor/fonts", file)), source, `Font asset changed: ${file}`);
 }
 console.log(`PASS: ${sitemap.length} public routes, ${legacyRoutes.length} compatibility entries, raw metadata, 404, route maps, ${portfolio.length} portfolio images, all public assets, local Inter 400/500/700 and zero forbidden infrastructure references`);
+console.log("PASS: repository Docker inputs, nginx routing/cache contracts, legacy redirects and Docker context exclusions (static checks; not a live nginx test)");

@@ -77,58 +77,70 @@ static files. Preserve it at the server using the redirect below. For example,
 `/missing`, which returns 404. `/usluge/ponuda/forma` does not match this pattern
 and was never a valid route.
 
-## Later nginx change — not applied by this work
+## Repository-owned Docker/nginx deployment
 
-Use the deployed build directory as the existing nginx `root`. Include the map at
-**http** scope (replace `/PATH/TO/BUILT_SITE` with that actual directory):
+The root `Dockerfile`, `.dockerignore`, and `nginx.conf` are the complete build
+inputs. No deployment overlays or external files are needed. The build stage
+uses `oven/bun:1.4.2`, installs the repository `bun.lock` with frozen public npm
+resolution, and runs the static build and validation. The `nginx:alpine` runtime
+copies the resulting site and route map, listens on port 3000, and checks
+`http://localhost:3000/` every 30 seconds (3-second timeout, 5-second start period,
+3 retries). The image title and revision come from the Dockerfile labels and
+`BUILD_COMMIT` argument. Runtime does not need environment variables or secrets.
 
-```nginx
-map $uri $primelink_entrypoint {
-    default "";
-    include /PATH/TO/BUILT_SITE/static-routes.map;
-}
+For a future separately authorized deployment, run from this repository after
+reviewing and committing the changes so the revision label identifies the inputs:
+
+```sh
+docker build --build-arg BUILD_COMMIT="$(git rev-parse HEAD)" -t primelink-hr:"$(git rev-parse --short HEAD)" .
+docker run --rm --entrypoint nginx primelink-hr:"$(git rev-parse --short HEAD)" -t
+docker run -d --name primelink-hr --restart unless-stopped -p 127.0.0.1:3000:3000 primelink-hr:"$(git rev-parse --short HEAD)"
 ```
 
-Within the existing site `server`, replace the blanket `/index.html` SPA fallback:
+These are examples for a free name/port, not commands to run against an existing
+production container. Production replacement, proxy/network wiring, and rollback
+remain a separate deployment task. Do not mount an old HTML overlay, nginx config,
+route map, or site directory over the image. Rebuild/recreate the image when routes
+change so HTML and the nginx map always come from the same build.
 
-```nginx
-error_page 404 /404.html;
+The config is included at HTTP scope by the stock nginx image. Its map uses a
+nonempty missing-file sentinel. `try_files` checks mapped HTML first, then an
+actual requested file, then returns 404. There is no directory check (`$uri/`)
+or blanket SPA fallback. Thus `/portfolio`, `/portfolio/`, and `/PORTFOLIO` serve
+the same generated HTML directly with status 200. Existing files such as
+`robots.txt` and `sitemap.xml` remain accessible.
 
-# Preserve the full legacy pattern, including non-service and unknown slugs.
-# A temporary server redirect retains its destination behavior without caching
-# a new permanent redirect policy. Navigate currently drops query/hash data.
-location ~* ^/usluge/([^/]+)/*$ {
-    return 302 /$1;
-}
+The case-insensitive legacy regex accepts exactly one slug, including trailing
+slashes. `/usluge/portfolio` returns 302 to `/portfolio`;
+`/usluge/nonexistent` returns 302 to `/nonexistent`, then 404. Redirects are
+relative to avoid exposing port 3000 behind a proxy, and drop query strings as
+the existing client Navigate does. Multiple-segment legacy paths return 404.
 
-location / {
-    try_files $primelink_entrypoint $uri =404;
-}
+Unknown URLs and missing assets/fonts use internal `/404.html`, preserving HTTP
+404 and `Cache-Control: no-cache`. Direct requests to `/404.html` also return 404.
+Routes/HTML and the unhashed local Inter stylesheet use `no-cache`. Successful
+`/assets/` and hashed Inter TTF responses use
+`public, max-age=31536000, immutable`; misses do not inherit that policy. Gzip is
+enabled for HTML, text, CSS, JavaScript, JSON, XML, and SVG with level 6 and a
+1024-byte minimum. Exact parity with old production gzip/healthcheck settings was
+not verified because external deployment files are outside the permitted scope.
 
-location = /404.html {
-    internal;
-}
-```
+`bun run build` and `bun run test:static` also check Docker inputs, exclusions,
+nginx map/error/redirect/cache contracts, forbidden infrastructure identifiers,
+and the generated 404 metadata. These lightweight static assertions do not replace
+`nginx -t` and HTTP smoke tests of the eventual image. No nginx executable was
+available in the local standard locations during this change; no Docker image
+was built and production was not changed.
 
-The map resolves valid routes directly to their HTML files without directory
-redirects. Existing files (assets, robots.txt, sitemap.xml, etc.) are then served
-normally. Unknown paths reach `=404`, and `error_page` serves the error document
-while keeping HTTP 404. Do not use `=200` or restore `/index.html` as the fallback.
-Existing asset-specific locations must also keep file misses as 404. Place the
-legacy regex before any competing regex location. Reload nginx whenever the
-generated route map changes.
+Local validation used Bun 1.3.14. Frozen installation, TypeScript checks,
+changed-file lint, and static checks of the existing `dist` passed. A fresh
+`bun run build` stalled before Vite output; a standalone asynchronous esbuild
+transform also timed out. Fresh-build verification therefore remains outstanding,
+as does validation with the Dockerfile's requested Bun 1.4.2 runtime.
 
-The legacy redirect moves from JavaScript replace-navigation to an HTTP 302 in
-this future configuration; App.tsx itself is unchanged. The generic pattern
-needs this server rule even though known aliases have generated files.
-
-These directives follow nginx's [try_files/error_page documentation](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files)
+The file-only routing and preserved error status follow nginx's
+[try_files/error_page documentation](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files)
 and [map documentation](https://nginx.org/en/docs/http/ngx_http_map_module.html).
-The existing deployment configuration was not inspected or changed. Validate the
-integrated configuration with `nginx -t` during the separately authorized
-deployment task, then check a public route, a static asset, a missing asset, an
-unknown page, a known legacy alias, and an unknown legacy alias. Vite's dev/preview
-server is not proof of production HTTP status behavior.
 
 ## Scope and limitations
 
@@ -145,8 +157,8 @@ intentional `api.web3forms.com` form endpoint.
 The old deployment-only index/font overlay must NOT override the repository
 `index.html` on future builds. Deployment should build directly from the
 repository's `index.html` and `bun.lock`, using the repository's local fonts.
-Deployment configuration itself is outside this task and must be changed
-separately.
+The repository now owns the image configuration; applying it to production
+remains a separate task.
 
 The lockfile changes replace 35 cache URLs with public npm URLs and remove the
 duplicate postcss workspace key. Package versions and integrity hashes are
