@@ -14,4 +14,4 @@ COPY --from=build /app/dist /usr/share/nginx/html
 COPY --from=build /app/dist/static-routes.map /etc/nginx/primelink-static-routes.map
 EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget -q -O /dev/null http://localhost:3000/ || exit 1
+    CMD wget -q -O /dev/null http://127.0.0.1:3000/ || exit 1

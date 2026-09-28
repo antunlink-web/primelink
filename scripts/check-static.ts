@@ -22,7 +22,7 @@ assert.match(dockerfile, /^COPY nginx\.conf \/etc\/nginx\/conf\.d\/default\.conf
 assert.match(dockerfile, /^COPY --from=build \/app\/dist \/usr\/share\/nginx\/html$/m);
 assert.match(dockerfile, /^COPY --from=build \/app\/dist\/static-routes\.map \/etc\/nginx\/primelink-static-routes\.map$/m);
 assert.match(dockerfile, /^EXPOSE 3000$/m);
-assert.match(dockerfile, /HEALTHCHECK[\s\S]*http:\/\/localhost:3000\//);
+assert.match(dockerfile, /HEALTHCHECK[\s\S]*http:\/\/127\.0\.0\.1:3000\//);
 assert(!/bun\.lockb|\.\.\/|deploy\/selfcontained/.test(dockerfile), "Docker must use only repository inputs");
 
 const nginx = (await read("nginx.conf")).replace(/#.*$/gm, "");

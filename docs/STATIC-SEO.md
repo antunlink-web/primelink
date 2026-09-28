@@ -84,7 +84,7 @@ inputs. No deployment overlays or external files are needed. The build stage
 uses `oven/bun:1.4.2`, installs the repository `bun.lock` with frozen public npm
 resolution, and runs the static build and validation. The `nginx:alpine` runtime
 copies the resulting site and route map, listens on port 3000, and checks
-`http://localhost:3000/` every 30 seconds (3-second timeout, 5-second start period,
+`http://127.0.0.1:3000/` every 30 seconds (3-second timeout, 5-second start period,
 3 retries). The image title and revision come from the Dockerfile labels and
 `BUILD_COMMIT` argument. Runtime does not need environment variables or secrets.
 
