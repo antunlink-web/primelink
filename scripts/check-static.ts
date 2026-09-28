@@ -1,0 +1,146 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { readFile, readdir } from "node:fs/promises";
+import { resolve } from "node:path";
+import ts from "typescript";
+import { legacyRoutePattern, legacyRoutes, notFoundSeo, pageSeo, type SeoMetadata } from "../src/data/seo";
+
+const root = resolve(import.meta.dir, "..");
+const read = (file: string) => readFile(resolve(root, file), "utf8");
+const manifest = JSON.parse(await read("dist/static-routes.json"));
+const sitemap = [...(await read("public/sitemap.xml")).matchAll(/<loc>(.*?)<\/loc>/g)]
+  .map((match) => new URL(match[1]).pathname).sort();
+assert.deepEqual(Object.keys(pageSeo).sort(), sitemap, "SEO routes must exactly match the sitemap");
+assert.deepEqual(manifest.routes.map((route: { path: string }) => route.path), sitemap);
+
+// Read the actual router declarations so a new route cannot silently miss generation.
+const app = ts.createSourceFile("App.tsx", await read("src/App.tsx"), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+const appRoutes: string[] = [];
+function visit(node: ts.Node) {
+  if (ts.isJsxAttribute(node) && node.name.getText(app) === "path" && node.initializer && ts.isStringLiteral(node.initializer)) {
+    appRoutes.push(node.initializer.text);
+  }
+  ts.forEachChild(node, visit);
+}
+visit(app);
+assert.deepEqual(appRoutes.sort(), [...sitemap, legacyRoutePattern, "*"].sort(), "App routes changed; update static generation");
+assert.deepEqual(manifest.compatibilityRoutes.map(({ path, target }: { path: string; target: string }) => ({ path, target })), legacyRoutes);
+assert.equal(manifest.compatibilityPatterns[0].path, legacyRoutePattern);
+
+type Parsed = { values: Record<string, string[]>; assets: string[]; managed: number };
+async function parse(file: string): Promise<Parsed> {
+  const result: Parsed = { values: {}, assets: [], managed: 0 };
+  const add = (key: string, value: string) => (result.values[key] ??= []).push(value);
+  let title = "";
+  await new HTMLRewriter()
+    .on("head title", {
+      element() { add("title", ""); title = ""; },
+      text(chunk) {
+        title += chunk.text;
+        result.values.title[result.values.title.length - 1] = title;
+      },
+    })
+    .on("head meta", { element(element) {
+      const key = element.getAttribute("name") ?? element.getAttribute("property");
+      if (key) add(key, element.getAttribute("content") ?? "");
+    } })
+    .on('head link[rel="canonical"]', { element(element) { add("canonical", element.getAttribute("href") ?? ""); } })
+    .on("head [data-rh]", { element() { result.managed++; } })
+    .on("script[src], link[href]", { element(element) {
+      const url = element.getAttribute("src") ?? element.getAttribute("href");
+      if (url?.startsWith("/")) result.assets.push(url);
+    } })
+    .transform(new Response(await read(`dist/${file}`))).text();
+  return result;
+}
+
+const fields = {
+  title: "title", description: "description", canonical: "canonical",
+  ogTitle: "og:title", ogDescription: "og:description", ogUrl: "og:url", ogType: "og:type", robots: "robots",
+} as const;
+async function check(file: string, expected: SeoMetadata) {
+  const parsed = await parse(file);
+  for (const [field, tag] of Object.entries(fields)) {
+    const value = expected[field as keyof SeoMetadata];
+    assert.deepEqual(parsed.values[tag] ?? [], value ? [value] : [], `${file}: ${tag} (including duplicate/stale tags)`);
+  }
+  assert.equal(parsed.managed, Object.values(expected).filter(Boolean).length, `${file}: Helmet must own all route tags`);
+  assert(parsed.assets.includes("/vendor/fonts/inter.css"), `${file}: missing local Inter stylesheet`);
+  for (const asset of parsed.assets) {
+    assert((await readFile(resolve(root, `dist${asset}`))).length > 0, `${file}: missing asset ${asset}`);
+  }
+  return parsed;
+}
+const titles = new Set<string>();
+const descriptions = new Set<string>();
+for (const { path, file } of manifest.routes) {
+  const { values } = await check(file, pageSeo[path]);
+  titles.add(values.title[0]);
+  descriptions.add(values.description[0]);
+}
+assert.equal(titles.size, sitemap.length, "Every public title must be distinct");
+assert.equal(descriptions.size, sitemap.length, "Every public description must be distinct");
+for (const { target, file } of manifest.compatibilityRoutes) await check(file, pageSeo[target]);
+await check("404.html", notFoundSeo);
+assert.match(await read("dist/404.html"), /Oops! Page not found/);
+assert.match(await read("dist/404.html"), /Return to Home/);
+
+const nginxMap = await read("dist/static-routes.map");
+for (const { path, file } of [...manifest.routes, ...manifest.compatibilityRoutes]) {
+  for (const variant of [path, path.toUpperCase(), `${path}/`]) {
+    const mapping = nginxMap.trim().split("\n").find((line) => new RegExp(line.split(" ")[0].slice(2), "i").test(variant));
+    assert.equal(mapping?.split(" ")[1], `/${file};`, `nginx route mapping: ${variant}`);
+  }
+}
+for (const unknown of ["/nonexistent-audit-test", "/portfolio/unknown", "/ponuda/no-such-form"]) {
+  assert(!nginxMap.trim().split("\n").some((line) => new RegExp(line.split(" ")[0].slice(2), "i").test(unknown)));
+}
+
+// Verify image bytes survive the build, including every existing portfolio image.
+const hash = (data: Buffer) => createHash("sha256").update(data).digest("hex");
+const assets = await readdir(resolve(root, "dist/assets"));
+const assetHashes = new Set(await Promise.all(assets.map(async (file) => hash(await readFile(resolve(root, "dist/assets", file))))));
+const portfolio = await readdir(resolve(root, "src/assets/projects"));
+for (const file of portfolio) {
+  assert(assetHashes.has(hash(await readFile(resolve(root, "src/assets/projects", file)))), `Missing/changed portfolio image: ${file}`);
+}
+for (const file of await readdir(resolve(root, "public"), { recursive: true, withFileTypes: true })) {
+  if (!file.isFile()) continue;
+  const source = resolve(file.parentPath, file.name);
+  const target = source.replace(resolve(root, "public"), resolve(root, "dist"));
+  assert.deepEqual(await readFile(target), await readFile(source), `Public asset changed: ${file.name}`);
+}
+assert(!/lovable|pkg\.dev/i.test(await read("bun.lock")), "Private cache infrastructure in lockfile");
+
+// Match infrastructure identifiers, not visible portfolio/service copy such as "Supabase".
+// api.web3forms.com is intentionally allowed.
+const forbiddenReferences = [
+  "fonts.googleapis.com", "fonts.gstatic.com", "cdn.jsdelivr.net", "lovable",
+  "lovable-core-prod", "pkg.dev", "supabase.co", "supabase.com", "VITE_SUPABASE", "@supabase/",
+];
+for (const file of await readdir(resolve(root, "dist"), { recursive: true, withFileTypes: true })) {
+  if (!file.isFile()) continue;
+  const path = resolve(file.parentPath, file.name);
+  const contents = (await readFile(path)).toString("utf8").toLowerCase();
+  for (const reference of forbiddenReferences) {
+    assert(!contents.includes(reference.toLowerCase()), `${path}: forbidden infrastructure reference ${reference}`);
+  }
+}
+
+const fontCss = await read("public/vendor/fonts/inter.css");
+const fontFiles = ["inter-a699af1dea30.ttf", "inter-e45972c7e9f2.ttf", "inter-6f49e1b28bce.ttf"];
+assert.deepEqual([...fontCss.matchAll(/url\(([^)]+)\)/g)].map((match) => match[1]),
+  fontFiles.map((file) => `/vendor/fonts/${file}`), "Inter must use only the local font files");
+const fontFaces = [...fontCss.matchAll(/@font-face\s*\{([^}]+)\}/g)].map((match) => match[1]);
+assert.equal(fontFaces.length, 3);
+for (const [index, weight] of [400, 500, 700].entries()) {
+  assert.match(fontFaces[index], /font-family:\s*'Inter'\s*;/);
+  assert.match(fontFaces[index], new RegExp(`font-weight:\\s*${weight}\\s*;`));
+  assert(fontFaces[index].includes(`/vendor/fonts/${fontFiles[index]}`));
+}
+for (const file of ["inter.css", ...fontFiles]) {
+  const source = await readFile(resolve(root, "public/vendor/fonts", file));
+  assert(source.length > 0, `Empty font asset: ${file}`);
+  assert.deepEqual(await readFile(resolve(root, "dist/vendor/fonts", file)), source, `Font asset changed: ${file}`);
+}
+console.log(`PASS: ${sitemap.length} public routes, ${legacyRoutes.length} compatibility entries, raw metadata, 404, route maps, ${portfolio.length} portfolio images, all public assets, local Inter 400/500/700 and zero forbidden infrastructure references`);

@@ -1,3 +1,5 @@
+import { Seo } from "@/components/Seo";
+import { pageSeo } from "@/data/seo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -23,14 +25,8 @@ const OfferPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo metadata={pageSeo["/ponuda"]} />
       <Helmet>
-        <title>Ponuda — Web stranice, web shop i automatizacija | PrimeLink</title>
-        <meta name="description" content="Paketi za izradu web stranica, web shopova i automatizacije. Transparentne cijene, fiksni rokovi i podrška nakon lansiranja." />
-        <link rel="canonical" href="https://primelink.hr/ponuda" />
-        <meta property="og:title" content="Ponuda — Web stranice i automatizacija | PrimeLink" />
-        <meta property="og:description" content="Paketi za izradu web stranica, web shopova i automatizacije. Transparentne cijene i fiksni rokovi." />
-        <meta property="og:url" content="https://primelink.hr/ponuda" />
-        <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",

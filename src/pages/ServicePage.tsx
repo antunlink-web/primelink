@@ -1,3 +1,5 @@
+import { Seo } from "@/components/Seo";
+import { pageSeo } from "@/data/seo";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Globe, RefreshCw, Users, Layers, CreditCard, Rocket, ArrowRight, Check, Phone, Search } from "lucide-react";
@@ -52,14 +54,8 @@ const ServicePage = ({ fixedSlug }: { fixedSlug?: string }) => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo metadata={pageSeo[`/${service.slug}`]} />
       <Helmet>
-        <title>{service.seoTitle}</title>
-        <meta name="description" content={service.seoDescription} />
-        <link rel="canonical" href={url} />
-        <meta property="og:title" content={service.seoTitle} />
-        <meta property="og:description" content={service.seoDescription} />
-        <meta property="og:url" content={url} />
-        <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify(serviceJsonLd)}</script>
       </Helmet>
 

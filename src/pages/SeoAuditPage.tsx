@@ -1,5 +1,6 @@
+import { Seo } from "@/components/Seo";
+import { pageSeo } from "@/data/seo";
 import { useState, FormEvent } from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import {
   Search,
@@ -281,21 +282,7 @@ const SeoAuditPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Besplatna SEO analiza web stranice | PrimeLink</title>
-        <meta
-          name="description"
-          content="Besplatna SEO analiza web stranice — provjerite SEO, brzinu i tehničke probleme svoje stranice u nekoliko sekundi. PrimeLink d.o.o. Zagreb."
-        />
-        <link rel="canonical" href="https://primelink.hr/besplatna-seo-analiza" />
-        <meta property="og:title" content="Besplatna SEO analiza web stranice | PrimeLink" />
-        <meta
-          property="og:description"
-          content="Provjerite osnovne SEO, brzinske i tehničke probleme svoje web stranice u nekoliko sekundi."
-        />
-        <meta property="og:url" content="https://primelink.hr/besplatna-seo-analiza" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <Seo metadata={pageSeo["/besplatna-seo-analiza"]} />
 
       <Header />
 
