@@ -21,6 +21,7 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 // Shared Web3Forms access key (same as QuoteForm). Lead notifications go to PrimeLink.
 const WEB3FORMS_ACCESS_KEY = "65b937ba-7a1f-4605-bd6e-51f19e97b7cd";
@@ -586,6 +587,7 @@ const SeoAuditPage = () => {
       </main>
 
       <Footer />
+      <Toaster />
     </div>
   );
 };

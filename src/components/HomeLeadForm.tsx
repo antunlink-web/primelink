@@ -5,7 +5,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Check, Loader2, Send } from "lucide-react";
-import { z } from "zod";
 import { toast } from "sonner";
 
 // Same Web3Forms key as the rest of the site — notifications go to PrimeLink.
@@ -21,14 +20,6 @@ const NEEDS = [
   "Stripe integracija",
   "SEO analiza",
 ];
-
-const schema = z.object({
-  name: z.string().trim().min(2, "Unesite ime i prezime").max(100),
-  email: z.string().trim().email("Neispravna e-mail adresa").max(255),
-  phone: z.string().trim().max(50).optional().or(z.literal("")),
-  website: z.string().trim().max(255).optional().or(z.literal("")),
-  message: z.string().trim().max(1500).optional().or(z.literal("")),
-});
 
 const HomeLeadForm = () => {
   const [needs, setNeeds] = useState<string[]>([]);
@@ -51,6 +42,14 @@ const HomeLeadForm = () => {
     e.preventDefault();
     if (honeypot) return; // bot
 
+    const { z } = await import("zod");
+    const schema = z.object({
+      name: z.string().trim().min(2, "Unesite ime i prezime").max(100),
+      email: z.string().trim().email("Neispravna e-mail adresa").max(255),
+      phone: z.string().trim().max(50).optional().or(z.literal("")),
+      website: z.string().trim().max(255).optional().or(z.literal("")),
+      message: z.string().trim().max(1500).optional().or(z.literal("")),
+    });
     const parsed = schema.safeParse({ name, email, phone, website, message });
     if (!parsed.success) {
       toast.error(parsed.error.issues[0]?.message || "Provjerite unesene podatke.");

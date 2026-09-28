@@ -1,4 +1,4 @@
-import { Linkedin, Instagram, Facebook, MapPin, Mail, Phone } from "lucide-react";
+import { Instagram, Facebook, MapPin, Mail, Phone } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import logo from "@/assets/primelink-logo.webp";
@@ -54,9 +54,6 @@ const Footer = () => {
               </a>
             </address>
             <div className="flex gap-3">
-              <a href="https://www.linkedin.com/company/primelink-hr" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-9 h-9 rounded-lg bg-secondary hover:bg-primary/10 border border-border flex items-center justify-center transition-all hover:border-primary/30">
-                <Linkedin className="h-4 w-4 text-muted-foreground" />
-              </a>
               <a href="https://www.facebook.com/primelinkdoo" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 rounded-lg bg-secondary hover:bg-primary/10 border border-border flex items-center justify-center transition-all hover:border-primary/30">
                 <Facebook className="h-4 w-4 text-muted-foreground" />
               </a>
