@@ -7,6 +7,65 @@ import { legacyRoutePattern, legacyRoutes, notFoundSeo, pageSeo, type SeoMetadat
 
 const root = resolve(import.meta.dir, "..");
 const read = (file: string) => readFile(resolve(root, file), "utf8");
+// Parse source so comments, quote style, whitespace and import aliases do not
+// determine whether a performance/toast contract passes.
+function nodes(source: ts.SourceFile): ts.Node[] {
+  const result: ts.Node[] = [];
+  function visit(node: ts.Node) {
+    result.push(node);
+    ts.forEachChild(node, visit);
+  }
+  visit(source);
+  return result;
+}
+const sourceFile = async (file: string) => ts.createSourceFile(file, await read(file), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+function importedName(source: ts.SourceFile, moduleSuffix: string, exported: string) {
+  for (const node of source.statements) {
+    if (!ts.isImportDeclaration(node) || !ts.isStringLiteral(node.moduleSpecifier) || !node.moduleSpecifier.text.endsWith(moduleSuffix)) continue;
+    const bindings = node.importClause?.namedBindings;
+    if (bindings && ts.isNamedImports(bindings)) {
+      const binding = bindings.elements.find((element) => (element.propertyName ?? element.name).text === exported);
+      if (binding) return binding.name.text;
+    }
+  }
+}
+function mounted(source: ts.SourceFile, name: string | undefined) {
+  return !!name && nodes(source).some((node) =>
+    (ts.isJsxSelfClosingElement(node) || ts.isJsxOpeningElement(node)) && node.tagName.getText(source) === name);
+}
+const app = await sourceFile("src/App.tsx");
+for (const node of nodes(app)) {
+  if (ts.isIdentifier(node)) {
+    assert(!["QueryClient", "QueryClientProvider", "TooltipProvider"].includes(node.text), `App.tsx: unused global ${node.text} must not return`);
+  }
+  if (ts.isStringLiteralLike(node)) {
+    assert(!/@tanstack\/react-query|(?:^|\/)ui\/(?:tooltip|toaster)$|@radix-ui\/react-(?:toast|tooltip)/.test(node.text), "App.tsx: React Query, global TooltipProvider and global Radix Toaster must remain absent");
+  }
+}
+assert(mounted(app, importedName(app, "/ui/sonner", "Toaster")), "App.tsx: global Sonner toaster must remain imported and mounted");
+
+const home = await sourceFile("src/components/HomeLeadForm.tsx");
+const homeNodes = nodes(home);
+assert(!homeNodes.some((node) => ts.isImportDeclaration(node) && ts.isStringLiteral(node.moduleSpecifier) && /^zod(?:\/|$)/.test(node.moduleSpecifier.text)), "HomeLeadForm: Zod must not be statically imported");
+assert(homeNodes.some((node) => ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword && node.arguments.some((arg) => ts.isStringLiteral(arg) && arg.text === "zod")), "HomeLeadForm: retain dynamic import of Zod");
+for (const message of ["Unesite ime i prezime", "Neispravna e-mail adresa", "Provjerite unesene podatke."]) {
+  assert(homeNodes.some((node) => ts.isStringLiteralLike(node) && node.text === message), `HomeLeadForm: preserve validation/error string "${message}"`);
+}
+const seoAudit = await sourceFile("src/pages/SeoAuditPage.tsx");
+const useToast = importedName(seoAudit, "/use-toast", "useToast");
+assert(useToast && nodes(seoAudit).some((node) => ts.isCallExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === useToast), "SeoAuditPage: retain the imported useToast hook and its call");
+assert(mounted(seoAudit, importedName(seoAudit, "/ui/toaster", "Toaster")), "SeoAuditPage: Radix Toaster must remain imported and mounted for useToast");
+
+const brokenLinkedIn = "linkedin.com/company/primelink-hr";
+for (const directory of ["src", "public"]) {
+  for (const file of await readdir(resolve(root, directory), { recursive: true, withFileTypes: true })) {
+    if (!file.isFile()) continue;
+    const path = resolve(file.parentPath, file.name);
+    assert(!(await readFile(path, "utf8")).toLowerCase().includes(brokenLinkedIn), `${path}: invalid PrimeLink LinkedIn company URL must not return`);
+  }
+}
+assert(!(await read("index.html")).toLowerCase().includes(brokenLinkedIn), "index.html: invalid PrimeLink LinkedIn company URL must not return");
+assert(!(await readdir(root)).includes("bun.lockb"), "bun.lock must remain the sole authoritative Bun lockfile");
 // Deployment contracts run during both build and test:static without Docker.
 const dockerfile = await read("Dockerfile");
 assert.match(dockerfile, /^FROM oven\/bun:1\.4\.2 AS build$/m);
@@ -62,11 +121,12 @@ for (const path of ["public/sitemap.xml", "public/vendor/fonts/inter.css", "publ
 const manifest = JSON.parse(await read("dist/static-routes.json"));
 const sitemap = [...(await read("public/sitemap.xml")).matchAll(/<loc>(.*?)<\/loc>/g)]
   .map((match) => new URL(match[1]).pathname).sort();
+assert.equal(sitemap.length, 12, "Preserve all 12 public sitemap routes");
+assert.equal(legacyRoutes.length, 10, "Preserve all 10 compatibility entries");
 assert.deepEqual(Object.keys(pageSeo).sort(), sitemap, "SEO routes must exactly match the sitemap");
 assert.deepEqual(manifest.routes.map((route: { path: string }) => route.path), sitemap);
 
 // Read the actual router declarations so a new route cannot silently miss generation.
-const app = ts.createSourceFile("App.tsx", await read("src/App.tsx"), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
 const appRoutes: string[] = [];
 function visit(node: ts.Node) {
   if (ts.isJsxAttribute(node) && node.name.getText(app) === "path" && node.initializer && ts.isStringLiteral(node.initializer)) {
@@ -180,6 +240,7 @@ for (const file of await readdir(resolve(root, "dist"), { recursive: true, withF
   if (!file.isFile()) continue;
   const path = resolve(file.parentPath, file.name);
   const contents = (await readFile(path)).toString("utf8").toLowerCase();
+  assert(!contents.includes(brokenLinkedIn), `${path}: invalid PrimeLink LinkedIn company URL must not return`);
   for (const reference of forbiddenReferences) {
     assert(!contents.includes(reference.toLowerCase()), `${path}: forbidden infrastructure reference ${reference}`);
   }
@@ -203,3 +264,4 @@ for (const file of ["inter.css", ...fontFiles]) {
 }
 console.log(`PASS: ${sitemap.length} public routes, ${legacyRoutes.length} compatibility entries, raw metadata, 404, route maps, ${portfolio.length} portfolio images, all public assets, local Inter 400/500/700 and zero forbidden infrastructure references`);
 console.log("PASS: repository Docker inputs, nginx routing/cache contracts, legacy redirects and Docker context exclusions (static checks; not a live nginx test)");
+console.log("PASS: broken LinkedIn URL absent, lean App shell with Sonner, deferred homepage Zod and validation strings, SeoAudit useToast with mounted Radix Toaster");

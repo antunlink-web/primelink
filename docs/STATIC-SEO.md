@@ -1,5 +1,91 @@
 # Static metadata and 404 handoff
 
+## Final repository audit — 2026-09-28
+
+Audited baseline: `b9aacfa13aeb66cd542b7665d6eda3578f9cf2c9`, on
+`audit/finalize-20260928`. This pass changes only regression checks and this
+documentation; application behavior, QuoteForm, fonts and deployment inputs stay
+unchanged. Earlier validation notes below describe earlier work.
+
+The repository preserves 12 generated public routes and 10 compatibility routes,
+route-specific raw HTML metadata, and real HTTP 404 behavior through its own
+Docker/nginx configuration and `static-routes.map`. The 404 has
+`noindex,nofollow` and no canonical. Missing assets/fonts also return 404; there
+is no blanket SPA fallback. Inter 400/500/700 is served locally.
+
+Build/runtime inputs have no Lovable or private package-cache dependency;
+`bun.lock` uses public npm resolution and is authoritative (`bun.lockb` is absent).
+There is no Google Fonts, jsDelivr or Supabase runtime/config dependency.
+The unused, unimported `TrustLogos.tsx` still contains jsDelivr URLs; these are
+absent from the generated bundle and are left untouched. Visible Supabase service
+copy is allowed. Web3Forms intentionally remains in the forms.
+
+Previously measured main JavaScript sizes (bytes; supplied host/release results,
+not fresh measurements from this repository-only pass):
+
+| Measurement | Raw | gzip -9 |
+| --- | ---: | ---: |
+| Original | 621277 | 198122 |
+| Final host | 487303 | 159069 |
+| Tested Docker candidate | 487299 | — |
+
+The final host result is approximately 21.56% smaller raw and 19.71% smaller
+gzipped, with main JS below 500 kB. Unused global React Query and Tooltip providers
+were removed; Sonner remains global. Homepage Zod loads dynamically on submit,
+preserving the existing Croatian validation messages. Lazy SeoAuditPage mounts
+the Radix Toaster used by its `useToast` calls. QuoteForm remains behind its lazy
+page and retains its Zod validation.
+
+The invalid PrimeLink LinkedIn company URL was removed from the footer and
+Organization JSON-LD. Facebook and Instagram remain, as do intentional generic
+form examples mentioning LinkedIn. Static guards now reject the invalid company
+URL in source, public assets, the HTML template and generated output, and protect
+the App shell, Sonner, deferred homepage Zod/messages and SeoAudit toast mounting.
+Existing route, metadata, 404, font, infrastructure, deployment and portfolio
+checks remain in place.
+
+WOFF2 conversion is intentionally deferred: no converter was found in the
+repository-local scripts, executables or installed libraries. No wider filesystem
+search, installation or download was performed. All three TTF files remain
+untouched, totaling **976592 bytes**; CSS and nginx font caching are unchanged.
+
+Bun and Node are unavailable on the sandbox PATH, and no repository-local runtime
+was found. Therefore frozen installation, a fresh build, execution of
+`test:static`, both TypeScript checks and changed-file ESLint must run on the host.
+This pass uses available source/artifact checks and `git diff --check`; existing
+`dist` inspection is not a fresh-build result. Do not treat static nginx contract
+checks as a new live HTTP test.
+
+Available Python/shell checks passed for source performance/toast contracts,
+social links, public lockfile URLs, forbidden runtime references, existing route
+entrypoints/metadata/maps, 404 metadata, repository deployment contracts, all 30
+portfolio images and byte-for-byte public/font preservation. The existing
+`dist/assets/index-ClMv920L.js` independently measures **487303 raw / 159069
+gzip -9 bytes** using the available gzip executable. The exact two-file diff was
+reviewed and passed `git diff --check`; the new Bun/TypeScript guards still need
+execution on the host.
+
+### Intentionally deferred/manual
+
+- Browser: visually check the homepage; enter a one-character name and a valid
+  email in the homepage lead form, trigger validation and confirm the existing
+  `Unesite ime i prezime` toast. No real submission is required.
+- Host validation: frozen public-registry Bun installation, remove `dist`, run
+  `bun run build` and `bun run test:static`, TypeScript app and node/config checks,
+  and lint `scripts/check-static.ts`. Review the diff before a manual commit.
+- Docker/release cleanup: remove the temporary performance candidate container/tag
+  and decide the retention period for rollback containers/images.
+- WOFF2: convert and verify later with an available reliable converter, then
+  update CSS, nginx caching and static tests together.
+- DNS/Lovable: normalize DNS TTL later and retire old Lovable hosting after the
+  rollback window.
+- Outreach/mail host: explicitly deferred by the user. Do not inspect or change
+  it; leave mail, DNS, SPF, MX, DKIM, DMARC, webmail and FTP untouched until the
+  user decides.
+
+No commit, push, deployment, Docker, Caddy, DNS, production or outreach/mail-host
+access is part of this pass. Repository files are the sole inspection/edit scope.
+
 Run with Bun (verified with 1.3.14):
 
 ```sh
