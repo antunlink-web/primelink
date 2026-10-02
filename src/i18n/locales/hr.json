@@ -350,6 +350,10 @@
     "ctaDescription": "Dizajniramo i gradimo skalabilne platforme, sustave automatizacije i prilagođeni softver.",
     "ctaStart": "Pokrenite projekt",
     "ctaConsult": "Zakažite konzultaciju",
+    "luxurysecondhand": {
+      "description": "Redizajn i migracija postojećeg webshopa za rabljenu luksuznu modu i modne dodatke, uz očuvanje kataloga proizvoda, prikaz dizajnerskih torbi i luksuznih artikala te košaricu i naručivanje.",
+      "industry": "Luksuzna moda i webshop"
+    },
     "trazilica": {
       "description": "Tražilica hrvatskih tvrtki — pretražite 340.000+ poslovnih subjekata iz službenih registara na jednom mjestu.",
       "industry": "Poslovni podaci"

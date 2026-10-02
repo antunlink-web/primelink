@@ -4,6 +4,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import ts from "typescript";
 import { legacyRoutePattern, legacyRoutes, notFoundSeo, pageSeo, type SeoMetadata } from "../src/data/seo";
+import { sortPortfolioProjects } from "../src/data/portfolio-sort";
 
 const root = resolve(import.meta.dir, "..");
 const read = (file: string) => readFile(resolve(root, file), "utf8");
@@ -55,6 +56,63 @@ const seoAudit = await sourceFile("src/pages/SeoAuditPage.tsx");
 const useToast = importedName(seoAudit, "/use-toast", "useToast");
 assert(useToast && nodes(seoAudit).some((node) => ts.isCallExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === useToast), "SeoAuditPage: retain the imported useToast hook and its call");
 assert(mounted(seoAudit, importedName(seoAudit, "/ui/toaster", "Toaster")), "SeoAuditPage: Radix Toaster must remain imported and mounted for useToast");
+
+// Read portfolio entries as syntax, then use the same sorter that renders the page.
+const portfolioSource = await sourceFile("src/pages/PortfolioPage.tsx");
+const declarations = nodes(portfolioSource).filter(ts.isVariableDeclaration);
+const portfolioData = declarations.find((node) => ts.isIdentifier(node.name) && node.name.text === "projectsData");
+assert(portfolioData?.initializer && ts.isArrayLiteralExpression(portfolioData.initializer), "PortfolioPage: projectsData must be an array");
+const sortedData = declarations.find((node) => ts.isIdentifier(node.name) && node.name.text === "sortedProjects");
+const sorter = importedName(portfolioSource, "/data/portfolio-sort", "sortPortfolioProjects");
+assert(sortedData?.initializer && ts.isCallExpression(sortedData.initializer) &&
+  ts.isIdentifier(sortedData.initializer.expression) && sortedData.initializer.expression.text === sorter &&
+  sortedData.initializer.arguments.length === 1 && ts.isIdentifier(sortedData.initializer.arguments[0]) &&
+  sortedData.initializer.arguments[0].text === "projectsData", "PortfolioPage: render projects with the shared production sorter");
+function projectField(project: ts.ObjectLiteralExpression, key: string) {
+  const field = project.properties.find((property) => ts.isPropertyAssignment(property) &&
+    (ts.isIdentifier(property.name) || ts.isStringLiteral(property.name)) && property.name.text === key);
+  return field && ts.isPropertyAssignment(field) ? field.initializer : undefined;
+}
+function stringField(project: ts.ObjectLiteralExpression, key: string) {
+  const value = projectField(project, key);
+  assert(value && ts.isStringLiteral(value), `PortfolioPage: ${key} must be a string literal`);
+  return value.text;
+}
+function numberField(value: ts.Expression | undefined) {
+  if (!value) return undefined;
+  if (ts.isNumericLiteral(value)) return Number(value.text);
+  assert(ts.isPrefixUnaryExpression(value) && value.operator === ts.SyntaxKind.MinusToken && ts.isNumericLiteral(value.operand), "PortfolioPage: sortOrder must be numeric");
+  return -Number(value.operand.text);
+}
+const portfolioProjects = portfolioData.initializer.elements.map((element) => {
+  assert(ts.isObjectLiteralExpression(element), "PortfolioPage: project must be an object");
+  const pinned = projectField(element, "pinned");
+  assert(!pinned || pinned.kind === ts.SyntaxKind.TrueKeyword || pinned.kind === ts.SyntaxKind.FalseKeyword, "PortfolioPage: pinned must be boolean");
+  const completedAt = projectField(element, "completedAt");
+  assert(!completedAt || ts.isStringLiteral(completedAt), "PortfolioPage: completedAt must be a string");
+  return {
+    id: stringField(element, "id"),
+    url: stringField(element, "url"),
+    image: projectField(element, "image"),
+    pinned: pinned?.kind === ts.SyntaxKind.TrueKeyword,
+    completedAt: completedAt?.text,
+    sortOrder: numberField(projectField(element, "sortOrder")),
+  };
+});
+const luxuryProjects = portfolioProjects.filter((project) => new URL(project.url).hostname === "luxurysecondhand.hr");
+assert.equal(luxuryProjects.length, 1, "Luxury Second Hand domain must appear exactly once in portfolio data");
+assert.equal(luxuryProjects[0].id, "luxurysecondhand");
+const luxuryImage = luxuryProjects[0].image;
+assert(luxuryImage && ts.isIdentifier(luxuryImage), "Luxury Second Hand must use its imported screenshot");
+assert(portfolioSource.statements.some((node) => ts.isImportDeclaration(node) &&
+  node.importClause?.name?.text === luxuryImage.text && ts.isStringLiteral(node.moduleSpecifier) &&
+  node.moduleSpecifier.text.endsWith("/assets/projects/luxurysecondhand-portfolio.webp")), "Luxury Second Hand screenshot import changed");
+const portfolioDomains = sortPortfolioProjects(portfolioProjects).map((project) => new URL(project.url).hostname.toLowerCase());
+const previousDomains = `trazilica.hr chairs.hr hpc-spg.hr pingvinsport.com careflow.hr flowcall.eu lajt.hr flowsms.eu textro.eu mojakarta.hr perks.hr lumibaby.hr aurumgradnja.com tijelokaodioprirode.eu evaciglar.eu airwolthvacelectric.hr infinityservices.hr konzalting.primelink.hr prika.hr protekst.eu udrugalumen.hr voltapp.hr yogawithnika.eu dadathlon.eu daddyhood.eu donatice.eu controlmaster.hr arks.hr euroratan.com xiiigimnazija.hr`.split(" ");
+assert.equal(portfolioDomains.length, 31, "Portfolio must contain 31 projects");
+assert.equal(new Set(portfolioDomains).size, portfolioDomains.length, "Portfolio domains must be unique");
+assert.deepEqual(portfolioDomains.slice(0, 2), ["luxurysecondhand.hr", "trazilica.hr"], "Luxury Second Hand and Trazilica must remain #1 and #2");
+assert.deepEqual(portfolioDomains.slice(1), previousDomains, "Preserve every previous portfolio domain and its relative order");
 
 const brokenLinkedIn = "linkedin.com/company/primelink-hr";
 for (const directory of ["src", "public"]) {
@@ -265,3 +323,4 @@ for (const file of ["inter.css", ...fontFiles]) {
 console.log(`PASS: ${sitemap.length} public routes, ${legacyRoutes.length} compatibility entries, raw metadata, 404, route maps, ${portfolio.length} portfolio images, all public assets, local Inter 400/500/700 and zero forbidden infrastructure references`);
 console.log("PASS: repository Docker inputs, nginx routing/cache contracts, legacy redirects and Docker context exclusions (static checks; not a live nginx test)");
 console.log("PASS: broken LinkedIn URL absent, lean App shell with Sonner, deferred homepage Zod and validation strings, SeoAudit useToast with mounted Radix Toaster");
+console.log("PASS: 31 unique portfolio domains; Luxury Second Hand #1, Trazilica #2, all previous 30 preserved in order");

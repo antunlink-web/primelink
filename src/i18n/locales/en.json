@@ -350,6 +350,10 @@
     "ctaDescription": "We design and build scalable platforms, automation systems, and custom software.",
     "ctaStart": "Start a Project",
     "ctaConsult": "Book a Consultation",
+    "luxurysecondhand": {
+      "description": "Redesign and migration of an existing pre-owned luxury fashion webshop, preserving its product catalogue, designer bags and luxury items, cart and order flow.",
+      "industry": "Luxury fashion and ecommerce"
+    },
     "trazilica": {
       "description": "Croatian company search engine — explore 340,000+ business entities from official registers in one place.",
       "industry": "Business Data"

@@ -8,7 +8,9 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { sortPortfolioProjects } from "@/data/portfolio-sort";
 
+import luxurysecondhandImg from "@/assets/projects/luxurysecondhand-portfolio.webp";
 import careflowImg from "@/assets/projects/careflow-portfolio.webp";
 import trazilicaImg from "@/assets/projects/trazilica-portfolio.webp";
 import flowcallImg from "@/assets/projects/flowcall-portfolio.webp";
@@ -60,6 +62,18 @@ type Project = {
 };
 
 const projectsData: Project[] = [
+  {
+    id: "luxurysecondhand",
+    name: "Luxury Second Hand",
+    url: "https://luxurysecondhand.hr/",
+    descKey: "portfolio.luxurysecondhand.description",
+    industryKey: "portfolio.luxurysecondhand.industry",
+    tags: ["E-commerce", "Webshop", "Redizajn", "Migracija"],
+    image: luxurysecondhandImg,
+    category: ["web"] as FilterCategory[],
+    pinned: true,
+    sortOrder: -1,
+  },
   {
     id: "trazilica",
     name: "Trazilica.hr",
@@ -368,20 +382,7 @@ const projectsData: Project[] = [
   },
 ];
 
-/**
- * Order: pinned first, then completedAt descending (unknown dates last,
- * preserving their declaration order), then sortOrder / declaration order.
- */
-const sortedProjects = projectsData
-  .map((p, index) => ({ ...p, sortOrder: p.sortOrder ?? index }))
-  .sort((a, b) => {
-    if (!!a.pinned !== !!b.pinned) return a.pinned ? -1 : 1;
-    if (a.completedAt && b.completedAt && a.completedAt !== b.completedAt) {
-      return a.completedAt < b.completedAt ? 1 : -1;
-    }
-    if (!!a.completedAt !== !!b.completedAt) return a.completedAt ? -1 : 1;
-    return a.sortOrder - b.sortOrder;
-  });
+const sortedProjects = sortPortfolioProjects(projectsData);
 
 const filters: { key: FilterCategory; labelKey: string }[] = [
   { key: "all", labelKey: "portfolio.filterAll" },
