@@ -1,18 +1,51 @@
+import { Globe2, Layers3, PlugZap } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { getService } from "@/data/services";
-const groups = [["izrada-web-stranica", "redizajn-web-stranice", "izrada-web-trgovina"], ["izrada-crm-sustava", "izrada-web-aplikacija", "saas-razvoj"], ["integracije-karticnog-placanja", "hosting-odrzavanje"]];
+import styles from "./Services.module.css";
+
+const groups = [
+  { icon: Globe2, slugs: ["izrada-web-stranica", "redizajn-web-stranice", "izrada-web-trgovina"] },
+  { icon: Layers3, slugs: ["izrada-crm-sustava", "izrada-web-aplikacija", "saas-razvoj"] },
+  { icon: PlugZap, slugs: ["integracije-karticnog-placanja", "hosting-odrzavanje"] },
+];
+
 export default function Services() {
- const { t, i18n } = useTranslation();
- return (
-  <section id="services" className="py-20 bg-background relative overflow-hidden">
-   <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-mesh)] opacity-50" />
-   <div className="container mx-auto px-4 relative z-10">
-    <h2 className="text-3xl md:text-4xl font-bold mb-10 motion-safe:animate-fade-in">{t('approved.services')}</h2>
-    <div className="grid md:grid-cols-3 gap-6">
-     {groups.map((slugs,i)=><div key={i} className="rounded-2xl border border-border bg-card p-7"><h3 className="text-2xl font-semibold mb-6">{t(`approved.groups.${i}`)}</h3><ul className="space-y-5">{slugs.map(slug=><li key={slug}><Link to={`/${slug}`} className="text-foreground hover:text-primary underline underline-offset-4">{getService(slug,i18n.language)?.navTitle} →</Link></li>)}</ul>{i===2 && <p className="text-sm text-muted-foreground mt-6">{t('servicesGrid.items.integracije-karticnog-placanja.description')}</p>}</div>)}
-    </div>
-   </div>
-  </section>
- );
+  const { t, i18n } = useTranslation();
+
+  return (
+    <section id="services" aria-labelledby="services-heading" className={styles.section}>
+      <div className={styles.container}>
+        <h2 id="services-heading" className={styles.heading}>{t("approved.services")}</h2>
+        <ul className={styles.groups}>
+          {groups.map(({ icon: Icon, slugs }, index) => (
+            <li key={slugs[0]}>
+              <article className={styles.card} aria-labelledby={`service-group-${index}`}>
+                <span className={styles.icon} aria-hidden="true">
+                  <Icon size={20} strokeWidth={1.4} />
+                </span>
+                <h3 id={`service-group-${index}`} className={styles.title}>
+                  {t(`approved.groups.${index}`)}
+                </h3>
+                <ul className={styles.links}>
+                  {slugs.map((slug) => (
+                    <li key={slug}>
+                      <Link to={`/${slug}`} className={styles.link}>
+                        {getService(slug, i18n.language)?.navTitle}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                {index === 2 && (
+                  <p className={styles.description}>
+                    {t("servicesGrid.items.integracije-karticnog-placanja.description")}
+                  </p>
+                )}
+              </article>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
 }
