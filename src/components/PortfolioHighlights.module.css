@@ -1,0 +1,146 @@
+/* Adapted from PrimeLink AI's container-x, h-section, card and Applications
+   spacing. Scoped here so the rest of the homepage keeps its current design. */
+.section {
+  padding-block: 5rem;
+  border-block: 1px solid var(--pl-line);
+  background: var(--pl-side);
+  color: var(--pl-text);
+  font-family: var(--pl-font);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.heading h2 {
+  font-size: 2.125rem;
+  font-weight: var(--pl-weight-semibold);
+  line-height: 1.08;
+  letter-spacing: var(--pl-tracking-display);
+}
+
+.portfolioLink {
+  padding-block: 0.75rem;
+  border-radius: var(--pl-radius-sm);
+  color: var(--pl-link);
+  font-size: 0.9375rem;
+  font-weight: var(--pl-weight-medium);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.projects {
+  display: grid;
+  gap: 1rem;
+}
+
+.projects > li {
+  min-width: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--pl-line);
+  border-radius: 18px;
+  background: var(--pl-card);
+  box-shadow: var(--pl-shadow);
+  transition: transform var(--pl-dur) var(--pl-ease), box-shadow var(--pl-dur) var(--pl-ease);
+}
+
+.metadata {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.metadata h3 {
+  font-size: 1.25rem;
+  font-weight: var(--pl-weight-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--pl-tracking-title);
+}
+
+.metadata p {
+  margin-top: 0.625rem;
+  color: var(--pl-muted);
+  font-size: 0.90625rem;
+  line-height: 1.625;
+}
+
+.screenshot {
+  overflow: hidden;
+  margin: 0 1rem 1rem;
+  border: 1px solid var(--pl-line);
+  border-radius: var(--pl-radius);
+  background: var(--pl-side);
+}
+
+.screenshot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  object-fit: contain;
+}
+
+.card:focus-visible,
+.portfolioLink:focus-visible {
+  outline: 2px solid var(--pl-focus);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--pl-shadow-lift);
+  }
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding-block: 7rem;
+  }
+
+  .container {
+    padding-inline: 2rem;
+  }
+
+  .heading h2 {
+    font-size: 2.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .projects {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .heading h2 {
+    font-size: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}

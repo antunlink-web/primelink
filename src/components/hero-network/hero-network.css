@@ -1,0 +1,31 @@
+/* PrimeLink hero network: styles for the animation container and its labels.
+   Colours come from the PrimeLink brand kit; change the two variables to retheme. */
+.pl-net {
+  --pl-net-label: #5a6779;
+  --pl-net-label-on: #1d63c6;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.08;
+}
+[data-theme="dark"] .pl-net, .dark .pl-net {
+  --pl-net-label: #a0adbf;
+  --pl-net-label-on: #8fbaff;
+}
+.pl-net canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pl-net-tags { position: absolute; inset: 0; pointer-events: none; }
+.pl-net-tag {
+  position: absolute;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 500; white-space: nowrap;
+  color: var(--pl-net-label);
+  opacity: .38;
+  transition: opacity .34s cubic-bezier(.22,1,.36,1), color .34s, transform .5s cubic-bezier(.22,1,.36,1);
+}
+.pl-net-tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .7; }
+.pl-net-tag.is-on { opacity: 1; color: var(--pl-net-label-on); transform: translateY(-2px); }
+
+/* Phones: one centred label under the object instead of five around it */
+@media (max-width: 600px) {
+  .pl-net-tag { left: 50% !important; right: auto !important; top: auto !important; bottom: 0 !important; transform: translateX(-50%) !important; opacity: 0; }
+  .pl-net-tag.is-on { opacity: 1; }
+}
