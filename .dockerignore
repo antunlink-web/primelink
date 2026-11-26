@@ -1,6 +1,9 @@
 .git
 .agents
 .codex
+.aws
+docs/releases
+review
 node_modules
 dist
 .env

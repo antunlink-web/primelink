@@ -1,97 +1,97 @@
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Globe } from "lucide-react";
 
-const chips = [
-  "Web stranice",
-  "Udruge",
-  "Turizam",
-  "Restorani",
-  "CRM",
-  "Webshop",
-];
+const demos = [
+  { key: "fitness", path: "/sport/fitness-trener", image: "fitness-trainer.webp" },
+  { key: "parking", path: "/automobili/parking", image: "parking.webp" },
+  { key: "fastFood", path: "/restorani/fastfood", image: "fast-food.webp" },
+] as const;
 
-const DEMO_URL = "https://demo.primelink.com.hr";
+export default function DemoLibrary() {
+  const { t } = useTranslation();
 
-const DemoLibrary = () => {
   return (
-    <section id="demo-biblioteka" className="py-20 md:py-28 bg-background">
+    <section
+      id="demo-biblioteka"
+      aria-labelledby="demo-library-title"
+      className="py-16 md:py-24"
+      style={{
+        background: [
+          "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 24%, transparent 72%, hsl(var(--card)) 100%)",
+          "radial-gradient(ellipse at 15% 40%, hsl(var(--primary) / 0.14), transparent 65%)",
+          "radial-gradient(ellipse at 85% 60%, hsl(var(--accent) / 0.09), transparent 60%)",
+          "hsl(var(--background))",
+        ].join(", "),
+      }}
+    >
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left: copy */}
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-secondary/40 text-xs text-muted-foreground mb-5">
-              <Globe className="h-3.5 w-3.5" />
-              demo.primelink.com.hr
-            </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 tracking-tight">
-              Pogledajte demo biblioteku
-            </h2>
-            <p className="text-lg text-muted-foreground mb-5">
-              Pregledajte primjere modernih web stranica i digitalnih rješenja za različite djelatnosti.
-            </p>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Pripremili smo demo primjere koji vam mogu pomoći lakše zamisliti kako bi vaša nova web stranica, CRM sustav ili digitalni alat mogao izgledati. Demo biblioteka uključuje primjere za uslužne tvrtke, udruge, turizam, restorane, trgovine, poslovne sustave i druge djelatnosti.
-            </p>
-            <Button asChild size="lg">
-              <a href={DEMO_URL} rel="noopener">
-                Otvori demo biblioteku
-                <ArrowUpRight className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
-          </div>
+        <div className="mb-9 max-w-2xl md:mb-12">
+          <h2 id="demo-library-title" className="mb-4 text-3xl font-bold tracking-tight md:text-4xl">
+            {t("approved.demos")}
+          </h2>
+          <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
+            {t("approved.fictional")}
+          </p>
+        </div>
 
-          {/* Right: browser-style preview card */}
-          <a
-            href={DEMO_URL}
-            rel="noopener"
-            className="group block rounded-2xl border border-border bg-card shadow-[var(--shadow-xl)] overflow-hidden hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
-            aria-label="Otvori demo biblioteku"
-          >
-            {/* Browser chrome */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-secondary/40">
-              <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-              <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-              <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-              <div className="ml-3 flex-1 truncate rounded-md bg-background/60 border border-border px-3 py-1 text-xs text-muted-foreground">
-                demo.primelink.com.hr
-              </div>
-            </div>
-
-            {/* Preview body */}
-            <div className="p-6 md:p-8 bg-gradient-to-br from-background to-secondary/30">
-              <div className="text-[11px] uppercase tracking-widest text-muted-foreground/70 font-semibold mb-3">
-                Demo biblioteka
-              </div>
-              <div className="text-xl md:text-2xl font-semibold text-foreground mb-6 leading-snug">
-                Primjeri za različite djelatnosti
-              </div>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {chips.map((c) => (
-                  <span
-                    key={c}
-                    className="px-3 py-1.5 rounded-full text-xs font-medium border border-border bg-background/60 text-muted-foreground group-hover:border-primary/30 group-hover:text-foreground transition-colors"
-                  >
-                    {c}
-                  </span>
-                ))}
-              </div>
-              <div className="grid grid-cols-3 gap-2">
-                <div className="aspect-[4/3] rounded-lg border border-border bg-secondary/40" />
-                <div className="aspect-[4/3] rounded-lg border border-border bg-secondary/60" />
-                <div className="aspect-[4/3] rounded-lg border border-border bg-secondary/40" />
-              </div>
-              <div className="mt-6 flex items-center justify-between text-sm text-muted-foreground">
-                <span>Pregledajte primjere</span>
-                <span className="inline-flex items-center gap-1 text-foreground font-medium group-hover:text-primary transition-colors">
-                  Otvori <ArrowUpRight className="h-3.5 w-3.5" />
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {demos.map((demo) => (
+            <a
+              key={demo.key}
+              href={`https://demo.primelink.com.hr${demo.path}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-labelledby={`demo-${demo.key}-title demo-${demo.key}-open`}
+              aria-describedby={`demo-${demo.key}-label`}
+              className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] hover:border-primary/50 hover:shadow-[var(--shadow-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background motion-safe:transition-[transform,box-shadow,border-color] motion-safe:duration-300 motion-safe:hover:-translate-y-1"
+            >
+              <img
+                src={`/demo-previews/${demo.image}`}
+                alt={t(`approved.demoExamples.${demo.key}.previewAlt`)}
+                width={1440}
+                height={900}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[8/5] w-full border-b border-border object-cover object-top"
+              />
+              <div className="flex flex-1 flex-col p-6 lg:p-7">
+                <p
+                  id={`demo-${demo.key}-label`}
+                  className="mb-4 self-start rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-sm font-medium text-accent"
+                >
+                  {t("approved.demoLabel")}
+                </p>
+                <h3 id={`demo-${demo.key}-title`} className="mb-3 text-2xl font-semibold tracking-tight">
+                  {t(`approved.demoExamples.${demo.key}.name`)}
+                </h3>
+                <p className="mb-6 text-base leading-relaxed text-muted-foreground">
+                  {t(`approved.demoExamples.${demo.key}.description`)}
+                </p>
+                <span
+                  id={`demo-${demo.key}-open`}
+                  className="mt-auto border-t border-border pt-5 text-sm font-medium text-foreground group-hover:underline group-hover:decoration-accent group-hover:underline-offset-4 group-focus-visible:underline group-focus-visible:underline-offset-4"
+                >
+                  {t("approved.openDemo")}
                 </span>
               </div>
-            </div>
-          </a>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-9 md:mt-10">
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="h-auto min-h-12 w-full whitespace-normal py-3 text-base focus-visible:ring-accent motion-reduce:transition-none sm:w-auto"
+          >
+            <a href="https://demo.primelink.com.hr/" target="_blank" rel="noopener noreferrer">
+              {t("approved.catalogue")}
+              <span className="sr-only">{t("approved.demoNewTab")}</span>
+            </a>
+          </Button>
         </div>
       </div>
     </section>
   );
-};
-
-export default DemoLibrary;
+}

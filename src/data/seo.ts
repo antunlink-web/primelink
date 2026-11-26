@@ -15,28 +15,28 @@ export type SeoMetadata = {
 export const pageSeo: Record<string, SeoMetadata> = {
   "/": {
     "title": "Izrada web stranica i aplikacija | PrimeLink Zagreb",
-    "description": "PrimeLink izrađuje web stranice, web aplikacije, CRM sustave i Stripe integracije za tvrtke u Hrvatskoj. Brza izrada i jasan proces.",
+    "description": "PrimeLink izrađuje web stranice, web trgovine, web aplikacije, CRM sustave i integracije kartičnog plaćanja (Stripe, Corvus i Monri) za tvrtke u Hrvatskoj. Cijena na upit.",
     "canonical": "https://primelink.hr/",
     "ogTitle": "Izrada web stranica i aplikacija | PrimeLink Zagreb",
-    "ogDescription": "Moderne web stranice, web aplikacije, CRM sustavi, SaaS proizvodi i Stripe integracije za tvrtke u Hrvatskoj.",
+    "ogDescription": "Moderne web stranice, web trgovine, web aplikacije, CRM sustavi, SaaS proizvodi i integracije kartičnog plaćanja (Stripe, Corvus i Monri) za tvrtke u Hrvatskoj.",
     "ogUrl": "https://primelink.hr/",
     "ogType": "website"
   },
   "/ponuda": {
     "title": "Ponuda — Web stranice, web shop i automatizacija | PrimeLink",
-    "description": "Paketi za izradu web stranica, web shopova i automatizacije. Transparentne cijene, fiksni rokovi i podrška nakon lansiranja.",
+    "description": "Izrada web stranica i web trgovina. Cijena na upit, besplatan personalizirani prijedlog početne stranice bez obveze.",
     "canonical": "https://primelink.hr/ponuda",
     "ogTitle": "Ponuda — Web stranice i automatizacija | PrimeLink",
-    "ogDescription": "Paketi za izradu web stranica, web shopova i automatizacije. Transparentne cijene i fiksni rokovi.",
+    "ogDescription": "Cijene i rokovi prema dogovorenom opsegu. Hosting i održavanje 12 mjeseci od objave.",
     "ogUrl": "https://primelink.hr/ponuda",
     "ogType": "website"
   },
   "/ponuda/forma": {
     "title": "Zatražite ponudu — PrimeLink",
-    "description": "Ispunite kratki upitnik i recite nam o svom projektu. Javljamo se s personaliziranom ponudom unutar 24 sata.",
+    "description": "Ispunite kratki upitnik i recite nam o svom projektu. Na vaš upit odgovaramo u roku od dva radna dana.",
     "canonical": "https://primelink.hr/ponuda/forma",
     "ogTitle": "Zatražite ponudu — PrimeLink",
-    "ogDescription": "Ispunite kratki upitnik i recite nam o svom projektu. Javljamo se s personaliziranom ponudom unutar 24 sata.",
+    "ogDescription": "Ispunite kratki upitnik i recite nam o svom projektu. Na vaš upit odgovaramo u roku od dva radna dana.",
     "ogUrl": "https://primelink.hr/ponuda/forma",
     "ogType": "website"
   },
@@ -59,11 +59,11 @@ export const pageSeo: Record<string, SeoMetadata> = {
     "ogType": "website"
   },
   "/besplatna-seo-analiza": {
-    "title": "Besplatna SEO analiza web stranice | PrimeLink",
-    "description": "Besplatna SEO analiza web stranice — provjerite SEO, brzinu i tehničke probleme svoje stranice u nekoliko sekundi. PrimeLink d.o.o. Zagreb.",
+    "title": "PrimeAudit — SEO i tehnička analiza | PrimeLink",
+    "description": "PrimeAudit: plaćena SEO i tehnička analiza na upit. Opseg i rokovi definiraju se ponudom.",
     "canonical": "https://primelink.hr/besplatna-seo-analiza",
-    "ogTitle": "Besplatna SEO analiza web stranice | PrimeLink",
-    "ogDescription": "Provjerite osnovne SEO, brzinske i tehničke probleme svoje web stranice u nekoliko sekundi.",
+    "ogTitle": "PrimeAudit — SEO i tehnička analiza | PrimeLink",
+    "ogDescription": "SEO i tehnička analiza prema dogovorenom opsegu. Cijena na upit.",
     "ogUrl": "https://primelink.hr/besplatna-seo-analiza",
     "ogType": "website"
   }
@@ -93,3 +93,12 @@ export const legacyRoutes = Object.keys(pageSeo)
   .filter((route) => /^\/[^/]+$/.test(route))
   .sort()
   .map((target) => ({ path: `/usluge${target}`, target }));
+
+export const englishPageSeo: Record<string, { title: string; description: string }> = {
+ "/": { title: "Websites, webshops and applications | PrimeLink", description: "Custom websites, webshops, CRM systems and card payment integrations: Stripe, Corvus and Monri. Pricing on enquiry." },
+ "/ponuda": { title: "Your project proposal | PrimeLink", description: "Pricing on enquiry. Free personalised homepage concept for websites and webshops, with no obligation." },
+ "/ponuda/forma": { title: "Request a quote | PrimeLink", description: "Tell us about your project. We respond within two business days." },
+ "/kontakt": { title: "Contact | PrimeLink", description: "Contact PrimeLink about your website, webshop or application. We respond within two business days." },
+ "/portfolio": { title: "Project portfolio | PrimeLink", description: "Explore our websites, webshops and applications." },
+ "/besplatna-seo-analiza": { title: "PrimeAudit — SEO and technical analysis | PrimeLink", description: "Paid SEO and technical analysis, priced on enquiry. Scope and delivery times defined in the proposal." },
+};

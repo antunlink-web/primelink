@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,13 +16,18 @@ const WEB3FORMS_ACCESS_KEY = "65b937ba-7a1f-4605-bd6e-51f19e97b7cd";
 const NEEDS = [
   "Nova web stranica",
   "Redizajn postojeće web stranice",
+  "Web trgovina",
   "CRM sustav",
   "Web aplikacija",
-  "Stripe integracija",
+  "Stripe integracija", // Legacy submitted value; the visible label is translated separately.
   "SEO analiza",
 ];
 
-const HomeLeadForm = () => {
+const HomeLeadForm = ({ quote = false }: { quote?: boolean }) => {
+  const { t } = useTranslation();
+  const [budget, setBudget] = useState("");
+  const [deadline, setDeadline] = useState("");
+  const needLabels = ["Izrada web stranica", "Redizajn web stranica", "Web trgovina", "CRM sustav", "Web aplikacija", "Stripe integracija", "SEO analiza"];
   const [needs, setNeeds] = useState<string[]>([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -44,18 +50,19 @@ const HomeLeadForm = () => {
 
     const { z } = await import("zod");
     const schema = z.object({
-      name: z.string().trim().min(2, "Unesite ime i prezime").max(100),
-      email: z.string().trim().email("Neispravna e-mail adresa").max(255),
+      name: z.string().trim().min(2, t("approved.nameError")).max(100),
+      email: z.string().trim().email(t("approved.emailError")).max(255),
       phone: z.string().trim().max(50).optional().or(z.literal("")),
       website: z.string().trim().max(255).optional().or(z.literal("")),
       message: z.string().trim().max(1500).optional().or(z.literal("")),
     });
     const parsed = schema.safeParse({ name, email, phone, website, message });
     if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message || "Provjerite unesene podatke.");
+      toast.error(parsed.error.issues[0]?.code === "too_small" ? t("approved.nameError") : parsed.error.issues[0]?.code === "invalid_string" ? t("approved.emailError") : t("approved.error"));
       return;
     }
 
+    if (!needs.length) { toast.error(t("approved.serviceError")); return; }
     setSubmitting(true);
     const body = [
       "--- NOVI UPIT S HOMEPAGE LEAD FORME ---",
@@ -68,6 +75,8 @@ const HomeLeadForm = () => {
       "",
       `Poruka:`,
       message || "—",
+      `Budžet: ${budget || "—"}`,
+      `Rok: ${deadline || "—"}`,
     ].join("\n");
 
     try {
@@ -76,13 +85,13 @@ const HomeLeadForm = () => {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: "Novi upit s homepage forme — PrimeLink",
-          from_name: "PrimeLink homepage lead",
+          subject: quote ? "Novi upit s /upit forme – Primelink" : "Novi upit s homepage forme — PrimeLink",
+          from_name: quote ? "Primelink web upit" : "PrimeLink homepage lead",
           name,
           email,
           phone,
           message: body,
-          page_source: "/",
+          page_source: quote ? "/upit" : "/",
         }),
       });
       const result = await res.json();
@@ -92,7 +101,7 @@ const HomeLeadForm = () => {
         throw new Error(result.message || "Greška");
       }
     } catch {
-      toast.error("Slanje nije uspjelo. Pokušajte ponovno ili nas kontaktirajte direktno.");
+      toast.error(t("approved.failed"));
     } finally {
       setSubmitting(false);
     }
@@ -104,9 +113,9 @@ const HomeLeadForm = () => {
         <div className="w-14 h-14 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-5">
           <Check className="h-7 w-7 text-primary" />
         </div>
-        <h3 className="text-2xl font-bold text-foreground mb-3">Hvala!</h3>
+        <h3 className="text-2xl font-bold text-foreground mb-3">{t('approved.thanks')}</h3>
         <p className="text-muted-foreground">
-          Zaprimili smo vaš upit i javit ćemo vam se u roku 24 sata s konkretnim prijedlogom.
+          {t('approved.reply')}
         </p>
       </div>
     );
@@ -118,17 +127,18 @@ const HomeLeadForm = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">
-              Kontakt
+              {t('approved.contact')}
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
-              Zatražite ponudu
+              {t('approved.cta')}
             </h2>
             <p className="text-muted-foreground">
-              Pošaljite nekoliko podataka — pripremit ćemo konkretan prijedlog.
+              {t('approved.demo')}
             </p>
           </div>
 
           <form
+            noValidate
             onSubmit={handleSubmit}
             className="rounded-2xl border border-border bg-card p-6 md:p-10 space-y-6"
           >
@@ -145,7 +155,7 @@ const HomeLeadForm = () => {
             />
 
             <div>
-              <Label className="mb-3 block">Što trebate?</Label>
+              <Label className="mb-3 block">{t('approved.service')}</Label>
               <div className="grid sm:grid-cols-2 gap-2">
                 {NEEDS.map((item) => {
                   const checked = needs.includes(item);
@@ -162,7 +172,7 @@ const HomeLeadForm = () => {
                         checked={checked}
                         onCheckedChange={() => toggleNeed(item)}
                       />
-                      <span className="text-sm text-foreground">{item}</span>
+                      <span className="text-sm text-foreground">{item === "Stripe integracija" ? t("leadForm.needs.stripe") : t(`enquiryServices.${needLabels[NEEDS.indexOf(item)]}`)}</span>
                     </label>
                   );
                 })}
@@ -170,46 +180,27 @@ const HomeLeadForm = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="lead-name">Ime i prezime *</Label>
-                <Input id="lead-name" value={name} onChange={(e) => setName(e.target.value)} required maxLength={100} />
-              </div>
-              <div>
-                <Label htmlFor="lead-website">Web stranica / domena</Label>
-                <Input id="lead-website" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="vasadomena.hr" maxLength={255} />
-              </div>
-              <div>
-                <Label htmlFor="lead-email">Email *</Label>
-                <Input id="lead-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required maxLength={255} />
-              </div>
-              <div>
-                <Label htmlFor="lead-phone">Telefon</Label>
-                <Input id="lead-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={50} />
-              </div>
+              <div><Label htmlFor="lead-name">{t('approved.name')} *</Label><Input id="lead-name" autoComplete="name" value={name} onChange={e => setName(e.target.value)} required maxLength={100}/></div>
+              <div><Label htmlFor="lead-email">{t('approved.email')} *</Label><Input id="lead-email" autoComplete="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required maxLength={255}/></div>
             </div>
-
-            <div>
-              <Label htmlFor="lead-message">Poruka</Label>
-              <Textarea
-                id="lead-message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                rows={4}
-                maxLength={1500}
-                placeholder="Kratak opis projekta ili pitanja…"
-              />
-            </div>
+            <div><Label htmlFor="lead-website">{t('approved.website')}</Label><Input id="lead-website" value={website} onChange={e => setWebsite(e.target.value)} maxLength={255}/></div>
+            <div><Label htmlFor="lead-message">{t('approved.message')}</Label><Textarea id="lead-message" value={message} onChange={e => setMessage(e.target.value)} rows={3} maxLength={1500}/></div>
+            <details><summary className="cursor-pointer text-muted-foreground">{t('approved.extra')}</summary><div className="grid sm:grid-cols-3 gap-4 mt-4">
+              <div><Label htmlFor="lead-phone">{t('approved.phone')}</Label><Input id="lead-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} maxLength={50}/></div>
+              <div><Label htmlFor="lead-budget">{t('approved.budget')}</Label><Input id="lead-budget" value={budget} onChange={e => setBudget(e.target.value)} maxLength={100}/></div>
+              <div><Label htmlFor="lead-deadline">{t('approved.deadline')}</Label><Input id="lead-deadline" value={deadline} onChange={e => setDeadline(e.target.value)} maxLength={100}/></div>
+            </div></details>
 
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
-              <p className="text-xs text-muted-foreground">Odgovaramo u roku 24 sata.</p>
+              <p className="text-xs text-muted-foreground">{t('approved.reply')}</p>
               <Button type="submit" size="lg" disabled={submitting} className="sm:w-auto w-full">
                 {submitting ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Šaljem…
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('approved.sending')}
                   </>
                 ) : (
                   <>
-                    Pošaljite upit <Send className="ml-2 h-4 w-4" />
+                    {t('approved.send')} <Send className="ml-2 h-4 w-4" />
                   </>
                 )}
               </Button>

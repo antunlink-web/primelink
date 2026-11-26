@@ -4,13 +4,19 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { sortPortfolioProjects } from "@/data/portfolio-sort";
 
 import luxurysecondhandImg from "@/assets/projects/luxurysecondhand-portfolio.webp";
+import alphaMedicalImg from "@/assets/projects/alpha-medical-portfolio.webp";
+import iskraSvjetlostiImg from "@/assets/projects/iskra-svjetlosti-portfolio.webp";
+import jedraImg from "@/assets/projects/jedra-portfolio.webp";
+import liviaImg from "@/assets/projects/livia-portfolio.webp";
+import marateaImg from "@/assets/projects/maratea-portfolio.webp";
+import uprocesuImg from "@/assets/projects/uprocesu-portfolio.webp";
 import careflowImg from "@/assets/projects/careflow-portfolio.webp";
 import trazilicaImg from "@/assets/projects/trazilica-portfolio.webp";
 import flowcallImg from "@/assets/projects/flowcall-portfolio.webp";
@@ -23,13 +29,10 @@ import lumibabyImg from "@/assets/projects/lumibaby-portfolio.webp";
 import aurumgradnjaImg from "@/assets/projects/aurumgradnja-portfolio.webp";
 import tijelokaodioprirodeImg from "@/assets/projects/tijelokaodioprirode-portfolio.webp";
 import evaciglarImg from "@/assets/projects/evaciglar-portfolio.webp";
-import airwoltImg from "@/assets/projects/airwolt-portfolio.webp";
 import infinityservicesImg from "@/assets/projects/infinityservices-portfolio.webp";
-import konzaltingprimelinkImg from "@/assets/projects/konzaltingprimelink-portfolio.webp";
 import prikaImg from "@/assets/projects/prika-portfolio.webp";
 import protekstImg from "@/assets/projects/protekst-portfolio.webp";
 import udrugalumenImg from "@/assets/projects/udrugalumen-portfolio.webp";
-import voltappImg from "@/assets/projects/voltapp-portfolio.webp";
 import yogawithnikaImg from "@/assets/projects/yogawithnika-portfolio.webp";
 import dadathlonImg from "@/assets/projects/dadathlon-portfolio.webp";
 import daddyhoodImg from "@/assets/projects/daddyhood-portfolio.webp";
@@ -53,9 +56,11 @@ type Project = {
   tags: string[];
   image: string;
   category: FilterCategory[];
-  /** Pinned projects always sort first. */
+  /** Additional pins follow the three reserved projects in portfolio-sort.ts. */
   pinned?: boolean;
-  /** ISO date (YYYY-MM-DD) of completion/publication. Undefined = date unknown, needs review. */
+  /** Date added to this portfolio (YYYY-MM-DD), independent of site deployment. */
+  publishedAt?: string;
+  /** Legacy completion date; used only when publication date is unknown. */
   completedAt?: string;
   /** Manual tie-breaker only; lower shows first. */
   sortOrder?: number;
@@ -96,6 +101,78 @@ const projectsData: Project[] = [
     image: chairsImg,
     category: ["web"] as FilterCategory[],
     completedAt: "2026-09-01",
+  },
+  {
+    id: "alphamedical",
+    name: "ALPHA-MEDICAL d.o.o.",
+    url: "https://alpha-medical.hr/",
+    descKey: "portfolio.alphamedical.description",
+    industryKey: "portfolio.alphamedical.industry",
+    tags: ["Web stranica", "Redizajn", "B2B", "Farmaceutika"],
+    image: alphaMedicalImg,
+    category: ["web"] as FilterCategory[],
+    // Added to the portfolio locally on this date; project completion is unknown.
+    publishedAt: "2026-10-17",
+  },
+  {
+    id: "iskrasvjetlosti",
+    name: "Udruga Iskra Svjetlosti",
+    url: "https://iskrasvjetlosti.hr/",
+    descKey: "portfolio.iskrasvjetlosti.description",
+    industryKey: "portfolio.iskrasvjetlosti.industry",
+    tags: ["Web stranica", "Udruga", "Volontiranje", "Donacije"],
+    image: iskraSvjetlostiImg,
+    category: ["web"] as FilterCategory[],
+    // Portfolio publication date; website completion date is unknown.
+    publishedAt: "2026-10-17",
+  },
+  {
+    id: "jedra",
+    name: "Jedra.hr",
+    url: "https://jedra.hr/",
+    descKey: "portfolio.jedra.description",
+    industryKey: "portfolio.jedra.industry",
+    tags: ["Web stranica", "Udruga", "Podrška", "Donacije"],
+    image: jedraImg,
+    category: ["web"] as FilterCategory[],
+    // Portfolio publication date; website completion date is unknown.
+    publishedAt: "2026-10-17",
+  },
+  {
+    id: "livia",
+    name: "Livia.hr",
+    url: "https://livia.hr/",
+    descKey: "portfolio.livia.description",
+    industryKey: "portfolio.livia.industry",
+    tags: ["Web stranica", "Holding", "Farmaceutika"],
+    image: liviaImg,
+    category: ["web"] as FilterCategory[],
+    // Portfolio publication date; website completion date is unknown.
+    publishedAt: "2026-10-17",
+  },
+  {
+    id: "maratea",
+    name: "Maratea.hr",
+    url: "https://maratea.hr/",
+    descKey: "portfolio.maratea.description",
+    industryKey: "portfolio.maratea.industry",
+    tags: ["Web stranica", "Ljepota", "Tretmani"],
+    image: marateaImg,
+    category: ["web"] as FilterCategory[],
+    // Portfolio publication date; website completion date is unknown.
+    publishedAt: "2026-10-17",
+  },
+  {
+    id: "uprocesu",
+    name: "U Procesu",
+    url: "https://uprocesu.com/",
+    descKey: "portfolio.uprocesu.description",
+    industryKey: "portfolio.uprocesu.industry",
+    tags: ["Web stranica", "Savjetovanje", "Radionice", "Višejezično"],
+    image: uprocesuImg,
+    category: ["web"] as FilterCategory[],
+    // Portfolio publication date; website completion date is unknown.
+    publishedAt: "2026-10-17",
   },
   {
     id: "hpcspg",
@@ -231,16 +308,6 @@ const projectsData: Project[] = [
     category: ["web"] as FilterCategory[],
   },
   {
-    id: "airwolt",
-    name: "Airwolthvacelectric.hr",
-    url: "https://airwolthvacelectric.hr",
-    descKey: "portfolio.airwolt.description",
-    industryKey: "portfolio.airwolt.industry",
-    tags: ["Web", "Branding", "React", "SEO"],
-    image: airwoltImg,
-    category: ["web"] as FilterCategory[],
-  },
-  {
     id: "infinityservices",
     name: "Infinityservices.hr",
     url: "https://infinityservices.hr",
@@ -248,16 +315,6 @@ const projectsData: Project[] = [
     industryKey: "portfolio.infinityservices.industry",
     tags: ["Web", "Forms", "React", "SEO"],
     image: infinityservicesImg,
-    category: ["web"] as FilterCategory[],
-  },
-  {
-    id: "konzaltingprimelink",
-    name: "Konzalting.primelink.hr",
-    url: "https://konzalting.primelink.hr",
-    descKey: "portfolio.konzaltingprimelink.description",
-    industryKey: "portfolio.konzaltingprimelink.industry",
-    tags: ["Web", "i18n", "React", "Landing"],
-    image: konzaltingprimelinkImg,
     category: ["web"] as FilterCategory[],
   },
   {
@@ -289,16 +346,6 @@ const projectsData: Project[] = [
     tags: ["Web", "Edukacija", "React", "Forms"],
     image: udrugalumenImg,
     category: ["web"] as FilterCategory[],
-  },
-  {
-    id: "voltapp",
-    name: "Voltapp.hr",
-    url: "https://voltapp.hr",
-    descKey: "portfolio.voltapp.description",
-    industryKey: "portfolio.voltapp.industry",
-    tags: ["Web", "SaaS", "React", "Landing"],
-    image: voltappImg,
-    category: ["saas", "web"] as FilterCategory[],
   },
   {
     id: "yogawithnika",
@@ -383,6 +430,7 @@ const projectsData: Project[] = [
 ];
 
 const sortedProjects = sortPortfolioProjects(projectsData);
+const PROJECTS_PER_BATCH = 9;
 
 const filters: { key: FilterCategory; labelKey: string }[] = [
   { key: "all", labelKey: "portfolio.filterAll" },
@@ -394,13 +442,45 @@ const filters: { key: FilterCategory; labelKey: string }[] = [
 
 const PortfolioPage = () => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("all");
+  const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_BATCH);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const loadMoreRef = useRef<HTMLButtonElement>(null);
+  const pendingFocus = useRef<number | "collapse" | null>(null);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const filtered = activeFilter === "all"
     ? sortedProjects
     : sortedProjects.filter((p) => p.category.includes(activeFilter));
+  const visibleProjects = filtered.slice(0, visibleCount);
+  const remainingCount = filtered.length - visibleProjects.length;
 
+  // Wait for React to mount the new cards before moving keyboard focus.
+  useEffect(() => {
+    if (pendingFocus.current === "collapse") {
+      loadMoreRef.current?.focus();
+    } else if (pendingFocus.current !== null) {
+      gridRef.current?.querySelectorAll<HTMLAnchorElement>("a")[pendingFocus.current]?.focus();
+    }
+    pendingFocus.current = null;
+  }, [visibleCount]);
+
+  const changeFilter = (filter: FilterCategory) => {
+    if (filter === activeFilter) return;
+    pendingFocus.current = null;
+    setActiveFilter(filter);
+    setVisibleCount(PROJECTS_PER_BATCH);
+  };
+
+  const loadMore = () => {
+    pendingFocus.current = visibleProjects.length;
+    setVisibleCount((count) => Math.min(count + PROJECTS_PER_BATCH, filtered.length));
+  };
+
+  const showLess = () => {
+    pendingFocus.current = "collapse";
+    setVisibleCount(PROJECTS_PER_BATCH);
+  };
 
   const handleNavClick = (sectionId: string) => {
     navigate('/');
@@ -460,8 +540,11 @@ const PortfolioPage = () => {
             {filters.map((f) => (
               <button
                 key={f.key}
-                onClick={() => setActiveFilter(f.key)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                type="button"
+                aria-pressed={activeFilter === f.key}
+                aria-controls="portfolio-projects"
+                onClick={() => changeFilter(f.key)}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                   activeFilter === f.key
                     ? "bg-primary text-primary-foreground shadow-[var(--shadow-glow)]"
                     : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80 border border-border"
@@ -477,14 +560,20 @@ const PortfolioPage = () => {
       {/* PROJECT GRID */}
       <section className="py-8 pb-24">
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((project, i) => (
+          <div
+            id="portfolio-projects"
+            ref={gridRef}
+            role="region"
+            aria-label={t('portfolio.projectsLabel')}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {visibleProjects.map((project, i) => (
               <a
                 key={project.id}
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative rounded-2xl border border-border bg-card overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[var(--shadow-hover)] hover:-translate-y-1"
+                className="group relative rounded-2xl border border-border bg-card overflow-hidden transition-all duration-500 hover:border-primary/30 hover:shadow-[var(--shadow-hover)] hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 style={{ animationDelay: `${i * 80}ms` }}
               >
                 {/* Screenshot */}
@@ -529,6 +618,35 @@ const PortfolioPage = () => {
               </a>
             ))}
           </div>
+          <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+            {t('portfolio.showingProjects', { shown: visibleProjects.length, total: filtered.length })}
+          </p>
+          {(remainingCount > 0 || visibleCount > PROJECTS_PER_BATCH) && (
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              {remainingCount > 0 && (
+                <Button
+                  ref={loadMoreRef}
+                  type="button"
+                  size="lg"
+                  aria-controls="portfolio-projects"
+                  onClick={loadMore}
+                >
+                  {t('portfolio.loadMore', { count: Math.min(PROJECTS_PER_BATCH, remainingCount) })}
+                </Button>
+              )}
+              {visibleCount > PROJECTS_PER_BATCH && (
+                <Button
+                  type="button"
+                  size="lg"
+                  variant="outline"
+                  aria-controls="portfolio-projects"
+                  onClick={showLess}
+                >
+                  {t('portfolio.showLess')}
+                </Button>
+              )}
+            </div>
+          )}
         </div>
       </section>
 

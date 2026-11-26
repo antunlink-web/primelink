@@ -30,11 +30,15 @@ const App = () => (
           <Route path="/kontakt" element={<ContactPage />} />
           <Route path="/besplatna-seo-analiza" element={<SeoAuditPage />} />
 
+          <Route path="/izrada-web-trgovina" element={<ServicePage fixedSlug="izrada-web-trgovina" />} />
+          <Route path="/hosting-odrzavanje" element={<ServicePage fixedSlug="hosting-odrzavanje" />} />
+
           {/* Service pages — flat SEO URLs */}
           <Route path="/izrada-web-stranica" element={<ServicePage fixedSlug="izrada-web-stranica" />} />
           <Route path="/redizajn-web-stranice" element={<ServicePage fixedSlug="redizajn-web-stranice" />} />
           <Route path="/izrada-crm-sustava" element={<ServicePage fixedSlug="izrada-crm-sustava" />} />
           <Route path="/izrada-web-aplikacija" element={<ServicePage fixedSlug="izrada-web-aplikacija" />} />
+          <Route path="/integracije-karticnog-placanja" element={<ServicePage fixedSlug="integracije-karticnog-placanja" />} />
           <Route path="/stripe-integracije" element={<ServicePage fixedSlug="stripe-integracije" />} />
           <Route path="/saas-razvoj" element={<ServicePage fixedSlug="saas-razvoj" />} />
 

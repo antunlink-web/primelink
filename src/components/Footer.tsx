@@ -1,10 +1,11 @@
 import { Instagram, Facebook, MapPin, Mail, Phone } from "lucide-react";
+import { getService } from "@/data/services";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import logo from "@/assets/primelink-logo.webp";
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -42,7 +43,7 @@ const Footer = () => {
             <address className="not-italic space-y-2 text-sm text-muted-foreground mb-5">
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 text-primary flex-shrink-0" />
-                <span>PrimeLink d.o.o.<br />Zagreb, Hrvatska</span>
+                <span>PrimeLink d.o.o.<br />Zagreb, {t("approved.country")}</span>
               </div>
               <a href="mailto:primelink@primelink.hr" className="flex items-center gap-2 hover:text-foreground transition-colors">
                 <Mail className="h-4 w-4 text-primary flex-shrink-0" />
@@ -64,34 +65,36 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-3">
-            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">Usluge</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">{t("approved.services")}</h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
-              <li><Link to="/izrada-web-stranica" className="hover:text-foreground transition-colors">Izrada web stranica</Link></li>
-              <li><Link to="/redizajn-web-stranice" className="hover:text-foreground transition-colors">Redizajn web stranica</Link></li>
-              <li><Link to="/izrada-web-aplikacija" className="hover:text-foreground transition-colors">Web aplikacije</Link></li>
-              <li><Link to="/izrada-crm-sustava" className="hover:text-foreground transition-colors">CRM sustavi</Link></li>
-              <li><Link to="/stripe-integracije" className="hover:text-foreground transition-colors">Stripe integracije</Link></li>
-              <li><Link to="/saas-razvoj" className="hover:text-foreground transition-colors">SaaS razvoj</Link></li>
+              <li><Link to="/izrada-web-stranica" className="hover:text-foreground transition-colors">{getService("izrada-web-stranica", i18n.language)?.navTitle}</Link></li>
+              <li><Link to="/izrada-web-trgovina" className="hover:text-foreground">{getService("izrada-web-trgovina", i18n.language)?.navTitle}</Link></li>
+              <li><Link to="/redizajn-web-stranice" className="hover:text-foreground transition-colors">{getService("redizajn-web-stranice", i18n.language)?.navTitle}</Link></li>
+              <li><Link to="/izrada-web-aplikacija" className="hover:text-foreground transition-colors">{getService("izrada-web-aplikacija", i18n.language)?.navTitle}</Link></li>
+              <li><Link to="/izrada-crm-sustava" className="hover:text-foreground transition-colors">{getService("izrada-crm-sustava", i18n.language)?.navTitle}</Link></li>
+              <li><Link to="/integracije-karticnog-placanja" className="hover:text-foreground transition-colors">{t("headerNav.services_items.stripe")}</Link></li>
+              <li><Link to="/saas-razvoj" className="hover:text-foreground transition-colors">{getService("saas-razvoj", i18n.language)?.navTitle}</Link></li>
             </ul>
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">Rješenja</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">{t("approved.solutions")}</h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li><Link to="/izrada-crm-sustava" className="hover:text-foreground transition-colors">PrimeCRM</Link></li>
-              <li><Link to="/stripe-integracije" className="hover:text-foreground transition-colors">PrimePay</Link></li>
+              <li><Link to="/integracije-karticnog-placanja" className="hover:text-foreground transition-colors">PrimePay</Link></li>
               <li><Link to="/besplatna-seo-analiza" className="hover:text-foreground transition-colors">PrimeAudit</Link></li>
+              <li><Link to="/izrada-web-trgovina" className="hover:text-foreground">{getService("izrada-web-trgovina", i18n.language)?.navTitle}</Link></li>
               <li><Link to="/redizajn-web-stranice" className="hover:text-foreground transition-colors">PrimeDemo</Link></li>
             </ul>
           </div>
 
           <div className="md:col-span-3">
-            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">Korisni linkovi</h4>
+            <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">{t("approved.links")}</h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li><a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="hover:text-foreground transition-colors cursor-pointer">Portfolio</a></li>
-              <li><Link to="/besplatna-seo-analiza" className="hover:text-foreground transition-colors">SEO analiza</Link></li>
-              <li><a href="/ponuda/forma" onClick={(e) => { e.preventDefault(); navigate('/ponuda/forma'); }} className="hover:text-foreground transition-colors cursor-pointer">Zatražite ponudu</a></li>
-              <li><a href="/#contact" onClick={(e) => { e.preventDefault(); goToSection('contact'); }} className="hover:text-foreground transition-colors cursor-pointer">Kontakt</a></li>
+              <li><Link to="/besplatna-seo-analiza" className="hover:text-foreground transition-colors">{t("approved.audit")}</Link></li>
+              <li><a href="/ponuda/forma" onClick={(e) => { e.preventDefault(); navigate('/ponuda/forma'); }} className="hover:text-foreground transition-colors cursor-pointer">{t("approved.quote")}</a></li>
+              <li><a href="/#contact" onClick={(e) => { e.preventDefault(); goToSection('contact'); }} className="hover:text-foreground transition-colors cursor-pointer">{t("approved.contact")}</a></li>
             </ul>
           </div>
         </div>

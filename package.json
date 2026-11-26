@@ -9,7 +9,9 @@
     "build:dev": "vite build --mode development && bun scripts/generate-static.tsx && bun scripts/check-static.ts",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test:static": "bun scripts/check-static.ts"
+    "test:static": "bun scripts/check-static.ts",
+    "test:portfolio": "bun scripts/check-portfolio-dom.tsx",
+    "test:portfolio:browser": "bun scripts/check-portfolio.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

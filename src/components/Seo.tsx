@@ -1,9 +1,16 @@
+import { useTranslation } from "react-i18next";
+import { englishPageSeo } from "../data/seo";
 import { Helmet } from "react-helmet-async";
 import type { SeoMetadata } from "../data/seo";
 
-export function Seo({ metadata: seo }: { metadata: SeoMetadata }) {
+export function Seo({ metadata }: { metadata: SeoMetadata }) {
+  const { i18n } = useTranslation();
+  const english = i18n.language?.startsWith("en");
+  const path = metadata.canonical?.replace("https://primelink.hr", "");
+  const translated = english && path ? englishPageSeo[path] : undefined;
+  const seo = translated ? { ...metadata, ...translated, ogTitle: translated.title, ogDescription: translated.description } : metadata;
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang: english ? "en" : "hr" }}>
       <title>{seo.title}</title>
       {seo.description && <meta name="description" content={seo.description} />}
       {seo.canonical && <link rel="canonical" href={seo.canonical} />}

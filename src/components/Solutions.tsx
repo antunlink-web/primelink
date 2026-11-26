@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 const solutionDefs = [
   { key: "primecrm", icon: Users, href: "/izrada-crm-sustava" },
-  { key: "primepay", icon: CreditCard, href: "/stripe-integracije" },
+  { key: "primepay", icon: CreditCard, href: "/integracije-karticnog-placanja" },
   { key: "primeaudit", icon: Search, href: "/besplatna-seo-analiza" },
   { key: "primedemo", icon: Sparkles, href: "/redizajn-web-stranice" },
 ] as const;
@@ -13,7 +13,7 @@ const Solutions = () => {
   const { t } = useTranslation();
   return (
     <section id="rjesenja" className="py-24 bg-card border-y border-border relative overflow-hidden">
-      <div className="absolute inset-0 bg-[var(--gradient-mesh)] opacity-20" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-mesh)] opacity-20" />
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl mb-14">
           <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">

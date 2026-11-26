@@ -15,8 +15,8 @@
     "description": "PrimeLink helps companies modernize their web presence, automate business processes and turn outdated websites into professional digital tools.",
     "scheduleConsultation": "Request a quote",
     "viewSolutions": "View Services",
-    "support247": "Stripe integrations",
-    "supportBenefit": "Payments & subscriptions in SaaS",
+    "support247": "Card payment integrations",
+    "supportBenefit": "Online payment integration: Stripe, Corvus and Monri.",
     "enterpriseSecurity": "CRM & web apps",
     "securityBenefit": "Custom tools for your team",
     "cloudInfrastructure": "Websites from €499",
@@ -227,7 +227,7 @@
   },
   "contact": {
     "title": "Let's talk about your IT needs",
-    "description": "Schedule a free consultation and learn how we can optimize your infrastructure",
+    "description": "We respond to your enquiry within two business days.",
     "email": "Email",
     "call": "Phone",
     "visit": "Location",
@@ -343,12 +343,17 @@
     "filterAutomation": "Automation",
     "filterWeb": "Web Apps",
     "filterIntegrations": "Integrations",
+    "loadMore_one": "Show {{count}} more project",
+    "loadMore_other": "Show {{count}} more projects",
+    "showLess": "Show less",
+    "projectsLabel": "Projects",
+    "showingProjects": "Projects shown: {{shown}} / {{total}}.",
     "visitSite": "Visit website",
     "trustTitle": "Trusted by startups and enterprises building scalable digital products",
     "clientPlaceholder": "Client",
     "ctaTitle": "Have a project in mind?",
-    "ctaDescription": "We design and build scalable platforms, automation systems, and custom software.",
-    "ctaStart": "Start a Project",
+    "ctaDescription": "For websites and webshops, we prepare a free personalised homepage concept, with no obligation.",
+    "ctaStart": "Request a quote and free demo",
     "ctaConsult": "Book a Consultation",
     "luxurysecondhand": {
       "description": "Redesign and migration of an existing pre-owned luxury fashion webshop, preserving its product catalogue, designer bags and luxury items, cart and order flow.",
@@ -402,17 +407,33 @@
       "description": "Court interpreter for Slovenian — translations, interpreting and Slovenian language tutoring with an individual approach.",
       "industry": "Translation & Languages"
     },
-    "airwolt": {
-      "description": "Sales, service and installation of air-conditioning units plus electrical works for homes and businesses.",
-      "industry": "HVAC & Electric"
+    "alphamedical": {
+      "description": "Redesign of the corporate website for ALPHA-MEDICAL d.o.o., a pharmaceutical company based in Zagreb, presenting its drug registration, market access and distribution services, medicinal product portfolio, partners, quality information and contact details.",
+      "industry": "Pharmaceuticals"
+    },
+    "iskrasvjetlosti": {
+      "description": "Website for Udruga Iskra Svjetlosti, an association supporting children and young people through creative workshops, inclusion, volunteering and community activities, with information about its work and ways to donate.",
+      "industry": "Associations & Community"
+    },
+    "jedra": {
+      "description": "Website for the Jedra association with information and educational content about lung cancer, support for patients and their families, and an overview of projects, news and ways to donate.",
+      "industry": "Associations & Health"
+    },
+    "livia": {
+      "description": "Website for LIVIA d.o.o., a Croatian holding company in the healthcare and pharmaceutical sector, presenting the group, its organization, member companies and contact details.",
+      "industry": "Healthcare & Pharmaceuticals"
+    },
+    "maratea": {
+      "description": "Website for the Maratea institute in Zagreb's Park Kneževa, presenting face and body treatments, laser hair removal, manicures and pedicures, with links to packages, pricing and appointment booking.",
+      "industry": "Beauty & Personal Care"
+    },
+    "uprocesu": {
+      "description": "Website for U Procesu, an anxiety and counselling centre, introducing Emilia Habulin with links to areas of work, education and workshops, pricing and contact, plus Croatian and English language options.",
+      "industry": "Mental Health & Counselling"
     },
     "infinityservices": {
       "description": "Professional cleaning and maintenance of apartments, hotels and business spaces in Zadar and the surrounding area.",
       "industry": "Cleaning & Maintenance"
-    },
-    "konzaltingprimelink": {
-      "description": "Consulting services for Russian-speaking clients in Croatia — company setup, documents and translation.",
-      "industry": "Consulting & Legal"
     },
     "prika": {
       "description": "Extra virgin olive oil from Čista Velika — family-run grove and organic production in Dalmatia.",
@@ -425,10 +446,6 @@
     "udrugalumen": {
       "description": "Educational workshops for children — 3D printing, scanning and creative use of modern technology.",
       "industry": "Education & Kids"
-    },
-    "voltapp": {
-      "description": "Platform for EV charging stations — installation, maintenance and management of chargers for partner locations.",
-      "industry": "EV Charging & SaaS"
     },
     "yogawithnika": {
       "description": "Website for a yoga instructor — classes, workshops and online bookings with a calm, modern design.",
@@ -503,7 +520,7 @@
       "redesign": "Website redesign",
       "webapp": "Web applications",
       "crm": "CRM systems",
-      "stripe": "Stripe integrations",
+      "stripe": "Card payment integrations",
       "saas": "SaaS development",
       "seo": "SEO optimization"
     },
@@ -514,7 +531,7 @@
       },
       "primepay": {
         "label": "PrimePay",
-        "desc": "Stripe & payments"
+        "desc": "Card payment integrations"
       },
       "primeaudit": {
         "label": "PrimeAudit",
@@ -545,7 +562,7 @@
     "label": "What we do",
     "web": "Websites",
     "crm": "CRM systems",
-    "stripe": "Stripe integrations",
+    "stripe": "Card payment integrations",
     "seo": "SEO optimization",
     "saas": "SaaS development",
     "maintenance": "Maintenance"
@@ -573,28 +590,28 @@
   },
   "solutionsSection": {
     "badge": "Solutions",
-    "title": "Ready-made PrimeLink products",
-    "subtitle": "We don't just build websites. We develop business systems that solve real problems — from CRM and payments to SEO and redesign.",
+    "title": "Our solutions",
+    "subtitle": "Pricing on enquiry, based on the agreed project scope.",
     "items": {
       "primecrm": {
         "name": "PrimeCRM",
-        "tagline": "CRM platform for sales and operations",
-        "description": "CRM systems for sales, donations, client records and internal processes. No per-user licenses and no unnecessary modules."
+        "tagline": "Custom CRM systems",
+        "description": "Processes and functionality tailored to your business."
       },
       "primepay": {
         "name": "PrimePay",
-        "tagline": "Stripe payments, subscriptions and donations",
-        "description": "Stripe integrations, subscriptions, online payments and donation systems — secure, fast and PCI-compliant."
+        "tagline": "Card payment integrations",
+        "description": "We connect websites, online stores and applications with Stripe, Corvus and Monri. Each integration is tailored to your business and chosen payment provider."
       },
       "primeaudit": {
         "name": "PrimeAudit",
-        "tagline": "SEO and technical website analysis",
-        "description": "Free analysis of SEO, speed and technical issues on your website with concrete recommendations for improvement."
+        "tagline": "SEO and technical analysis",
+        "description": "Paid SEO and technical analysis, priced on enquiry. A review of content, indexing, speed and technical settings, with recommendations based on the agreed scope. Search rankings are not guaranteed."
       },
       "primedemo": {
         "name": "PrimeDemo",
-        "tagline": "Quick redesign proposals",
-        "description": "A demo of how your existing website could look after a redesign — before you make a decision."
+        "tagline": "Free personalised demo",
+        "description": "For websites and webshops, we prepare a free personalised homepage concept, with no obligation."
       }
     }
   },
@@ -616,8 +633,8 @@
         "description": "Custom CRM and internal tools that match your processes — no per-user licenses, no unnecessary modules."
       },
       "stripe": {
-        "title": "Stripe payments and subscriptions",
-        "description": "Setting up payments, subscriptions and donation systems via Stripe — secure and PCI-compliant."
+        "title": "Card payment integrations",
+        "description": "Online payment integration: Stripe, Corvus and Monri."
       },
       "seo": {
         "title": "SEO and technical optimization",
@@ -667,7 +684,7 @@
       "redesign": "Redesign of existing website",
       "crm": "CRM system",
       "webapp": "Web application",
-      "stripe": "Stripe integration",
+      "stripe": "Card payment integration",
       "seo": "SEO analysis"
     },
     "name": "Full name",
@@ -731,11 +748,15 @@
       },
       "stripe-integracije": {
         "title": "Stripe integrations",
-        "description": "Implementation of Stripe payments, subscriptions and Connect platforms. Secure, fast and PCI-compliant."
+        "description": "Implementation of Stripe payments, subscriptions and Connect platforms within the agreed scope."
       },
       "saas-razvoj": {
         "title": "SaaS development",
         "description": "SaaS product development from idea to production. MVP, scalable architecture, subscriptions and user onboarding."
+      },
+      "integracije-karticnog-placanja": {
+        "title": "Card payment integrations",
+        "description": "We connect websites, online stores and applications with Stripe, Corvus and Monri. Each integration is tailored to your business and chosen payment provider."
       }
     }
   },
@@ -982,5 +1003,127 @@
       "adsTitle": "Bringing in clients (ads)",
       "adsDesc": "Google and Meta ads aimed at your target audience — the site and ads work together as one system."
     }
+  },
+  "paymentServiceUi": {
+    "quote": "Request a quote",
+    "call": "Arrange a short call",
+    "forWhom": "Who this service is for",
+    "includes": "What is included",
+    "examples": "Typical examples",
+    "process": "Our process",
+    "step": "Step",
+    "related": "Related services",
+    "view": "View service",
+    "ctaDescription": "We respond to your enquiry within two business days. Project and personalised demo delivery times are agreed individually."
+  },
+  "approved": {
+    "headline": "Websites, webshops and applications for your business",
+    "intro": "We build custom web solutions, from business websites and webshops to CRM systems and card payment integrations.",
+    "demo": "For websites and webshops, we prepare a free personalised homepage concept, with no obligation.",
+    "cta": "Request a quote and free demo",
+    "quote": "Request a quote",
+    "reply": "We respond to your enquiry within two business days.",
+    "terms": "Hosting and maintenance are included for 12 months from launch. Support scope and renewal terms are defined in each proposal.",
+    "timing": "Project and personalised demo delivery times are agreed individually.",
+    "price": "Pricing on enquiry, based on the agreed project scope.",
+    "projects": "Selected projects",
+    "portfolio": "View the full portfolio",
+    "projectTypes": [
+      "Business website",
+      "Webshop",
+      "Custom application · our own product"
+    ],
+    "services": "Services",
+    "groups": [
+      "Websites and webshops",
+      "Business applications",
+      "Integrations and support"
+    ],
+    "demos": "Explore demo examples",
+    "fictional": "Explore design and content for three different industries. These are demonstration examples with fictional content, separate from real client projects.",
+    "demoLabel": "Demonstration example",
+    "demoNewTab": " (opens in a new tab)",
+    "demoExamples": {
+      "fitness": {
+        "name": "Fitness Trainer",
+        "description": "Personal training: an introduction to training programmes, services and coaching.",
+        "previewAlt": "Screenshot of the Marko Horvat fitness trainer demo website"
+      },
+      "parking": {
+        "name": "Parking",
+        "description": "Parking services: a guide to sample locations, prices and information for drivers.",
+        "previewAlt": "Screenshot of the Parking demo website showcasing parking services"
+      },
+      "fastFood": {
+        "name": "Fast Food",
+        "description": "Fast food: a showcase of burgers, the menu and delivery information.",
+        "previewAlt": "Screenshot of the Burger Bro fast food demo website"
+      }
+    },
+    "openDemo": "Open demo in a new tab",
+    "catalogue": "Explore all demo examples",
+    "process": "How we work together",
+    "steps": [
+      "Send an enquiry",
+      "Receive a quote and personalised demo",
+      "Development to the agreed scope",
+      "Launch and support"
+    ],
+    "stepText": [
+      "Tell us what you need. We respond within two business days.",
+      "We agree scope, price and delivery times. For websites and webshops, we prepare a free homepage concept.",
+      "We build according to the accepted proposal, with direct communication and agreed reviews.",
+      "We launch your solution and provide support under the proposal terms. Hosting and maintenance are included for 12 months from launch."
+    ],
+    "faq": "Frequently asked questions",
+    "questions": [
+      "How much does development cost?",
+      "What does the free demo include?",
+      "How long does development take?",
+      "Is maintenance included?",
+      "What happens after the first 12 months?"
+    ],
+    "answers": [
+      "Pricing is provided on enquiry, based on functionality and the agreed scope.",
+      "A free personalised homepage concept for a website or webshop, with no obligation. It does not include building the entire project.",
+      "Project and demo delivery times are agreed individually, based on scope and content availability.",
+      "Hosting and maintenance are included for 12 months from launch, within the scope defined in the proposal.",
+      "Renewal terms, scope and pricing are defined in each proposal."
+    ],
+    "contact": "Contact",
+    "name": "Full name",
+    "email": "Email",
+    "service": "What do you need?",
+    "website": "Website / domain (optional)",
+    "message": "Message / requirements (optional)",
+    "extra": "Additional details (optional)",
+    "phone": "Phone (optional)",
+    "budget": "Budget (optional)",
+    "deadline": "Preferred deadline (optional)",
+    "send": "Send enquiry",
+    "sending": "Sending…",
+    "thanks": "Thank you for your enquiry!",
+    "nameError": "Enter your full name",
+    "emailError": "Invalid email address",
+    "serviceError": "Select a service.",
+    "error": "Please check your details.",
+    "failed": "Sending failed. Please try again or contact us directly.",
+    "navExamples": "Examples",
+    "solutions": "Our solutions",
+    "links": "Useful links",
+    "country": "Croatia",
+    "audit": "PrimeAudit — SEO and technical analysis",
+    "auditText": "Paid SEO and technical analysis, priced on enquiry. A review of content, indexing, speed and technical settings, with recommendations based on the agreed scope. Search rankings are not guaranteed.",
+    "previewArt": "Visual from the demo example",
+    "offer": "A proposal tailored to your project"
+  },
+  "enquiryServices": {
+    "Izrada web stranica": "New website",
+    "Redizajn web stranica": "Website redesign",
+    "Web trgovina": "Webshop",
+    "CRM sustav": "CRM system",
+    "Web aplikacija": "Web application",
+    "Stripe integracija": "Card payment integration",
+    "SEO analiza": "SEO analysis (paid)"
   }
 }

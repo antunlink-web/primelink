@@ -1,89 +1,29 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Code2, ShieldCheck, Zap } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import HeroMockup from "./HeroMockup";
-
-const Hero = () => {
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { selectedProjects } from "@/data/selected-projects";
+export default function Hero() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
-  
-  return (
-    <section className="relative min-h-[92vh] flex items-center pt-28 pb-20 overflow-hidden bg-background">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[var(--gradient-dark)]" />
-      <div className="absolute inset-0 bg-[var(--gradient-mesh)]" />
-      <div className="hidden lg:block absolute top-1/4 -left-32 w-[520px] h-[520px] bg-primary/10 rounded-full blur-[160px]" />
-      <div className="hidden lg:block absolute bottom-0 right-0 w-[420px] h-[420px] bg-accent/8 rounded-full blur-[150px]" />
-      {/* Subtle grid */}
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:48px_48px]"
-      />
-
-      <div className="container mx-auto px-4 z-10 relative">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-10 items-center">
-          {/* Left: copy */}
-          <div className="text-center lg:text-left animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-border bg-secondary/50 text-muted-foreground text-xs sm:text-sm mb-7">
-              <Code2 className="h-3.5 w-3.5 text-primary" />
-              <span>{t('hero.badge')}</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-5 leading-[1.05] tracking-tight">
-              {t('hero.title')}
-              <span className="block mt-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                {t('hero.titleHighlight')}
-              </span>
-            </h1>
-
-            <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              {t('hero.description')}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-10">
-              <Button
-                size="lg"
-                onClick={() => navigate('/ponuda/forma')}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground text-base px-7 py-6 shadow-[var(--shadow-glow)] hover:shadow-[var(--shadow-glow-strong)] transition-all hover:scale-[1.02]"
-              >
-                {t('hero.scheduleConsultation')}
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => navigate('/besplatna-seo-analiza')}
-                className="border border-border bg-secondary/30 text-foreground hover:bg-secondary/60 text-base px-7 py-6 transition-all"
-              >
-                {t('hero.viewSolutions')}
-              </Button>
-            </div>
-
-            {/* Quick value bullets */}
-            <ul className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 text-xs sm:text-sm text-muted-foreground">
-              <li className="inline-flex items-center gap-1.5">
-                <ShieldCheck className="h-3.5 w-3.5 text-accent" /> Fiksne ponude
-              </li>
-              <li className="inline-flex items-center gap-1.5">
-                <Zap className="h-3.5 w-3.5 text-accent" /> Brza isporuka
-              </li>
-              <li className="inline-flex items-center gap-1.5">
-                <Code2 className="h-3.5 w-3.5 text-accent" /> React · Stripe · Postgres
-              </li>
-            </ul>
-          </div>
-
-          {/* Right: dashboard mockup */}
-          <div className="hidden lg:block animate-fade-in-up [animation-delay:120ms]">
-            <HeroMockup />
-          </div>
-        </div>
+  return <section className="relative isolate overflow-hidden pt-32 pb-16 md:pt-44 md:pb-24 bg-background">
+    {/* Decorative layers stay behind the content and cannot intercept clicks. */}
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-dark)]" />
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-mesh)]" />
+    <div aria-hidden="true" className="pointer-events-none hidden lg:block absolute top-1/4 -left-32 w-[520px] h-[520px] bg-primary/10 rounded-full blur-[160px]" />
+    <div aria-hidden="true" className="pointer-events-none hidden lg:block absolute bottom-0 right-0 w-[420px] h-[420px] bg-accent/[0.08] rounded-full blur-[150px]" />
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.04] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:48px_48px]" />
+    {/* Match the selected-projects section's card background at the boundary. */}
+    <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-card to-transparent" />
+    <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 items-center gap-12 lg:gap-16">
+      <div className="min-w-0 motion-safe:animate-fade-in-up motion-safe:[animation-fill-mode:both]"><p className="text-primary font-medium mb-5">PrimeLink · Zagreb</p>
+        <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.12] mb-6">{t('approved.headline')}</h1>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-8">{t('approved.intro')}</p>
+        <Button asChild size="lg" className="h-auto whitespace-normal text-center py-4"><Link to="/ponuda/forma">{t('approved.cta')}</Link></Button>
+        <p className="text-sm text-muted-foreground leading-relaxed mt-5 max-w-lg">{t('approved.demo')}</p>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent z-10" />
-    </section>
-  );
-};
-
-export default Hero;
+      <div className="space-y-5 min-w-0 motion-safe:animate-fade-in-up motion-safe:[animation-delay:120ms] motion-safe:[animation-fill-mode:both]">{selectedProjects.slice(0,2).map((p,i)=><figure key={p.name} className={`overflow-hidden rounded-xl border border-border bg-card shadow-xl ${i ? 'ml-8 md:ml-16' : 'mr-4'}`}>
+        <img src={p.image} alt={p.name} width="1440" height="900" fetchPriority={i===0?'high':undefined} className="w-full aspect-[16/8] object-cover object-top" />
+        <figcaption className="px-4 py-3 text-sm">{p.name} <span className="text-muted-foreground">· {t(`approved.projectTypes.${i}`)}</span></figcaption>
+      </figure>)}</div>
+    </div>
+  </section>;
+}

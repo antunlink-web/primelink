@@ -15,8 +15,8 @@
     "description": "PrimeLink pomaže tvrtkama modernizirati web nastup, automatizirati procese i razviti digitalne alate koji imaju stvarnu poslovnu vrijednost.",
     "scheduleConsultation": "Zatražite ponudu",
     "viewSolutions": "Besplatna SEO analiza",
-    "support247": "Stripe integracije",
-    "supportBenefit": "Plaćanja i pretplate u SaaS-u",
+    "support247": "Integracije kartičnog plaćanja",
+    "supportBenefit": "Integracija sustava za online plaćanje: Stripe, Corvus i Monri.",
     "enterpriseSecurity": "CRM i web aplikacije",
     "securityBenefit": "Custom alati za vaš tim",
     "cloudInfrastructure": "Web stranice od 499€",
@@ -227,7 +227,7 @@
   },
   "contact": {
     "title": "Razgovarajmo o vašem projektu",
-    "description": "Pošaljite kratki opis projekta ili postojeću web stranicu na procjenu — odgovaramo unutar 48 sati",
+    "description": "Na vaš upit odgovaramo u roku od dva radna dana.",
     "email": "Email",
     "call": "Telefon",
     "visit": "Lokacija",
@@ -343,12 +343,18 @@
     "filterAutomation": "Automatizacija",
     "filterWeb": "Web Aplikacije",
     "filterIntegrations": "Integracije",
+    "loadMore_one": "Prikaži još {{count}} projekt",
+    "loadMore_few": "Prikaži još {{count}} projekta",
+    "loadMore_other": "Prikaži još {{count}} projekata",
+    "showLess": "Prikaži manje",
+    "projectsLabel": "Projekti",
+    "showingProjects": "Prikazani projekti: {{shown}} / {{total}}.",
     "visitSite": "Posjeti stranicu",
     "trustTitle": "Vjeruju nam startupi i poduzeća koja grade skalabilne digitalne proizvode",
     "clientPlaceholder": "Klijent",
     "ctaTitle": "Imate projekt na umu?",
-    "ctaDescription": "Dizajniramo i gradimo skalabilne platforme, sustave automatizacije i prilagođeni softver.",
-    "ctaStart": "Pokrenite projekt",
+    "ctaDescription": "Za web stranice i web trgovine pripremamo besplatan personalizirani prijedlog početne stranice, bez obveze.",
+    "ctaStart": "Zatražite ponudu i besplatni demo",
     "ctaConsult": "Zakažite konzultaciju",
     "luxurysecondhand": {
       "description": "Redizajn i migracija postojećeg webshopa za rabljenu luksuznu modu i modne dodatke, uz očuvanje kataloga proizvoda, prikaz dizajnerskih torbi i luksuznih artikala te košaricu i naručivanje.",
@@ -402,17 +408,33 @@
       "description": "Sudski tumač za slovenski jezik — prijevodi, tumačenje i učenje slovenskog jezika uz individualan pristup.",
       "industry": "Prijevodi & Jezici"
     },
-    "airwolt": {
-      "description": "Prodaja, servis i montaža klima uređaja te elektroinstalaterski radovi za kućanstva i tvrtke.",
-      "industry": "HVAC & Elektro"
+    "alphamedical": {
+      "description": "Redizajn poslovne web stranice za ALPHA-MEDICAL d.o.o., farmaceutsku tvrtku iz Zagreba, s pregledom usluga registracije lijekova, pristupa tržištu i distribucije, portfeljem lijekova te informacijama o partnerima, kvaliteti i kontaktu.",
+      "industry": "Farmaceutika"
+    },
+    "iskrasvjetlosti": {
+      "description": "Web stranica Udruge Iskra Svjetlosti, koja podržava djecu i mlade kroz kreativne radionice, inkluziju, volontiranje i aktivnosti u zajednici, s informacijama o radu udruge i mogućnostima doniranja.",
+      "industry": "Udruge & Zajednica"
+    },
+    "jedra": {
+      "description": "Web stranica udruge Jedra s informacijama i edukativnim sadržajem o raku pluća, podrškom oboljelima i njihovim obiteljima te pregledom projekata, novosti i mogućnosti doniranja.",
+      "industry": "Udruge & Zdravlje"
+    },
+    "livia": {
+      "description": "Web stranica za LIVIA d.o.o., hrvatsku holding tvrtku u sektoru zdravstva i farmaceutike, s pregledom grupe, organizacije i tvrtki članica te kontakt podacima.",
+      "industry": "Zdravstvo & Farmaceutika"
+    },
+    "maratea": {
+      "description": "Web stranica instituta Maratea u zagrebačkom Parku Kneževa s pregledom tretmana lica i tijela, laserske epilacije, manikure i pedikure te poveznicama na pakete, cjenik i rezervaciju termina.",
+      "industry": "Ljepota & Njega"
+    },
+    "uprocesu": {
+      "description": "Web stranica centra za anksioznost i savjetovanje U Procesu s predstavljanjem Emilije Habulin te poveznicama na područja rada, edukacije i radionice, cjenik i kontakt, uz odabir hrvatskog i engleskog jezika.",
+      "industry": "Mentalno zdravlje & Savjetovanje"
     },
     "infinityservices": {
       "description": "Profesionalno čišćenje i održavanje apartmana, hotela i poslovnih prostora u Zadru i okolici.",
       "industry": "Čišćenje & Održavanje"
-    },
-    "konzaltingprimelink": {
-      "description": "Konzultantske usluge za ruskogovorne klijente u Hrvatskoj — otvaranje tvrtki, dokumenti i prevođenje.",
-      "industry": "Konzalting & Pravne usluge"
     },
     "prika": {
       "description": "Ekstra djevičansko maslinovo ulje iz Čiste Velike — obiteljski maslinik i ekološka proizvodnja.",
@@ -425,10 +447,6 @@
     "udrugalumen": {
       "description": "Edukacijske radionice za djecu — 3D printanje, skeniranje i kreativna primjena moderne tehnologije.",
       "industry": "Edukacija & Djeca"
-    },
-    "voltapp": {
-      "description": "Platforma za EV punionice — postavljanje, održavanje i upravljanje punionicama za partnerske lokacije.",
-      "industry": "EV punionice & SaaS"
     },
     "yogawithnika": {
       "description": "Web stranica za joga instruktoricu — satovi, radionice i online rezervacije uz miran, moderan dizajn.",
@@ -503,7 +521,7 @@
       "redesign": "Redizajn web stranica",
       "webapp": "Web aplikacije",
       "crm": "CRM sustavi",
-      "stripe": "Stripe integracije",
+      "stripe": "Integracije kartičnog plaćanja",
       "saas": "SaaS razvoj",
       "seo": "SEO optimizacija"
     },
@@ -514,7 +532,7 @@
       },
       "primepay": {
         "label": "PrimePay",
-        "desc": "Stripe & naplate"
+        "desc": "Integracije kartičnog plaćanja"
       },
       "primeaudit": {
         "label": "PrimeAudit",
@@ -545,7 +563,7 @@
     "label": "Što radimo",
     "web": "Web stranice",
     "crm": "CRM sustavi",
-    "stripe": "Stripe integracije",
+    "stripe": "Integracije kartičnog plaćanja",
     "seo": "SEO optimizacija",
     "saas": "SaaS razvoj",
     "maintenance": "Održavanje"
@@ -573,28 +591,28 @@
   },
   "solutionsSection": {
     "badge": "Rješenja",
-    "title": "Gotovi proizvodi PrimeLinka",
-    "subtitle": "Ne gradimo samo web stranice. Razvijamo poslovne sustave koji rješavaju konkretne probleme — od CRM-a i naplata do SEO i redizajna.",
+    "title": "Naša rješenja",
+    "subtitle": "Cijena na upit, prema dogovorenom opsegu projekta.",
     "items": {
       "primecrm": {
         "name": "PrimeCRM",
-        "tagline": "CRM platforma za prodaju i operativu",
-        "description": "CRM sustavi za prodaju, donacije, evidenciju klijenata i interne procese. Bez licenci po korisniku i bez nepotrebnih modula."
+        "tagline": "CRM sustavi po mjeri",
+        "description": "Procesi i funkcionalnosti prema vašem poslovanju."
       },
       "primepay": {
         "name": "PrimePay",
-        "tagline": "Stripe naplate, pretplate i donacije",
-        "description": "Stripe integracije, pretplate, online plaćanja i donacijski sustavi — sigurno, brzo i u skladu s PCI standardima."
+        "tagline": "Integracije kartičnog plaćanja",
+        "description": "Povezujemo web stranice, web trgovine i aplikacije sa sustavima Stripe, Corvus i Monri. Rješenje prilagođavamo vašem poslovanju i odabranom pružatelju usluge plaćanja."
       },
       "primeaudit": {
         "name": "PrimeAudit",
-        "tagline": "SEO i tehnička analiza web stranica",
-        "description": "Besplatna analiza SEO, brzine i tehničkih problema vaše web stranice s konkretnim prijedlozima poboljšanja."
+        "tagline": "SEO i tehnička analiza",
+        "description": "Plaćena SEO i tehnička analiza na upit. Pregled sadržaja, indeksiranja, brzine i tehničkih postavki, uz preporuke prema dogovorenom opsegu. Ne jamčimo pozicije na tražilicama."
       },
       "primedemo": {
         "name": "PrimeDemo",
-        "tagline": "Brzi prijedlozi redizajna",
-        "description": "Demo prijedlog kako bi vaša postojeća web stranica mogla izgledati nakon redizajna — prije nego donesete odluku."
+        "tagline": "Besplatni personalizirani demo",
+        "description": "Za web stranice i web trgovine pripremamo besplatan personalizirani prijedlog početne stranice, bez obveze."
       }
     }
   },
@@ -616,8 +634,8 @@
         "description": "Custom CRM i interni alati koji prate vaše procese — bez licenci po korisniku i bez nepotrebnih modula."
       },
       "stripe": {
-        "title": "Stripe naplate i pretplate",
-        "description": "Postavljanje plaćanja, pretplata i donacijskih sustava preko Stripea — sigurno i u skladu s PCI standardima."
+        "title": "Integracije kartičnog plaćanja",
+        "description": "Integracija sustava za online plaćanje: Stripe, Corvus i Monri."
       },
       "seo": {
         "title": "SEO i tehnička optimizacija",
@@ -667,7 +685,7 @@
       "redesign": "Redizajn postojeće web stranice",
       "crm": "CRM sustav",
       "webapp": "Web aplikacija",
-      "stripe": "Stripe integracija",
+      "stripe": "Integracija kartičnog plaćanja",
       "seo": "SEO analiza"
     },
     "name": "Ime i prezime",
@@ -731,11 +749,15 @@
       },
       "stripe-integracije": {
         "title": "Stripe integracije",
-        "description": "Implementacija Stripe plaćanja, pretplata i Connect platformi. Sigurno, brzo i u skladu s PCI standardima."
+        "description": "Implementacija Stripe plaćanja, pretplata i Connect platformi prema dogovorenom opsegu."
       },
       "saas-razvoj": {
         "title": "SaaS razvoj",
         "description": "Razvoj SaaS proizvoda od ideje do produkcije. MVP, skalabilna arhitektura, pretplate i onboarding korisnika."
+      },
+      "integracije-karticnog-placanja": {
+        "title": "Integracije kartičnog plaćanja",
+        "description": "Povezujemo web stranice, web trgovine i aplikacije sa sustavima Stripe, Corvus i Monri. Rješenje prilagođavamo vašem poslovanju i odabranom pružatelju usluge plaćanja."
       }
     }
   },
@@ -982,5 +1004,127 @@
       "adsTitle": "Dovođenje klijenata (oglasi)",
       "adsDesc": "Google i Meta oglasi usmjereni na vašu ciljanu publiku — stranica i oglasi rade kao jedan sustav."
     }
+  },
+  "paymentServiceUi": {
+    "quote": "Zatražite ponudu",
+    "call": "Dogovorite kratki poziv",
+    "forWhom": "Za koga je ova usluga",
+    "includes": "Što je uključeno",
+    "examples": "Tipični primjeri",
+    "process": "Kako izgleda proces",
+    "step": "Korak",
+    "related": "Povezane usluge",
+    "view": "Pogledajte uslugu",
+    "ctaDescription": "Na vaš upit odgovaramo u roku od dva radna dana. Rokove izrade projekta i personaliziranog demo prijedloga dogovaramo pojedinačno."
+  },
+  "approved": {
+    "headline": "Web stranice, web trgovine i aplikacije za vaše poslovanje",
+    "intro": "Izrađujemo web rješenja po mjeri, od poslovnih stranica i web trgovina do CRM sustava i integracija kartičnog plaćanja.",
+    "demo": "Za web stranice i web trgovine pripremamo besplatan personalizirani prijedlog početne stranice, bez obveze.",
+    "cta": "Zatražite ponudu i besplatni demo",
+    "quote": "Zatražite ponudu",
+    "reply": "Na vaš upit odgovaramo u roku od dva radna dana.",
+    "terms": "Hosting i održavanje uključeni su 12 mjeseci od objave. Opseg podrške i uvjeti obnove definiraju se u svakoj ponudi.",
+    "timing": "Rokove izrade projekta i personaliziranog demo prijedloga dogovaramo pojedinačno.",
+    "price": "Cijena na upit, prema dogovorenom opsegu projekta.",
+    "projects": "Odabrani projekti",
+    "portfolio": "Pogledajte cijeli portfolio",
+    "projectTypes": [
+      "Poslovna web stranica",
+      "Web trgovina",
+      "Aplikacija po mjeri · naš vlastiti proizvod"
+    ],
+    "services": "Usluge",
+    "groups": [
+      "Web stranice i web trgovine",
+      "Poslovne aplikacije",
+      "Integracije i podrška"
+    ],
+    "demos": "Istražite demo primjere",
+    "fictional": "Istražite dizajn i sadržaj za tri različite djelatnosti. Ovo su demonstracijski primjeri s fiktivnim sadržajem, odvojeni od stvarnih projekata za klijente.",
+    "demoLabel": "Demonstracijski primjer",
+    "demoNewTab": " (otvara se u novoj kartici)",
+    "demoExamples": {
+      "fitness": {
+        "name": "Fitness trener",
+        "description": "Osobni trener: predstavljanje programa treninga, usluga i načina suradnje.",
+        "previewAlt": "Snimka zaslona demo stranice fitness trenera Marka Horvata"
+      },
+      "parking": {
+        "name": "Parking",
+        "description": "Parking usluge: pregled oglednih lokacija, cijena i informacija za vozače.",
+        "previewAlt": "Snimka zaslona demo stranice Parking s pregledom parking usluga"
+      },
+      "fastFood": {
+        "name": "Fast Food",
+        "description": "Brza hrana: predstavljanje burgera, jelovnika i informacija o dostavi.",
+        "previewAlt": "Snimka zaslona demo stranice brze hrane Burger Bro"
+      }
+    },
+    "openDemo": "Otvori demo u novoj kartici",
+    "catalogue": "Pogledajte sve demo primjere",
+    "process": "Kako surađujemo",
+    "steps": [
+      "Pošaljite upit",
+      "Dobijte ponudu i personalizirani demo",
+      "Izrada prema dogovorenom opsegu",
+      "Objava i podrška"
+    ],
+    "stepText": [
+      "Recite nam što trebate. Na upit odgovaramo u roku od dva radna dana.",
+      "Dogovaramo opseg, cijenu i rokove. Za web stranice i web trgovine pripremamo besplatan prijedlog početne stranice.",
+      "Izrađujemo rješenje prema prihvaćenoj ponudi, uz izravnu komunikaciju i dogovorene provjere.",
+      "Objavljujemo rješenje i pružamo podršku prema uvjetima ponude. Hosting i održavanje uključeni su 12 mjeseci od objave."
+    ],
+    "faq": "Česta pitanja",
+    "questions": [
+      "Koliko košta izrada?",
+      "Što uključuje besplatni demo?",
+      "Koliko traje izrada?",
+      "Je li održavanje uključeno?",
+      "Što nakon prvih 12 mjeseci?"
+    ],
+    "answers": [
+      "Cijenu definiramo na upit, prema funkcionalnostima i dogovorenom opsegu.",
+      "Besplatan personalizirani prijedlog početne stranice za web stranicu ili web trgovinu, bez obveze. Ne uključuje izradu cijelog projekta.",
+      "Rokove projekta i demo prijedloga dogovaramo pojedinačno, prema opsegu i dostupnosti sadržaja.",
+      "Hosting i održavanje uključeni su 12 mjeseci od objave, u opsegu definiranom ponudom.",
+      "Uvjeti, opseg i cijena obnove definiraju se u svakoj ponudi."
+    ],
+    "contact": "Kontakt",
+    "name": "Ime i prezime",
+    "email": "Email",
+    "service": "Što trebate?",
+    "website": "Web stranica / domena (neobavezno)",
+    "message": "Poruka / zahtjevi (neobavezno)",
+    "extra": "Dodatni podaci (neobavezno)",
+    "phone": "Telefon (neobavezno)",
+    "budget": "Budžet (neobavezno)",
+    "deadline": "Željeni rok (neobavezno)",
+    "send": "Pošaljite upit",
+    "sending": "Šaljem…",
+    "thanks": "Hvala na upitu!",
+    "nameError": "Unesite ime i prezime",
+    "emailError": "Neispravna e-mail adresa",
+    "serviceError": "Odaberite uslugu.",
+    "error": "Provjerite unesene podatke.",
+    "failed": "Slanje nije uspjelo. Pokušajte ponovno ili nas kontaktirajte direktno.",
+    "navExamples": "Primjeri",
+    "solutions": "Naša rješenja",
+    "links": "Korisni linkovi",
+    "country": "Hrvatska",
+    "audit": "PrimeAudit — SEO i tehnička analiza",
+    "auditText": "Plaćena SEO i tehnička analiza na upit. Pregled sadržaja, indeksiranja, brzine i tehničkih postavki, uz preporuke prema dogovorenom opsegu. Ne jamčimo pozicije na tražilicama.",
+    "previewArt": "Vizual iz demo primjera",
+    "offer": "Ponuda prema vašem projektu"
+  },
+  "enquiryServices": {
+    "Izrada web stranica": "Izrada web stranica",
+    "Redizajn web stranica": "Redizajn web stranica",
+    "Web trgovina": "Web trgovina",
+    "CRM sustav": "CRM sustav",
+    "Web aplikacija": "Web aplikacija",
+    "Stripe integracija": "Stripe integracija",
+    "SEO analiza": "SEO analiza (plaćena)"
   }
 }
