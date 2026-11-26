@@ -9,7 +9,6 @@ const PortfolioPage = lazy(() => import("./pages/PortfolioPage"));
 const QuoteFormPage = lazy(() => import("./pages/QuoteFormPage"));
 const ServicePage = lazy(() => import("./pages/ServicePage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
-const SeoAuditPage = lazy(() => import("./pages/SeoAuditPage"));
 
 const LegacyRedirect = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -28,7 +27,8 @@ const App = () => (
           <Route path="/ponuda/forma" element={<QuoteFormPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/kontakt" element={<ContactPage />} />
-          <Route path="/besplatna-seo-analiza" element={<SeoAuditPage />} />
+          <Route path="/besplatna-seo-analiza" element={<Navigate to="/ponuda/forma" replace />} />
+          <Route path="/usluge/besplatna-seo-analiza" element={<Navigate to="/ponuda/forma" replace />} />
 
           <Route path="/izrada-web-trgovina" element={<ServicePage fixedSlug="izrada-web-trgovina" />} />
           <Route path="/hosting-odrzavanje" element={<ServicePage fixedSlug="hosting-odrzavanje" />} />

@@ -16,13 +16,11 @@ const usluge = [
   { label: "CRM sustavi", to: "/izrada-crm-sustava" },
   { label: "Integracije kartičnog plaćanja", to: "/integracije-karticnog-placanja" },
   { label: "SaaS razvoj", to: "/saas-razvoj" },
-  { label: "SEO optimizacija", to: "/besplatna-seo-analiza" },
 ];
 
 const rjesenja = [
   { label: "PrimeCRM", desc: "CRM sustavi", to: "/izrada-crm-sustava" },
   { label: "PrimePay", desc: "Integracije kartičnog plaćanja", to: "/integracije-karticnog-placanja" },
-  { label: "PrimeAudit", desc: "SEO analiza", to: "/besplatna-seo-analiza" },
   { label: "PrimeDemo", desc: "Demo redizajni", to: "/redizajn-web-stranice" },
 ];
 
@@ -30,7 +28,7 @@ const Header = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  const quoteOnly = ["/izrada-crm-sustava", "/izrada-web-aplikacija", "/saas-razvoj", "/integracije-karticnog-placanja", "/stripe-integracije", "/besplatna-seo-analiza", "/hosting-odrzavanje"].includes(location.pathname);
+  const quoteOnly = ["/izrada-crm-sustava", "/izrada-web-aplikacija", "/saas-razvoj", "/integracije-karticnog-placanja", "/stripe-integracije", "/hosting-odrzavanje"].includes(location.pathname);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNavClick = (sectionId: string) => {
@@ -82,7 +80,7 @@ const Header = () => {
                     onClick={(e) => { e.preventDefault(); handlePageNav(s.to); }}
                     className="block px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
                   >
-                    {getService(s.to.slice(1), i18n.language)?.navTitle || t("approved.audit")}
+                    {getService(s.to.slice(1), i18n.language)?.navTitle}
                   </a>
                 ))}
               </div>
@@ -113,7 +111,6 @@ const Header = () => {
 
           <a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Portfolio</a>
           <a href="https://demo.primelink.com.hr/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t("approved.navExamples")}</a>
-          <a href="/besplatna-seo-analiza" onClick={(e) => { e.preventDefault(); navigate('/besplatna-seo-analiza'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t("headerNav.services_items.seo", "SEO")}</a>
           <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t("approved.contact")}</a>
         </nav>
 
@@ -131,7 +128,7 @@ const Header = () => {
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-1">
             <div className="px-2 pt-3 pb-1 text-[11px] uppercase tracking-widest text-muted-foreground/70 font-semibold">{t("approved.services")}</div>
             {usluge.map((s) => (
-              <a key={s.to} href={s.to} onClick={(e) => { e.preventDefault(); handlePageNav(s.to); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary text-sm">{getService(s.to.slice(1), i18n.language)?.navTitle || t("approved.audit")}</a>
+              <a key={s.to} href={s.to} onClick={(e) => { e.preventDefault(); handlePageNav(s.to); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary text-sm">{getService(s.to.slice(1), i18n.language)?.navTitle}</a>
             ))}
             <div className="px-2 pt-4 pb-1 text-[11px] uppercase tracking-widest text-muted-foreground/70 font-semibold">{t("approved.solutions")}</div>
             {rjesenja.map((s) => (
@@ -140,7 +137,6 @@ const Header = () => {
             <div className="h-px bg-border my-3" />
             <a href="/portfolio" onClick={(e) => { e.preventDefault(); handlePageNav('/portfolio'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">Portfolio</a>
             <a href="https://demo.primelink.com.hr/" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">{t("approved.navExamples")}</a>
-            <a href="/besplatna-seo-analiza" onClick={(e) => { e.preventDefault(); handlePageNav('/besplatna-seo-analiza'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">{t("headerNav.services_items.seo", "SEO")}</a>
             <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">{t("approved.contact")}</a>
             <Button className="w-full mt-3" onClick={() => { setMobileOpen(false); navigate('/ponuda/forma'); }}>{t(quoteOnly ? "approved.quote" : "approved.cta")}</Button>
           </nav>

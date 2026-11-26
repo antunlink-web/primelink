@@ -57,15 +57,6 @@ export const pageSeo: Record<string, SeoMetadata> = {
     "ogDescription": "Kontaktirajte PrimeLink za izradu web stranica, web aplikacija, CRM sustava i SaaS proizvoda.",
     "ogUrl": "https://primelink.hr/kontakt",
     "ogType": "website"
-  },
-  "/besplatna-seo-analiza": {
-    "title": "PrimeAudit — SEO i tehnička analiza | PrimeLink",
-    "description": "PrimeAudit: plaćena SEO i tehnička analiza na upit. Opseg i rokovi definiraju se ponudom.",
-    "canonical": "https://primelink.hr/besplatna-seo-analiza",
-    "ogTitle": "PrimeAudit — SEO i tehnička analiza | PrimeLink",
-    "ogDescription": "SEO i tehnička analiza prema dogovorenom opsegu. Cijena na upit.",
-    "ogUrl": "https://primelink.hr/besplatna-seo-analiza",
-    "ogType": "website"
   }
 };
 
@@ -87,7 +78,14 @@ export const notFoundSeo: SeoMetadata = {
   robots: "noindex, nofollow",
 };
 
-// App.tsx redirects ANY single slug, including non-service pages.
+// Retired marketing URLs stay reachable, but are not indexable public services.
+// Keep these destinations aligned with App.tsx, nginx.conf and public/_redirects.
+export const retiredRoutes = [
+  { path: "/besplatna-seo-analiza", target: "/ponuda/forma", status: 301 },
+  { path: "/usluge/besplatna-seo-analiza", target: "/ponuda/forma", status: 301 },
+] as const;
+
+// Other single-slug aliases keep their existing compatibility behavior.
 export const legacyRoutePattern = "/usluge/:slug";
 export const legacyRoutes = Object.keys(pageSeo)
   .filter((route) => /^\/[^/]+$/.test(route))
@@ -100,5 +98,4 @@ export const englishPageSeo: Record<string, { title: string; description: string
  "/ponuda/forma": { title: "Request a quote | PrimeLink", description: "Tell us about your project. We respond within two business days." },
  "/kontakt": { title: "Contact | PrimeLink", description: "Contact PrimeLink about your website, webshop or application. We respond within two business days." },
  "/portfolio": { title: "Project portfolio | PrimeLink", description: "Explore our websites, webshops and applications." },
- "/besplatna-seo-analiza": { title: "PrimeAudit — SEO and technical analysis | PrimeLink", description: "Paid SEO and technical analysis, priced on enquiry. Scope and delivery times defined in the proposal." },
 };

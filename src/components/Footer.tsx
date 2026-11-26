@@ -82,7 +82,6 @@ const Footer = () => {
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li><Link to="/izrada-crm-sustava" className="hover:text-foreground transition-colors">PrimeCRM</Link></li>
               <li><Link to="/integracije-karticnog-placanja" className="hover:text-foreground transition-colors">PrimePay</Link></li>
-              <li><Link to="/besplatna-seo-analiza" className="hover:text-foreground transition-colors">PrimeAudit</Link></li>
               <li><Link to="/izrada-web-trgovina" className="hover:text-foreground">{getService("izrada-web-trgovina", i18n.language)?.navTitle}</Link></li>
               <li><Link to="/redizajn-web-stranice" className="hover:text-foreground transition-colors">PrimeDemo</Link></li>
             </ul>
@@ -92,7 +91,6 @@ const Footer = () => {
             <h4 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">{t("approved.links")}</h4>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li><a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="hover:text-foreground transition-colors cursor-pointer">Portfolio</a></li>
-              <li><Link to="/besplatna-seo-analiza" className="hover:text-foreground transition-colors">{t("approved.audit")}</Link></li>
               <li><a href="/ponuda/forma" onClick={(e) => { e.preventDefault(); navigate('/ponuda/forma'); }} className="hover:text-foreground transition-colors cursor-pointer">{t("approved.quote")}</a></li>
               <li><a href="/#contact" onClick={(e) => { e.preventDefault(); goToSection('contact'); }} className="hover:text-foreground transition-colors cursor-pointer">{t("approved.contact")}</a></li>
             </ul>

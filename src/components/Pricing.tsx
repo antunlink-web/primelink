@@ -36,7 +36,6 @@ const Pricing = () => {
               {[
                 "Custom dizajn prilagođen brendu",
                 "Mobile-first i optimizirana brzina",
-                "Osnovna SEO optimizacija",
                 "Hosting, SSL i tehnička podrška",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-2 text-sm text-foreground/90">

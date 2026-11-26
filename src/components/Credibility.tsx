@@ -3,7 +3,6 @@ import {
   Eye,
   Users,
   CreditCard,
-  Search,
   ServerCog,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -13,7 +12,6 @@ const items = [
   { key: "demo", icon: Eye },
   { key: "crm", icon: Users },
   { key: "stripe", icon: CreditCard },
-  { key: "seo", icon: Search },
   { key: "hosting", icon: ServerCog },
 ] as const;
 

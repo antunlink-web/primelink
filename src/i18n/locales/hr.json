@@ -14,7 +14,7 @@
     "titleHighlight": "za tvrtke.",
     "description": "PrimeLink pomaže tvrtkama modernizirati web nastup, automatizirati procese i razviti digitalne alate koji imaju stvarnu poslovnu vrijednost.",
     "scheduleConsultation": "Zatražite ponudu",
-    "viewSolutions": "Besplatna SEO analiza",
+    "viewSolutions": "Pogledajte usluge",
     "support247": "Integracije kartičnog plaćanja",
     "supportBenefit": "Integracija sustava za online plaćanje: Stripe, Corvus i Monri.",
     "enterpriseSecurity": "CRM i web aplikacije",
@@ -67,7 +67,7 @@
     "benefit2": "Fiksne ponude i jasni rokovi — bez skrivenih troškova",
     "benefit3": "Tehnički stack: React, TypeScript, Postgres, Stripe",
     "benefit4": "Direktna komunikacija s ljudima koji rade na projektu",
-    "benefit5": "SEO i performanse ugrađene u proces, ne kao naknadna misao",
+    "benefit5": "Performanse ugrađene u proces izrade",
     "benefit6": "Dugoročna podrška i nadogradnje, ne 'isporučili i zaboravili'",
     "learnMore": "Saznajte više",
     "years": "Godina",
@@ -273,13 +273,11 @@
     "starterF2": "Hosting uključen",
     "starterF3": "SSL sigurnost",
     "starterF4": "Mobile optimizacija",
-    "starterF5": "Osnovni SEO",
     "starterF6": "Tehnička podrška",
     "businessF1": "Do 5 stranica",
     "businessF2": "Custom dizajn",
     "businessF3": "Hosting + SSL",
     "businessF4": "Optimizacija brzine",
-    "businessF5": "Osnovni SEO",
     "businessF6": "Tehnička podrška",
     "customF1": "Kompleksne web stranice",
     "customF2": "Rezervacijski sustavi",
@@ -507,7 +505,6 @@
     "services": "Usluge",
     "solutions": "Rješenja",
     "portfolio": "Portfolio",
-    "seoAudit": "Besplatna SEO analiza",
     "contact": "Kontakt",
     "requestQuote": "Zatražite ponudu",
     "openMenu": "Otvori izbornik",
@@ -518,8 +515,7 @@
       "webapp": "Web aplikacije",
       "crm": "CRM sustavi",
       "stripe": "Integracije kartičnog plaćanja",
-      "saas": "SaaS razvoj",
-      "seo": "SEO optimizacija"
+      "saas": "SaaS razvoj"
     },
     "solution_items": {
       "primecrm": {
@@ -529,10 +525,6 @@
       "primepay": {
         "label": "PrimePay",
         "desc": "Integracije kartičnog plaćanja"
-      },
-      "primeaudit": {
-        "label": "PrimeAudit",
-        "desc": "SEO analiza"
       },
       "primedemo": {
         "label": "PrimeDemo",
@@ -546,7 +538,6 @@
     "solutionsTitle": "Rješenja",
     "usefulLinksTitle": "Korisni linkovi",
     "portfolio": "Portfolio",
-    "seoAudit": "Besplatna SEO analiza",
     "requestQuote": "Zatražite ponudu",
     "contact": "Kontakt"
   },
@@ -560,7 +551,6 @@
     "web": "Web stranice",
     "crm": "CRM sustavi",
     "stripe": "Integracije kartičnog plaćanja",
-    "seo": "SEO optimizacija",
     "saas": "SaaS razvoj",
     "maintenance": "Održavanje"
   },
@@ -569,7 +559,7 @@
       "overview": "Pregled",
       "clients": "Klijenti",
       "payments": "Naplate",
-      "seo": "SEO",
+      "seo": "Održavanje",
       "reports": "Izvještaji"
     },
     "kpis": {
@@ -580,7 +570,7 @@
     "chartTitle": "Mjesečni rast prihoda",
     "tasks": {
       "t1": "Stripe pretplata aktivirana",
-      "t2": "SEO audit — 18 prijedloga",
+      "t2": "Održavanje web stranice",
       "t3": "Redizajn početne stranice"
     },
     "live": "Uživo · Uptime 99.9%"
@@ -600,11 +590,6 @@
         "tagline": "Integracije kartičnog plaćanja",
         "description": "Povezujemo web stranice, web trgovine i aplikacije sa sustavima Stripe, Corvus i Monri. Rješenje prilagođavamo vašem poslovanju i odabranom pružatelju usluge plaćanja."
       },
-      "primeaudit": {
-        "name": "PrimeAudit",
-        "tagline": "SEO i tehnička analiza",
-        "description": "Plaćena SEO i tehnička analiza na upit. Pregled sadržaja, indeksiranja, brzine i tehničkih postavki, uz preporuke prema dogovorenom opsegu. Ne jamčimo pozicije na tražilicama."
-      },
       "primedemo": {
         "name": "PrimeDemo",
         "tagline": "Besplatni personalizirani demo",
@@ -619,7 +604,7 @@
     "items": {
       "modernize": {
         "title": "Modernizacija zastarjelih web stranica",
-        "description": "Zamjena starih WordPress predložaka modernim, brzim i SEO čistim stranicama — bez gubitka pozicija."
+        "description": "Zamjena starih WordPress predložaka modernim i brzim stranicama, uz pažljivo planiranu migraciju."
       },
       "demo": {
         "title": "Demo prijedlozi prije odluke",
@@ -632,10 +617,6 @@
       "stripe": {
         "title": "Integracije kartičnog plaćanja",
         "description": "Integracija sustava za online plaćanje: Stripe, Corvus i Monri."
-      },
-      "seo": {
-        "title": "SEO i tehnička optimizacija",
-        "description": "Tehnički SEO, brzina učitavanja, Core Web Vitals i čista struktura — temelj za dugoročan organski rast."
       },
       "hosting": {
         "title": "Hosting, održavanje i podrška",
@@ -681,8 +662,7 @@
       "redesign": "Redizajn postojeće web stranice",
       "crm": "CRM sustav",
       "webapp": "Web aplikacija",
-      "stripe": "Integracija kartičnog plaćanja",
-      "seo": "SEO analiza"
+      "stripe": "Integracija kartičnog plaćanja"
     },
     "name": "Ime i prezime",
     "website": "Web stranica / domena",
@@ -711,7 +691,6 @@
     "webDesc": "Profesionalna prezentacijska web stranica spremna za klijente.",
     "webF1": "Custom dizajn prilagođen brendu",
     "webF2": "Mobile-first i optimizirana brzina",
-    "webF3": "Osnovna SEO optimizacija",
     "webF4": "Hosting, SSL i tehnička podrška",
     "webCta": "Saznajte više",
     "appBadge": "Po projektu",
@@ -729,11 +708,11 @@
     "items": {
       "izrada-web-stranica": {
         "title": "Izrada web stranica",
-        "description": "Profesionalne, brze i SEO optimizirane web stranice. Custom dizajn, jasna poruka i tehnička podloga koja konvertira posjetitelje u upite."
+        "description": "Profesionalne i brze web stranice. Custom dizajn, jasna poruka i tehnička podloga koja konvertira posjetitelje u upite."
       },
       "redizajn-web-stranica": {
         "title": "Redizajn web stranica",
-        "description": "Modernizacija postojeće stranice bez gubitka SEO pozicija. Bolji dizajn, brže učitavanje i jasnija struktura sadržaja."
+        "description": "Modernizacija postojeće stranice uz pažljivo planiranu migraciju. Bolji dizajn, brže učitavanje i jasnija struktura sadržaja."
       },
       "crm-sustavi": {
         "title": "Izrada CRM sustava",
@@ -767,76 +746,7 @@
     "processTitle": "Kako izgleda proces",
     "step": "Korak",
     "related": "Povezane usluge",
-    "seoAuditTitle": "Želite prvo provjeriti stanje postojeće web stranice?",
-    "seoAuditDesc": "Pokrenite besplatnu SEO analizu i saznajte koje tehničke, SEO i brzinske probleme treba popraviti.",
-    "seoAuditCta": "Provjeri web stranicu",
     "ctaSubtitle": "U 48 sati šaljemo konkretnu ponudu, jasne rokove i točan opis onoga što dobivate."
-  },
-  "seoAuditPage": {
-    "title": "Besplatna SEO analiza web stranice",
-    "subtitle": "Provjerite osnovne SEO, brzinske i tehničke probleme svoje web stranice u nekoliko sekundi.",
-    "freeTool": "Besplatni alat",
-    "urlPlaceholder": "https://vasa-stranica.hr",
-    "analyze": "Analiziraj stranicu",
-    "analyzing": "Analiziram…",
-    "analysisNote": "Analiza je informativna i ne sprema podatke o vašoj stranici.",
-    "checksTitle": "Što analiza provjerava",
-    "checksSubtitle": "Brza, automatska provjera ključnih SEO i tehničkih parametara koji najčešće utječu na vidljivost i konverziju.",
-    "checks": {
-      "c1": "SEO naslov i meta description",
-      "c2": "Struktura H1, H2 i H3 elemenata",
-      "c3": "sitemap.xml i robots.txt",
-      "c4": "Mobilne performanse i Core Web Vitals",
-      "c5": "Optimizacija slika",
-      "c6": "Osnovni tehnički problemi",
-      "c7": "Struktura za konverziju"
-    },
-    "resultsFor": "Rezultati analize za",
-    "scoreSeo": "SEO",
-    "scoreMobile": "Mobilna brzina",
-    "scoreTechnical": "Tehničko stanje",
-    "scoreRedesign": "Potencijal redizajna",
-    "redesignLow": "Nizak",
-    "redesignMedium": "Srednji",
-    "redesignHigh": "Visok",
-    "issuesTitle": "Detektirani problemi i preporuke",
-    "sevHigh": "visok",
-    "sevMedium": "srednji",
-    "sevLow": "nizak",
-    "samples": {
-      "s1Title": "Nedostaje meta description",
-      "s1Rec": "Dodajte jedinstveni meta description (do 160 znakova) za svaku stranicu.",
-      "s2Title": "Slike nisu optimizirane",
-      "s2Rec": "Konvertirajte slike u WebP/AVIF format i koristite responsive srcset.",
-      "s3Title": "Više od jednog H1 elementa",
-      "s3Rec": "Zadržite samo jedan H1 po stranici i organizirajte sadržaj kroz H2/H3.",
-      "s4Title": "Spori Largest Contentful Paint na mobilnim uređajima",
-      "s4Rec": "Smanjite render-blocking JS/CSS i lazy-load slike izvan viewporta.",
-      "s5Title": "Nedostaje sitemap.xml",
-      "s5Rec": "Generirajte sitemap.xml i navedite ga u robots.txt."
-    },
-    "errInvalidUrlTitle": "Neispravan URL",
-    "errInvalidUrlDesc": "Unesite valjanu adresu, npr. https://primjer.hr",
-    "errMissingTitle": "Nedostaju podaci",
-    "errMissingDesc": "Unesite ime, email i URL stranice.",
-    "errCheckUrlDesc": "Provjerite adresu web stranice.",
-    "errSendTitle": "Greška pri slanju",
-    "errSendDesc": "Pokušajte ponovno ili nas kontaktirajte na primelink@primelink.hr.",
-    "thanksTitle": "Hvala!",
-    "thanksMessage": "Zaprimili smo vaš zahtjev i javit ćemo vam se s prijedlogom poboljšanja.",
-    "leadTitle": "Želite detaljniju analizu i konkretan prijedlog poboljšanja?",
-    "leadSubtitle": "Pošaljite upit i izrađujemo detaljan izvještaj s prioritetima i procjenom efekta.",
-    "urlLabel": "Web stranica",
-    "nameLabel": "Ime i prezime",
-    "emailLabel": "Email",
-    "phoneLabel": "Telefon (opcionalno)",
-    "messageLabel": "Poruka (opcionalno)",
-    "consent": "Želim da me kontaktirate s prijedlogom poboljšanja.",
-    "requestDetailed": "Zatraži detaljnu analizu",
-    "sending": "Šaljem…",
-    "bottomCtaTitle": "Trebate pomoć oko optimizacije ili redizajna?",
-    "bottomCtaSubtitle": "PrimeLink izrađuje moderne web stranice, CRM sustave i web aplikacije za tvrtke u Hrvatskoj.",
-    "viewServices": "Pogledajte usluge"
   },
   "portfolioPage": {
     "metaTitle": "Portfolio — Naši projekti i klijenti | PrimeLink",
@@ -1109,8 +1019,6 @@
     "solutions": "Naša rješenja",
     "links": "Korisni linkovi",
     "country": "Hrvatska",
-    "audit": "PrimeAudit — SEO i tehnička analiza",
-    "auditText": "Plaćena SEO i tehnička analiza na upit. Pregled sadržaja, indeksiranja, brzine i tehničkih postavki, uz preporuke prema dogovorenom opsegu. Ne jamčimo pozicije na tražilicama.",
     "previewArt": "Vizual iz demo primjera",
     "offer": "Ponuda prema vašem projektu"
   },
@@ -1121,7 +1029,6 @@
     "CRM sustav": "CRM sustav",
     "Web aplikacija": "Web aplikacija",
     "Integracija kartičnog plaćanja": "Integracija kartičnog plaćanja",
-    "SEO analiza": "SEO analiza (plaćena)",
     "Hosting / održavanje": "Hosting / održavanje",
     "SaaS razvoj": "SaaS razvoj"
   }

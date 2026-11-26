@@ -1,6 +1,6 @@
 # PrimeLink
 
-> PrimeLink d.o.o. is a Croatian software studio that builds websites, web applications, CRM systems, SaaS products and card payment integrations for companies in Croatia. Payment integrations include Stripe, Corvus and Monri, tailored to the business and chosen payment provider.
+> PrimeLink d.o.o. is a Croatian software studio that builds websites, web applications, CRM systems, SaaS products, hosting, maintenance and card payment integrations for companies in Croatia. Payment integrations include Stripe, Corvus and Monri, tailored to the business and chosen payment provider.
 
 Contact: primelink@primelink.hr · +385 91 512 2888 · Zagreb, Croatia
 
@@ -14,6 +14,7 @@ Contact: primelink@primelink.hr · +385 91 512 2888 · Zagreb, Croatia
 - [Integracije kartičnog plaćanja](/integracije-karticnog-placanja): Card payment integrations for websites, online stores and applications using Stripe, Corvus or Monri, tailored to the chosen provider.
 - [Stripe integracije](/stripe-integracije): Stripe payments, subscriptions and Connect platforms.
 - [SaaS razvoj](/saas-razvoj): SaaS product development from MVP to production.
+- [Hosting i održavanje](/hosting-odrzavanje): Hosting, maintenance and support within the scope and renewal terms defined in each proposal.
 - [Ponuda](/ponuda): Service packages and FAQ.
 - [Request a quote](/ponuda/forma): Short enquiry form with service selection, name and email, optional website and message, and expandable optional phone, budget and preferred deadline fields.
 - [Portfolio](/portfolio): Selected client projects.

@@ -67,7 +67,7 @@
     "benefit2": "Solutions tailored to your budget and needs",
     "benefit3": "Proven results with Croatian and international clients",
     "benefit4": "24/7 support with guaranteed response times",
-    "benefit5": "Proactive approach — we prevent problems before they occur",
+    "benefit5": "Performance built into the development process",
     "benefit6": "Scalable solutions that grow with your business",
     "learnMore": "Learn More",
     "years": "Years",
@@ -273,13 +273,11 @@
     "starterF2": "Hosting included",
     "starterF3": "SSL security",
     "starterF4": "Mobile optimization",
-    "starterF5": "Basic SEO",
     "starterF6": "Technical support",
     "businessF1": "Up to 5 pages",
     "businessF2": "Custom design",
     "businessF3": "Hosting + SSL",
     "businessF4": "Speed optimization",
-    "businessF5": "Basic SEO",
     "businessF6": "Technical support",
     "customF1": "Complex websites",
     "customF2": "Booking systems",
@@ -506,7 +504,6 @@
     "services": "Services",
     "solutions": "Solutions",
     "portfolio": "Portfolio",
-    "seoAudit": "Free SEO audit",
     "contact": "Contact",
     "requestQuote": "Request a quote",
     "openMenu": "Open menu",
@@ -517,8 +514,7 @@
       "webapp": "Web applications",
       "crm": "CRM systems",
       "stripe": "Card payment integrations",
-      "saas": "SaaS development",
-      "seo": "SEO optimization"
+      "saas": "SaaS development"
     },
     "solution_items": {
       "primecrm": {
@@ -528,10 +524,6 @@
       "primepay": {
         "label": "PrimePay",
         "desc": "Card payment integrations"
-      },
-      "primeaudit": {
-        "label": "PrimeAudit",
-        "desc": "SEO analysis"
       },
       "primedemo": {
         "label": "PrimeDemo",
@@ -545,7 +537,6 @@
     "solutionsTitle": "Solutions",
     "usefulLinksTitle": "Useful links",
     "portfolio": "Portfolio",
-    "seoAudit": "Free SEO audit",
     "requestQuote": "Request a quote",
     "contact": "Contact"
   },
@@ -559,7 +550,6 @@
     "web": "Websites",
     "crm": "CRM systems",
     "stripe": "Card payment integrations",
-    "seo": "SEO optimization",
     "saas": "SaaS development",
     "maintenance": "Maintenance"
   },
@@ -568,7 +558,7 @@
       "overview": "Overview",
       "clients": "Clients",
       "payments": "Payments",
-      "seo": "SEO",
+      "seo": "Maintenance",
       "reports": "Reports"
     },
     "kpis": {
@@ -579,7 +569,7 @@
     "chartTitle": "Monthly revenue growth",
     "tasks": {
       "t1": "Stripe subscription activated",
-      "t2": "SEO audit — 18 recommendations",
+      "t2": "Website maintenance",
       "t3": "Homepage redesign"
     },
     "live": "Live · Uptime 99.9%"
@@ -599,11 +589,6 @@
         "tagline": "Card payment integrations",
         "description": "We connect websites, online stores and applications with Stripe, Corvus and Monri. Each integration is tailored to your business and chosen payment provider."
       },
-      "primeaudit": {
-        "name": "PrimeAudit",
-        "tagline": "SEO and technical analysis",
-        "description": "Paid SEO and technical analysis, priced on enquiry. A review of content, indexing, speed and technical settings, with recommendations based on the agreed scope. Search rankings are not guaranteed."
-      },
       "primedemo": {
         "name": "PrimeDemo",
         "tagline": "Free personalised demo",
@@ -618,7 +603,7 @@
     "items": {
       "modernize": {
         "title": "Modernizing outdated websites",
-        "description": "Replacing old WordPress templates with modern, fast and SEO-clean sites — without losing rankings."
+        "description": "Replacing old WordPress templates with modern, fast sites and a carefully planned migration."
       },
       "demo": {
         "title": "Demo proposals before you decide",
@@ -631,10 +616,6 @@
       "stripe": {
         "title": "Card payment integrations",
         "description": "Online payment integration: Stripe, Corvus and Monri."
-      },
-      "seo": {
-        "title": "SEO and technical optimization",
-        "description": "Technical SEO, load speed, Core Web Vitals and clean structure — the foundation for long-term organic growth."
       },
       "hosting": {
         "title": "Hosting, maintenance and support",
@@ -680,8 +661,7 @@
       "redesign": "Redesign of existing website",
       "crm": "CRM system",
       "webapp": "Web application",
-      "stripe": "Card payment integration",
-      "seo": "SEO analysis"
+      "stripe": "Card payment integration"
     },
     "name": "Full name",
     "website": "Website / domain",
@@ -710,7 +690,6 @@
     "webDesc": "A professional presentation website, ready for clients.",
     "webF1": "Custom design tailored to your brand",
     "webF2": "Mobile-first and speed-optimized",
-    "webF3": "Basic SEO optimization",
     "webF4": "Hosting, SSL and technical support",
     "webCta": "Learn more",
     "appBadge": "Per project",
@@ -728,11 +707,11 @@
     "items": {
       "izrada-web-stranica": {
         "title": "Website development",
-        "description": "Professional, fast and SEO-optimized websites. Custom design, clear messaging and a technical foundation that converts visitors into inquiries."
+        "description": "Professional, fast websites. Custom design, clear messaging and a technical foundation that converts visitors into inquiries."
       },
       "redizajn-web-stranica": {
         "title": "Website redesign",
-        "description": "Modernizing your existing site without losing SEO rankings. Better design, faster loading and clearer content structure."
+        "description": "Modernizing your existing site with a carefully planned migration. Better design, faster loading and clearer content structure."
       },
       "crm-sustavi": {
         "title": "CRM systems",
@@ -766,76 +745,7 @@
     "processTitle": "What the process looks like",
     "step": "Step",
     "related": "Related services",
-    "seoAuditTitle": "Want to check the state of your existing website first?",
-    "seoAuditDesc": "Run a free SEO audit and find out which technical, SEO and speed issues need fixing.",
-    "seoAuditCta": "Check your website",
     "ctaSubtitle": "Within 48 hours we send a concrete quote, clear deadlines and an exact description of what you get."
-  },
-  "seoAuditPage": {
-    "title": "Free SEO audit of your website",
-    "subtitle": "Check the basic SEO, speed and technical issues on your website in just a few seconds.",
-    "freeTool": "Free tool",
-    "urlPlaceholder": "https://your-website.com",
-    "analyze": "Analyze website",
-    "analyzing": "Analyzing…",
-    "analysisNote": "The analysis is informational and does not store data about your website.",
-    "checksTitle": "What the audit checks",
-    "checksSubtitle": "A quick, automated check of the key SEO and technical parameters that most affect visibility and conversion.",
-    "checks": {
-      "c1": "SEO title and meta description",
-      "c2": "Structure of H1, H2 and H3 elements",
-      "c3": "sitemap.xml and robots.txt",
-      "c4": "Mobile performance and Core Web Vitals",
-      "c5": "Image optimization",
-      "c6": "Basic technical issues",
-      "c7": "Conversion-oriented structure"
-    },
-    "resultsFor": "Audit results for",
-    "scoreSeo": "SEO",
-    "scoreMobile": "Mobile speed",
-    "scoreTechnical": "Technical health",
-    "scoreRedesign": "Redesign potential",
-    "redesignLow": "Low",
-    "redesignMedium": "Medium",
-    "redesignHigh": "High",
-    "issuesTitle": "Detected issues and recommendations",
-    "sevHigh": "high",
-    "sevMedium": "medium",
-    "sevLow": "low",
-    "samples": {
-      "s1Title": "Missing meta description",
-      "s1Rec": "Add a unique meta description (up to 160 characters) for each page.",
-      "s2Title": "Images are not optimized",
-      "s2Rec": "Convert images to WebP/AVIF format and use a responsive srcset.",
-      "s3Title": "More than one H1 element",
-      "s3Rec": "Keep only one H1 per page and structure content with H2/H3.",
-      "s4Title": "Slow Largest Contentful Paint on mobile devices",
-      "s4Rec": "Reduce render-blocking JS/CSS and lazy-load images outside the viewport.",
-      "s5Title": "Missing sitemap.xml",
-      "s5Rec": "Generate sitemap.xml and reference it in robots.txt."
-    },
-    "errInvalidUrlTitle": "Invalid URL",
-    "errInvalidUrlDesc": "Please enter a valid address, e.g. https://example.com",
-    "errMissingTitle": "Missing data",
-    "errMissingDesc": "Please enter your name, email and website URL.",
-    "errCheckUrlDesc": "Please check the website address.",
-    "errSendTitle": "Sending error",
-    "errSendDesc": "Please try again or contact us at primelink@primelink.hr.",
-    "thanksTitle": "Thank you!",
-    "thanksMessage": "We've received your request and will get back to you with improvement recommendations.",
-    "leadTitle": "Want a more detailed analysis and a concrete improvement plan?",
-    "leadSubtitle": "Send us a request and we'll prepare a detailed report with priorities and expected impact.",
-    "urlLabel": "Website",
-    "nameLabel": "Full name",
-    "emailLabel": "Email",
-    "phoneLabel": "Phone (optional)",
-    "messageLabel": "Message (optional)",
-    "consent": "I'd like you to contact me with an improvement plan.",
-    "requestDetailed": "Request detailed analysis",
-    "sending": "Sending…",
-    "bottomCtaTitle": "Need help with optimization or a redesign?",
-    "bottomCtaSubtitle": "PrimeLink builds modern websites, CRM systems and web applications for businesses in Croatia.",
-    "viewServices": "View services"
   },
   "portfolioPage": {
     "metaTitle": "Portfolio — Our projects and clients | PrimeLink",
@@ -1108,8 +1018,6 @@
     "solutions": "Our solutions",
     "links": "Useful links",
     "country": "Croatia",
-    "audit": "PrimeAudit — SEO and technical analysis",
-    "auditText": "Paid SEO and technical analysis, priced on enquiry. A review of content, indexing, speed and technical settings, with recommendations based on the agreed scope. Search rankings are not guaranteed.",
     "previewArt": "Visual from the demo example",
     "offer": "A proposal tailored to your project"
   },
@@ -1120,7 +1028,6 @@
     "CRM sustav": "CRM system",
     "Web aplikacija": "Web application",
     "Integracija kartičnog plaćanja": "Card payment integration",
-    "SEO analiza": "SEO analysis (paid)",
     "Hosting / održavanje": "Hosting / maintenance",
     "SaaS razvoj": "SaaS development"
   }

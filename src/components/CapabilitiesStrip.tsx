@@ -1,11 +1,10 @@
-import { Globe, Users, CreditCard, Search, Rocket, ServerCog } from "lucide-react";
+import { Globe, Users, CreditCard, Rocket, ServerCog } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const capabilities = [
   { icon: Globe, key: "web" },
   { icon: Users, key: "crm" },
   { icon: CreditCard, key: "stripe" },
-  { icon: Search, key: "seo" },
   { icon: Rocket, key: "saas" },
   { icon: ServerCog, key: "maintenance" },
 ] as const;

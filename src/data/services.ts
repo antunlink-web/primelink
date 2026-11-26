@@ -32,7 +32,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
       ],
       "includes": [
         "Struktura sadržaja i dizajn",
-        "Prilagodba mobitelima i tehničke SEO postavke",
+        "Prilagodba mobitelima",
         "Kontakt i dogovorene integracije"
       ],
       "useCases": [],
@@ -368,7 +368,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
       ],
       "includes": [
         "Content structure and design",
-        "Mobile layouts and technical SEO setup",
+        "Mobile layouts",
         "Contact options and agreed integrations"
       ],
       "useCases": [],

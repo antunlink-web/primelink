@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { HelmetProvider, type HelmetServerState } from "react-helmet-async";
 import { Seo } from "../src/components/Seo";
 import { NotFoundContent } from "../src/components/NotFoundContent";
-import { legacyRoutePattern, legacyRoutes, notFoundSeo, pageSeo, type SeoMetadata } from "../src/data/seo";
+import { legacyRoutePattern, legacyRoutes, retiredRoutes, notFoundSeo, pageSeo, type SeoMetadata } from "../src/data/seo";
 
 const dist = resolve(import.meta.dir, "../dist");
 const template = await readFile(resolve(dist, "index.html"), "utf8");
@@ -39,10 +39,13 @@ const routes = Object.keys(pageSeo).sort().map((path) => ({ path, file: entrypoi
 for (const route of routes) {
   await writeEntry(route.file, htmlFor(pageSeo[route.path]));
 }
-const compatibilityRoutes = legacyRoutes.map((route) => ({ ...route, file: entrypoint(route.path) }));
+const compatibilityRoutes = [...legacyRoutes, ...retiredRoutes].map((route) => ({ ...route, file: entrypoint(route.path) }));
 for (const route of compatibilityRoutes) {
-  // Keep App.tsx's Navigate behavior; canonical metadata describes the destination.
-  await writeEntry(route.file, htmlFor(pageSeo[route.target]));
+  // Canonical metadata describes the destination; retired URLs also work without JS.
+  const html = htmlFor(pageSeo[route.target]);
+  await writeEntry(route.file, "status" in route
+    ? html.replace("</head>", `<meta http-equiv="refresh" content="0;url=${route.target}"></head>`)
+    : html);
 }
 const notFound = htmlFor(notFoundSeo).replace(
   '<div id="root"></div>',

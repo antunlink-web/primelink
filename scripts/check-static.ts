@@ -4,7 +4,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import ts from "typescript";
 import sharp from "sharp";
-import { legacyRoutePattern, legacyRoutes, notFoundSeo, pageSeo, type SeoMetadata } from "../src/data/seo";
+import { legacyRoutePattern, legacyRoutes, retiredRoutes, notFoundSeo, pageSeo, type SeoMetadata } from "../src/data/seo";
 import { sortPortfolioProjects } from "../src/data/portfolio-sort";
 
 const root = resolve(import.meta.dir, "..");
@@ -57,9 +57,7 @@ for (const language of ["hr", "en"]) {
     assert(homeNodes.some(node => ts.isStringLiteralLike(node) && node.text === `approved.${key}`), `Form must use translated ${key}`);
   }
 }
-const auditSource = await read("src/pages/SeoAuditPage.tsx");
-assert(!auditSource.includes("SAMPLE_RESULT") && !auditSource.includes("/api/seo-audit"), "PrimeAudit must not return a simulated free audit");
-assert(auditSource.includes("approved.auditText"), "PrimeAudit must display paid enquiry terms");
+assert(!nodes(app).some(node => ts.isStringLiteralLike(node) && node.text.includes("SeoAuditPage")), "Retired marketing page must not be loaded");
 
 // Read portfolio entries as syntax, then use the same sorter that renders the page.
 const portfolioSource = await sourceFile("src/pages/PortfolioPage.tsx");
@@ -354,6 +352,32 @@ const legacyRegex = new RegExp(redirect[1], "i");
 for (const path of ["/usluge/portfolio", "/USLUGE/PORTFOLIO/", "/usluge/nonexistent"]) assert(legacyRegex.test(path));
 for (const path of ["/usluge/", "/usluge/ponuda/forma"]) assert(!legacyRegex.test(path));
 
+
+// Retired URLs must redirect permanently before the generic legacy rule, never 404.
+const retirement = nginx.match(/location ~\* (\^\/[^\s]+besplatna-seo-analiza[^\s]*)\s*\{\s*return 301 (\/ponuda\/forma)\$is_args\$args;\s*\}/);
+assert(retirement, "Permanent retirement redirect must preserve query parameters");
+assert(nginx.indexOf(retirement[0]) < nginx.indexOf(redirect[0]), "Retired aliases must avoid the generic 302 hop");
+const retiredPattern = new RegExp(retirement[1], "i");
+const hostingRedirects = await read("public/_redirects");
+for (const route of retiredRoutes) {
+  assert.equal(retirement[2], route.target);
+  assert(pageSeo[route.target], "Redirect destination must be an existing public page");
+  assert(!pageSeo[route.path], "Retired URLs must not be public service pages");
+  for (const path of [route.path, route.path.toUpperCase(), `${route.path}/`, `${route.path}///`]) assert(retiredPattern.test(path));
+  for (const path of [route.path, `${route.path}/`]) {
+    assert(hostingRedirects.split("\n").some(line => line.trim().split(/\s+/).join(" ") === `${path} ${route.target} 301`), "Static host must redirect retired URLs");
+  }
+  // Inspect each explicit React route's Navigate destination, not just its path.
+  const declaration = nodes(app).find(node => ts.isJsxSelfClosingElement(node) && node.tagName.getText(app) === "Route" &&
+    node.attributes.properties.some(prop => ts.isJsxAttribute(prop) && prop.name.getText(app) === "path" && prop.initializer && ts.isStringLiteral(prop.initializer) && prop.initializer.text === route.path));
+  assert(declaration && ts.isJsxSelfClosingElement(declaration));
+  const navigate = nodes(app).find(node => node.pos > declaration.pos && node.end < declaration.end && ts.isJsxSelfClosingElement(node) && node.tagName.getText(app) === "Navigate");
+  assert(navigate && ts.isJsxSelfClosingElement(navigate));
+  assert(navigate.attributes.properties.some(prop => ts.isJsxAttribute(prop) && prop.name.getText(app) === "to" && prop.initializer && ts.isStringLiteral(prop.initializer) && prop.initializer.text === route.target));
+  assert(navigate.attributes.properties.some(prop => ts.isJsxAttribute(prop) && prop.name.getText(app) === "replace"));
+}
+for (const path of ["/portfolio", "/besplatna-seo-analiza-extra", "/besplatna-seo-analiza/nested"]) assert(!retiredPattern.test(path));
+
 const ignore = (await read(".dockerignore")).trim().split(/\r?\n/).filter((line) => line && !line.startsWith("#"));
 function ignored(path: string) {
   let result = false;
@@ -370,8 +394,8 @@ for (const path of ["public/sitemap.xml", "public/vendor/fonts/inter.css", "publ
 const manifest = JSON.parse(await read("dist/static-routes.json"));
 const sitemap = [...(await read("public/sitemap.xml")).matchAll(/<loc>(.*?)<\/loc>/g)]
   .map((match) => new URL(match[1]).pathname).sort();
-assert.equal(sitemap.length, 15, "Preserve existing routes and add webshop/hosting routes");
-assert.equal(legacyRoutes.length, 13, "Preserve compatibility entries including new service routes");
+assert.equal(sitemap.length, 14, "Keep remaining public routes; retire the audit offering");
+assert.equal(legacyRoutes.length, 12, "Keep compatibility entries for current public routes");
 assert.deepEqual(Object.keys(pageSeo).sort(), sitemap, "SEO routes must exactly match the sitemap");
 assert.deepEqual(manifest.routes.map((route: { path: string }) => route.path), sitemap);
 
@@ -384,8 +408,8 @@ function visit(node: ts.Node) {
   ts.forEachChild(node, visit);
 }
 visit(app);
-assert.deepEqual(appRoutes.sort(), [...sitemap, legacyRoutePattern, "*"].sort(), "App routes changed; update static generation");
-assert.deepEqual(manifest.compatibilityRoutes.map(({ path, target }: { path: string; target: string }) => ({ path, target })), legacyRoutes);
+assert.deepEqual(appRoutes.sort(), [...sitemap, ...retiredRoutes.map(route => route.path), legacyRoutePattern, "*"].sort(), "App routes changed; update static generation");
+assert.deepEqual(manifest.compatibilityRoutes.map(({ path, target }: { path: string; target: string }) => ({ path, target })), [...legacyRoutes, ...retiredRoutes].map(({ path, target }) => ({ path, target })));
 assert.equal(manifest.compatibilityPatterns[0].path, legacyRoutePattern);
 
 type Parsed = { values: Record<string, string[]>; assets: string[]; managed: number };
@@ -442,6 +466,13 @@ for (const { path, file } of manifest.routes) {
 assert.equal(titles.size, sitemap.length, "Every public title must be distinct");
 assert.equal(descriptions.size, sitemap.length, "Every public description must be distinct");
 for (const { target, file } of manifest.compatibilityRoutes) await check(file, pageSeo[target]);
+for (const route of retiredRoutes) {
+  const entry = manifest.compatibilityRoutes.find((item: { path: string }) => item.path === route.path);
+  assert.equal(entry.status, 301);
+  const html = await read(`dist/${entry.file}`);
+  assert(html.includes(`<meta http-equiv="refresh" content="0;url=${route.target}">`), "Retired URLs must redirect even without JavaScript");
+  assert(!/PrimeAudit|SEO i tehnička analiza/i.test(html));
+}
 await check("404.html", notFoundSeo);
 assert.equal((await parse("404.html")).values.robots[0].replace(/\s/g, ""), "noindex,nofollow");
 assert.equal((await parse("404.html")).values.canonical, undefined);
@@ -511,7 +542,7 @@ for (const file of ["inter.css", ...fontFiles]) {
   assert(source.length > 0, `Empty font asset: ${file}`);
   assert.deepEqual(await readFile(resolve(root, "dist/vendor/fonts", file)), source, `Font asset changed: ${file}`);
 }
-console.log(`PASS: ${sitemap.length} public routes, ${legacyRoutes.length} compatibility entries, raw metadata, 404, route maps, ${portfolio.length} portfolio images, all public assets, local Inter 400/500/700 and zero forbidden infrastructure references`);
+console.log(`PASS: ${sitemap.length} public routes, ${manifest.compatibilityRoutes.length} compatibility entries, raw metadata, 404, route maps, ${portfolio.length} portfolio images, all public assets, local Inter 400/500/700 and zero forbidden infrastructure references`);
 console.log("PASS: repository Docker inputs, nginx routing/cache contracts, legacy redirects and Docker context exclusions (static checks; not a live nginx test)");
-console.log("PASS: broken LinkedIn URL absent, lean App shell with Sonner, deferred homepage Zod, translated validation messages and paid PrimeAudit enquiry");
+console.log("PASS: broken LinkedIn URL absent, lean App shell with Sonner, deferred homepage Zod, translated validation messages and retired marketing routes");
 console.log(portfolioSuccess);

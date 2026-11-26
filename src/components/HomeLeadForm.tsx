@@ -21,7 +21,6 @@ const NEEDS = [
   "CRM sustav",
   "Web aplikacija",
   "Integracija kartičnog plaćanja",
-  "SEO analiza",
   "Hosting / održavanje",
   "SaaS razvoj",
 ];
@@ -31,7 +30,7 @@ const HomeLeadForm = ({ quote = false }: { quote?: boolean }) => {
   const { pathname } = useLocation();
   const [budget, setBudget] = useState("");
   const [deadline, setDeadline] = useState("");
-  const needLabels = ["Izrada web stranica", "Redizajn web stranica", "Web trgovina", "CRM sustav", "Web aplikacija", "Integracija kartičnog plaćanja", "SEO analiza", "Hosting / održavanje", "SaaS razvoj"];
+  const needLabels = ["Izrada web stranica", "Redizajn web stranica", "Web trgovina", "CRM sustav", "Web aplikacija", "Integracija kartičnog plaćanja", "Hosting / održavanje", "SaaS razvoj"];
   const [needs, setNeeds] = useState<string[]>([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
