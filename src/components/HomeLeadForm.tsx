@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { FormEvent, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,15 +20,18 @@ const NEEDS = [
   "Web trgovina",
   "CRM sustav",
   "Web aplikacija",
-  "Stripe integracija", // Legacy submitted value; the visible label is translated separately.
+  "Integracija kartičnog plaćanja",
   "SEO analiza",
+  "Hosting / održavanje",
+  "SaaS razvoj",
 ];
 
 const HomeLeadForm = ({ quote = false }: { quote?: boolean }) => {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
   const [budget, setBudget] = useState("");
   const [deadline, setDeadline] = useState("");
-  const needLabels = ["Izrada web stranica", "Redizajn web stranica", "Web trgovina", "CRM sustav", "Web aplikacija", "Stripe integracija", "SEO analiza"];
+  const needLabels = ["Izrada web stranica", "Redizajn web stranica", "Web trgovina", "CRM sustav", "Web aplikacija", "Integracija kartičnog plaćanja", "SEO analiza", "Hosting / održavanje", "SaaS razvoj"];
   const [needs, setNeeds] = useState<string[]>([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -65,7 +69,7 @@ const HomeLeadForm = ({ quote = false }: { quote?: boolean }) => {
     if (!needs.length) { toast.error(t("approved.serviceError")); return; }
     setSubmitting(true);
     const body = [
-      "--- NOVI UPIT S HOMEPAGE LEAD FORME ---",
+      quote ? "--- NOVI UPIT S FORME ZA PONUDU ---" : "--- NOVI UPIT S HOMEPAGE LEAD FORME ---",
       "",
       `Ime: ${name}`,
       `Email: ${email}`,
@@ -85,13 +89,13 @@ const HomeLeadForm = ({ quote = false }: { quote?: boolean }) => {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: quote ? "Novi upit s /upit forme – Primelink" : "Novi upit s homepage forme — PrimeLink",
+          subject: quote ? `Novi upit s ${pathname} forme – Primelink` : "Novi upit s homepage forme — PrimeLink",
           from_name: quote ? "Primelink web upit" : "PrimeLink homepage lead",
           name,
           email,
           phone,
           message: body,
-          page_source: quote ? "/upit" : "/",
+          page_source: pathname,
         }),
       });
       const result = await res.json();
@@ -172,7 +176,7 @@ const HomeLeadForm = ({ quote = false }: { quote?: boolean }) => {
                         checked={checked}
                         onCheckedChange={() => toggleNeed(item)}
                       />
-                      <span className="text-sm text-foreground">{item === "Stripe integracija" ? t("leadForm.needs.stripe") : t(`enquiryServices.${needLabels[NEEDS.indexOf(item)]}`)}</span>
+                      <span className="text-sm text-foreground">{t(`enquiryServices.${needLabels[NEEDS.indexOf(item)]}`)}</span>
                     </label>
                   );
                 })}

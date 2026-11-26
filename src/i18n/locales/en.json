@@ -234,7 +234,7 @@
     "schedule": "Schedule a Consultation"
   },
   "footer": {
-    "description": "Your trusted IT partner for modern infrastructure, security, and cloud solutions.",
+    "description": "Websites, online stores, business applications, CRM and SaaS — with integrations and support for businesses in Croatia.",
     "services": "Services",
     "cloudSolutions": "Cloud Solutions",
     "cybersecurity": "Cybersecurity",
@@ -1082,7 +1082,7 @@
     "answers": [
       "Pricing is provided on enquiry, based on functionality and the agreed scope.",
       "A free personalised homepage concept for a website or webshop, with no obligation. It does not include building the entire project.",
-      "Project and demo delivery times are agreed individually, based on scope and content availability.",
+      "We respond to your enquiry within two business days. Project and demo delivery times are agreed individually, based on scope and content availability.",
       "Hosting and maintenance are included for 12 months from launch, within the scope defined in the proposal.",
       "Renewal terms, scope and pricing are defined in each proposal."
     ],
@@ -1119,7 +1119,9 @@
     "Web trgovina": "Webshop",
     "CRM sustav": "CRM system",
     "Web aplikacija": "Web application",
-    "Stripe integracija": "Card payment integration",
-    "SEO analiza": "SEO analysis (paid)"
+    "Integracija kartičnog plaćanja": "Card payment integration",
+    "SEO analiza": "SEO analysis (paid)",
+    "Hosting / održavanje": "Hosting / maintenance",
+    "SaaS razvoj": "SaaS development"
   }
 }

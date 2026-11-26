@@ -60,10 +60,10 @@ for (const language of ["hr", "en"] as const) {
 }
 assert.deepEqual(paymentServices.hr.map(s => s.slug), paymentServices.en.map(s => s.slug));
 assert.deepEqual(Object.keys(hr.paymentServiceUi), Object.keys(en.paymentServiceUi));
-// Changing a visible label must not change the existing submitted service value.
+// Generic card payment enquiries use a provider-neutral submitted service value.
 const form = await readFile(new URL("../src/components/HomeLeadForm.tsx", import.meta.url), "utf8");
-assert(form.includes('"Stripe integracija", // Legacy submitted value'));
+assert(form.includes('"Integracija kartičnog plaćanja",'));
 assert(form.includes('needs.join(", ")'));
 assert(form.includes('onCheckedChange={() => toggleNeed(item)}'));
-assert(form.includes('item === "Stripe integracija" ? t("leadForm.needs.stripe")'));
-console.log("PASS: HR/EN route parity and unchanged enquiry selection/submission contract (source check)");
+assert(form.includes('t(`enquiryServices.${needLabels[NEEDS.indexOf(item)]}`)'));
+console.log("PASS: HR/EN route parity and provider-neutral enquiry selection/submission contract (source check)");

@@ -1,19 +1,20 @@
 # PrimeLink
 
-> PrimeLink d.o.o. is a Croatian software studio that builds websites, web applications, CRM systems, SaaS products and Stripe integrations for companies in Croatia.
+> PrimeLink d.o.o. is a Croatian software studio that builds websites, web applications, CRM systems, SaaS products and card payment integrations for companies in Croatia. Payment integrations include Stripe, Corvus and Monri, tailored to the business and chosen payment provider.
 
 Contact: primelink@primelink.hr · +385 91 512 2888 · Zagreb, Croatia
 
 ## Pages
 
-- [Home](/): Overview of PrimeLink's services — websites, CRM, web apps, SaaS, Stripe.
-- [Izrada web stranica](/izrada-web-stranica): Custom website development from €499 + VAT.
-- [Redizajn web stranica](/redizajn-web-stranice): Website redesign without losing SEO positions.
+- [Home](/): Overview of PrimeLink's services — websites, CRM, web apps, SaaS, card payment integrations.
+- [Izrada web stranica](/izrada-web-stranica): Custom website development with a tailored proposal and pricing on enquiry, based on the agreed scope.
+- [Redizajn web stranica](/redizajn-web-stranice): Website redesign with carefully planned migrations and redirects; search rankings are not guaranteed.
 - [Izrada CRM sustava](/izrada-crm-sustava): Custom CRM systems tailored to business processes.
 - [Izrada web aplikacija](/izrada-web-aplikacija): Internal tools, portals and business web applications.
+- [Integracije kartičnog plaćanja](/integracije-karticnog-placanja): Card payment integrations for websites, online stores and applications using Stripe, Corvus or Monri, tailored to the chosen provider.
 - [Stripe integracije](/stripe-integracije): Stripe payments, subscriptions and Connect platforms.
 - [SaaS razvoj](/saas-razvoj): SaaS product development from MVP to production.
 - [Ponuda](/ponuda): Service packages and FAQ.
-- [Request a quote](/ponuda/forma): Multi-step questionnaire to request a personalized offer.
+- [Request a quote](/ponuda/forma): Short enquiry form with service selection, name and email, optional website and message, and expandable optional phone, budget and preferred deadline fields.
 - [Portfolio](/portfolio): Selected client projects.
 - [Kontakt](/kontakt): Contact form and company details.

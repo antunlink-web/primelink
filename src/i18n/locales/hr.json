@@ -1083,7 +1083,7 @@
     "answers": [
       "Cijenu definiramo na upit, prema funkcionalnostima i dogovorenom opsegu.",
       "Besplatan personalizirani prijedlog početne stranice za web stranicu ili web trgovinu, bez obveze. Ne uključuje izradu cijelog projekta.",
-      "Rokove projekta i demo prijedloga dogovaramo pojedinačno, prema opsegu i dostupnosti sadržaja.",
+      "Na vaš upit odgovaramo u roku od dva radna dana. Rokove projekta i demo prijedloga dogovaramo pojedinačno, prema opsegu i dostupnosti sadržaja.",
       "Hosting i održavanje uključeni su 12 mjeseci od objave, u opsegu definiranom ponudom.",
       "Uvjeti, opseg i cijena obnove definiraju se u svakoj ponudi."
     ],
@@ -1120,7 +1120,9 @@
     "Web trgovina": "Web trgovina",
     "CRM sustav": "CRM sustav",
     "Web aplikacija": "Web aplikacija",
-    "Stripe integracija": "Stripe integracija",
-    "SEO analiza": "SEO analiza (plaćena)"
+    "Integracija kartičnog plaćanja": "Integracija kartičnog plaćanja",
+    "SEO analiza": "SEO analiza (plaćena)",
+    "Hosting / održavanje": "Hosting / održavanje",
+    "SaaS razvoj": "SaaS razvoj"
   }
 }
