@@ -4,97 +4,52 @@
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 210 20% 95%;
+    /* Relative HSL keeps existing hsl(var(--…)) and opacity utilities working
+       while the shared kit remains the only source of color values. */
+    --background: from var(--pl-bg) h s l;
+    --foreground: from var(--pl-text) h s l;
+    --card: from var(--pl-card) h s l;
+    --card-foreground: from var(--pl-text) h s l;
+    --popover: from var(--pl-card) h s l;
+    --popover-foreground: from var(--pl-text) h s l;
+    --primary: from var(--pl-primary) h s l;
+    --primary-foreground: from var(--pl-on-primary) h s l;
+    --secondary: from var(--pl-side) h s l;
+    --secondary-foreground: from var(--pl-text) h s l;
+    --muted: from var(--pl-side) h s l;
+    --muted-foreground: from var(--pl-muted) h s l;
+    --accent: from var(--pl-primary) h s l;
+    --accent-foreground: from var(--pl-on-primary) h s l;
+    --destructive: from var(--pl-danger) h s l;
+    --destructive-foreground: from var(--pl-on-primary) h s l;
+    --border: from var(--pl-line) h s l;
+    --input: from var(--pl-line) h s l;
+    --ring: from var(--pl-focus) h s l;
+    --sidebar-background: from var(--pl-side) h s l;
+    --sidebar-foreground: from var(--pl-text) h s l;
+    --sidebar-primary: from var(--pl-primary) h s l;
+    --sidebar-primary-foreground: from var(--pl-on-primary) h s l;
+    --sidebar-accent: from var(--pl-hover) h s l;
+    --sidebar-accent-foreground: from var(--pl-text) h s l;
+    --sidebar-border: from var(--pl-line) h s l;
+    --sidebar-ring: from var(--pl-focus) h s l;
 
-    --card: 220 20% 7%;
-    --card-foreground: 210 20% 95%;
+    --radius: var(--pl-radius);
 
-    --popover: 220 20% 7%;
-    --popover-foreground: 210 20% 95%;
+    /* Preserve existing decorative layers; derive their colors from the kit. */
+    --gradient-hero: linear-gradient(135deg, var(--pl-primary), var(--pl-blue));
+    --gradient-card: linear-gradient(145deg, hsl(from var(--pl-blue) h s l / 0.06), hsl(from var(--pl-blue) h s l / 0.03));
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(from var(--pl-blue) h s l / 0.12) 0px, transparent 50%), radial-gradient(at 80% 80%, hsl(from var(--pl-blue) h s l / 0.08) 0px, transparent 50%);
+    --gradient-dark: linear-gradient(180deg, var(--pl-bg), var(--pl-card));
+    --shadow-card: var(--pl-shadow);
+    --shadow-hover: var(--pl-shadow-lift);
+    --shadow-xl: var(--pl-shadow);
+    --shadow-glow: 0 0 24px hsl(from var(--pl-blue) h s l / 0.2);
+    --shadow-glow-strong: 0 0 40px hsl(from var(--pl-blue) h s l / 0.3), 0 0 80px hsl(from var(--pl-blue) h s l / 0.1);
 
-    --primary: 215 80% 55%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 220 20% 10%;
-    --secondary-foreground: 210 20% 95%;
-
-    --muted: 220 15% 14%;
-    --muted-foreground: 215 18% 70%;
-
-    --accent: 175 70% 45%;
-    --accent-foreground: 220 20% 4%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 220 15% 14%;
-    --input: 220 20% 10%;
-    --ring: 215 80% 55%;
-
-    --radius: 0.75rem;
-
-    --gradient-hero: linear-gradient(135deg, hsl(215 80% 55%) 0%, hsl(175 70% 45%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(215 80% 55% / 0.06) 0%, hsl(175 70% 45% / 0.03) 100%);
-    --gradient-mesh: radial-gradient(at 40% 20%, hsl(215 80% 55% / 0.12) 0px, transparent 50%), radial-gradient(at 80% 80%, hsl(175 70% 45% / 0.08) 0px, transparent 50%);
-    --gradient-dark: linear-gradient(180deg, hsl(220 20% 3%) 0%, hsl(220 20% 6%) 100%);
-    --shadow-card: 0 4px 12px -2px hsl(0 0% 0% / 0.3);
-    --shadow-hover: 0 12px 24px -4px hsl(215 80% 55% / 0.15), 0 4px 8px -2px hsl(0 0% 0% / 0.2);
-    --shadow-xl: 0 20px 40px -8px hsl(0 0% 0% / 0.4);
-    --shadow-glow: 0 0 24px hsl(215 80% 55% / 0.2);
-    --shadow-glow-strong: 0 0 40px hsl(215 80% 55% / 0.3), 0 0 80px hsl(175 70% 45% / 0.1);
-
-    --glass-bg: hsl(220 20% 6% / 0.8);
-    --glass-border: hsl(210 20% 95% / 0.08);
-
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 215 80% 55%;
-  }
-
-  .dark {
-    --background: 220 20% 3%;
-    --foreground: 210 20% 95%;
-
-    --card: 220 20% 5%;
-    --card-foreground: 210 20% 95%;
-
-    --popover: 220 20% 5%;
-    --popover-foreground: 210 20% 95%;
-
-    --primary: 215 80% 55%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 220 20% 8%;
-    --secondary-foreground: 210 20% 95%;
-
-    --muted: 220 15% 10%;
-    --muted-foreground: 215 18% 72%;
-
-    --accent: 175 70% 45%;
-    --accent-foreground: 220 20% 3%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 15% 12%;
-    --input: 220 20% 8%;
-    --ring: 215 80% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 215 80% 55%;
+    --glass-bg: hsl(from var(--pl-card) h s l / 0.8);
+    --glass-border: var(--pl-line);
+    --transition-smooth: all var(--pl-dur) var(--pl-ease);
   }
 }
 
@@ -105,7 +60,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: var(--pl-font);
   }
 
   .glow-text {
@@ -129,5 +84,14 @@
 
   .animate-pulse-glow {
     animation: pulse-glow 4s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

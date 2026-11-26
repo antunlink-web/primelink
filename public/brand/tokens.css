@@ -1,0 +1,99 @@
+/* Primelink AI design tokens — shared by the chat app and the marketing site.
+   Single source of truth: change values here, then copy this brand/ folder into both projects.
+   Dark theme is activated by data-theme="dark" (site) or data-bs-theme="dark" (app, Tabler).
+
+   v3 (2026-11-25): teal retired — the brand is blue only. --pl-teal and --pl-accent-text are kept
+   as names for compatibility but now resolve to blue, so any old usage turns blue automatically.
+   v2 (2026-11-24): WCAG AA text/button tokens. Every *-text, --pl-link, --pl-muted and
+   --pl-text value is ≥ 4.5:1 on all five surfaces (bg, side, card, soft, hover) in its theme.
+   --pl-on-primary on --pl-primary and on --pl-danger is ≥ 4.5:1. --pl-focus is ≥ 3:1.
+   The raw brand colour (--pl-blue) is for logo, icons, lines and decoration,
+   NOT for body-size text. */
+:root {
+  color-scheme: light;
+
+  /* Brand (decorative: icons, lines, dots, illustrations) */
+  --pl-blue: #307de8;            /* hsl(215 80% 55%) */
+  --pl-teal: var(--pl-blue);     /* retired in v3; alias kept so old usages turn blue */
+
+  /* Actions */
+  --pl-primary: #226dd5;         /* primary button background (white text 5.0:1) */
+  --pl-primary-hover: #1d63c6;   /* (white text 5.8:1) */
+  --pl-on-primary: #ffffff;
+  --pl-danger: #b4363a;          /* destructive button background (white text 6.0:1) */
+
+  /* Text colours */
+  --pl-text: #202938;
+  --pl-muted: #5a6779;           /* secondary text; passes on every surface */
+  --pl-link: #1d63c6;            /* links and blue text */
+  --pl-accent-text: var(--pl-link); /* retired in v3; alias of --pl-link */
+  --pl-danger-text: #b4363a;
+  --pl-warning-text: #8a5a00;
+  --pl-success-text: #1d7a46;
+
+  /* Status backgrounds (pair with the matching *-text) */
+  --pl-warning-soft: #fdf3dc;
+  --pl-success-soft: #e4f5eb;
+
+  /* Display gradient: large headings only (≥ 3:1 at both ends) */
+  --pl-gradient: linear-gradient(100deg, #1a56b0 5%, #307de8 85%); /* blue only */
+
+  /* Focus ring (≥ 3:1 on every surface) */
+  --pl-focus: #1f74db;
+
+  /* Surfaces — light */
+  --pl-bg: #fdfefe;              /* page */
+  --pl-side: #f4f6f9;            /* sidebar, muted panels, user bubbles */
+  --pl-card: #ffffff;            /* cards, dialogs, composer */
+  --pl-soft: #edf4ff;            /* blue-tinted highlight panels */
+  --pl-hover: #eaf0f8;
+  --pl-line: #e4e9f0;            /* borders, dividers */
+  --pl-shadow: 0 2px 5px #263a5410, 0 10px 35px #263a5406;
+  --pl-shadow-lift: 0 6px 18px #263a5408;
+
+  /* Type */
+  --pl-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --pl-weight-regular: 400;
+  --pl-weight-medium: 500;
+  --pl-weight-semibold: 600;
+  --pl-weight-bold: 700;
+  --pl-tracking-display: -0.04em; /* large headings */
+  --pl-tracking-title: -0.02em;
+  --pl-eyebrow-tracking: 0.1em;   /* small uppercase labels */
+
+  /* Shape */
+  --pl-radius-sm: 8px;
+  --pl-radius: 12px;
+  --pl-radius-lg: 20px;
+  --pl-radius-pill: 999px;
+
+  /* Motion — decorative only, always removed under reduced motion */
+  --pl-ease: cubic-bezier(.22, 1, .36, 1);
+  --pl-dur-fast: 180ms;
+  --pl-dur: 240ms;
+  --pl-dur-slow: 340ms;
+}
+
+[data-theme="dark"], [data-bs-theme="dark"] {
+  color-scheme: dark;
+  /* --pl-primary, --pl-primary-hover, --pl-on-primary and --pl-danger stay the same in dark. */
+  --pl-text: #e8edf5;
+  --pl-muted: #a0adbf;
+  --pl-link: #8fbaff;
+  --pl-danger-text: #ff8d8d;
+  --pl-warning-text: #f2c26b;
+  --pl-success-text: #6fd69b;
+  --pl-warning-soft: #2e2614;
+  --pl-success-soft: #132b20;
+  --pl-gradient: linear-gradient(100deg, #5f9cf5 5%, #a9c9ff 85%);
+  --pl-focus: #5cb4f0;
+
+  --pl-bg: #0f131b;
+  --pl-side: #141a24;
+  --pl-card: #171f2b;
+  --pl-soft: #1b2b43;
+  --pl-hover: #202c3c;
+  --pl-line: #283342;
+  --pl-shadow: 0 8px 30px #00000024;
+  --pl-shadow-lift: 0 8px 24px #00000030;
+}

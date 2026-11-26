@@ -1,7 +1,8 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 export default {
-  darkMode: ["class"],
+  darkMode: ["class", '[data-theme="dark"]'],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
@@ -13,6 +14,15 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--pl-font)"],
+      },
+      // Text uses the AA link/status tokens; action backgrounds keep their own tokens.
+      textColor: {
+        primary: { DEFAULT: "hsl(from var(--pl-link) h s l / <alpha-value>)" },
+        accent: { DEFAULT: "hsl(from var(--pl-link) h s l / <alpha-value>)" },
+        destructive: { DEFAULT: "hsl(from var(--pl-danger-text) h s l / <alpha-value>)" },
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -108,5 +118,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 } satisfies Config;

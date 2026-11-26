@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeControl from "./ThemeControl";
 import logo from "@/assets/primelink-logo.webp";
 
 const usluge = [
@@ -116,6 +117,7 @@ const Header = () => {
 
         <div className="flex items-center space-x-3">
           <LanguageSwitcher />
+          <ThemeControl />
           <Button size="sm" className="hidden xl:inline-flex" onClick={() => navigate('/ponuda/forma')}>{t(quoteOnly ? "approved.quote" : "approved.cta")}</Button>
           <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen}>
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

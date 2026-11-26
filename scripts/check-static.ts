@@ -450,7 +450,11 @@ async function check(file: string, expected: SeoMetadata) {
     assert.deepEqual(parsed.values[tag] ?? [], value ? [value] : [], `${file}: ${tag} (including duplicate/stale tags)`);
   }
   assert.equal(parsed.managed, Object.values(expected).filter(Boolean).length, `${file}: Helmet must own all route tags`);
-  assert(parsed.assets.includes("/vendor/fonts/inter.css"), `${file}: missing local Inter stylesheet`);
+  const fonts = parsed.assets.indexOf("/brand/fonts.css");
+  const tokens = parsed.assets.indexOf("/brand/tokens.css");
+  const siteCss = parsed.assets.findIndex((asset) => asset.startsWith("/assets/") && asset.endsWith(".css"));
+  assert(fonts >= 0 && tokens > fonts && siteCss > tokens, `${file}: brand fonts, tokens, then site CSS`);
+  assert(!parsed.assets.includes("/vendor/fonts/inter.css"), `${file}: duplicate legacy font stylesheet`);
   for (const asset of parsed.assets) {
     assert((await readFile(resolve(root, `dist${asset}`))).length > 0, `${file}: missing asset ${asset}`);
   }
@@ -512,7 +516,7 @@ const forbiddenReferences = [
   "fonts.googleapis.com", "fonts.gstatic.com", "cdn.jsdelivr.net", "lovable",
   "lovable-core-prod", "pkg.dev", "supabase.co", "supabase.com", "VITE_SUPABASE", "@supabase/",
 ];
-for (const file of ["Dockerfile", "nginx.conf", "index.html", "bun.lock", "package.json", "public/vendor/fonts/inter.css"]) {
+for (const file of ["Dockerfile", "nginx.conf", "index.html", "bun.lock", "package.json", "public/brand/fonts.css", "public/brand/tokens.css"]) {
   const contents = (await read(file)).toLowerCase();
   for (const reference of forbiddenReferences) assert(!contents.includes(reference.toLowerCase()), `${file}: forbidden infrastructure reference ${reference}`);
 }
@@ -526,23 +530,23 @@ for (const file of await readdir(resolve(root, "dist"), { recursive: true, withF
   }
 }
 
-const fontCss = await read("public/vendor/fonts/inter.css");
-const fontFiles = ["inter-a699af1dea30.ttf", "inter-e45972c7e9f2.ttf", "inter-6f49e1b28bce.ttf"];
+const fontCss = await read("public/brand/fonts.css");
+const fontFiles = ["inter-latin-ext-wght.woff2", "inter-latin-wght.woff2"];
 assert.deepEqual([...fontCss.matchAll(/url\(([^)]+)\)/g)].map((match) => match[1]),
-  fontFiles.map((file) => `/vendor/fonts/${file}`), "Inter must use only the local font files");
+  fontFiles.map((file) => `fonts/${file}`), "Inter must use only the shared local font files");
 const fontFaces = [...fontCss.matchAll(/@font-face\s*\{([^}]+)\}/g)].map((match) => match[1]);
-assert.equal(fontFaces.length, 3);
-for (const [index, weight] of [400, 500, 700].entries()) {
+assert.equal(fontFaces.length, 2);
+for (const [index, file] of fontFiles.entries()) {
   assert.match(fontFaces[index], /font-family:\s*'Inter'\s*;/);
-  assert.match(fontFaces[index], new RegExp(`font-weight:\\s*${weight}\\s*;`));
-  assert(fontFaces[index].includes(`/vendor/fonts/${fontFiles[index]}`));
+  assert.match(fontFaces[index], /font-weight:\s*100 900\s*;/);
+  assert(fontFaces[index].includes(`fonts/${file}`));
 }
-for (const file of ["inter.css", ...fontFiles]) {
-  const source = await readFile(resolve(root, "public/vendor/fonts", file));
+for (const file of ["fonts.css", ...fontFiles.map((file) => `fonts/${file}`)]) {
+  const source = await readFile(resolve(root, "public/brand", file));
   assert(source.length > 0, `Empty font asset: ${file}`);
-  assert.deepEqual(await readFile(resolve(root, "dist/vendor/fonts", file)), source, `Font asset changed: ${file}`);
+  assert.deepEqual(await readFile(resolve(root, "dist/brand", file)), source, `Font asset changed: ${file}`);
 }
-console.log(`PASS: ${sitemap.length} public routes, ${manifest.compatibilityRoutes.length} compatibility entries, raw metadata, 404, route maps, ${portfolio.length} portfolio images, all public assets, local Inter 400/500/700 and zero forbidden infrastructure references`);
+console.log(`PASS: ${sitemap.length} public routes, ${manifest.compatibilityRoutes.length} compatibility entries, raw metadata, 404, route maps, ${portfolio.length} portfolio images, all public assets, local shared Inter 100–900 and zero forbidden infrastructure references`);
 console.log("PASS: repository Docker inputs, nginx routing/cache contracts, legacy redirects and Docker context exclusions (static checks; not a live nginx test)");
 console.log("PASS: broken LinkedIn URL absent, lean App shell with Sonner, deferred homepage Zod, translated validation messages and retired marketing routes");
 console.log(portfolioSuccess);
