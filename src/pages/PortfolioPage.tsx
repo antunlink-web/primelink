@@ -42,6 +42,7 @@ import xiiiGimnazijaImg from "@/assets/projects/xiii-gimnazija-portfolio.webp";
 import chairsImg from "@/assets/projects/chairs-portfolio.webp";
 import hpcspgImg from "@/assets/projects/hpcspg-portfolio.webp";
 import pingvinsportImg from "@/assets/projects/pingvinsport-portfolio.webp";
+import klikcjenikImg from "@/assets/projects/klikcjenik-portfolio.webp";
 
 type FilterCategory = "all" | "saas" | "automation" | "web" | "integrations";
 
@@ -99,6 +100,18 @@ const projectsData: Project[] = [
     image: chairsImg,
     category: ["web"] as FilterCategory[],
     completedAt: "2026-09-01",
+  },
+  {
+    id: "klikcjenik",
+    name: "KlikCjenik",
+    url: "https://klikcjenik.hr/",
+    descKey: "portfolio.klikcjenik.description",
+    industryKey: "portfolio.klikcjenik.industry",
+    tags: ["SaaS", "Digitalni cjenik", "Jelovnik", "QR"],
+    image: klikcjenikImg,
+    category: ["saas", "web"] as FilterCategory[],
+    // Date added to this local portfolio; website completion date is unknown.
+    publishedAt: "2026-11-26",
   },
   {
     id: "alphamedical",

@@ -79,54 +79,60 @@ try {
       assert.equal(less(), undefined);
     };
 
-    check(9, 32);
+    check(9, 33);
     assert.equal(grid().getAttribute("role"), "region");
     assert.equal(grid().getAttribute("aria-label"), t("projectsLabel"));
     assert.deepEqual(cards().slice(0, 3).map((card) => new URL(card.href).hostname), ["luxurysecondhand.hr", "trazilica.hr", "chairs.hr"]);
     const initialCards = cards().map((card) => card.outerHTML);
     const schema = JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent);
-    assert.equal(schema.hasPart.length, 32);
+    assert.equal(schema.hasPart.length, 33);
     const domains = schema.hasPart.map((project) => new URL(project.url).hostname);
-    assert.equal(new Set(domains).size, 32, "Portfolio domains must be unique");
+    assert.equal(new Set(domains).size, 33, "Portfolio domains must be unique");
+    assert.equal(domains.filter((domain) => domain === "klikcjenik.hr").length, 1);
+    assert.equal(domains[3], "klikcjenik.hr", "KlikCjenik follows the three reserved projects");
+    const klikcjenikCard = cards().find((card) => new URL(card.href).hostname === "klikcjenik.hr");
+    assert(klikcjenikCard.textContent.includes(t("klikcjenik.description")));
+    assert(klikcjenikCard.textContent.includes(t("klikcjenik.industry")));
+    assert(klikcjenikCard.querySelector("img").getAttribute("src").includes("klikcjenik-portfolio.webp"));
     for (const domain of ["lumibaby.hr", "aurumgradnja.com", "airwolthvacelectric.hr", "konzalting.primelink.hr", "voltapp.hr"]) {
       assert(!domains.includes(domain), `${domain} must be absent from structured data`);
       assert(!Array.from(document.querySelectorAll<HTMLAnchorElement>("a")).some((link) => new URL(link.href).hostname === domain), `${domain} must be absent from cards and trust links`);
     }
     const trustSection = Array.from(document.querySelectorAll("section")).find((section) => section.textContent.includes(t("trustTitle")));
-    assert.deepEqual(Array.from(trustSection.querySelectorAll<HTMLAnchorElement>("a")).map((link) => new URL(link.href).hostname), domains, "Trust links preserve all 32 projects in order");
+    assert.deepEqual(Array.from(trustSection.querySelectorAll<HTMLAnchorElement>("a")).map((link) => new URL(link.href).hostname), domains, "Trust links preserve all 33 projects in order");
     assert.equal(less(), undefined);
-    await expand(9, 32);
+    await expand(9, 33);
     await click(button(t("filterAll")));
-    check(18, 32);
-    await expand(18, 32);
-    assert.equal(more(5).textContent, language === "hr" ? "Prikaži još 5 projekata" : "Show 5 more projects");
-    await expand(27, 32);
+    check(18, 33);
+    await expand(18, 33);
+    assert.equal(more(6).textContent, language === "hr" ? "Prikaži još 6 projekata" : "Show 6 more projects");
+    await expand(27, 33);
     assert.equal(more(), undefined);
     assert.deepEqual(cards().map((card) => card.href), schema.hasPart.map((project) => new URL(project.url).href), "Keep the complete project ordering");
-    await collapse(32);
+    await collapse(33);
     assert.deepEqual(cards().map((card) => card.outerHTML), initialCards, "Collapse preserves the original cards");
-    await expand(9, 32);
-    await collapse(32);
+    await expand(9, 33);
+    await collapse(33);
 
-    await filter("filterWeb", 28);
-    await expand(9, 28);
-    await expand(18, 28);
-    assert.equal(more(1).textContent, language === "hr" ? "Prikaži još 1 projekt" : "Show 1 more project");
-    await expand(27, 28);
+    await filter("filterWeb", 29);
+    await expand(9, 29);
+    await expand(18, 29);
+    assert.equal(more(2).textContent, language === "hr" ? "Prikaži još 2 projekta" : "Show 2 more projects");
+    await expand(27, 29);
     assert.equal(more(), undefined);
-    await filter("filterSaas", 7);
+    await filter("filterSaas", 8);
     assert.equal(more(), undefined);
     await filter("filterAutomation", 1);
     assert.equal(more(), undefined);
     await filter("filterIntegrations", 3);
     assert.equal(more(), undefined);
-    await filter("filterWeb", 28);
-    await expand(9, 28);
-    await collapse(28);
-    await filter("filterAll", 32);
-    await expand(9, 32);
+    await filter("filterWeb", 29);
+    await expand(9, 29);
+    await collapse(29);
+    await filter("filterAll", 33);
+    await expand(9, 33);
     await act(async () => { await i18n.changeLanguage(language === "hr" ? "en" : "hr"); });
-    check(18, 32);
+    check(18, 33);
     assert(more());
     assert(less());
     assert.deepEqual(JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent), schema, "Pagination and language changes preserve structured data");
@@ -134,7 +140,7 @@ try {
       assert.equal(i18n.t("portfolio.loadMore", { lng: "hr", count }), `Prikaži još ${count} ${noun}`);
       assert.equal(i18n.t("portfolio.loadMore", { lng: "en", count }), `Show ${count} more project${count === 1 ? "" : "s"}`);
     }
-    console.log(`PASS: ${language} — 9/18/27/32 cards, partial batch, collapse, category resets, ordering, translations, accessible names, pressed state, live status and focus`);
+    console.log(`PASS: ${language} — 9/18/27/33 cards, partial batch, collapse, category resets, ordering, translations, accessible names, pressed state, live status and focus`);
   }
 } finally {
   await act(async () => root.unmount());

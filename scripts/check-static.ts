@@ -118,12 +118,12 @@ assert(portfolioSource.statements.some((node) => ts.isImportDeclaration(node) &&
   node.importClause?.name?.text === luxuryImage.text && ts.isStringLiteral(node.moduleSpecifier) &&
   node.moduleSpecifier.text.endsWith("/assets/projects/luxurysecondhand-portfolio.webp")), "Luxury Second Hand screenshot import changed");
 const portfolioDomains = sortPortfolioProjects(portfolioProjects).map((project) => new URL(project.url).hostname.toLowerCase());
-const previousDomains = `luxurysecondhand.hr trazilica.hr chairs.hr hpc-spg.hr pingvinsport.com careflow.hr flowcall.eu lajt.hr flowsms.eu textro.eu mojakarta.hr perks.hr tijelokaodioprirode.eu evaciglar.eu infinityservices.hr prika.hr protekst.eu udrugalumen.hr yogawithnika.eu dadathlon.eu daddyhood.eu donatice.eu controlmaster.hr arks.hr euroratan.com xiiigimnazija.hr`.split(" ");
-assert.equal(portfolioDomains.length, 32, "32 public project cards including Alpha Medical, Iskra Svjetlosti, Jedra, Livia, Maratea and U Procesu");
+const previousDomains = `luxurysecondhand.hr trazilica.hr chairs.hr alpha-medical.hr iskrasvjetlosti.hr jedra.hr livia.hr maratea.hr uprocesu.com hpc-spg.hr pingvinsport.com careflow.hr flowcall.eu lajt.hr flowsms.eu textro.eu mojakarta.hr perks.hr tijelokaodioprirode.eu evaciglar.eu infinityservices.hr prika.hr protekst.eu udrugalumen.hr yogawithnika.eu dadathlon.eu daddyhood.eu donatice.eu controlmaster.hr arks.hr euroratan.com xiiigimnazija.hr`.split(" ");
+assert.equal(portfolioDomains.length, 33, "33 public project cards including KlikCjenik");
 assert.equal(new Set(portfolioDomains).size, portfolioDomains.length, "Portfolio domains must be unique");
 assert.equal(new Set(portfolioProjects.map((project) => project.id)).size, portfolioProjects.length, "Portfolio card IDs must be unique");
-assert.deepEqual(portfolioDomains.slice(0, 8), ["luxurysecondhand.hr", "trazilica.hr", "chairs.hr", "alpha-medical.hr", "iskrasvjetlosti.hr", "jedra.hr", "livia.hr", "maratea.hr"], "Preserve the first eight positions");
-assert.deepEqual(portfolioDomains.filter((domain) => !["alpha-medical.hr", "iskrasvjetlosti.hr", "jedra.hr", "livia.hr", "maratea.hr", "uprocesu.com"].includes(domain)), previousDomains, "Preserve every retained portfolio domain and its relative order");
+assert.deepEqual(portfolioDomains.slice(0, 9), ["luxurysecondhand.hr", "trazilica.hr", "chairs.hr", "klikcjenik.hr", "alpha-medical.hr", "iskrasvjetlosti.hr", "jedra.hr", "livia.hr", "maratea.hr"], "Preserve the reserved three, followed by KlikCjenik and existing publication order");
+assert.deepEqual(portfolioDomains.filter((domain) => domain !== "klikcjenik.hr"), previousDomains, "Preserve all 32 existing portfolio domains and their exact relative order");
 assert(!portfolioDomains.includes("airwolthvacelectric.hr"), "Airwolt must be absent from the public portfolio");
 for (const domain of ["lumibaby.hr", "aurumgradnja.com", "airwolthvacelectric.hr", "konzalting.primelink.hr", "voltapp.hr"]) {
   assert(!portfolioDomains.includes(domain), `${domain} must be absent from the public portfolio`);
@@ -151,6 +151,22 @@ assert.deepEqual(sortPortfolioProjects([
   { id: "second", publishedAt: "2026-10-17" },
 ]).map((project) => project.id), ["first", "second"], "Equal publication dates preserve declaration order");
 
+const klikcjenikProjects = portfolioProjects.filter((project) => new URL(project.url).hostname === "klikcjenik.hr");
+assert.equal(klikcjenikProjects.length, 1, "KlikCjenik domain must appear exactly once");
+const klikcjenik = klikcjenikProjects[0];
+assert.equal(klikcjenik.id, "klikcjenik");
+assert.equal(klikcjenik.name, "KlikCjenik");
+assert.equal(klikcjenik.url, "https://klikcjenik.hr/");
+assert.equal(klikcjenik.descKey, "portfolio.klikcjenik.description");
+assert.equal(klikcjenik.industryKey, "portfolio.klikcjenik.industry");
+assert.equal(klikcjenik.completedAt, undefined, "KlikCjenik completion date is unknown");
+assert.equal(klikcjenik.publishedAt, "2026-11-26", "Date KlikCjenik was added to this local portfolio");
+assert(!klikcjenik.pinned && klikcjenik.sortOrder === undefined, "Use existing publication ordering for KlikCjenik");
+assert.equal(portfolioDomains.indexOf("klikcjenik.hr"), 3, "KlikCjenik follows the reserved three at #4");
+for (const domain of ["croatiavignettes.eu", "ruskedelicije.eu", "chair.hr"]) {
+  assert(!portfolioDomains.includes(domain), `${domain} must remain outside this portfolio`);
+}
+
 const alphaMedicalProjects = portfolioProjects.filter((project) => project.id === "alphamedical");
 assert.equal(alphaMedicalProjects.length, 1, "Publish Alpha Medical exactly once");
 const alphaMedical = alphaMedicalProjects[0];
@@ -161,7 +177,7 @@ assert.equal(alphaMedical.industryKey, "portfolio.alphamedical.industry");
 assert.equal(alphaMedical.completedAt, undefined, "Alpha Medical project completion date is unknown");
 assert.equal(alphaMedical.publishedAt, "2026-10-17", "Date Alpha Medical was added to this local portfolio");
 assert(!alphaMedical.pinned && alphaMedical.sortOrder === undefined, "Use chronology, not a manual Alpha Medical pin or order");
-assert.equal(portfolioDomains.indexOf("alpha-medical.hr"), 3, "Alpha Medical follows the reserved three at #4");
+assert.equal(portfolioDomains.indexOf("alpha-medical.hr"), 4, "Alpha Medical follows KlikCjenik at #5");
 const iskraProjects = portfolioProjects.filter((project) => project.id === "iskrasvjetlosti");
 assert.equal(iskraProjects.length, 1, "Publish Iskra Svjetlosti exactly once");
 const iskra = iskraProjects[0];
@@ -172,7 +188,7 @@ assert.equal(iskra.industryKey, "portfolio.iskrasvjetlosti.industry");
 assert.equal(iskra.completedAt, undefined, "Iskra website completion date is unknown");
 assert.equal(iskra.publishedAt, "2026-10-17", "Iskra portfolio publication date");
 assert(!iskra.pinned && iskra.sortOrder === undefined, "Use stable publication ordering without a manual Iskra pin or order");
-assert.equal(portfolioDomains.indexOf("iskrasvjetlosti.hr"), 4, "Iskra follows Alpha Medical at #5 for the same publication date");
+assert.equal(portfolioDomains.indexOf("iskrasvjetlosti.hr"), 5, "Iskra follows Alpha Medical at #6 for the same publication date");
 const jedraProjects = portfolioProjects.filter((project) => project.id === "jedra");
 assert.equal(jedraProjects.length, 1, "Publish Jedra exactly once");
 const jedra = jedraProjects[0];
@@ -183,7 +199,7 @@ assert.equal(jedra.industryKey, "portfolio.jedra.industry");
 assert.equal(jedra.completedAt, undefined, "Jedra website completion date is unknown");
 assert.equal(jedra.publishedAt, "2026-10-17", "Jedra portfolio publication date");
 assert(!jedra.pinned && jedra.sortOrder === undefined, "Use stable publication ordering without a manual Jedra pin or order");
-assert.equal(portfolioDomains.indexOf("jedra.hr"), 5, "Jedra follows Iskra Svjetlosti at #6 for the same publication date");
+assert.equal(portfolioDomains.indexOf("jedra.hr"), 6, "Jedra follows Iskra Svjetlosti at #7 for the same publication date");
 const liviaProjects = portfolioProjects.filter((project) => project.id === "livia");
 assert.equal(liviaProjects.length, 1, "Publish Livia exactly once");
 const livia = liviaProjects[0];
@@ -194,7 +210,7 @@ assert.equal(livia.industryKey, "portfolio.livia.industry");
 assert.equal(livia.completedAt, undefined, "Livia website completion date is unknown");
 assert.equal(livia.publishedAt, "2026-10-17", "Livia portfolio publication date");
 assert(!livia.pinned && livia.sortOrder === undefined, "Use stable publication ordering without a manual Livia pin or order");
-assert.equal(portfolioDomains.indexOf("livia.hr"), 6, "Livia follows Jedra at #7 for the same publication date");
+assert.equal(portfolioDomains.indexOf("livia.hr"), 7, "Livia follows Jedra at #8 for the same publication date");
 const marateaProjects = portfolioProjects.filter((project) => project.id === "maratea");
 assert.equal(marateaProjects.length, 1, "Publish Maratea exactly once");
 const maratea = marateaProjects[0];
@@ -205,7 +221,7 @@ assert.equal(maratea.industryKey, "portfolio.maratea.industry");
 assert.equal(maratea.completedAt, undefined, "Maratea website completion date is unknown");
 assert.equal(maratea.publishedAt, "2026-10-17", "Maratea portfolio publication date");
 assert(!maratea.pinned && maratea.sortOrder === undefined, "Use stable publication ordering without a manual Maratea pin or order");
-assert.equal(portfolioDomains.indexOf("maratea.hr"), 7, "Maratea follows Livia at #8 for the same publication date");
+assert.equal(portfolioDomains.indexOf("maratea.hr"), 8, "Maratea follows Livia at #9 for the same publication date");
 const uprocesuProjects = portfolioProjects.filter((project) => project.id === "uprocesu");
 assert.equal(uprocesuProjects.length, 1, "Publish U Procesu exactly once");
 const uprocesu = uprocesuProjects[0];
@@ -216,7 +232,7 @@ assert.equal(uprocesu.industryKey, "portfolio.uprocesu.industry");
 assert.equal(uprocesu.completedAt, undefined, "U Procesu website completion date is unknown");
 assert.equal(uprocesu.publishedAt, "2026-10-17", "U Procesu portfolio publication date");
 assert(!uprocesu.pinned && uprocesu.sortOrder === undefined, "Use stable publication ordering without a manual U Procesu pin or order");
-assert.equal(portfolioDomains.indexOf("uprocesu.com"), 8, "U Procesu follows Maratea at #9 for the same publication date");
+assert.equal(portfolioDomains.indexOf("uprocesu.com"), 9, "U Procesu follows Maratea at #10 for the same publication date");
 const chronologicalProjects = sortPortfolioProjects(portfolioProjects).filter((project) =>
   !["luxurysecondhand", "trazilica", "chairs"].includes(project.id));
 for (let index = 1; index < chronologicalProjects.length; index++) {
@@ -251,6 +267,11 @@ for (const project of portfolioProjects) {
   assert.equal(metadata.height, 900, `${project.id}: screenshot height`);
   // Decode the pixels as well as the header to reject truncated/corrupt WebPs.
   await sharp(imagePath).raw().toBuffer();
+  if (project.id === "klikcjenik") {
+    assert(declaration.moduleSpecifier.text.endsWith("/assets/projects/klikcjenik-portfolio.webp"), "KlikCjenik must use the supplied authentic screenshot");
+    assert.equal(createHash("sha256").update(await readFile(imagePath)).digest("hex"),
+      "833024d3db2e6e5cee9689d7601d463e546cde79a839598efda7d10e7ccab496", "KlikCjenik screenshot bytes must remain unchanged");
+  }
   if (project.id === "alphamedical") {
     assert(declaration.moduleSpecifier.text.endsWith("/assets/projects/alpha-medical-portfolio.webp"), "Alpha Medical must use its authentic screenshot asset");
     assert((await readFile(imagePath)).length < 200_000, "Keep the Alpha Medical screenshot optimized below 200 kB");
@@ -277,7 +298,7 @@ for (const project of portfolioProjects) {
   }
 }
 
-const portfolioSuccess = "PASS: 32 unique portfolio cards and domains; Luxury Second Hand #1, Trazilica #2, chairs #3, Alpha Medical #4, Iskra Svjetlosti #5, Jedra #6, Livia #7, Maratea #8, U Procesu #9; stable publication ordering; all five owner-requested removals and Motokaj absent; retained order, URLs and HR/EN keys preserved; all 1440x900 WebPs decoded";
+const portfolioSuccess = "PASS: 33 unique portfolio cards and domains; Luxury Second Hand #1, Trazilica #2, chairs #3, KlikCjenik #4, Alpha Medical #5, Iskra Svjetlosti #6, Jedra #7, Livia #8, Maratea #9, U Procesu #10; stable publication ordering; all five owner-requested removals and Motokaj absent; retained order, URLs and HR/EN keys preserved; all 1440x900 WebPs decoded";
 // Source-only checks allow portfolio updates to be verified without rebuilding dist.
 if (process.argv.includes("--portfolio-only")) {
   console.log(portfolioSuccess);

@@ -356,6 +356,10 @@
     "ctaDescription": "Za web stranice i web trgovine pripremamo besplatan personalizirani prijedlog početne stranice, bez obveze.",
     "ctaStart": "Zatražite ponudu i besplatni demo",
     "ctaConsult": "Zakažite konzultaciju",
+    "klikcjenik": {
+      "description": "Digitalni cjenik i jelovnik za restorane, kafiće, salone i druge male poduzetnike, s jednostavnim uređivanjem cijena i prikazom putem QR koda.",
+      "industry": "Digitalni cjenici i ugostiteljstvo"
+    },
     "luxurysecondhand": {
       "description": "Redizajn i migracija postojećeg webshopa za rabljenu luksuznu modu i modne dodatke, uz očuvanje kataloga proizvoda, prikaz dizajnerskih torbi i luksuznih artikala te košaricu i naručivanje.",
       "industry": "Luksuzna moda i webshop"

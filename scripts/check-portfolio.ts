@@ -11,11 +11,11 @@ import en from "../src/i18n/locales/en.json";
 
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || "playwright");
 const dist = resolve(fileURLToPath(new URL("../dist/", import.meta.url)));
-const domains = `luxurysecondhand.hr trazilica.hr chairs.hr alpha-medical.hr iskrasvjetlosti.hr jedra.hr livia.hr maratea.hr uprocesu.com hpc-spg.hr pingvinsport.com careflow.hr flowcall.eu lajt.hr flowsms.eu textro.eu mojakarta.hr perks.hr tijelokaodioprirode.eu evaciglar.eu infinityservices.hr prika.hr protekst.eu udrugalumen.hr yogawithnika.eu dadathlon.eu daddyhood.eu donatice.eu controlmaster.hr arks.hr euroratan.com xiiigimnazija.hr`.split(" ");
+const domains = `luxurysecondhand.hr trazilica.hr chairs.hr klikcjenik.hr alpha-medical.hr iskrasvjetlosti.hr jedra.hr livia.hr maratea.hr uprocesu.com hpc-spg.hr pingvinsport.com careflow.hr flowcall.eu lajt.hr flowsms.eu textro.eu mojakarta.hr perks.hr tijelokaodioprirode.eu evaciglar.eu infinityservices.hr prika.hr protekst.eu udrugalumen.hr yogawithnika.eu dadathlon.eu daddyhood.eu donatice.eu controlmaster.hr arks.hr euroratan.com xiiigimnazija.hr`.split(" ");
 const categoryDomains = {
   all: domains,
   web: domains.filter((domain) => !["careflow.hr", "flowcall.eu", "flowsms.eu", "textro.eu"].includes(domain)),
-  saas: domains.filter((domain) => ["trazilica.hr", "careflow.hr", "flowcall.eu", "flowsms.eu", "textro.eu", "mojakarta.hr", "perks.hr"].includes(domain)),
+  saas: domains.filter((domain) => ["trazilica.hr", "klikcjenik.hr", "careflow.hr", "flowcall.eu", "flowsms.eu", "textro.eu", "mojakarta.hr", "perks.hr"].includes(domain)),
   automation: ["careflow.hr"],
   integrations: ["flowcall.eu", "flowsms.eu", "textro.eu"],
 };
@@ -118,7 +118,7 @@ try {
         const schema = await page.locator('script[type="application/ld+json"]').allTextContents();
         assert.deepEqual(JSON.parse(schema.find((value) => JSON.parse(value)["@type"] === "CollectionPage")).hasPart.map((project) => new URL(project.url).hostname), domains);
         const trustLinks = page.locator("section").filter({ hasText: t("trustTitle") }).locator("a");
-        assert.equal(await trustLinks.count(), 32);
+        assert.equal(await trustLinks.count(), 33);
         assert.deepEqual(await trustLinks.evaluateAll((links) => links.map((link: HTMLAnchorElement) => new URL(link.href).hostname)), domains);
         for (const domain of ["lumibaby.hr", "aurumgradnja.com", "airwolthvacelectric.hr", "konzalting.primelink.hr", "voltapp.hr"]) {
           assert(!schema.some((value) => value.includes(domain)), `${domain} must be absent from structured data`);
@@ -136,7 +136,7 @@ try {
         await expand("all", 9);
         await collapse("all");
 
-        // Web has 28 projects: 9, 18, 27, then a partial batch of 1.
+        // Web has 29 projects: 9, 18, 27, then a partial batch of 2.
         await filter("web");
         await expand("web", 9);
         await expand("web", 18);
@@ -160,7 +160,7 @@ try {
         assert.equal(await page.locator("#portfolio-projects > a").count(), 18);
         assert.deepEqual(await page.locator('head title, head meta[name="description"], head link[rel="canonical"]').evaluateAll((elements) => elements.map((element) => element.outerHTML)), metadata);
         assert.deepEqual(await page.locator('script[type="application/ld+json"]').allTextContents(), schema);
-        assert.equal(await page.locator("section").filter({ hasText: i18n.t("portfolio.trustTitle", { lng: otherLanguage }) }).locator("a").count(), 32);
+        assert.equal(await page.locator("section").filter({ hasText: i18n.t("portfolio.trustTitle", { lng: otherLanguage }) }).locator("a").count(), 33);
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, "No horizontal overflow");
         assert.deepEqual(errors, [], "No browser errors");
         console.log(`PASS: ${language}, ${viewport.width}px — batches/order, collapse, category resets, partial counts, translations, keyboard/focus, live status, SEO and trust links`);
