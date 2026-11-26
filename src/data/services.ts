@@ -35,11 +35,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Prilagodba mobitelima i tehničke SEO postavke",
         "Kontakt i dogovorene integracije"
       ],
-      "useCases": [
-        "Struktura sadržaja i dizajn",
-        "Prilagodba mobitelima i tehničke SEO postavke",
-        "Kontakt i dogovorene integracije"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Pošaljite upit",
@@ -87,11 +83,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Novi dizajn i organizacija sadržaja",
         "Plan migracije i potrebna preusmjeravanja"
       ],
-      "useCases": [
-        "Pregled postojeće strukture",
-        "Novi dizajn i organizacija sadržaja",
-        "Plan migracije i potrebna preusmjeravanja"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Pošaljite upit",
@@ -139,11 +131,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Proces narudžbe i opcije dostave prema dogovoru",
         "Integracije plaćanja: Stripe, Corvus ili Monri prema zahtjevima"
       ],
-      "useCases": [
-        "Katalog proizvoda i košarica",
-        "Proces narudžbe i opcije dostave prema dogovoru",
-        "Integracije plaćanja: Stripe, Corvus ili Monri prema zahtjevima"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Pošaljite upit",
@@ -191,11 +179,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Pregled klijenata i zadataka",
         "Izvještaji i integracije prema dogovoru"
       ],
-      "useCases": [
-        "Model podataka i korisničke uloge",
-        "Pregled klijenata i zadataka",
-        "Izvještaji i integracije prema dogovoru"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Pošaljite upit",
@@ -243,11 +227,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Korisnička sučelja i prava pristupa",
         "Povezivanje s postojećim sustavima prema opsegu"
       ],
-      "useCases": [
-        "Razrada procesa i funkcionalnosti",
-        "Korisnička sučelja i prava pristupa",
-        "Povezivanje s postojećim sustavima prema opsegu"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Pošaljite upit",
@@ -295,11 +275,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Korisnički računi i poslovna logika",
         "Pretplate i integracije prema odabranom pružatelju"
       ],
-      "useCases": [
-        "Definicija početne verzije proizvoda",
-        "Korisnički računi i poslovna logika",
-        "Pretplate i integracije prema odabranom pružatelju"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Pošaljite upit",
@@ -347,11 +323,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Održavanje i podrška u dogovorenom opsegu",
         "Uvjeti obnove unaprijed definirani ponudom"
       ],
-      "useCases": [
-        "Postavljanje hostinga prema projektu",
-        "Održavanje i podrška u dogovorenom opsegu",
-        "Uvjeti obnove unaprijed definirani ponudom"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Pošaljite upit",
@@ -371,10 +343,8 @@ const standardServices: Record<string, ServiceDetail[]> = {
         }
       ],
       "body": [
-        "Hosting i održavanje uključeni su 12 mjeseci od objave. Opseg podrške i uvjeti obnove definiraju se u svakoj ponudi.",
         "Cijena na upit, prema dogovorenom opsegu projekta.",
-        "Rokove izrade projekta i personaliziranog demo prijedloga dogovaramo pojedinačno.",
-        "Hosting i održavanje uključeni su 12 mjeseci od objave. Opseg podrške i uvjeti obnove definiraju se u svakoj ponudi."
+        "Rokove izrade projekta i personaliziranog demo prijedloga dogovaramo pojedinačno."
       ],
       "related": [
         "izrada-web-stranica",
@@ -401,11 +371,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Mobile layouts and technical SEO setup",
         "Contact options and agreed integrations"
       ],
-      "useCases": [
-        "Content structure and design",
-        "Mobile layouts and technical SEO setup",
-        "Contact options and agreed integrations"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Send an enquiry",
@@ -453,11 +419,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "New design and content organisation",
         "Migration plan and necessary redirects"
       ],
-      "useCases": [
-        "Review of the existing structure",
-        "New design and content organisation",
-        "Migration plan and necessary redirects"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Send an enquiry",
@@ -505,11 +467,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Order flow and delivery options as agreed",
         "Payment integrations: Stripe, Corvus or Monri according to requirements"
       ],
-      "useCases": [
-        "Product catalogue and shopping cart",
-        "Order flow and delivery options as agreed",
-        "Payment integrations: Stripe, Corvus or Monri according to requirements"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Send an enquiry",
@@ -557,11 +515,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Customer and task management",
         "Reports and integrations as agreed"
       ],
-      "useCases": [
-        "Data model and user roles",
-        "Customer and task management",
-        "Reports and integrations as agreed"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Send an enquiry",
@@ -609,11 +563,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "User interfaces and access permissions",
         "Connections to existing systems within the agreed scope"
       ],
-      "useCases": [
-        "Process and feature planning",
-        "User interfaces and access permissions",
-        "Connections to existing systems within the agreed scope"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Send an enquiry",
@@ -661,11 +611,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "User accounts and business logic",
         "Subscriptions and integrations supported by the selected provider"
       ],
-      "useCases": [
-        "Initial product scope",
-        "User accounts and business logic",
-        "Subscriptions and integrations supported by the selected provider"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Send an enquiry",
@@ -713,11 +659,7 @@ const standardServices: Record<string, ServiceDetail[]> = {
         "Maintenance and support within the agreed scope",
         "Renewal terms defined in the proposal"
       ],
-      "useCases": [
-        "Hosting setup for the project",
-        "Maintenance and support within the agreed scope",
-        "Renewal terms defined in the proposal"
-      ],
+      "useCases": [],
       "process": [
         {
           "title": "Send an enquiry",
@@ -737,10 +679,8 @@ const standardServices: Record<string, ServiceDetail[]> = {
         }
       ],
       "body": [
-        "Hosting and maintenance are included for 12 months from launch. Support scope and renewal terms are defined in each proposal.",
         "Pricing on enquiry, based on the agreed project scope.",
-        "Project and personalised demo delivery times are agreed individually.",
-        "Hosting and maintenance are included for 12 months from launch. Support scope and renewal terms are defined in each proposal."
+        "Project and personalised demo delivery times are agreed individually."
       ],
       "related": [
         "izrada-web-stranica",

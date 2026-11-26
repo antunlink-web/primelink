@@ -53,7 +53,7 @@ for (const language of ["hr", "en"] as const) {
   const label = locale.leadForm.needs.stripe;
   assert(html.includes(label));
   assert(html.includes(locale.solutionsSection.items.primepay.tagline));
-  assert.equal([...html.matchAll(new RegExp(`href="/${broad}"`, "g"))].length, 2);
+  assert.equal([...html.matchAll(new RegExp(`href="/${broad}"`, "g"))].length, 1);
   assert(!html.includes(`href="/${stripe}"`), "General service cards should link to the broader page");
   assert(html.includes(locale.servicesGrid.items[broad].description));
   console.log(`PASS ${language}: payment pages, four process steps, metadata, structured data, reciprocal links, homepage cards and enquiry label`);

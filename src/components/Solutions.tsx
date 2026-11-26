@@ -1,11 +1,8 @@
-import { Users, CreditCard, Search, Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const solutionDefs = [
-  { key: "primecrm", icon: Users, href: "/izrada-crm-sustava" },
-  { key: "primepay", icon: CreditCard, href: "/integracije-karticnog-placanja" },
-  { key: "primeaudit", icon: Search, href: "/besplatna-seo-analiza" },
   { key: "primedemo", icon: Sparkles, href: "/redizajn-web-stranice" },
 ] as const;
 

@@ -130,16 +130,18 @@ const ServicePage = ({ fixedSlug }: { fixedSlug?: string }) => {
           </div>
 
           {/* Use cases */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">{label("examples", "Tipični primjeri")}</h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {service.useCases.map((u) => (
-                <div key={u} className="rounded-xl border border-border bg-card p-5 text-sm text-foreground/90">
-                  {u}
-                </div>
-              ))}
+          {service.useCases.length > 0 && (
+            <div className="max-w-4xl mx-auto mb-16">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">{label("examples", "Tipični primjeri")}</h2>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {service.useCases.map((u) => (
+                  <div key={u} className="rounded-xl border border-border bg-card p-5 text-sm text-foreground/90">
+                    {u}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Process */}
           <div className="max-w-4xl mx-auto mb-16">
