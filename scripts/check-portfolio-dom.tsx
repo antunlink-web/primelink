@@ -79,39 +79,40 @@ try {
       assert.equal(less(), undefined);
     };
 
-    check(9, 34);
+    check(9, 32);
     assert.equal(grid().getAttribute("role"), "region");
     assert.equal(grid().getAttribute("aria-label"), t("projectsLabel"));
     assert.deepEqual(cards().slice(0, 3).map((card) => new URL(card.href).hostname), ["luxurysecondhand.hr", "trazilica.hr", "chairs.hr"]);
     const initialCards = cards().map((card) => card.outerHTML);
     const schema = JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent);
-    assert.equal(schema.hasPart.length, 34);
+    assert.equal(schema.hasPart.length, 32);
     const domains = schema.hasPart.map((project) => new URL(project.url).hostname);
-    for (const domain of ["konzalting.primelink.hr", "voltapp.hr"]) {
+    assert.equal(new Set(domains).size, 32, "Portfolio domains must be unique");
+    for (const domain of ["lumibaby.hr", "aurumgradnja.com", "airwolthvacelectric.hr", "konzalting.primelink.hr", "voltapp.hr"]) {
       assert(!domains.includes(domain), `${domain} must be absent from structured data`);
       assert(!Array.from(document.querySelectorAll<HTMLAnchorElement>("a")).some((link) => new URL(link.href).hostname === domain), `${domain} must be absent from cards and trust links`);
     }
     const trustSection = Array.from(document.querySelectorAll("section")).find((section) => section.textContent.includes(t("trustTitle")));
-    assert.deepEqual(Array.from(trustSection.querySelectorAll<HTMLAnchorElement>("a")).map((link) => new URL(link.href).hostname), domains, "Trust links preserve all 34 projects in order");
+    assert.deepEqual(Array.from(trustSection.querySelectorAll<HTMLAnchorElement>("a")).map((link) => new URL(link.href).hostname), domains, "Trust links preserve all 32 projects in order");
     assert.equal(less(), undefined);
-    await expand(9, 34);
+    await expand(9, 32);
     await click(button(t("filterAll")));
-    check(18, 34);
-    await expand(18, 34);
-    assert.equal(more(7).textContent, language === "hr" ? "Prikaži još 7 projekata" : "Show 7 more projects");
-    await expand(27, 34);
+    check(18, 32);
+    await expand(18, 32);
+    assert.equal(more(5).textContent, language === "hr" ? "Prikaži još 5 projekata" : "Show 5 more projects");
+    await expand(27, 32);
     assert.equal(more(), undefined);
     assert.deepEqual(cards().map((card) => card.href), schema.hasPart.map((project) => new URL(project.url).href), "Keep the complete project ordering");
-    await collapse(34);
+    await collapse(32);
     assert.deepEqual(cards().map((card) => card.outerHTML), initialCards, "Collapse preserves the original cards");
-    await expand(9, 34);
-    await collapse(34);
+    await expand(9, 32);
+    await collapse(32);
 
-    await filter("filterWeb", 30);
-    await expand(9, 30);
-    await expand(18, 30);
-    assert.equal(more(3).textContent, language === "hr" ? "Prikaži još 3 projekta" : "Show 3 more projects");
-    await expand(27, 30);
+    await filter("filterWeb", 28);
+    await expand(9, 28);
+    await expand(18, 28);
+    assert.equal(more(1).textContent, language === "hr" ? "Prikaži još 1 projekt" : "Show 1 more project");
+    await expand(27, 28);
     assert.equal(more(), undefined);
     await filter("filterSaas", 7);
     assert.equal(more(), undefined);
@@ -119,13 +120,13 @@ try {
     assert.equal(more(), undefined);
     await filter("filterIntegrations", 3);
     assert.equal(more(), undefined);
-    await filter("filterWeb", 30);
-    await expand(9, 30);
-    await collapse(30);
-    await filter("filterAll", 34);
-    await expand(9, 34);
+    await filter("filterWeb", 28);
+    await expand(9, 28);
+    await collapse(28);
+    await filter("filterAll", 32);
+    await expand(9, 32);
     await act(async () => { await i18n.changeLanguage(language === "hr" ? "en" : "hr"); });
-    check(18, 34);
+    check(18, 32);
     assert(more());
     assert(less());
     assert.deepEqual(JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent), schema, "Pagination and language changes preserve structured data");
@@ -133,7 +134,7 @@ try {
       assert.equal(i18n.t("portfolio.loadMore", { lng: "hr", count }), `Prikaži još ${count} ${noun}`);
       assert.equal(i18n.t("portfolio.loadMore", { lng: "en", count }), `Show ${count} more project${count === 1 ? "" : "s"}`);
     }
-    console.log(`PASS: ${language} — 9/18/27/34 cards, partial batch, collapse, category resets, ordering, translations, accessible names, pressed state, live status and focus`);
+    console.log(`PASS: ${language} — 9/18/27/32 cards, partial batch, collapse, category resets, ordering, translations, accessible names, pressed state, live status and focus`);
   }
 } finally {
   await act(async () => root.unmount());

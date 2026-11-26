@@ -25,8 +25,6 @@ import flowsmsImg from "@/assets/projects/flowsms-portfolio.webp";
 import textroImg from "@/assets/projects/textro-portfolio.webp";
 import mojakartaImg from "@/assets/projects/mojakarta-portfolio.webp";
 import perksImg from "@/assets/projects/perks-portfolio.webp";
-import lumibabyImg from "@/assets/projects/lumibaby-portfolio.webp";
-import aurumgradnjaImg from "@/assets/projects/aurumgradnja-portfolio.webp";
 import tijelokaodioprirodeImg from "@/assets/projects/tijelokaodioprirode-portfolio.webp";
 import evaciglarImg from "@/assets/projects/evaciglar-portfolio.webp";
 import infinityservicesImg from "@/assets/projects/infinityservices-portfolio.webp";
@@ -266,26 +264,6 @@ const projectsData: Project[] = [
     tags: ["React", "Node.js", "PostgreSQL", "i18n"],
     image: perksImg,
     category: ["saas", "web"] as FilterCategory[],
-  },
-  {
-    id: "lumibaby",
-    name: "Lumibaby.hr",
-    url: "https://lumibaby.hr",
-    descKey: "portfolio.lumibaby.description",
-    industryKey: "portfolio.lumibaby.industry",
-    tags: ["E-commerce", "Webshop", "Stripe", "React"],
-    image: lumibabyImg,
-    category: ["web"] as FilterCategory[],
-  },
-  {
-    id: "aurumgradnja",
-    name: "Aurumgradnja.com",
-    url: "https://aurumgradnja.com",
-    descKey: "portfolio.aurumgradnja.description",
-    industryKey: "portfolio.aurumgradnja.industry",
-    tags: ["Web", "Branding", "React", "SEO"],
-    image: aurumgradnjaImg,
-    category: ["web"] as FilterCategory[],
   },
   {
     id: "tijelokaodioprirode",

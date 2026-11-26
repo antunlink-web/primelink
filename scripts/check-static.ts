@@ -118,14 +118,14 @@ assert(portfolioSource.statements.some((node) => ts.isImportDeclaration(node) &&
   node.importClause?.name?.text === luxuryImage.text && ts.isStringLiteral(node.moduleSpecifier) &&
   node.moduleSpecifier.text.endsWith("/assets/projects/luxurysecondhand-portfolio.webp")), "Luxury Second Hand screenshot import changed");
 const portfolioDomains = sortPortfolioProjects(portfolioProjects).map((project) => new URL(project.url).hostname.toLowerCase());
-const previousDomains = `luxurysecondhand.hr trazilica.hr chairs.hr hpc-spg.hr pingvinsport.com careflow.hr flowcall.eu lajt.hr flowsms.eu textro.eu mojakarta.hr perks.hr lumibaby.hr aurumgradnja.com tijelokaodioprirode.eu evaciglar.eu infinityservices.hr prika.hr protekst.eu udrugalumen.hr yogawithnika.eu dadathlon.eu daddyhood.eu donatice.eu controlmaster.hr arks.hr euroratan.com xiiigimnazija.hr`.split(" ");
-assert.equal(portfolioDomains.length, 34, "34 public project cards including Alpha Medical, Iskra Svjetlosti, Jedra, Livia, Maratea and U Procesu");
+const previousDomains = `luxurysecondhand.hr trazilica.hr chairs.hr hpc-spg.hr pingvinsport.com careflow.hr flowcall.eu lajt.hr flowsms.eu textro.eu mojakarta.hr perks.hr tijelokaodioprirode.eu evaciglar.eu infinityservices.hr prika.hr protekst.eu udrugalumen.hr yogawithnika.eu dadathlon.eu daddyhood.eu donatice.eu controlmaster.hr arks.hr euroratan.com xiiigimnazija.hr`.split(" ");
+assert.equal(portfolioDomains.length, 32, "32 public project cards including Alpha Medical, Iskra Svjetlosti, Jedra, Livia, Maratea and U Procesu");
 assert.equal(new Set(portfolioDomains).size, portfolioDomains.length, "Portfolio domains must be unique");
 assert.equal(new Set(portfolioProjects.map((project) => project.id)).size, portfolioProjects.length, "Portfolio card IDs must be unique");
 assert.deepEqual(portfolioDomains.slice(0, 8), ["luxurysecondhand.hr", "trazilica.hr", "chairs.hr", "alpha-medical.hr", "iskrasvjetlosti.hr", "jedra.hr", "livia.hr", "maratea.hr"], "Preserve the first eight positions");
 assert.deepEqual(portfolioDomains.filter((domain) => !["alpha-medical.hr", "iskrasvjetlosti.hr", "jedra.hr", "livia.hr", "maratea.hr", "uprocesu.com"].includes(domain)), previousDomains, "Preserve every retained portfolio domain and its relative order");
 assert(!portfolioDomains.includes("airwolthvacelectric.hr"), "Airwolt must be absent from the public portfolio");
-for (const domain of ["konzalting.primelink.hr", "voltapp.hr"]) {
+for (const domain of ["lumibaby.hr", "aurumgradnja.com", "airwolthvacelectric.hr", "konzalting.primelink.hr", "voltapp.hr"]) {
   assert(!portfolioDomains.includes(domain), `${domain} must be absent from the public portfolio`);
 }
 assert(!portfolioProjects.some((project) => /motokaj/i.test(`${project.id} ${project.name} ${project.url}`)), "Motokaj must remain absent from the public portfolio");
@@ -235,7 +235,7 @@ for (const locale of ["hr", "en"]) {
     }
   }
   assert(!("airwolt" in translations.portfolio), `${locale}: remove unused Airwolt portfolio copy`);
-  for (const id of ["konzaltingprimelink", "voltapp"]) {
+  for (const id of ["lumibaby", "aurumgradnja", "konzaltingprimelink", "voltapp"]) {
     assert(!(id in translations.portfolio), `${locale}: remove unused ${id} portfolio copy`);
   }
 }
@@ -277,7 +277,7 @@ for (const project of portfolioProjects) {
   }
 }
 
-const portfolioSuccess = "PASS: 34 unique portfolio cards and domains; Luxury Second Hand #1, Trazilica #2, chairs #3, Alpha Medical #4, Iskra Svjetlosti #5, Jedra #6, Livia #7, Maratea #8, U Procesu #9; stable publication ordering; Airwolt and Motokaj absent; retained order, URLs and HR/EN keys preserved; all 1440x900 WebPs decoded";
+const portfolioSuccess = "PASS: 32 unique portfolio cards and domains; Luxury Second Hand #1, Trazilica #2, chairs #3, Alpha Medical #4, Iskra Svjetlosti #5, Jedra #6, Livia #7, Maratea #8, U Procesu #9; stable publication ordering; all five owner-requested removals and Motokaj absent; retained order, URLs and HR/EN keys preserved; all 1440x900 WebPs decoded";
 // Source-only checks allow portfolio updates to be verified without rebuilding dist.
 if (process.argv.includes("--portfolio-only")) {
   console.log(portfolioSuccess);
