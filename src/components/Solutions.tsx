@@ -12,8 +12,7 @@ const solutionDefs = [
 const Solutions = () => {
   const { t } = useTranslation();
   return (
-    <section id="rjesenja" className="py-24 bg-card border-y border-border relative overflow-hidden">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-mesh)] opacity-20" />
+    <section id="rjesenja" className="homepage-section-wash py-24 relative">
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl mb-14">
           <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">
@@ -32,7 +31,7 @@ const Solutions = () => {
             <Link
               key={s.key}
               to={s.href}
-              className="group relative rounded-2xl border border-border bg-background p-7 hover:border-primary/40 hover:shadow-[var(--shadow-hover)] hover:-translate-y-0.5 transition-all duration-300"
+              className="group relative rounded-2xl border border-border bg-background p-7 hover:border-primary/40 hover:shadow-[var(--shadow-hover)] motion-safe:hover:-translate-y-0.5 motion-safe:transition-all motion-safe:duration-300"
             >
               <div className="flex items-start gap-5">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors">
@@ -50,7 +49,7 @@ const Solutions = () => {
                   </p>
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-primary">
                     {t('common.learnMore')}
-                    <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="h-3.5 w-3.5 motion-safe:group-hover:translate-x-1 motion-safe:transition-transform" />
                   </span>
                 </div>
               </div>

@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="homepage min-h-screen">
       <Seo metadata={pageSeo["/"]} />
       <Header />
       <Hero />

@@ -5,8 +5,7 @@ const groups = [["izrada-web-stranica", "redizajn-web-stranice", "izrada-web-trg
 export default function Services() {
  const { t, i18n } = useTranslation();
  return (
-  <section id="services" className="py-20 bg-background relative overflow-hidden">
-   <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-mesh)] opacity-50" />
+  <section id="services" className="py-20 relative">
    <div className="container mx-auto px-4 relative z-10">
     <h2 className="text-3xl md:text-4xl font-bold mb-10 motion-safe:animate-fade-in">{t('approved.services')}</h2>
     <div className="grid md:grid-cols-3 gap-6">

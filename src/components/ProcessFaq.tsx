@@ -5,5 +5,5 @@ export function Process() {
 }
 export function Faq() {
  const { t } = useTranslation();
- return <section id="faq" className="py-20 bg-card border-y border-border"><div className="max-w-3xl mx-auto px-4"><h2 className="text-3xl md:text-4xl font-bold mb-8">{t('approved.faq')}</h2>{[0,1,2,3,4].map(i=><details key={i} className="border-b border-border py-5"><summary className="cursor-pointer font-semibold text-lg">{t(`approved.questions.${i}`)}</summary><p className="pt-4 text-muted-foreground leading-relaxed">{t(`approved.answers.${i}`)}</p></details>)}</div></section>;
+ return <section id="faq" className="homepage-section-wash py-20"><div className="max-w-3xl mx-auto px-4"><h2 className="text-3xl md:text-4xl font-bold mb-8">{t('approved.faq')}</h2>{[0,1,2,3,4].map(i=><details key={i} className="border-b border-border py-5"><summary className="cursor-pointer font-semibold text-lg">{t(`approved.questions.${i}`)}</summary><p className="pt-4 text-muted-foreground leading-relaxed">{t(`approved.answers.${i}`)}</p></details>)}</div></section>;
 }

@@ -15,14 +15,6 @@ export default function DemoLibrary() {
       id="demo-biblioteka"
       aria-labelledby="demo-library-title"
       className="py-16 md:py-24"
-      style={{
-        background: [
-          "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 24%, transparent 72%, hsl(var(--card)) 100%)",
-          "radial-gradient(ellipse at 15% 40%, hsl(var(--primary) / 0.14), transparent 65%)",
-          "radial-gradient(ellipse at 85% 60%, hsl(var(--accent) / 0.09), transparent 60%)",
-          "hsl(var(--background))",
-        ].join(", "),
-      }}
     >
       <div className="container mx-auto px-4">
         <div className="mb-9 max-w-2xl md:mb-12">

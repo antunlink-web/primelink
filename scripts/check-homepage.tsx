@@ -25,7 +25,7 @@ for (const language of ["hr", "en"] as const) {
   const at = home.indexOf(marker); assert(at > last, `Homepage order: ${marker}`); last = at;
  }
  for (const name of ["ALPHA-MEDICAL", "Luxury Second Hand", "Tražilica.hr", "PrimeCRM", "PrimePay", "PrimeAudit", "PrimeDemo"]) assert(home.includes(name));
- for (const path of ["/tvrtke/poslovni-rizici", "/shop/nakit", "/shop/burza/dashboard", "/"]) assert(home.includes(`href="https://demo.primelink.com.hr${path}" target="_blank" rel="noopener noreferrer"`));
+ for (const path of ["/sport/fitness-trener", "/automobili/parking", "/restorani/fastfood", "/"]) assert(home.includes(`href="https://demo.primelink.com.hr${path}" target="_blank" rel="noopener noreferrer"`));
  assert.equal((home.match(/<details/g) || []).length, 6); // Five FAQs plus optional enquiry details.
  assert(!home.includes('required="" maxLength="1500"'));
  for (const key of ['name','email','website','message','budget','deadline','send','reply'] as const) assert(home.includes(locale.approved[key]));
