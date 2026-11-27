@@ -580,6 +580,12 @@
     "title": "Naša rješenja",
     "subtitle": "Cijena na upit, prema dogovorenom opsegu projekta.",
     "items": {
+      "primelinkai": {
+        "name": "PrimeLink AI",
+        "tagline": "AI prilagođen vašem poslu.",
+        "description": "AI rješenja prilagođena vašem radu, podacima, privatnosti i budžetu - od cloud asistenta do lokalnog sustava i automatizacije.",
+        "status": "Uskoro"
+      },
       "primecrm": {
         "name": "PrimeCRM",
         "tagline": "CRM sustavi po mjeri",
