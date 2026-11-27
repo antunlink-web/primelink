@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import faqStyles from "./Faq.module.css";
 import styles from "./Process.module.css";
 
 export function Process() {
@@ -30,6 +31,31 @@ export function Process() {
 }
 
 export function Faq() {
- const { t } = useTranslation();
- return <section id="faq" className="py-20 bg-card border-y border-border"><div className="max-w-3xl mx-auto px-4"><h2 className="text-3xl md:text-4xl font-bold mb-8">{t('approved.faq')}</h2>{[0,1,2,3,4].map(i=><details key={i} className="border-b border-border py-5"><summary className="cursor-pointer font-semibold text-lg">{t(`approved.questions.${i}`)}</summary><p className="pt-4 text-muted-foreground leading-relaxed">{t(`approved.answers.${i}`)}</p></details>)}</div></section>;
+  const { t } = useTranslation();
+
+  return (
+    <section id="faq" className={faqStyles.section} aria-labelledby="faq-heading">
+      <div className={faqStyles.container}>
+        <h2 id="faq-heading" className={faqStyles.heading}>
+          {t("approved.faq")}
+        </h2>
+
+        <div className={faqStyles.list}>
+          {[0, 1, 2, 3, 4].map((index) => (
+            <details key={index} className={faqStyles.item}>
+              <summary className={faqStyles.question}>
+                <span>{t(`approved.questions.${index}`)}</span>
+                <span className={faqStyles.icon} aria-hidden="true">
+                  <svg viewBox="0 0 20 20" focusable="false">
+                    <path d="m5.5 7.5 4.5 4.5 4.5-4.5" />
+                  </svg>
+                </span>
+              </summary>
+              <p className={faqStyles.answer}>{t(`approved.answers.${index}`)}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
