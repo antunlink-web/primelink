@@ -7,52 +7,58 @@ const { JSDOM } = await import(process.env.JSDOM_MODULE || "jsdom");
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const bootstrap = html.match(/<script>\s*([\s\S]*?)<\/script>/)?.[1];
 assert(bootstrap);
-assert(html.indexOf(bootstrap) < html.indexOf('/brand/fonts.css'));
-assert(html.indexOf('/brand/fonts.css') < html.indexOf('/brand/tokens.css'));
+assert(html.indexOf(bootstrap) < html.indexOf("/brand/fonts.css"));
+assert(html.indexOf("/brand/fonts.css") < html.indexOf("/brand/tokens.css"));
+assert.equal((html.match(/<meta name="theme-color"/g) || []).length, 1);
 const key = "primelink-site-theme";
 
-function page(pref: string | null, dark = true, blocked = false) {
+function page(pref: string | null, blocked = false) {
   const dom = new JSDOM(html, { url: "https://primelink.test", runScripts: "outside-only", pretendToBeVisual: true });
   const { window } = dom;
-  const mq = new window.EventTarget();
-  Object.assign(mq, { matches: dark });
-  window.matchMedia = () => mq;
   if (pref !== null) window.localStorage.setItem(key, pref);
   if (blocked) Object.defineProperty(window, "localStorage", { get() { throw new Error("Storage blocked"); } });
   window.eval(bootstrap);
   return {
-    dom, window,
+    dom,
+    window,
     theme: () => window.document.documentElement.getAttribute("data-theme"),
-    device(value: boolean) {
-      Object.assign(mq, { matches: value });
-      mq.dispatchEvent(new window.Event("change"));
-    },
+    themeColor: () => window.document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.content,
   };
 }
 
-for (const [pref, dark, expected] of [
-  [null, true, "light"], [null, false, "light"], ["invalid", true, "light"],
-  ["light", true, "light"], ["dark", false, "dark"],
-  ["system", true, "dark"], ["system", false, "light"],
+for (const [pref, expected, color] of [
+  [null, "light", "#fdfefe"],
+  ["invalid", "light", "#fdfefe"],
+  ["light", "light", "#fdfefe"],
+  ["dark", "dark", "#0f131b"],
 ] as const) {
-  const p = page(pref, dark);
+  const p = page(pref);
   assert.equal(p.theme(), expected);
-  p.device(!dark);
-  assert.equal(p.theme(), pref === "system" ? (dark ? "light" : "dark") : expected);
+  assert.equal(p.themeColor(), color);
+  if (pref === "invalid") assert.equal(p.window.localStorage.getItem(key), null);
   p.window.close();
 }
-const blocked = page(null, true, true);
+
+const blocked = page(null, true);
 assert.equal(blocked.theme(), "light");
 blocked.window.close();
 
 const p = page(null);
 const { window } = p;
 Object.assign(globalThis, {
-  window, document: window.document, HTMLElement: window.HTMLElement, Element: window.Element,
-  Node: window.Node, DocumentFragment: window.DocumentFragment, CustomEvent: window.CustomEvent,
-  MutationObserver: window.MutationObserver, getComputedStyle: window.getComputedStyle,
+  window,
+  document: window.document,
+  HTMLElement: window.HTMLElement,
+  HTMLInputElement: window.HTMLInputElement,
+  Element: window.Element,
+  Node: window.Node,
+  DocumentFragment: window.DocumentFragment,
+  CustomEvent: window.CustomEvent,
+  MutationObserver: window.MutationObserver,
+  getComputedStyle: window.getComputedStyle,
   requestAnimationFrame: window.requestAnimationFrame.bind(window),
-  cancelAnimationFrame: window.cancelAnimationFrame.bind(window), IS_REACT_ACT_ENVIRONMENT: true,
+  cancelAnimationFrame: window.cancelAnimationFrame.bind(window),
+  IS_REACT_ACT_ENVIRONMENT: true,
 });
 Object.defineProperty(globalThis, "navigator", { configurable: true, value: window.navigator });
 const { act } = await import("react");
@@ -66,45 +72,44 @@ const root = createRoot(document.getElementById("root")!);
 
 try {
   await act(async () => root.render(<I18nextProvider i18n={i18n}><ThemeControl /></I18nextProvider>));
-  const trigger = () => document.querySelector<HTMLButtonElement>('button[aria-haspopup="menu"]')!;
-  assert.match(trigger().getAttribute("aria-label")!, /Svijetla/);
-  await act(async () => trigger().dispatchEvent(new window.KeyboardEvent("keydown", { key: "Enter", bubbles: true })));
-  const choices = Array.from(document.querySelectorAll<HTMLElement>('[role="menuitemradio"]'));
-  assert.deepEqual(choices.map((choice) => choice.textContent), ["Prema uređaju", "Svijetla", "Tamna"]);
-  await act(async () => choices[2].click());
+  const choices = () => Array.from(document.querySelectorAll<HTMLInputElement>('input[name="site-theme"]'));
+  assert.deepEqual(choices().map((choice) => choice.value), ["light", "dark"]);
+  assert.deepEqual(choices().map((choice) => choice.parentElement?.textContent?.trim()), ["Svijetla", "Tamna"]);
+  assert.equal(choices()[0].checked, true);
+
+  await act(async () => choices()[1].click());
   assert.equal(p.theme(), "dark");
   assert.equal(getPref(), "dark");
   assert.equal(window.localStorage.getItem(key), "dark");
-  assert.match(trigger().getAttribute("aria-label")!, /Tamna/);
-  const reload = page(window.localStorage.getItem(key), false);
-  assert.equal(reload.theme(), "dark");
-  reload.window.close();
+  assert.equal(choices()[1].checked, true);
+  const darkReload = page(window.localStorage.getItem(key));
+  assert.equal(darkReload.theme(), "dark");
+  darkReload.window.close();
 
-  await act(async () => setPref("system"));
-  assert.equal(window.localStorage.getItem(key), "system");
-  await act(async () => p.device(false));
+  await act(async () => choices()[0].click());
   assert.equal(p.theme(), "light");
-  await act(async () => p.device(true));
-  assert.equal(p.theme(), "dark");
-  assert.match(trigger().getAttribute("aria-label")!, /Prema uređaju/);
-  await act(async () => setPref("light"));
-  await act(async () => p.device(true));
-  assert.equal(p.theme(), "light");
-  for (const meta of document.querySelectorAll('meta[name="theme-color"]')) assert.equal(meta.getAttribute("content"), "#fdfefe");
+  assert.equal(getPref(), "light");
+  assert.equal(window.localStorage.getItem(key), "light");
+  assert.equal(choices()[0].checked, true);
+  const lightReload = page(window.localStorage.getItem(key));
+  assert.equal(lightReload.theme(), "light");
+  lightReload.window.close();
 
-  // Browser storage events arrive after another tab has changed the shared storage.
-  for (const pref of ["dark", "system", null]) {
+  for (const pref of ["dark", "light", null] as const) {
     await act(async () => {
       if (pref === null) window.localStorage.clear();
       else window.localStorage.setItem(key, pref);
       window.dispatchEvent(new window.StorageEvent("storage", { key: pref === null ? null : key }));
     });
-    assert.equal(p.theme(), pref === null ? "light" : "dark");
+    assert.equal(p.theme(), pref ?? "light");
     assert.equal(getPref(), pref ?? "light");
   }
+
+  await act(async () => setPref("dark"));
+  assert.equal(document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.content, "#0f131b");
   await act(async () => i18n.changeLanguage("en"));
-  assert.equal(trigger().getAttribute("aria-label"), "Site theme: Light");
-  console.log("PASS: pre-CSS light default, saved/invalid/blocked storage, dark/system/device changes, persistence, cross-tab sync, theme-color and accessible HR/EN control");
+  assert.deepEqual(choices().map((choice) => choice.parentElement?.textContent?.trim()), ["Light", "Dark"]);
+  console.log("PASS: pre-CSS light default, saved/invalid/blocked storage, explicit light/dark persistence, cross-tab sync, theme-color and accessible HR/EN control");
 } finally {
   await act(async () => root.unmount());
   window.close();

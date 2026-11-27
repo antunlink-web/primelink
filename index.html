@@ -4,36 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#fdfefe" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0f131b" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fdfefe" />
     <!-- Theme before any CSS (no flash). First visit = light. Keep in sync with src/theme.ts. -->
     <script>
       (function () {
         var KEY = 'primelink-site-theme'
         var root = document.documentElement
-        var mq = window.matchMedia('(prefers-color-scheme: dark)')
         function pref() {
           try {
             var v = localStorage.getItem(KEY)
-            return v === 'dark' || v === 'system' ? v : 'light'
+            if (v === 'dark' || v === 'light') return v
+            if (v !== null) localStorage.removeItem(KEY)
+            return 'light'
           } catch (e) {
             return 'light'
           }
         }
         function apply() {
           var p = pref()
-          var t = p === 'system' ? (mq.matches ? 'dark' : 'light') : p
-          root.setAttribute('data-theme', t)
+          root.setAttribute('data-theme', p)
           var metas = document.querySelectorAll('meta[name="theme-color"]')
           for (var i = 0; i < metas.length; i++) {
-            var m = metas[i]
-            m.setAttribute('content', p === 'system' ? ((m.getAttribute('media') || '').indexOf('dark') > -1 ? '#0f131b' : '#fdfefe') : t === 'dark' ? '#0f131b' : '#fdfefe')
+            metas[i].setAttribute('content', p === 'dark' ? '#0f131b' : '#fdfefe')
           }
         }
         apply()
-        mq.addEventListener('change', function () {
-          if (pref() === 'system') apply()
-        })
       })()
     </script>
     <link rel="preload" href="/brand/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin />

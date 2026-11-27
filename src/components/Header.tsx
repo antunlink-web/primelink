@@ -1,46 +1,70 @@
 import { getService } from "@/data/services";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeControl from "./ThemeControl";
 import logo from "@/assets/primelink-logo.webp";
 
 const usluge = [
-  { label: "Web trgovine", to: "/izrada-web-trgovina" },
-  { label: "Hosting i održavanje", to: "/hosting-odrzavanje" },
-  { label: "Izrada web stranica", to: "/izrada-web-stranica" },
-  { label: "Redizajn web stranica", to: "/redizajn-web-stranice" },
-  { label: "Web aplikacije", to: "/izrada-web-aplikacija" },
-  { label: "CRM sustavi", to: "/izrada-crm-sustava" },
-  { label: "Integracije kartičnog plaćanja", to: "/integracije-karticnog-placanja" },
-  { label: "SaaS razvoj", to: "/saas-razvoj" },
+  { to: "/izrada-web-trgovina" },
+  { to: "/hosting-odrzavanje" },
+  { to: "/izrada-web-stranica" },
+  { to: "/redizajn-web-stranice" },
+  { to: "/izrada-web-aplikacija" },
+  { to: "/izrada-crm-sustava" },
+  { to: "/integracije-karticnog-placanja" },
+  { to: "/saas-razvoj" },
 ];
 
 const rjesenja = [
-  { label: "PrimeCRM", desc: "CRM sustavi", to: "/izrada-crm-sustava" },
-  { label: "PrimePay", desc: "Integracije kartičnog plaćanja", to: "/integracije-karticnog-placanja" },
-  { label: "PrimeDemo", desc: "Demo redizajni", to: "/redizajn-web-stranice" },
+  { label: "PrimeCRM", to: "/izrada-crm-sustava" },
+  { label: "PrimePay", to: "/integracije-karticnog-placanja" },
+  { label: "PrimeDemo", to: "/redizajn-web-stranice" },
 ];
+
+const focusRing = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+const desktopLink = `rounded-full px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary ${focusRing}`;
+const mobileLink = `rounded-xl px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary ${focusRing}`;
 
 const Header = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
+  const language = i18n.language.startsWith("en") ? "en" : "hr";
   const quoteOnly = ["/izrada-crm-sustava", "/izrada-web-aplikacija", "/saas-razvoj", "/integracije-karticnog-placanja", "/stripe-integracije", "/hosting-odrzavanje"].includes(location.pathname);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setMobileOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
+  }, [mobileOpen]);
+
   const handleNavClick = (sectionId: string) => {
     setMobileOpen(false);
-    if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" }), 100);
     } else {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -49,98 +73,137 @@ const Header = () => {
     navigate(path);
   };
 
+  const goHome = () => {
+    setMobileOpen(false);
+    if (location.pathname !== "/") navigate("/");
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a 
-          href="#" 
-          onClick={(e) => {
-            e.preventDefault();
-            setMobileOpen(false);
-            if (location.pathname !== '/') navigate('/');
-            else window.scrollTo({ top: 0, behavior: 'smooth' });
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+      <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between gap-3 rounded-[var(--pl-radius-lg)] border border-border bg-card px-3 shadow-[var(--pl-shadow)] sm:px-4">
+        <a
+          href="/"
+          onClick={(event) => {
+            event.preventDefault();
+            goHome();
           }}
-          className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
+          aria-label={language === "en" ? "PrimeLink home" : "PrimeLink početna"}
+          className={`flex shrink-0 items-center gap-3 rounded-lg ${focusRing}`}
         >
-          <img src={logo} alt="PrimeLink Logo" width="36" height="36" decoding="async" fetchPriority="high" className="h-9 w-auto object-contain" />
-          <span className="text-xl font-bold text-foreground">PrimeLink</span>
+          <img
+            src={logo}
+            alt=""
+            width="36"
+            height="36"
+            decoding="async"
+            className="h-9 w-9 rounded-md object-contain dark:bg-foreground dark:ring-4 dark:ring-foreground"
+          />
+          <span className="hidden text-lg font-semibold tracking-[-0.02em] text-foreground sm:inline">PrimeLink</span>
         </a>
 
-        <nav className="hidden xl:flex items-center space-x-4">
-          {/* Usluge dropdown */}
-          <div className="relative group">
-            <button className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors py-2">
-              {t("approved.services")} <ChevronDown className="h-3.5 w-3.5" />
+        <nav aria-label={language === "en" ? "Main navigation" : "Glavna navigacija"} className="hidden items-center gap-0.5 xl:flex">
+          <div className="group relative">
+            <button type="button" aria-haspopup="true" className={`${desktopLink} flex items-center gap-1`}>
+              {t("approved.services")}
+              <ChevronDown className="h-3.5 w-3.5 text-muted-foreground transition-transform group-hover:rotate-180 group-focus-within:rotate-180" strokeWidth={1.8} aria-hidden="true" />
             </button>
-            <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50">
-              <div className="w-64 rounded-xl border border-border bg-background/95 backdrop-blur-xl shadow-[var(--shadow-xl)] p-2">
-                {usluge.map((s) => (
+            <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="w-72 rounded-[var(--pl-radius-lg)] border border-border bg-card p-2 shadow-[var(--pl-shadow)]">
+                {usluge.map((service) => (
                   <a
-                    key={s.to}
-                    href={s.to}
-                    onClick={(e) => { e.preventDefault(); handlePageNav(s.to); }}
-                    className="block px-3 py-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                    key={service.to}
+                    href={service.to}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handlePageNav(service.to);
+                    }}
+                    className={`block rounded-xl px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground ${focusRing}`}
                   >
-                    {getService(s.to.slice(1), i18n.language)?.navTitle}
+                    {getService(service.to.slice(1), i18n.language)?.navTitle}
                   </a>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Rješenja dropdown */}
-          <div className="relative group">
-            <button className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors py-2">
-              {t("approved.solutions")} <ChevronDown className="h-3.5 w-3.5" />
+          <div className="group relative">
+            <button type="button" aria-haspopup="true" className={`${desktopLink} flex items-center gap-1`}>
+              {t("approved.solutions")}
+              <ChevronDown className="h-3.5 w-3.5 text-muted-foreground transition-transform group-hover:rotate-180 group-focus-within:rotate-180" strokeWidth={1.8} aria-hidden="true" />
             </button>
-            <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50">
-              <div className="w-72 rounded-xl border border-border bg-background/95 backdrop-blur-xl shadow-[var(--shadow-xl)] p-2">
-                {rjesenja.map((s) => (
+            <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="w-72 rounded-[var(--pl-radius-lg)] border border-border bg-card p-2 shadow-[var(--pl-shadow)]">
+                {rjesenja.map((solution) => (
                   <a
-                    key={s.label}
-                    href={s.to}
-                    onClick={(e) => { e.preventDefault(); handlePageNav(s.to); }}
-                    className="block px-3 py-2 rounded-lg hover:bg-secondary transition-colors"
+                    key={solution.label}
+                    href={solution.to}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handlePageNav(solution.to);
+                    }}
+                    className={`block rounded-xl px-3 py-2.5 transition-colors hover:bg-secondary ${focusRing}`}
                   >
-                    <div className="text-sm font-medium text-foreground">{s.label}</div>
-                    <div className="text-xs text-muted-foreground">{t(`solutionsSection.items.${s.label.toLowerCase()}.tagline`)}</div>
+                    <span className="block text-sm font-medium text-foreground">{solution.label}</span>
+                    <span className="block text-xs leading-relaxed text-muted-foreground">{t(`solutionsSection.items.${solution.label.toLowerCase()}.tagline`)}</span>
                   </a>
                 ))}
               </div>
             </div>
           </div>
 
-          <a href="/portfolio" onClick={(e) => { e.preventDefault(); navigate('/portfolio'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors">Portfolio</a>
-          <a href="https://demo.primelink.com.hr/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t("approved.navExamples")}</a>
-          <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-sm text-muted-foreground hover:text-foreground transition-colors">{t("approved.contact")}</a>
+          <a href="/portfolio" onClick={(event) => { event.preventDefault(); handlePageNav("/portfolio"); }} className={desktopLink}>Portfolio</a>
+          <a href="https://demo.primelink.com.hr/" target="_blank" rel="noopener noreferrer" className={desktopLink}>{t("approved.navExamples")}</a>
+          <a href="/#contact" onClick={(event) => { event.preventDefault(); handleNavClick("contact"); }} className={desktopLink}>{t("approved.contact")}</a>
         </nav>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
           <LanguageSwitcher />
           <ThemeControl />
-          <Button size="sm" className="hidden xl:inline-flex" onClick={() => navigate('/ponuda/forma')}>{t(quoteOnly ? "approved.quote" : "approved.cta")}</Button>
-          <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? "Close menu" : "Open menu"} aria-expanded={mobileOpen}>
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          <Button
+            size="sm"
+            className="hidden h-10 rounded-full bg-primary px-4 shadow-[var(--pl-shadow-lift)] hover:bg-[var(--pl-primary-hover)] xl:inline-flex"
+            onClick={() => navigate("/ponuda/forma")}
+          >
+            {t(quoteOnly ? "approved.quote" : "approved.cta")}
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-10 w-10 shrink-0 rounded-full text-foreground hover:bg-secondary hover:text-foreground xl:hidden"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-label={mobileOpen ? (language === "en" ? "Close menu" : "Zatvori izbornik") : (language === "en" ? "Open menu" : "Otvori izbornik")}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
+          >
+            {mobileOpen ? <X className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" /> : <Menu className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />}
           </Button>
         </div>
       </div>
 
       {mobileOpen && (
-        <div className="xl:hidden border-t border-border bg-background/95 backdrop-blur-xl max-h-[80vh] overflow-y-auto">
-          <nav className="container mx-auto px-4 py-4 flex flex-col space-y-1">
-            <div className="px-2 pt-3 pb-1 text-[11px] uppercase tracking-widest text-muted-foreground/70 font-semibold">{t("approved.services")}</div>
-            {usluge.map((s) => (
-              <a key={s.to} href={s.to} onClick={(e) => { e.preventDefault(); handlePageNav(s.to); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary text-sm">{getService(s.to.slice(1), i18n.language)?.navTitle}</a>
+        <div id="mobile-navigation" className="mx-auto mt-2 max-h-[calc(100dvh-6.5rem)] max-w-[1240px] overflow-y-auto rounded-[var(--pl-radius-lg)] border border-border bg-card p-3 shadow-[var(--pl-shadow)] xl:hidden">
+          <nav aria-label={language === "en" ? "Mobile navigation" : "Mobilna navigacija"} className="flex flex-col">
+            <p className="px-3 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-[var(--pl-eyebrow-tracking)] text-muted-foreground">{t("approved.services")}</p>
+            {usluge.map((service) => (
+              <a key={service.to} href={service.to} onClick={(event) => { event.preventDefault(); handlePageNav(service.to); }} className={mobileLink}>
+                {getService(service.to.slice(1), i18n.language)?.navTitle}
+              </a>
             ))}
-            <div className="px-2 pt-4 pb-1 text-[11px] uppercase tracking-widest text-muted-foreground/70 font-semibold">{t("approved.solutions")}</div>
-            {rjesenja.map((s) => (
-              <a key={s.label} href={s.to} onClick={(e) => { e.preventDefault(); handlePageNav(s.to); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary text-sm">{s.label}{s.label === "PrimePay" && <span className="block text-xs text-muted-foreground">{t("headerNav.solution_items.primepay.desc")}</span>}</a>
+            <p className="px-3 pb-1 pt-4 text-[11px] font-semibold uppercase tracking-[var(--pl-eyebrow-tracking)] text-muted-foreground">{t("approved.solutions")}</p>
+            {rjesenja.map((solution) => (
+              <a key={solution.label} href={solution.to} onClick={(event) => { event.preventDefault(); handlePageNav(solution.to); }} className={mobileLink}>
+                {solution.label}
+                <span className="block text-xs font-normal text-muted-foreground">{t(`solutionsSection.items.${solution.label.toLowerCase()}.tagline`)}</span>
+              </a>
             ))}
-            <div className="h-px bg-border my-3" />
-            <a href="/portfolio" onClick={(e) => { e.preventDefault(); handlePageNav('/portfolio'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">Portfolio</a>
-            <a href="https://demo.primelink.com.hr/" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">{t("approved.navExamples")}</a>
-            <a href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }} className="text-muted-foreground hover:text-foreground transition-colors py-2.5 px-2 rounded-lg hover:bg-secondary">{t("approved.contact")}</a>
-            <Button className="w-full mt-3" onClick={() => { setMobileOpen(false); navigate('/ponuda/forma'); }}>{t(quoteOnly ? "approved.quote" : "approved.cta")}</Button>
+            <div className="my-3 h-px bg-border" />
+            <a href="/portfolio" onClick={(event) => { event.preventDefault(); handlePageNav("/portfolio"); }} className={mobileLink}>Portfolio</a>
+            <a href="https://demo.primelink.com.hr/" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className={mobileLink}>{t("approved.navExamples")}</a>
+            <a href="/#contact" onClick={(event) => { event.preventDefault(); handleNavClick("contact"); }} className={mobileLink}>{t("approved.contact")}</a>
+            <Button className="mt-3 h-11 w-full rounded-full bg-primary shadow-[var(--pl-shadow-lift)] hover:bg-[var(--pl-primary-hover)]" onClick={() => { setMobileOpen(false); navigate("/ponuda/forma"); }}>
+              {t(quoteOnly ? "approved.quote" : "approved.cta")}
+            </Button>
           </nav>
         </div>
       )}

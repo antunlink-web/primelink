@@ -1,15 +1,8 @@
-import { Monitor, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup,
-  DropdownMenuRadioItem, DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { setPref, useThemePref, type ThemePref } from "@/theme";
 
-// PrimeLink AI's three choices, in one header control to keep the navigation intact.
 const options = [
-  { value: "system", hr: "Prema uređaju", en: "Follow device", Icon: Monitor },
   { value: "light", hr: "Svijetla", en: "Light", Icon: Sun },
   { value: "dark", hr: "Tamna", en: "Dark", Icon: Moon },
 ] satisfies { value: ThemePref; hr: string; en: string; Icon: typeof Sun }[];
@@ -18,29 +11,38 @@ export default function ThemeControl() {
   const pref = useThemePref();
   const { i18n } = useTranslation();
   const language = i18n.language.startsWith("en") ? "en" : "hr";
-  const selected = options.find((option) => option.value === pref)!;
-  const label = `${language === "en" ? "Site theme" : "Tema stranice"}: ${selected[language]}`;
+  const legend = language === "en" ? "Site theme" : "Tema stranice";
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" type="button" aria-label={label} title={label}>
-          <selected.Icon aria-hidden="true" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuRadioGroup value={pref} aria-label={language === "en" ? "Site theme" : "Tema stranice"}
-          onValueChange={(value) => {
-            if (value === "light" || value === "dark" || value === "system") setPref(value);
-          }}>
-          {options.map(({ value, Icon, ...labels }) => (
-            <DropdownMenuRadioItem key={value} value={value} className="gap-2">
-              <Icon className="h-4 w-4" aria-hidden="true" />
-              {labels[language]}
-            </DropdownMenuRadioItem>
-          ))}
-        </DropdownMenuRadioGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <fieldset className="shrink-0">
+      <legend className="sr-only">{legend}</legend>
+      <div className="flex h-9 items-center rounded-full border border-border bg-secondary p-0.5">
+        {options.map(({ value, Icon, ...labels }) => {
+          const label = labels[language];
+          return (
+            <label
+              key={value}
+              title={`${legend}: ${label}`}
+              className={`relative inline-flex h-7 cursor-pointer items-center justify-center gap-1.5 rounded-full px-2 text-xs font-medium transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[:focus-visible]:ring-offset-2 has-[:focus-visible]:ring-offset-background ${
+                pref === value
+                  ? "border border-border bg-card text-foreground shadow-[var(--pl-shadow-lift)]"
+                  : "border border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <input
+                type="radio"
+                name="site-theme"
+                value={value}
+                checked={pref === value}
+                onChange={() => setPref(value)}
+                className="sr-only"
+              />
+              <Icon className="h-3.5 w-3.5" strokeWidth={1.8} aria-hidden="true" />
+              <span className="hidden sm:inline">{label}</span>
+            </label>
+          );
+        })}
+      </div>
+    </fieldset>
   );
 }
