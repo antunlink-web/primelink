@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Check, Loader2, Send } from "lucide-react";
 import { toast } from "sonner";
+import styles from "./HomeLeadForm.module.css";
 
 // Same Web3Forms key as the rest of the site — notifications go to PrimeLink.
 // NOTE: before heavy public use, add CAPTCHA (hCaptcha / Turnstile) and
@@ -111,6 +112,20 @@ const HomeLeadForm = ({ quote = false }: { quote?: boolean }) => {
   };
 
   if (submitted) {
+    if (!quote) {
+      return (
+        <section id="contact" className={styles.section} aria-live="polite">
+          <div className={styles.successPanel}>
+            <div className={styles.successIcon}>
+              <Check className="h-7 w-7" aria-hidden="true" />
+            </div>
+            <h2 className={styles.successTitle}>{t('approved.thanks')}</h2>
+            <p className={styles.successText}>{t('approved.reply')}</p>
+          </div>
+        </section>
+      );
+    }
+
     return (
       <div className="max-w-xl mx-auto text-center py-16">
         <div className="w-14 h-14 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-5">
@@ -124,27 +139,13 @@ const HomeLeadForm = ({ quote = false }: { quote?: boolean }) => {
     );
   }
 
-  return (
-    <section id="contact" className="py-24 bg-background border-t border-border">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
-            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">
-              {t('approved.contact')}
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
-              {t('approved.cta')}
-            </h2>
-            <p className="text-muted-foreground">
-              {t('approved.demo')}
-            </p>
-          </div>
-
-          <form
-            noValidate
-            onSubmit={handleSubmit}
-            className="rounded-2xl border border-border bg-card p-6 md:p-10 space-y-6"
-          >
+  const form = (
+    <form
+      noValidate
+      onSubmit={handleSubmit}
+      className={quote ? "rounded-2xl border border-border bg-card p-6 md:p-10 space-y-6" : styles.formCard}
+      aria-labelledby={quote ? undefined : "contact-heading"}
+    >
             {/* Honeypot — skriveno polje za spam zaštitu */}
             <input
               type="text"
@@ -157,46 +158,73 @@ const HomeLeadForm = ({ quote = false }: { quote?: boolean }) => {
               aria-hidden="true"
             />
 
-            <div>
-              <Label className="mb-3 block">{t('approved.service')}</Label>
-              <div className="grid sm:grid-cols-2 gap-2">
-                {NEEDS.map((item) => {
-                  const checked = needs.includes(item);
-                  return (
-                    <label
-                      key={item}
-                      className={`flex items-center gap-3 rounded-lg border px-4 py-3 cursor-pointer transition-colors ${
-                        checked
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:bg-secondary/40"
-                      }`}
-                    >
-                      <Checkbox
-                        checked={checked}
-                        onCheckedChange={() => toggleNeed(item)}
-                      />
-                      <span className="text-sm text-foreground">{t(`enquiryServices.${needLabels[NEEDS.indexOf(item)]}`)}</span>
-                    </label>
-                  );
-                })}
+            {quote ? (
+              <div>
+                <Label className="mb-3 block">{t('approved.service')}</Label>
+                <div className="grid sm:grid-cols-2 gap-2">
+                  {NEEDS.map((item) => {
+                    const checked = needs.includes(item);
+                    return (
+                      <label
+                        key={item}
+                        className={`flex items-center gap-3 rounded-lg border px-4 py-3 cursor-pointer transition-colors ${
+                          checked
+                            ? "border-primary bg-primary/5"
+                            : "border-border hover:bg-secondary/40"
+                        }`}
+                      >
+                        <Checkbox
+                          checked={checked}
+                          onCheckedChange={() => toggleNeed(item)}
+                        />
+                        <span className="text-sm text-foreground">{t(`enquiryServices.${needLabels[NEEDS.indexOf(item)]}`)}</span>
+                      </label>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            ) : (
+              <fieldset className={styles.serviceFieldset} aria-required="true">
+                <legend className={styles.legend}>{t('approved.service')}</legend>
+                <div className={styles.serviceGrid}>
+                  {NEEDS.map((item, index) => {
+                    const checked = needs.includes(item);
+                    const checkboxId = `lead-service-${index}`;
+                    return (
+                      <label
+                        key={item}
+                        htmlFor={checkboxId}
+                        className={`${styles.serviceOption} ${checked ? styles.serviceOptionChecked : ""}`}
+                      >
+                        <Checkbox
+                          id={checkboxId}
+                          checked={checked}
+                          onCheckedChange={() => toggleNeed(item)}
+                          className={styles.checkbox}
+                        />
+                        <span className={styles.serviceText}>{t(`enquiryServices.${needLabels[index]}`)}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </fieldset>
+            )}
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div><Label htmlFor="lead-name">{t('approved.name')} *</Label><Input id="lead-name" autoComplete="name" value={name} onChange={e => setName(e.target.value)} required maxLength={100}/></div>
-              <div><Label htmlFor="lead-email">{t('approved.email')} *</Label><Input id="lead-email" autoComplete="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required maxLength={255}/></div>
+            <div className={quote ? "grid sm:grid-cols-2 gap-4" : styles.twoColumns}>
+              <div className={quote ? undefined : styles.field}><Label className={quote ? undefined : styles.label} htmlFor="lead-name">{t('approved.name')} *</Label><Input className={quote ? undefined : styles.control} id="lead-name" autoComplete="name" value={name} onChange={e => setName(e.target.value)} required maxLength={100}/></div>
+              <div className={quote ? undefined : styles.field}><Label className={quote ? undefined : styles.label} htmlFor="lead-email">{t('approved.email')} *</Label><Input className={quote ? undefined : styles.control} id="lead-email" autoComplete="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required maxLength={255}/></div>
             </div>
-            <div><Label htmlFor="lead-website">{t('approved.website')}</Label><Input id="lead-website" value={website} onChange={e => setWebsite(e.target.value)} maxLength={255}/></div>
-            <div><Label htmlFor="lead-message">{t('approved.message')}</Label><Textarea id="lead-message" value={message} onChange={e => setMessage(e.target.value)} rows={3} maxLength={1500}/></div>
-            <details><summary className="cursor-pointer text-muted-foreground">{t('approved.extra')}</summary><div className="grid sm:grid-cols-3 gap-4 mt-4">
-              <div><Label htmlFor="lead-phone">{t('approved.phone')}</Label><Input id="lead-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} maxLength={50}/></div>
-              <div><Label htmlFor="lead-budget">{t('approved.budget')}</Label><Input id="lead-budget" value={budget} onChange={e => setBudget(e.target.value)} maxLength={100}/></div>
-              <div><Label htmlFor="lead-deadline">{t('approved.deadline')}</Label><Input id="lead-deadline" value={deadline} onChange={e => setDeadline(e.target.value)} maxLength={100}/></div>
+            <div className={quote ? undefined : styles.field}><Label className={quote ? undefined : styles.label} htmlFor="lead-website">{t('approved.website')}</Label><Input className={quote ? undefined : styles.control} id="lead-website" value={website} onChange={e => setWebsite(e.target.value)} maxLength={255}/></div>
+            <div className={quote ? undefined : styles.field}><Label className={quote ? undefined : styles.label} htmlFor="lead-message">{t('approved.message')}</Label><Textarea className={quote ? undefined : styles.control} id="lead-message" value={message} onChange={e => setMessage(e.target.value)} rows={3} maxLength={1500}/></div>
+            <details className={quote ? undefined : styles.details}><summary className={quote ? "cursor-pointer text-muted-foreground" : styles.summary}>{t('approved.extra')}</summary><div className={quote ? "grid sm:grid-cols-3 gap-4 mt-4" : styles.extraGrid}>
+              <div className={quote ? undefined : styles.field}><Label className={quote ? undefined : styles.label} htmlFor="lead-phone">{t('approved.phone')}</Label><Input className={quote ? undefined : styles.control} id="lead-phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} maxLength={50}/></div>
+              <div className={quote ? undefined : styles.field}><Label className={quote ? undefined : styles.label} htmlFor="lead-budget">{t('approved.budget')}</Label><Input className={quote ? undefined : styles.control} id="lead-budget" value={budget} onChange={e => setBudget(e.target.value)} maxLength={100}/></div>
+              <div className={quote ? undefined : styles.field}><Label className={quote ? undefined : styles.label} htmlFor="lead-deadline">{t('approved.deadline')}</Label><Input className={quote ? undefined : styles.control} id="lead-deadline" value={deadline} onChange={e => setDeadline(e.target.value)} maxLength={100}/></div>
             </div></details>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
-              <p className="text-xs text-muted-foreground">{t('approved.reply')}</p>
-              <Button type="submit" size="lg" disabled={submitting} className="sm:w-auto w-full">
+            <div className={quote ? "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2" : styles.actions}>
+              <p className={quote ? "text-xs text-muted-foreground" : styles.reply}>{t('approved.reply')}</p>
+              <Button type="submit" size="lg" disabled={submitting} className={quote ? "sm:w-auto w-full" : styles.submit}>
                 {submitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('approved.sending')}
@@ -208,7 +236,42 @@ const HomeLeadForm = ({ quote = false }: { quote?: boolean }) => {
                 )}
               </Button>
             </div>
-          </form>
+    </form>
+  );
+
+  if (quote) {
+    return (
+      <section id="contact" className="py-24 bg-background border-t border-border">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">
+                {t('approved.contact')}
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
+                {t('approved.cta')}
+              </h2>
+              <p className="text-muted-foreground">
+                {t('approved.demo')}
+              </p>
+            </div>
+            {form}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section id="contact" className={styles.section} aria-labelledby="contact-heading">
+      <div className={styles.container}>
+        <div className={styles.panel}>
+          <div className={styles.intro}>
+            <p className={styles.eyebrow}>{t('approved.contact')}</p>
+            <h2 id="contact-heading" className={styles.title}>{t('approved.cta')}</h2>
+            <p className={styles.description}>{t('approved.demo')}</p>
+          </div>
+          {form}
         </div>
       </div>
     </section>

@@ -1,0 +1,356 @@
+.section {
+  border-top: 1px solid var(--pl-line);
+  background: var(--pl-bg);
+  padding: clamp(4.5rem, 8vw, 7rem) 1rem;
+  color: var(--pl-text);
+  font-family: var(--pl-font);
+}
+
+.container {
+  width: min(72rem, 100%);
+  margin-inline: auto;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  border: 1px solid var(--pl-line);
+  border-radius: var(--pl-radius-lg);
+  background: var(--pl-side);
+  box-shadow: var(--pl-shadow);
+}
+
+.intro {
+  padding-block: 0.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--pl-link);
+  font-size: 0.75rem;
+  font-weight: var(--pl-weight-semibold);
+  letter-spacing: var(--pl-eyebrow-tracking);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--pl-text);
+  font-size: clamp(2rem, 4vw, 2.625rem);
+  font-weight: var(--pl-weight-semibold);
+  letter-spacing: var(--pl-tracking-display);
+  line-height: 1.1;
+}
+
+.description {
+  max-width: 28rem;
+  margin: 1.25rem 0 0;
+  color: var(--pl-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.formCard {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--pl-line);
+  border-radius: var(--pl-radius-lg);
+  background: var(--pl-card);
+  box-shadow: var(--pl-shadow-lift);
+}
+
+.serviceFieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend,
+.label {
+  display: block;
+  color: var(--pl-text);
+  font-size: 0.875rem;
+  font-weight: var(--pl-weight-medium);
+  line-height: 1.45;
+}
+
+.legend {
+  margin-bottom: 0.75rem;
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.serviceOption {
+  display: flex;
+  min-width: 0;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--pl-line);
+  border-radius: var(--pl-radius-sm);
+  background: var(--pl-card);
+  color: var(--pl-text);
+  cursor: pointer;
+  transition:
+    border-color var(--pl-dur-fast) var(--pl-ease),
+    background-color var(--pl-dur-fast) var(--pl-ease);
+}
+
+.serviceOption:hover {
+  background: var(--pl-hover);
+}
+
+.serviceOptionChecked {
+  border-color: var(--pl-focus);
+  background: var(--pl-soft);
+}
+
+.serviceOptionChecked:hover {
+  background: var(--pl-soft);
+}
+
+.checkbox {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  border-color: var(--pl-muted);
+  border-radius: 0.25rem;
+  background: var(--pl-card);
+  color: var(--pl-on-primary);
+}
+
+.checkbox[data-state="checked"] {
+  border-color: var(--pl-primary);
+  background: var(--pl-primary);
+}
+
+.checkbox:focus-visible,
+.control:focus-visible,
+.summary:focus-visible,
+.submit:focus-visible {
+  outline: 3px solid var(--pl-focus);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.serviceText {
+  min-width: 0;
+  color: var(--pl-text);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.twoColumns,
+.extraGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.twoColumns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.extraGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
+.field {
+  min-width: 0;
+}
+
+.control {
+  width: 100%;
+  margin-top: 0.5rem;
+  border: 1px solid var(--pl-line);
+  border-radius: var(--pl-radius);
+  background: var(--pl-card);
+  color: var(--pl-text);
+  font-family: var(--pl-font);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  transition:
+    border-color var(--pl-dur-fast) var(--pl-ease),
+    box-shadow var(--pl-dur-fast) var(--pl-ease);
+}
+
+input.control {
+  height: 3rem;
+  padding: 0.7rem 0.9rem;
+}
+
+textarea.control {
+  min-height: 7rem;
+  padding: 0.75rem 0.9rem;
+  resize: vertical;
+}
+
+.control:hover {
+  border-color: var(--pl-muted);
+}
+
+.control:focus-visible {
+  border-color: var(--pl-focus);
+}
+
+.details {
+  padding-block: 1rem;
+  border-block: 1px solid var(--pl-line);
+}
+
+.summary {
+  width: fit-content;
+  border-radius: var(--pl-radius-sm);
+  color: var(--pl-muted);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: var(--pl-weight-medium);
+  line-height: 1.45;
+}
+
+.summary:hover {
+  color: var(--pl-text);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.reply {
+  max-width: 18rem;
+  margin: 0;
+  color: var(--pl-muted);
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.submit {
+  min-height: 2.75rem;
+  flex: 0 0 auto;
+  border-radius: var(--pl-radius);
+  background: var(--pl-primary);
+  color: var(--pl-on-primary);
+  font-family: var(--pl-font);
+  font-weight: var(--pl-weight-medium);
+  transition:
+    background-color var(--pl-dur-fast) var(--pl-ease),
+    opacity var(--pl-dur-fast) var(--pl-ease);
+}
+
+.submit:hover:not(:disabled) {
+  background: var(--pl-primary-hover);
+}
+
+.submit:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.successPanel {
+  width: min(72rem, 100%);
+  margin-inline: auto;
+  padding: clamp(2rem, 6vw, 4rem);
+  border: 1px solid var(--pl-line);
+  border-radius: var(--pl-radius-lg);
+  background: var(--pl-card);
+  box-shadow: var(--pl-shadow);
+  text-align: center;
+}
+
+.successIcon {
+  display: flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  border: 1px solid var(--pl-line);
+  border-radius: var(--pl-radius-pill);
+  background: var(--pl-success-soft);
+  color: var(--pl-success-text);
+}
+
+.successTitle {
+  margin: 0 0 0.75rem;
+  color: var(--pl-text);
+  font-size: 1.5rem;
+  font-weight: var(--pl-weight-semibold);
+  letter-spacing: var(--pl-tracking-title);
+}
+
+.successText {
+  margin: 0;
+  color: var(--pl-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 56rem) {
+  .panel {
+    grid-template-columns: 1fr;
+  }
+
+  .description {
+    max-width: 38rem;
+  }
+}
+
+@media (max-width: 40rem) {
+  .section {
+    padding-inline: 0.75rem;
+  }
+
+  .panel {
+    gap: 1.75rem;
+    padding: 1rem;
+  }
+
+  .intro {
+    padding: 0.5rem 0.25rem 0;
+  }
+
+  .formCard {
+    padding: 1rem;
+  }
+
+  .serviceGrid,
+  .twoColumns,
+  .extraGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .reply {
+    max-width: none;
+  }
+
+  .submit {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .serviceOption,
+  .control,
+  .submit {
+    transition: none;
+  }
+}
