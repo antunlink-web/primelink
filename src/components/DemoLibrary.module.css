@@ -1,6 +1,6 @@
 /* PrimeLink AI card, surface and button language, scoped to the demo showcase. */
 .section {
-  padding-block: 5rem;
+  padding-block: 4rem;
   border-block: 1px solid var(--pl-line);
   background: var(--pl-side);
   color: var(--pl-text);
@@ -17,7 +17,7 @@
 
 .heading {
   max-width: 46rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .heading h2 {
@@ -191,7 +191,7 @@
 
 @media (min-width: 640px) {
   .section {
-    padding-block: 7rem;
+    padding-block: 5rem;
   }
 
   .container {

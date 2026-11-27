@@ -1,6 +1,6 @@
 /* PrimeLink AI FAQ: a compact, single-column disclosure list. */
 .section {
-  padding-block: 4.5rem;
+  padding-block: 4rem;
   border-block: 1px solid var(--pl-line);
   background: var(--pl-card);
   color: var(--pl-text);
@@ -22,7 +22,7 @@
 }
 
 .list {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   border-top: 1px solid var(--pl-line);
 }
 
@@ -106,7 +106,7 @@
 
 @media (min-width: 48rem) {
   .section {
-    padding-block: 6rem;
+    padding-block: 5rem;
   }
 
   .question {

@@ -7,7 +7,7 @@ const englishNetworkLabels = ["Websites", "Online stores", "CRM systems", "Card 
 
 export default function Hero() {
   const { t, i18n } = useTranslation();
-  return <section className="relative isolate overflow-hidden pt-32 pb-16 md:pt-44 md:pb-24 bg-background">
+  return <section className="relative isolate overflow-hidden pt-28 pb-14 md:pt-36 md:pb-20 bg-background">
     {/* Decorative layers stay behind the content and cannot intercept clicks. */}
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-dark)]" />
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-mesh)]" />

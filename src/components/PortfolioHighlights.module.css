@@ -1,7 +1,7 @@
 /* Adapted from PrimeLink AI's container-x, h-section, card and Applications
    spacing. Scoped here so the rest of the homepage keeps its current design. */
 .section {
-  padding-block: 5rem;
+  padding-block: 4rem;
   border-block: 1px solid var(--pl-line);
   background: var(--pl-side);
   color: var(--pl-text);
@@ -21,7 +21,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .heading h2 {
@@ -111,7 +111,7 @@
 
 @media (min-width: 640px) {
   .section {
-    padding-block: 7rem;
+    padding-block: 5rem;
   }
 
   .container {

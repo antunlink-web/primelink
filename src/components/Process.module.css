@@ -1,6 +1,6 @@
 /* PrimeLink AI Process: numbered sequence, restrained surface and desktop connector. */
 .section {
-  padding-block: 4.5rem;
+  padding-block: 4rem;
   border-block: 1px solid var(--pl-line);
   background: var(--pl-side);
   color: var(--pl-text);
@@ -24,7 +24,7 @@
 .steps {
   display: grid;
   gap: 1.75rem;
-  margin: 2.5rem 0 0;
+  margin: 2rem 0 0;
   padding: 0;
   list-style: none;
 }
@@ -89,14 +89,14 @@
 
 @media (min-width: 56.25rem) {
   .section {
-    padding-block: 6rem;
+    padding-block: 5rem;
   }
 
   .steps {
     position: relative;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 2.5rem;
   }
 
   .steps::before {
