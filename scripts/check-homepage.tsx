@@ -27,7 +27,18 @@ for (const language of ["hr", "en"] as const) {
   const at = home.indexOf(marker); assert(at > last, `Homepage order: ${marker}`); last = at;
  }
  for (const name of ["ALPHA-MEDICAL", "Luxury Second Hand", "Tražilica.hr", "PrimeCRM", "PrimePay", "PrimeDemo"]) assert(home.includes(name));
- for (const path of ["/tvrtke/poslovni-rizici", "/shop/nakit", "/shop/burza/dashboard", "/"]) assert(home.includes(`href="https://demo.primelink.com.hr${path}" target="_blank" rel="noopener noreferrer"`));
+ const demoStart = home.indexOf('id="demo-biblioteka"');
+ const demoEnd = home.indexOf('id="rjesenja"', demoStart);
+ const demoSection = home.slice(demoStart, demoEnd);
+ const featuredDemoUrls = [
+  "https://demo.primelink.com.hr/sport/fitness-trener",
+  "https://demo.primelink.com.hr/automobili/parking",
+  "https://demo.primelink.com.hr/restorani/fastfood",
+ ];
+ const demoHrefs = Array.from(demoSection.matchAll(/href="(https:\/\/demo\.primelink\.com\.hr\/[^"]*)"/g), match => match[1]);
+ assert.deepEqual(demoHrefs, [...featuredDemoUrls, "https://demo.primelink.com.hr/"], "Featured demos and full library CTA");
+ for (const url of featuredDemoUrls) assert(demoSection.includes(`href="${url}" target="_blank" rel="noopener noreferrer"`));
+ assert.equal((demoSection.match(/\/demo-previews\//g) || []).length, 3, "Exactly three demo screenshots");
  assert.equal((home.match(/<details/g) || []).length, 6); // Five FAQs plus optional enquiry details.
  assert(!home.includes('required="" maxLength="1500"'));
  for (const key of ['name','email','website','message','budget','deadline','send','reply'] as const) assert(home.includes(locale.approved[key]));
